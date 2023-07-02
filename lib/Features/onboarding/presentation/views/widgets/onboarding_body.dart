@@ -1,12 +1,10 @@
 import 'dart:async';
 
-import 'package:e_commerce_app/constants.dart';
-import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/utils/app_router.dart';
-import '../../../../../core/utils/widgets/custom_button.dart';
+import 'onboarding_action.dart';
 import 'onboarding_page_view.dart';
 
 class OnBoardingBody extends StatefulWidget {
@@ -69,46 +67,13 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
             ),
             Expanded(
               flex: 2,
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: getProportionateScreenWidth(20),
-                ),
-                child: Column(
-                  children: [
-                    const Spacer(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(
-                        onBoardingData.length,
-                        (index) => buidDot(index: index),
-                      ),
-                    ),
-                    const Spacer(
-                      flex: 3,
-                    ),
-                    CustomButton(
-                      text: customButtonText,
-                      onPressed: () {
-                        if (currentPage < 2) {
-                          setState(() {
-                            if (currentPage == 1) {
-                              customButtonText = 'Continue';
-                            }
-                            currentPage++;
-                            _pageController.nextPage(
-                              duration: const Duration(milliseconds: 400),
-                              curve: Curves.easeIn,
-                            );
-                          });
-                        } else {
-                          GoRouter.of(context)
-                              .push(AppRouter.kSigInView);
-                        }
-                      },
-                    ),
-                    const Spacer()
-                  ],
-                ),
+              child: OnBoardingAction(
+                currentPage: currentPage,
+                itemCount: onBoardingData.length,
+                customButtonText: customButtonText,
+                onPressed: () {
+                  onPressedCustomButton(context);
+                },
               ),
             ),
           ],
@@ -117,17 +82,21 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
     );
   }
 
-  AnimatedContainer buidDot({required int index}) {
-    return AnimatedContainer(
-      duration: kAnimationDuration,
-      margin: const EdgeInsets.only(right: 5),
-      height: 6,
-      width: currentPage == index ? 20 : 6,
-      decoration: BoxDecoration(
-        color: currentPage == index ? kPrimaryColor : const Color(0xffD8D8D8),
-        borderRadius: BorderRadius.circular(3),
-      ),
-    );
+  void onPressedCustomButton(BuildContext context) {
+    if (currentPage < 2) {
+      setState(() {
+        if (currentPage == 1) {
+          customButtonText = 'Continue';
+        }
+        currentPage++;
+        _pageController.nextPage(
+          duration: const Duration(milliseconds: 400),
+          curve: Curves.easeIn,
+        );
+      });
+    } else {
+      GoRouter.of(context).push(AppRouter.kLoginView);
+    }
   }
 
   void animateToPageTimer() {
