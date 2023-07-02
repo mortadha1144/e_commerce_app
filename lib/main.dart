@@ -1,6 +1,8 @@
-import 'package:e_commerce_app/Features/onboarding/presentation/views/onbording_view.dart';
 import 'package:e_commerce_app/constants.dart';
+import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
+
+import 'core/utils/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,18 +14,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: AppRouter.router,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
-        fontFamily: 'Muli',
-        textTheme: const TextTheme(
-          bodyLarge: TextStyle(color: kTextColor),
-          bodyMedium: TextStyle(color: kTextColor),
-        ),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: const OnBordingView(),
+      theme: theme(),
     );
   }
+
+  
 }

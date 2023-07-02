@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:e_commerce_app/constants.dart';
 import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/widgets/custom_button.dart';
 import 'onboarding_page_view.dart';
 
@@ -16,6 +18,7 @@ class OnBoardingBody extends StatefulWidget {
 
 class _OnBoardingBodyState extends State<OnBoardingBody> {
   late PageController _pageController;
+  String customButtonText = 'Next';
   int currentPage = 0;
   late Timer _timer;
   List<Map<String, String>> onBoardingData = [
@@ -37,19 +40,7 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
   void initState() {
     _pageController = PageController();
     super.initState();
-    _timer = Timer.periodic(const Duration(seconds: 5), (Timer timer) {
-      if (currentPage < 2) {
-        currentPage++;
-      } else {
-        currentPage = 0;
-      }
-
-      _pageController.animateToPage(
-        currentPage,
-        duration: const Duration(milliseconds: 400),
-        curve: Curves.easeIn,
-      );
-    });
+    animateToPageTimer();
   }
 
   @override
@@ -96,16 +87,22 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
                       flex: 3,
                     ),
                     CustomButton(
-                      text: 'Continue',
+                      text: customButtonText,
                       onPressed: () {
                         if (currentPage < 2) {
                           setState(() {
+                            if (currentPage == 1) {
+                              customButtonText = 'Continue';
+                            }
                             currentPage++;
                             _pageController.nextPage(
                               duration: const Duration(milliseconds: 400),
                               curve: Curves.easeIn,
                             );
                           });
+                        } else {
+                          GoRouter.of(context)
+                              .push(AppRouter.kSigInView);
                         }
                       },
                     ),
@@ -131,5 +128,23 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
         borderRadius: BorderRadius.circular(3),
       ),
     );
+  }
+
+  void animateToPageTimer() {
+    _timer = Timer.periodic(const Duration(seconds: 5), (Timer timer) {
+      if (currentPage < 2) {
+        if (currentPage == 1) {
+          customButtonText = 'Continue';
+        }
+        currentPage++;
+      } else {
+        currentPage = 0;
+      }
+      _pageController.animateToPage(
+        currentPage,
+        duration: const Duration(milliseconds: 400),
+        curve: Curves.easeIn,
+      );
+    });
   }
 }
