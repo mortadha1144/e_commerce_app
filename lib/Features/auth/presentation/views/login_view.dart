@@ -10,7 +10,7 @@ class LoginView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Login'),
       ),
-      body: const SigInViewBody(),
+      body: const LoginViewBody(),
     );
   }
 }
