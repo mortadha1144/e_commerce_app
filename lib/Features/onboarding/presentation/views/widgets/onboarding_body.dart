@@ -1,6 +1,10 @@
+import 'dart:async';
+
 import 'package:e_commerce_app/constants.dart';
+import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../core/utils/widgets/custom_button.dart';
 import 'onboarding_page_view.dart';
 
 class OnBoardingBody extends StatefulWidget {
@@ -11,15 +15,16 @@ class OnBoardingBody extends StatefulWidget {
 }
 
 class _OnBoardingBodyState extends State<OnBoardingBody> {
+  late PageController _pageController;
   int currentPage = 0;
+  late Timer _timer;
   List<Map<String, String>> onBoardingData = [
     {
       "text": "Welcome to Miwagy, Let’s shop!",
       "image": "assets/images/splash_1.png"
     },
     {
-      "text":
-          "We help people conect with store \naround United State of America",
+      "text": "We help people conect with store \naround their homes",
       "image": "assets/images/splash_2.png"
     },
     {
@@ -27,6 +32,33 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
       "image": "assets/images/splash_3.png",
     },
   ];
+
+  @override
+  void initState() {
+    _pageController = PageController();
+    super.initState();
+    _timer = Timer.periodic(const Duration(seconds: 5), (Timer timer) {
+      if (currentPage < 2) {
+        currentPage++;
+      } else {
+        currentPage = 0;
+      }
+
+      _pageController.animateToPage(
+        currentPage,
+        duration: const Duration(milliseconds: 400),
+        curve: Curves.easeIn,
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    _timer.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -37,6 +69,7 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
             Expanded(
               flex: 3,
               child: OnBoardingPageView(
+                controller: _pageController,
                 onBoardingData: onBoardingData,
                 onPageChanged: (value) => setState(() {
                   currentPage = value;
@@ -45,16 +78,40 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
             ),
             Expanded(
               flex: 2,
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                      onBoardingData.length,
-                      (index) => buidDot(index: index),
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: getProportionateScreenWidth(20),
+                ),
+                child: Column(
+                  children: [
+                    const Spacer(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(
+                        onBoardingData.length,
+                        (index) => buidDot(index: index),
+                      ),
                     ),
-                  )
-                ],
+                    const Spacer(
+                      flex: 3,
+                    ),
+                    CustomButton(
+                      text: 'Continue',
+                      onPressed: () {
+                        if (currentPage < 2) {
+                          setState(() {
+                            currentPage++;
+                            _pageController.nextPage(
+                              duration: const Duration(milliseconds: 400),
+                              curve: Curves.easeIn,
+                            );
+                          });
+                        }
+                      },
+                    ),
+                    const Spacer()
+                  ],
+                ),
               ),
             ),
           ],
