@@ -5,15 +5,15 @@ import '../../../../../size_config.dart';
 import 'custom_animated_container.dart';
 
 class OnBoardingAction extends StatelessWidget {
-  const OnBoardingAction(
-      {super.key,
-      required this.currentPage,
-      required this.itemCount,
-      required this.customButtonText, required this.onPressed});
+  const OnBoardingAction({
+    super.key,
+    required this.currentPage,
+    required this.itemCount,
+    required this.onPressed,
+  });
 
   final int currentPage;
   final int itemCount;
-  final String customButtonText;
   final void Function() onPressed;
 
   @override
@@ -37,8 +37,8 @@ class OnBoardingAction extends StatelessWidget {
             flex: 3,
           ),
           CustomButton(
-            text: customButtonText,
-            onPressed:onPressed,
+            text: 'Continue',
+            onPressed: onPressed,
           ),
           const Spacer()
         ],
