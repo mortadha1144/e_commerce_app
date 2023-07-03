@@ -41,7 +41,6 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
             Expanded(
               flex: 3,
               child: OnBoardingPageView(
-                
                 onBoardingData: onBoardingData,
                 onPageChanged: (value) => setState(() {
                   currentPage = value;
@@ -53,7 +52,6 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
               child: OnBoardingAction(
                 currentPage: currentPage,
                 itemCount: onBoardingData.length,
-                
                 onPressed: () {
                   onPressedCustomButton(context);
                 },
@@ -66,6 +64,6 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
   }
 
   void onPressedCustomButton(BuildContext context) {
-    GoRouter.of(context).push(AppRouter.kLoginView);
+    GoRouter.of(context).push(AppRouter.kSignInView);
   }
 }

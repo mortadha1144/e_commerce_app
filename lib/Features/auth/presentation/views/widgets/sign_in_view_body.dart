@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/widgets/custom_suffix_icon.dart';
 import '../../../../../core/utils/widgets/custom_form_error.dart';
 
-class LoginViewBody extends StatelessWidget {
-  const LoginViewBody({super.key});
+class SignInViewBody extends StatelessWidget {
+  const SignInViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class LoginViewBody extends StatelessWidget {
                 'Sign in with your email and password  \nor continue with social media',
                 textAlign: TextAlign.center,
               ),
-              const LoginForm(),
+              const SignInForm(),
             ],
           ),
         ),
@@ -44,14 +44,14 @@ class LoginViewBody extends StatelessWidget {
   }
 }
 
-class LoginForm extends StatefulWidget {
-  const LoginForm({super.key});
+class SignInForm extends StatefulWidget {
+  const SignInForm({super.key});
 
   @override
-  State<LoginForm> createState() => _LoginFormState();
+  State<SignInForm> createState() => _SignInFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
+class _SignInFormState extends State<SignInForm> {
   final _formKey = GlobalKey<FormState>();
   String? email;
   final List<String> errors = [];
