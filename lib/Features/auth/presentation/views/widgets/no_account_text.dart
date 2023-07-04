@@ -1,4 +1,6 @@
+import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../size_config.dart';
@@ -19,7 +21,7 @@ class NoAccountText extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            
+            GoRouter.of(context).push(AppRouter.kSignUpView);
           },
           child: Text(
             'Sign Up',

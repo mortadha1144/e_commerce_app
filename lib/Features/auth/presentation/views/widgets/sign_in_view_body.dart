@@ -1,12 +1,8 @@
-import 'package:e_commerce_app/constants.dart';
-import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-
 import 'custom_social_card.dart';
 import 'no_account_text.dart';
-import 'sign_form.dart';
+import 'sign_in_form.dart';
 
 class SignInViewBody extends StatelessWidget {
   const SignInViewBody({super.key});
@@ -41,7 +37,7 @@ class SignInViewBody extends StatelessWidget {
                 SizedBox(
                   height: SizeConfig.screenHeight * .08,
                 ),
-                const SignForm(),
+                const SignInForm(),
                 SizedBox(
                   height: SizeConfig.screenHeight * .08,
                 ),
