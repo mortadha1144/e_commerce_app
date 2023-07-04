@@ -1,8 +1,11 @@
+import 'package:e_commerce_app/constants.dart';
+import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../../../../core/utils/widgets/custom_social_card.dart';
+import 'custom_social_card.dart';
+import 'no_account_text.dart';
 import 'sign_form.dart';
 
 class SignInViewBody extends StatelessWidget {
@@ -17,30 +20,57 @@ class SignInViewBody extends StatelessWidget {
           padding: EdgeInsets.symmetric(
             horizontal: getProportionateScreenWidth(20),
           ),
-          child: Column(
-            children: [
-              SizedBox(
-                height: SizeConfig.screenHeight * .04,
-              ),
-              Text(
-                'Welcome Back',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: getProportionateScreenWidth(28),
-                  fontWeight: FontWeight.bold,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: SizeConfig.screenHeight * .04,
                 ),
-              ),
-              const Text(
-                'Sign in with your email and password  \nor continue with social media',
-                textAlign: TextAlign.center,
-              ),
-              const SignForm(),
-              CustomSocialCard(),
-            ],
+                Text(
+                  'Welcome Back',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: getProportionateScreenWidth(28),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const Text(
+                  'Sign in with your email and password  \nor continue with social media',
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(
+                  height: SizeConfig.screenHeight * .08,
+                ),
+                const SignForm(),
+                SizedBox(
+                  height: SizeConfig.screenHeight * .08,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomSocialCard(
+                      icon: 'assets/icons/google-icon.svg',
+                      onPressed: () {},
+                    ),
+                    CustomSocialCard(
+                      icon: 'assets/icons/facebook-2.svg',
+                      onPressed: () {},
+                    ),
+                    CustomSocialCard(
+                      icon: 'assets/icons/twitter.svg',
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: getProportionateScreenHeight(20),
+                ),
+                const NoAccountText()
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 }
-

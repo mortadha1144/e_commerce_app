@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../constants.dart';
+import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/widgets/custom_button.dart';
-import '../../../../../core/utils/widgets/custom_form_error.dart';
-import '../../../../../core/utils/widgets/custom_suffix_icon.dart';
+import 'custom_form_error.dart';
+import 'custom_suffix_icon.dart';
 import '../../../../../size_config.dart';
 
 class SignForm extends StatefulWidget {
@@ -46,9 +48,13 @@ class _SignFormState extends State<SignForm> {
               ),
               const Text('Remember me'),
               const Spacer(),
-              const Text(
-                'Forgot Password',
-                style: TextStyle(decoration: TextDecoration.underline),
+              GestureDetector(
+                onTap: () =>
+                    GoRouter.of(context).push(AppRouter.kForgotPasswordView),
+                child: const Text(
+                  'Forgot Password',
+                  style: TextStyle(decoration: TextDecoration.underline),
+                ),
               ),
             ],
           ),
@@ -91,7 +97,9 @@ class _SignFormState extends State<SignForm> {
           setState(() {
             errors.add(kPassNullError);
           });
-        } else if (value.length < 8 && !errors.contains(kShortPassError)) {
+        } else if (value.isNotEmpty &&
+            value.length < 8 &&
+            !errors.contains(kShortPassError)) {
           setState(() {
             errors.add(kShortPassError);
           });
@@ -129,7 +137,8 @@ class _SignFormState extends State<SignForm> {
           setState(() {
             errors.add(kEmailNullError);
           });
-        } else if (!emailValidatorRegExp.hasMatch(value) &&
+        } else if (value.isNotEmpty &&
+            !emailValidatorRegExp.hasMatch(value) &&
             !errors.contains(kInvalidEmailError)) {
           setState(() {
             errors.add(kInvalidEmailError);
