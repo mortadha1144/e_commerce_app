@@ -1,4 +1,6 @@
+import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/widgets/custom_button.dart';
@@ -37,6 +39,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   // Go to OTP view
+                  GoRouter.of(context).push(AppRouter.kOtpView);
                 }
               }),
         ],
