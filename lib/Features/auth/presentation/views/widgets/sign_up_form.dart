@@ -1,4 +1,6 @@
+import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/widgets/custom_button.dart';
@@ -33,19 +35,19 @@ class _SignUpFormState extends State<SignUpForm> {
           SizedBox(
             height: getProportionateScreenHeight(30),
           ),
-          //buildConfPasswordFormField(),
+          buildConfPasswordFormField(),
           CustomFormError(
             errors: errors,
           ),
           SizedBox(
-            height: getProportionateScreenHeight(20),
+            height: getProportionateScreenHeight(40),
           ),
           CustomButton(
             text: 'Continue',
             onPressed: () {
               if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
-                // if all are valid then go to success view
+                // Go to complete profile view
+                GoRouter.of(context).push(AppRouter.kCompleteProfileView);
               }
             },
           )
@@ -59,15 +61,19 @@ class _SignUpFormState extends State<SignUpForm> {
       obscureText: true,
       onSaved: (newValue) => confirmPassword = newValue,
       onChanged: (value) {
-        if (password == confirmPassword) {
-          removeError(error: kMatchPassError);
+        if (value.isNotEmpty) {
+          removeError(error: kPassNullError);
+          confirmPassword = value;
+          if (password == confirmPassword) {
+            removeError(error: kMatchPassError);
+          }
         }
       },
       validator: (value) {
         if (value!.isEmpty) {
           addError(error: kPassNullError);
           return '';
-        } else if (password != confirmPassword) {
+        } else if (password != value) {
           addError(error: kMatchPassError);
           return '';
         }
@@ -123,8 +129,9 @@ class _SignUpFormState extends State<SignUpForm> {
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kEmailNullError);
-        } else if (emailValidatorRegExp.hasMatch(value)) {
-          removeError(error: kInvalidEmailError);
+          if (emailValidatorRegExp.hasMatch(value)) {
+            removeError(error: kInvalidEmailError);
+          }
         }
       },
       validator: (value) {

@@ -1,11 +1,8 @@
 import 'package:e_commerce_app/constants.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/widgets/custom_button.dart';
 import '../../../../../size_config.dart';
-import 'custom_form_error.dart';
 import 'custom_social_card.dart';
-import 'custom_suffix_icon.dart';
 import 'sign_up_form.dart';
 
 class SignUpViewBody extends StatelessWidget {
@@ -22,7 +19,7 @@ class SignUpViewBody extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                height: SizeConfig.screenHeight * .04,
+                height: SizeConfig.screenHeight * .03,
               ),
               Text(
                 'Register Account',
@@ -33,11 +30,11 @@ class SignUpViewBody extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               SizedBox(
-                height: SizeConfig.screenHeight * .08,
+                height: SizeConfig.screenHeight * .07,
               ),
               const SignUpForm(),
               SizedBox(
-                height: SizeConfig.screenHeight * .08,
+                height: SizeConfig.screenHeight * .07,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -59,6 +56,11 @@ class SignUpViewBody extends StatelessWidget {
               SizedBox(
                 height: getProportionateScreenHeight(20),
               ),
+              Text(
+                'By continuing your confirm that you agree \nwith our Term and Condition',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodySmall,
+              )
             ],
           ),
         ),
@@ -66,4 +68,3 @@ class SignUpViewBody extends StatelessWidget {
     );
   }
 }
-
