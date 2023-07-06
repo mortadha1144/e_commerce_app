@@ -1,5 +1,8 @@
+import 'package:e_commerce_app/Features/auth/data/models/user_model.dart';
+import 'package:e_commerce_app/Features/auth/presentation/cubits/cubit/auth_cubit.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../constants.dart';
@@ -23,36 +26,43 @@ class _SignUpFormState extends State<SignUpForm> {
   final List<String> errors = [];
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        children: [
-          buildEmailFormField(),
-          SizedBox(
-            height: getProportionateScreenHeight(30),
+    return BlocConsumer<AuthCubit, AuthState>(
+      listener: (context, state) {
+        if (state is RegisterFailure) {
+          addError(error: state.message);
+        } else if (state is RegisterSuccess) {
+          errors.clear();
+          GoRouter.of(context).pushReplacement(AppRouter.kCompleteProfileView);
+        }
+      },
+      builder: (context, state) {
+        return Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              buildEmailFormField(),
+              SizedBox(height: getProportionateScreenHeight(30)),
+              buildPasswordFormField(),
+              SizedBox(height: getProportionateScreenHeight(30)),
+              buildConfPasswordFormField(),
+              CustomFormError(errors: errors),
+              SizedBox(height: getProportionateScreenHeight(40)),
+              CustomButton(
+                text: 'Continue',
+                isLoading: state is RegisterLoading,
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
+                    // Go to complete profile view
+                    BlocProvider.of<AuthCubit>(context).registerUser(
+                        UserModel(emailAdress: email!, password: password!));
+                  }
+                },
+              )
+            ],
           ),
-          buildPasswordFormField(),
-          SizedBox(
-            height: getProportionateScreenHeight(30),
-          ),
-          buildConfPasswordFormField(),
-          CustomFormError(
-            errors: errors,
-          ),
-          SizedBox(
-            height: getProportionateScreenHeight(40),
-          ),
-          CustomButton(
-            text: 'Continue',
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                // Go to complete profile view
-                GoRouter.of(context).push(AppRouter.kCompleteProfileView);
-              }
-            },
-          )
-        ],
-      ),
+        );
+      },
     );
   }
 

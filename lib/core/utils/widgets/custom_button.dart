@@ -6,11 +6,14 @@ import '../../../size_config.dart';
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
-    required this.text, required this.onPressed,
+    required this.text,
+    required this.onPressed,
+    this.isLoading = false,
   });
 
   final String text;
   final VoidCallback onPressed;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +28,18 @@ class CustomButton extends StatelessWidget {
             shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20)))),
         onPressed: onPressed,
-        child: Text(
-          text,
-          style: TextStyle(
-            fontSize: getProportionateScreenWidth(18),
-            color: Colors.white,
-          ),
-        ),
+        child: isLoading
+            ? const CircularProgressIndicator(
+                color: Colors.white,
+                strokeWidth: 3,
+              )
+            : Text(
+                text,
+                style: TextStyle(
+                  fontSize: getProportionateScreenWidth(18),
+                  color: Colors.white,
+                ),
+              ),
       ),
     );
   }
