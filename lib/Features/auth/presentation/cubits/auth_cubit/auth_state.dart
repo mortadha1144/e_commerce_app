@@ -9,3 +9,9 @@ class RegisterFailure extends AuthState {
   final String message;
   RegisterFailure({required this.message});
 }
+class CompleteProfileLoading extends AuthState {}
+class CompleteProfileSuccess extends AuthState {}
+class CompleteProfileFailure extends AuthState {
+  final String message;
+  CompleteProfileFailure({required this.message});
+}

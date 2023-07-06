@@ -1,5 +1,3 @@
-import 'package:e_commerce_app/Features/auth/data/repos/auth_repo_impl.dart';
-import 'package:e_commerce_app/Features/auth/presentation/cubits/cubit/auth_cubit.dart';
 import 'package:e_commerce_app/Features/auth/presentation/views/complete_profile_view.dart';
 import 'package:e_commerce_app/Features/auth/presentation/views/forgot_password_view.dart';
 import 'package:e_commerce_app/Features/auth/presentation/views/login_success_view.dart';
@@ -7,7 +5,6 @@ import 'package:e_commerce_app/Features/auth/presentation/views/otp_view.dart';
 import 'package:e_commerce_app/Features/auth/presentation/views/sign_in_view.dart';
 import 'package:e_commerce_app/Features/auth/presentation/views/sign_up_view.dart';
 import 'package:e_commerce_app/Features/onboarding/presentation/views/onbording_view.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class AppRouter {
@@ -40,14 +37,13 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kSignUpView,
-        builder: (context, state) => BlocProvider<AuthCubit>(
-          create: (context) => AuthCubit(AuthRepoImp()),
-          child: const SignUpView(),
-        ),
+        builder: (context, state) => const SignUpView(),
       ),
       GoRoute(
         path: kCompleteProfileView,
-        builder: (context, state) => const CompleteProfileView(),
+        builder: (context, state) => CompleteProfileView(
+          email: state.extra as String,
+        ),
       ),
       GoRoute(
         path: kOtpView,

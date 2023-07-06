@@ -1,5 +1,4 @@
 import 'package:e_commerce_app/Features/auth/data/models/user_model.dart';
-import 'package:e_commerce_app/Features/auth/presentation/cubits/cubit/auth_cubit.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,11 +7,14 @@ import 'package:go_router/go_router.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/widgets/custom_button.dart';
 import '../../../../../size_config.dart';
+import '../../cubits/auth_cubit/auth_cubit.dart';
 import 'custom_form_error.dart';
 import 'custom_suffix_icon.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({super.key});
+
+  
 
   @override
   State<SignUpForm> createState() => _SignUpFormState();
@@ -32,7 +34,8 @@ class _SignUpFormState extends State<SignUpForm> {
           addError(error: state.message);
         } else if (state is RegisterSuccess) {
           errors.clear();
-          GoRouter.of(context).pushReplacement(AppRouter.kCompleteProfileView);
+          GoRouter.of(context)
+              .pushReplacement(AppRouter.kCompleteProfileView, extra: email);
         }
       },
       builder: (context, state) {
@@ -55,7 +58,9 @@ class _SignUpFormState extends State<SignUpForm> {
                     _formKey.currentState!.save();
                     // Go to complete profile view
                     BlocProvider.of<AuthCubit>(context).registerUser(
-                        UserModel(emailAdress: email!, password: password!));
+                      email: email!,
+                      password: password!,
+                    );
                   }
                 },
               )
