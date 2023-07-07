@@ -35,4 +35,13 @@ emit(SignInLoading());
       (success) => emit(SignInSuccess(),),
       );
   }
+
+  Future<void> resetPassword({required String email})async{
+    emit(ResetPasswordLoading());
+    var result = await authRepo.resetPassword(email: email);
+    result.fold(
+      (failure) => emit(ResetPasswordFailure(message: failure.errMessagel)),
+      (success) => emit(ResetPasswordSuccess(),),
+      );
+  }
 }

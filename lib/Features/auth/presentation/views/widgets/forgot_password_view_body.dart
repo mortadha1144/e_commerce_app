@@ -1,11 +1,6 @@
-import 'package:e_commerce_app/Features/auth/presentation/views/widgets/custom_form_error.dart';
-import 'package:e_commerce_app/Features/auth/presentation/views/widgets/no_account_text.dart';
-import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../constants.dart';
-import 'custom_suffix_icon.dart';
 import 'forgot_password_form.dart';
 
 class ForgotPasswordViewBody extends StatelessWidget {

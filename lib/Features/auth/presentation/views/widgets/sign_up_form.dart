@@ -1,4 +1,3 @@
-import 'package:e_commerce_app/Features/auth/data/models/user_model.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,8 +12,6 @@ import 'custom_suffix_icon.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({super.key});
-
-  
 
   @override
   State<SignUpForm> createState() => _SignUpFormState();
@@ -31,6 +28,7 @@ class _SignUpFormState extends State<SignUpForm> {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is RegisterFailure) {
+          errors.clear();
           addError(error: state.message);
         } else if (state is RegisterSuccess) {
           errors.clear();

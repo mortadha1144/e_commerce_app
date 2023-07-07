@@ -8,12 +8,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../../../core/errors/failures.dart';
 
 class AuthRepoImp implements AuthRepo {
+  final credential = FirebaseAuth.instance;
+
   @override
   Future<Either<Failure, void>> createUserWithEmailAndPassword(
       {required String email, required String password}) async {
     try {
-      final credential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      
+          await credential.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -44,22 +46,31 @@ class AuthRepoImp implements AuthRepo {
   Future<Either<Failure, void>> sigInUser(
       {required String email, required String password}) async {
     try {
-      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+       await credential.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
       return right(null);
-    }  catch (e) {
+    } catch (e) {
       if (e is FirebaseAuthException) {
         return Left(FirebaseFailure.fromFirebaseAuthException(e));
       }
       return left(FirebaseFailure(e.toString()));
     }
   }
-  
+
   @override
-  Future<Either<Failure, void>> resetPassword({required String email}) {
-    // TODO: implement resetPassword
-    throw UnimplementedError();
+  Future<Either<Failure, void>> resetPassword({required String email}) async{
+    try {
+       await credential.sendPasswordResetEmail(
+        email: email,
+      );
+      return right(null);
+    } catch (e) {
+      if (e is FirebaseAuthException) {
+        return Left(FirebaseFailure.fromFirebaseAuthException(e));
+      }
+      return left(FirebaseFailure(e.toString()));
+    }
   }
 }

@@ -21,3 +21,9 @@ class SignInFailure extends AuthState {
   final String message;
   SignInFailure({required this.message});
   }
+class ResetPasswordLoading extends AuthState {}
+class ResetPasswordSuccess extends AuthState {}
+class ResetPasswordFailure extends AuthState {
+  final String message;
+  ResetPasswordFailure({required this.message});
+  }

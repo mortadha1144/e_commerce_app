@@ -9,7 +9,7 @@ abstract class Failure {
 class FirebaseFailure extends Failure {
   FirebaseFailure(super.errMessagel);
 
- factory FirebaseFailure.fromFirebaseAuthException(
+  factory FirebaseFailure.fromFirebaseAuthException(
       FirebaseAuthException firebaseAuthException) {
     switch (firebaseAuthException.code) {
       case 'email-already-in-use':
@@ -26,9 +26,13 @@ class FirebaseFailure extends Failure {
         return FirebaseFailure('No user found for that email.');
       case 'wrong-password':
         return FirebaseFailure('Wrong password provided for that user.');
+      case 'auth/invalid-email':
+        return FirebaseFailure('The email provided is invalid.');
+      case 'auth/user-not-found':
+        return FirebaseFailure('No user found for that email.');
+
       default:
-        
-      return FirebaseFailure('Opps There was an error ,Please try later!');
+        return FirebaseFailure('Opps There was an error ,Please try later!');
     }
   }
 }

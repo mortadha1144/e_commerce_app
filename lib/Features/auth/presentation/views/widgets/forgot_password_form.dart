@@ -1,4 +1,7 @@
+import 'package:e_commerce_app/Features/auth/presentation/cubits/auth_cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/widgets/custom_button.dart';
@@ -20,67 +23,89 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
   String? email;
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        children: [
-          TextFormField(
-            keyboardType: TextInputType.emailAddress,
-            onSaved: (newValue) => email = newValue,
-            onChanged: (value) {
-              if (value.isNotEmpty && errors.contains(kEmailNullError)) {
-                setState(() {
-                  errors.remove(kEmailNullError);
-                });
-              } else if (emailValidatorRegExp.hasMatch(value) &&
-                  errors.contains(kInvalidEmailError)) {
-                setState(() {
-                  errors.remove(kInvalidEmailError);
-                });
-              }
-            },
-            validator: (value) {
-              if (value!.isEmpty && !errors.contains(kEmailNullError)) {
-                setState(() {
-                  errors.add(kEmailNullError);
-                });
-              } else if (value.isNotEmpty &&
-                  !emailValidatorRegExp.hasMatch(value) &&
-                  !errors.contains(kInvalidEmailError)) {
-                setState(() {
-                  errors.add(kInvalidEmailError);
-                });
-              }
-              return null;
-            },
-            decoration: const InputDecoration(
-              hintText: 'Enter your email',
-              label: Text('Email'),
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              suffixIcon: CustomSurffixIcon(svgIcon: 'assets/icons/Mail.svg'),
-            ),
+    return BlocConsumer<AuthCubit, AuthState>(
+      listener: (context, state) {
+        if (state is ResetPasswordFailure) {
+          addError(error: state.message);
+        } else if (state is ResetPasswordSuccess) {
+          GoRouter.of(context).pop();
+        }
+      },
+      builder: (context, state) {
+        return Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              TextFormField(
+                keyboardType: TextInputType.emailAddress,
+                onSaved: (newValue) => email = newValue,
+                onChanged: (value) {
+                  if (value.isNotEmpty) {
+                    removeError(error: kEmailNullError);
+                    if (emailValidatorRegExp.hasMatch(value)) {
+                      removeError(error: kInvalidEmailError);
+                    }
+                  }
+                },
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    addError(error: kEmailNullError);
+                    return '';
+                  } else if (!emailValidatorRegExp.hasMatch(value)) {
+                    addError(error: kInvalidEmailError);
+                    return '';
+                  }
+                  return null;
+                },
+                decoration: const InputDecoration(
+                  hintText: 'Enter your email',
+                  labelText: 'Email',
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                  suffixIcon:
+                      CustomSurffixIcon(svgIcon: 'assets/icons/Mail.svg'),
+                ),
+              ),
+              SizedBox(
+                height: getProportionateScreenHeight(30),
+              ),
+              CustomFormError(errors: errors),
+              SizedBox(
+                height: SizeConfig.screenHeight * .1,
+              ),
+              CustomButton(
+                text: 'Continue',
+                isLoading: state is ResetPasswordLoading,
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
+                    BlocProvider.of<AuthCubit>(context).resetPassword(email: email!);
+                  }
+                },
+              ),
+              SizedBox(
+                height: SizeConfig.screenHeight * .1,
+              ),
+              const NoAccountText(),
+            ],
           ),
-          SizedBox(
-            height: getProportionateScreenHeight(30),
-          ),
-          CustomFormError(errors: errors),
-          SizedBox(
-            height: SizeConfig.screenHeight * .1,
-          ),
-          CustomButton(
-            text: 'Continue',
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                // do what you want to do
-              }
-            },
-          ),
-          SizedBox(
-            height: SizeConfig.screenHeight * .1,
-          ),
-          const NoAccountText(),
-        ],
-      ),
+        );
+      },
     );
+  }
+
+  void removeError({required String error}) {
+    if (errors.contains(error)) {
+      setState(() {
+        errors.remove(error);
+      });
+    }
+  }
+
+  void addError({required String error}) {
+    if (!errors.contains(error)) {
+      setState(() {
+        errors.add(error);
+      });
+    }
   }
 }
