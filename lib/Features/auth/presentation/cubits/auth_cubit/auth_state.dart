@@ -39,3 +39,12 @@ class ResetPasswordFailure extends AuthState {
   final String message;
   ResetPasswordFailure({required this.message});
 }
+
+class SignInWithGoogleLoading extends AuthState {}
+
+class SignInWithGoogleSuccess extends AuthState {}
+
+class SignInWithGoogleFailure extends AuthState {
+  final String message;
+  SignInWithGoogleFailure({required this.message});
+}

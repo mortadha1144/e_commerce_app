@@ -44,4 +44,13 @@ emit(SignInLoading());
       (success) => emit(ResetPasswordSuccess(),),
       );
   }
+
+  Future<void> signInWithGoogle()async{
+    emit(SignInWithGoogleLoading());
+    var result = await authRepo.signInWithGoogle();
+    result.fold(
+      (failure) => emit(SignInWithGoogleFailure(message: failure.errMessagel)),
+      (success) => emit(SignInWithGoogleSuccess(),),
+      );
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/Features/auth/data/repos/auth_repo_impl.dart';
 import 'package:e_commerce_app/Features/auth/presentation/cubits/auth_cubit/auth_cubit.dart';
+import 'package:e_commerce_app/bloc_observer.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  Bloc.observer = const AppBlocObserver();
   runApp(const MyApp());
 }
 
