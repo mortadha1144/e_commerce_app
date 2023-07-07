@@ -42,3 +42,7 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Firebase Api key file
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
