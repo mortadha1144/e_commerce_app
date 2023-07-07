@@ -1,4 +1,6 @@
+import 'package:e_commerce_app/Features/auth/presentation/cubits/auth_cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../constants.dart';
@@ -23,59 +25,74 @@ class _SignInFormState extends State<SignInForm> {
   final List<String> errors = [];
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        children: [
-          buildEmailFormField(),
-          SizedBox(
-            height: getProportionateScreenHeight(30),
-          ),
-          buildPasswordFormField(),
-          SizedBox(
-            height: getProportionateScreenHeight(30),
-          ),
-          Row(
+    return BlocConsumer<AuthCubit, AuthState>(
+      listener: (context, state) {
+        if (state is SignInFailure) {
+          errors.clear();
+          addError(error: state.message);
+        } else if (state is SignInSuccess) {
+          errors.clear();
+          GoRouter.of(context).pushReplacement(AppRouter.kLoginSuccessView);
+        }
+      },
+      builder: (context, state) {
+        return Form(
+          key: _formKey,
+          child: Column(
             children: [
-              Checkbox(
-                activeColor: kPrimaryColor,
-                value: remember,
-                onChanged: (value) {
-                  setState(() {
-                    remember = value!;
-                  });
+              buildEmailFormField(),
+              SizedBox(
+                height: getProportionateScreenHeight(30),
+              ),
+              buildPasswordFormField(),
+              SizedBox(
+                height: getProportionateScreenHeight(30),
+              ),
+              Row(
+                children: [
+                  Checkbox(
+                    activeColor: kPrimaryColor,
+                    value: remember,
+                    onChanged: (value) {
+                      setState(() {
+                        remember = value!;
+                      });
+                    },
+                  ),
+                  const Text('Remember me'),
+                  const Spacer(),
+                  GestureDetector(
+                    onTap: () => GoRouter.of(context)
+                        .push(AppRouter.kForgotPasswordView),
+                    child: const Text(
+                      'Forgot Password',
+                      style: TextStyle(decoration: TextDecoration.underline),
+                    ),
+                  ),
+                ],
+              ),
+              CustomFormError(
+                errors: errors,
+              ),
+              SizedBox(
+                height: getProportionateScreenHeight(20),
+              ),
+              CustomButton(
+                text: 'Continue',
+                isLoading: state is SignInLoading,
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
+                    // if all are valid then go to success view
+                    BlocProvider.of<AuthCubit>(context)
+                        .signInUser(email: email!, password: password!);
+                  }
                 },
-              ),
-              const Text('Remember me'),
-              const Spacer(),
-              GestureDetector(
-                onTap: () =>
-                    GoRouter.of(context).push(AppRouter.kForgotPasswordView),
-                child: const Text(
-                  'Forgot Password',
-                  style: TextStyle(decoration: TextDecoration.underline),
-                ),
-              ),
+              )
             ],
           ),
-          CustomFormError(
-            errors: errors,
-          ),
-          SizedBox(
-            height: getProportionateScreenHeight(20),
-          ),
-          CustomButton(
-            text: 'Continue',
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
-                // if all are valid then go to success view
-                GoRouter.of(context).push(AppRouter.kLoginSuccessView);
-              }
-            },
-          )
-        ],
-      ),
+        );
+      },
     );
   }
 

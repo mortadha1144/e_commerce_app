@@ -20,6 +20,12 @@ class FirebaseFailure extends Failure {
         return FirebaseFailure('This account isn\'t enabled.');
       case 'weak-password':
         return FirebaseFailure('The password provided is too weak.');
+      case 'user-disabled':
+        return FirebaseFailure('this user has been disabled.');
+      case 'user-not-found':
+        return FirebaseFailure('No user found for that email.');
+      case 'wrong-password':
+        return FirebaseFailure('Wrong password provided for that user.');
       default:
         
       return FirebaseFailure('Opps There was an error ,Please try later!');

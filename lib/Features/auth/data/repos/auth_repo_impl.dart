@@ -10,11 +10,11 @@ import '../../../../core/errors/failures.dart';
 class AuthRepoImp implements AuthRepo {
   @override
   Future<Either<Failure, void>> createUserWithEmailAndPassword(
-      {required String email,required String password}) async {
+      {required String email, required String password}) async {
     try {
       final credential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email:email,
+        email: email,
         password: password,
       );
       return right(null);
@@ -38,5 +38,28 @@ class AuthRepoImp implements AuthRepo {
     } catch (e) {
       return left(FirebaseFailure(e.toString()));
     }
+  }
+
+  @override
+  Future<Either<Failure, void>> sigInUser(
+      {required String email, required String password}) async {
+    try {
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return right(null);
+    }  catch (e) {
+      if (e is FirebaseAuthException) {
+        return Left(FirebaseFailure.fromFirebaseAuthException(e));
+      }
+      return left(FirebaseFailure(e.toString()));
+    }
+  }
+  
+  @override
+  Future<Either<Failure, void>> resetPassword({required String email}) {
+    // TODO: implement resetPassword
+    throw UnimplementedError();
   }
 }

@@ -15,3 +15,9 @@ class CompleteProfileFailure extends AuthState {
   final String message;
   CompleteProfileFailure({required this.message});
 }
+class SignInLoading extends AuthState {}
+class SignInSuccess extends AuthState {}
+class SignInFailure extends AuthState {
+  final String message;
+  SignInFailure({required this.message});
+  }

@@ -26,4 +26,13 @@ class AuthCubit extends Cubit<AuthState> {
       (success) => emit(CompleteProfileSuccess()),
       );
   }
+
+  Future<void> signInUser({required String email, required String password})async{
+emit(SignInLoading());
+    var result = await authRepo.sigInUser(email: email,password: password);
+    result.fold(
+      (failure) => emit(SignInFailure(message: failure.errMessagel)),
+      (success) => emit(SignInSuccess(),),
+      );
+  }
 }
