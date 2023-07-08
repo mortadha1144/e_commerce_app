@@ -53,7 +53,7 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
                 currentPage: currentPage,
                 itemCount: onBoardingData.length,
                 onPressed: () {
-                  onPressedCustomButton(context);
+                  context.go(AppRouter.kSignInView);
                 },
               ),
             ),
@@ -61,9 +61,5 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
         ),
       ),
     );
-  }
-
-  void onPressedCustomButton(BuildContext context) {
-    GoRouter.of(context).push(AppRouter.kSignInView);
   }
 }

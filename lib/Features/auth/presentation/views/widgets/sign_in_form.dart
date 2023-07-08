@@ -32,7 +32,7 @@ class _SignInFormState extends State<SignInForm> {
           addError(error: state.message);
         } else if (state is SignInSuccess) {
           errors.clear();
-          GoRouter.of(context).pushReplacement(AppRouter.kLoginSuccessView);
+          context.go(AppRouter.kLoginSuccessView);
         }
       },
       builder: (context, state) {
@@ -84,7 +84,10 @@ class _SignInFormState extends State<SignInForm> {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
                     // if all are valid then go to success view
-                    BlocProvider.of<AuthCubit>(context)
+                    // BlocProvider.of<AuthCubit>(context)
+                    //     .signInUser(email: email!, password: password!);
+                    context
+                        .read<AuthCubit>()
                         .signInUser(email: email!, password: password!);
                   }
                 },

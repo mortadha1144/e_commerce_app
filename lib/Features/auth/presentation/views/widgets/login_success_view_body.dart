@@ -1,6 +1,8 @@
+import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginSuccessViewBody extends StatelessWidget {
   const LoginSuccessViewBody({super.key});
@@ -31,7 +33,7 @@ class LoginSuccessViewBody extends StatelessWidget {
           child: CustomButton(
             text: 'Back To home',
             onPressed: () {
-              
+              context.go(AppRouter.kHomeView);
             },
           ),
         ),

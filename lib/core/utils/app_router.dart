@@ -4,6 +4,7 @@ import 'package:e_commerce_app/Features/auth/presentation/views/login_success_vi
 import 'package:e_commerce_app/Features/auth/presentation/views/otp_view.dart';
 import 'package:e_commerce_app/Features/auth/presentation/views/sign_in_view.dart';
 import 'package:e_commerce_app/Features/auth/presentation/views/sign_up_view.dart';
+import 'package:e_commerce_app/Features/home/presentation/views/home_view.dart';
 import 'package:e_commerce_app/Features/onboarding/presentation/views/onbording_view.dart';
 import 'package:go_router/go_router.dart';
 
@@ -15,8 +16,7 @@ abstract class AppRouter {
   static const kCompleteProfileView = '/completeProfileView';
   static const kOtpView = '/otpView';
   static const kHomeView = '/homeView';
-  static const kBookDetailsView = '/bookDetailsView';
-  static const kSearchView = '/searchView';
+  
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -48,6 +48,10 @@ abstract class AppRouter {
       GoRoute(
         path: kOtpView,
         builder: (context, state) => const OtpView(),
+      ),
+      GoRoute(
+        path: kHomeView,
+        builder: (context, state) => const HomeView(),
       ),
     ],
   );
