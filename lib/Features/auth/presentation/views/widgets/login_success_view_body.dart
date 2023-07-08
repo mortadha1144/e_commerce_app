@@ -33,7 +33,7 @@ class LoginSuccessViewBody extends StatelessWidget {
           child: CustomButton(
             text: 'Back To home',
             onPressed: () {
-              context.go(AppRouter.kHomeView);
+              context.push(AppRouter.kHomeView);
             },
           ),
         ),

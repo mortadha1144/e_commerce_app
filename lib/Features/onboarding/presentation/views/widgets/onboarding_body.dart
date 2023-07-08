@@ -53,7 +53,7 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
                 currentPage: currentPage,
                 itemCount: onBoardingData.length,
                 onPressed: () {
-                  context.go(AppRouter.kSignInView);
+                  context.push(AppRouter.kSignInView);
                 },
               ),
             ),

@@ -21,7 +21,7 @@ class SignInViewBody extends StatelessWidget {
         if (state is SignInWithGoogleFailure) {
           customSnackBar(context, state.message);
         } else if (state is SignInWithGoogleSuccess) {
-          GoRouter.of(context).pushReplacement(AppRouter.kLoginSuccessView);
+          context.push(AppRouter.kLoginSuccessView);
         }
       },
       builder: (context, state) {
