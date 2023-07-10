@@ -13,7 +13,9 @@ class CompleteProfileView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Sign Up'),
       ),
-      body:  CompleteProfileViewBody(email: email,),
+      body: CompleteProfileViewBody(
+        email: email,
+      ),
     );
   }
 }

@@ -16,7 +16,7 @@ abstract class AppRouter {
   static const kCompleteProfileView = '/completeProfileView';
   static const kOtpView = '/otpView';
   static const kHomeView = '/homeView';
-  
+
   static final router = GoRouter(
     routes: [
       GoRoute(

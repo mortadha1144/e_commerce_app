@@ -8,9 +8,11 @@ class AuthCubit extends Cubit<AuthState> {
 
   final AuthRepo authRepo;
 
-  Future<void> registerUser({required String email,required String password}) async {
+  Future<void> registerUser(
+      {required String email, required String password}) async {
     emit(RegisterLoading());
-    var result = await authRepo.createUserWithEmailAndPassword(email: email, password: password);
+    var result = await authRepo.createUserWithEmailAndPassword(
+        email: email, password: password);
 
     result.fold(
       (failure) => emit(RegisterFailure(message: failure.errMessagel)),
@@ -24,33 +26,40 @@ class AuthCubit extends Cubit<AuthState> {
     result.fold(
       (failure) => emit(CompleteProfileFailure(message: failure.errMessagel)),
       (success) => emit(CompleteProfileSuccess()),
-      );
+    );
   }
 
-  Future<void> signInUser({required String email, required String password})async{
-emit(SignInLoading());
-    var result = await authRepo.sigInUser(email: email,password: password);
+  Future<void> signInUser(
+      {required String email, required String password}) async {
+    emit(SignInLoading());
+    var result = await authRepo.sigInUser(email: email, password: password);
     result.fold(
       (failure) => emit(SignInFailure(message: failure.errMessagel)),
-      (success) => emit(SignInSuccess(),),
-      );
+      (success) => emit(
+        SignInSuccess(),
+      ),
+    );
   }
 
-  Future<void> resetPassword({required String email})async{
+  Future<void> resetPassword({required String email}) async {
     emit(ResetPasswordLoading());
     var result = await authRepo.resetPassword(email: email);
     result.fold(
       (failure) => emit(ResetPasswordFailure(message: failure.errMessagel)),
-      (success) => emit(ResetPasswordSuccess(),),
-      );
+      (success) => emit(
+        ResetPasswordSuccess(),
+      ),
+    );
   }
 
-  Future<void> signInWithGoogle()async{
+  Future<void> signInWithGoogle() async {
     emit(SignInWithGoogleLoading());
     var result = await authRepo.signInWithGoogle();
     result.fold(
       (failure) => emit(SignInWithGoogleFailure(message: failure.errMessagel)),
-      (success) => emit(SignInWithGoogleSuccess(),),
-      );
+      (success) => emit(
+        SignInWithGoogleSuccess(),
+      ),
+    );
   }
 }

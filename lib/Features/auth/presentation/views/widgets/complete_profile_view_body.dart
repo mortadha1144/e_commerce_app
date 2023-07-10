@@ -29,7 +29,9 @@ class CompleteProfileViewBody extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: SizeConfig.screenHeight * .05),
-               CompleteProfileForm(email: email,),
+              CompleteProfileForm(
+                email: email,
+              ),
               SizedBox(height: getProportionateScreenHeight(30)),
               Text(
                 'By continuing your confirm that you agree \nwith our Term and Condition',

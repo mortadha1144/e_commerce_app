@@ -78,7 +78,8 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
-                    BlocProvider.of<AuthCubit>(context).resetPassword(email: email!);
+                    BlocProvider.of<AuthCubit>(context)
+                        .resetPassword(email: email!);
                   }
                 },
               ),
