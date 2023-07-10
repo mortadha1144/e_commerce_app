@@ -9,3 +9,18 @@ abstract class PopularProductsState extends Equatable {
 
 class PopularProductsInitial extends PopularProductsState {}
 
+class PopularProductsLoading extends PopularProductsState {}
+
+class PopularProductsSuccess extends PopularProductsState {
+  final List<Product> products;
+  const PopularProductsSuccess({required this.products});
+  @override
+  List<Object> get props => [products];
+}
+
+class PopularProductsFailure extends PopularProductsState {
+  final String message;
+  const PopularProductsFailure({required this.message});
+  @override
+  List<Object> get props => [message];
+}

@@ -1,8 +1,11 @@
+import 'package:e_commerce_app/Features/home/presentation/cubits/popular_cubit/popular_products_cubit.dart';
+import 'package:e_commerce_app/core/utils/widgets/custom_error_widget.dart';
+import 'package:e_commerce_app/core/utils/widgets/custom_loading_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/widgets/product_card.dart';
 import '../../../../../size_config.dart';
-import '../../../data/models/product_model_old.dart';
 import 'section_title.dart';
 
 class PopularProducts extends StatelessWidget {
@@ -21,19 +24,29 @@ class PopularProducts extends StatelessWidget {
         SizedBox(height: getProportionateScreenWidth(20)),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ...List.generate(
-                demoProducts.length,
-                (index) => ProductCard(
-                  product: demoProducts[index],
-                ),
-              ),
-              SizedBox(
-                width: getProportionateScreenWidth(20),
-              )
-            ],
+          child: BlocBuilder<PopularProductsCubit, PopularProductsState>(
+            builder: (context, state) {
+              if (state is PopularProductsFailure) {
+                return CustomeErrorWidget(errorMessage: state.message);
+              }
+              if (state is PopularProductsSuccess) {
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ...List.generate(
+                      state.products.length,
+                      (index) => ProductCard(
+                        product: state.products[index],
+                      ),
+                    ),
+                    SizedBox(
+                      width: getProportionateScreenWidth(20),
+                    )
+                  ],
+                );
+              }
+              return const CustomLoadingIndicator();
+            },
           ),
         ),
       ],

@@ -6,15 +6,17 @@ import 'package:e_commerce_app/core/errors/failures.dart';
 import '../../../../core/utils/api_service.dart';
 
 class HomeRepo {
+  static final HomeRepo _instance = HomeRepo._internal(ApiService());
 
+  factory HomeRepo() => _instance;
+
+  HomeRepo._internal(this.apiService);
+  
   final ApiService apiService;
 
-  HomeRepo(this.apiService);
-  Future<Either<Failure, List<Product>>> fetchPopularProducts() async{
-try {
-      var data = await apiService.get(
-          endPoin:
-              'products');
+  Future<Either<Failure, List<Product>>> fetchPopularProducts() async {
+    try {
+      var data = await apiService.get(endPoin: 'products');
       List<Product> products = [];
 
       for (var item in data) {
