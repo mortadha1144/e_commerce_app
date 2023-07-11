@@ -7,39 +7,35 @@ abstract class Failure {
   Failure(this.errMessagel);
 }
 
-class FirebaseFailure extends Failure {
-  FirebaseFailure(super.errMessagel);
+class ServerFailure extends Failure {
+  ServerFailure(super.errMessagel);
 
-  factory FirebaseFailure.fromFirebaseAuthException(
+  factory ServerFailure.fromFirebaseAuthException(
       FirebaseAuthException firebaseAuthException) {
     switch (firebaseAuthException.code) {
       case 'email-already-in-use':
-        return FirebaseFailure('The account already exists for that email.');
+        return ServerFailure('The account already exists for that email.');
       case 'invalid-email':
-        return FirebaseFailure('The email provided is invalid.');
+        return ServerFailure('The email provided is invalid.');
       case 'operation-not-allowed':
-        return FirebaseFailure('This account isn\'t enabled.');
+        return ServerFailure('This account isn\'t enabled.');
       case 'weak-password':
-        return FirebaseFailure('The password provided is too weak.');
+        return ServerFailure('The password provided is too weak.');
       case 'user-disabled':
-        return FirebaseFailure('this user has been disabled.');
+        return ServerFailure('this user has been disabled.');
       case 'user-not-found':
-        return FirebaseFailure('No user found for that email.');
+        return ServerFailure('No user found for that email.');
       case 'wrong-password':
-        return FirebaseFailure('Wrong password provided for that user.');
+        return ServerFailure('Wrong password provided for that user.');
       case 'auth/invalid-email':
-        return FirebaseFailure('The email provided is invalid.');
+        return ServerFailure('The email provided is invalid.');
       case 'auth/user-not-found':
-        return FirebaseFailure('No user found for that email.');
+        return ServerFailure('No user found for that email.');
 
       default:
-        return FirebaseFailure('Opps There was an error ,Please try later!');
+        return ServerFailure('Opps There was an error ,Please try later!');
     }
   }
-}
-
-class ServerFailure extends Failure {
-  ServerFailure(super.errMessagel);
 
   factory ServerFailure.fromDioExeotion(DioException dioException) {
     switch (dioException.type) {

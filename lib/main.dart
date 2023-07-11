@@ -1,10 +1,8 @@
-import 'package:dio/dio.dart';
-import 'package:e_commerce_app/Features/auth/data/repos/auth_repo_impl.dart';
+import 'package:e_commerce_app/Features/auth/data/repos/auth_repo.dart';
 import 'package:e_commerce_app/Features/auth/presentation/cubits/auth_cubit/auth_cubit.dart';
 import 'package:e_commerce_app/Features/home/data/repos/home_repo.dart';
 import 'package:e_commerce_app/Features/home/presentation/cubits/popular_cubit/popular_products_cubit.dart';
 import 'package:e_commerce_app/bloc_observer.dart';
-import 'package:e_commerce_app/core/utils/api_service.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +29,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthCubit>(
-          create: (context) => AuthCubit(AuthRepoImp()),
+          create: (context) => AuthCubit(AuthRepo()),
         ),
         BlocProvider<PopularProductsCubit>(
           create: (context) => PopularProductsCubit(HomeRepo())..fetchPopularProducts(),
