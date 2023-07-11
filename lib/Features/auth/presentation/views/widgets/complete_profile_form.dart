@@ -32,7 +32,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           addError(error: state.message);
         } else if (state is CompleteProfileSuccess) {
           errors.clear();
-          GoRouter.of(context).pushReplacement(AppRouter.kOtpView);
+          context.pushReplacement(AppRouter.kOtpView);
         }
       },
       builder: (context, state) {
@@ -65,7 +65,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                           address: address!,
                           email: widget.email);
 
-                      BlocProvider.of<AuthCubit>(context)
+                      context.read<AuthCubit>()
                           .completeProfileData(userModel.toMap());
                     }
                   }),

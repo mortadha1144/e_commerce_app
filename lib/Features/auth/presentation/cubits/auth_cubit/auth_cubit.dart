@@ -6,29 +6,30 @@ import '../../../data/repos/auth_repo.dart';
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-
   final AuthRepo _authRepo;
+
+  User? _user;
 
   AuthCubit(this._authRepo) : super(AuthInitial()) {
     _authRepo.authStateChanges.listen((user) {
       if (user != null) {
-        emit(AuthAuthenticated(user));
+        _user = user;
+        //emit(AuthAuthenticated(user));
       } else {
-        emit(AuthUnauthenticated());
+        //emit(AuthUnauthenticated());
       }
     });
   }
 
-
   Future<void> registerUser(
       {required String email, required String password}) async {
-    emit(AuthLoading());
+    emit(RegisterLoading());
     var result = await _authRepo.createUserWithEmailAndPassword(
         email: email, password: password);
 
     result.fold(
-      (failure) => emit(AuthFailure(failure.errMessagel)),
-      (_) =>null,
+      (failure) => emit(RegisterFailure(message: failure.errMessagel)),
+      (success) => emit(RegisterSuccess()),
     );
   }
 
@@ -43,12 +44,12 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> signInUser(
       {required String email, required String password}) async {
-    emit(AuthLoading());
+    emit(SignInLoading());
     var result = await _authRepo.signInWithEmailAndPassword(
         email: email, password: password);
     result.fold(
-      (failure) => emit(AuthFailure( failure.errMessagel)),
-      (_) => null,
+      (failure) => emit(SignInFailure(message:failure.errMessagel)),
+      (succsess) => emit(SignInSuccess()),
     );
   }
 
@@ -71,6 +72,15 @@ class AuthCubit extends Cubit<AuthState> {
       (success) => emit(
         SignInWithGoogleSuccess(),
       ),
+    );
+  }
+
+  Future<void> signOut() async {
+    emit(AuthLoading());
+    var result = await _authRepo.signOut();
+    result.fold(
+      (failure) => emit(AuthFailure(failure.errMessagel)),
+      (_) => null,
     );
   }
 }

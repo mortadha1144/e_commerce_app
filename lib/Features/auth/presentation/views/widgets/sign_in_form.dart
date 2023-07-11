@@ -32,7 +32,7 @@ class _SignInFormState extends State<SignInForm> {
           addError(error: state.message);
         } else if (state is SignInSuccess) {
           errors.clear();
-          context.go(AppRouter.kLoginSuccessView);
+          context.push(AppRouter.kLoginSuccessView);
         }
       },
       builder: (context, state) {

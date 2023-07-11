@@ -32,8 +32,7 @@ class _SignUpFormState extends State<SignUpForm> {
           addError(error: state.message);
         } else if (state is RegisterSuccess) {
           errors.clear();
-          GoRouter.of(context)
-              .pushReplacement(AppRouter.kCompleteProfileView, extra: email);
+          context.push(AppRouter.kCompleteProfileView, extra: email);
         }
       },
       builder: (context, state) {
@@ -55,7 +54,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
                     // Go to complete profile view
-                    BlocProvider.of<AuthCubit>(context).registerUser(
+                    context.read<AuthCubit>().registerUser(
                       email: email!,
                       password: password!,
                     );
