@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomLoadingIndicator extends StatelessWidget {
@@ -6,7 +7,10 @@ class CustomLoadingIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: CircularProgressIndicator(),
+      child: CircularProgressIndicator(
+        color: kPrimaryColor,
+        strokeWidth: 3,
+      ),
     );
   }
 }

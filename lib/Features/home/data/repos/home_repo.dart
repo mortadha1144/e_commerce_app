@@ -24,7 +24,7 @@ class HomeRepo {
 
   Future<Either<Failure, List<Product>>> fetchPopularProducts() async {
     try {
-      var data = await apiService.get(endPoin: 'products');
+      var data = await apiService.get(endPoin: 'products?limit=5');
       List<Product> products = [];
 
       for (var item in data) {

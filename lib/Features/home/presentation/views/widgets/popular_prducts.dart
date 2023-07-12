@@ -1,9 +1,9 @@
 import 'package:e_commerce_app/Features/home/presentation/cubits/popular_cubit/popular_products_cubit.dart';
-import 'package:e_commerce_app/core/utils/widgets/custom_error_widget.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/utils/widgets/custom_error_widget.dart';
 import '../../../../../core/utils/widgets/product_card.dart';
 import '../../../../../size_config.dart';
 import 'section_title.dart';
