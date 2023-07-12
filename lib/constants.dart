@@ -14,6 +14,8 @@ const kTextColor = Color(0xFF757575);
 
 const kAnimationDuration = Duration(milliseconds: 200);
 
+const kSpecialOffersCollection = 'special_offers';
+
 final headingStyle = TextStyle(
   color: Colors.black,
   fontSize: getProportionateScreenWidth(28),
