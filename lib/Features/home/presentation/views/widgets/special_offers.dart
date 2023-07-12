@@ -1,4 +1,7 @@
+import 'package:e_commerce_app/Features/home/presentation/cubits/special_offers_cubit/special_offers_cubit.dart';
+import 'package:e_commerce_app/core/utils/widgets/custom_loading_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../size_config.dart';
 import 'section_title.dart';
@@ -10,34 +13,41 @@ class SpecialOffers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SectionTitle(
-          text: 'Special for you',
-          onPress: () {},
-        ),
-        SizedBox(height: getProportionateScreenWidth(20)),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
+    return BlocBuilder<SpecialOffersCubit, SpecialOffersState>(
+      builder: (context, state) {
+        if (state is SpecialOffersLoaded) {
+          return Column(
             children: [
-              SpecialOfferCard(
-                category: 'Smartphones',
-                numOfBrands: 18,
-                image: 'assets/images/Image Banner 2.png',
+              SectionTitle(
+                text: 'Special for you',
                 onPress: () {},
               ),
-              SpecialOfferCard(
-                category: 'Fashions',
-                numOfBrands: 24,
-                image: 'assets/images/Image Banner 3.png',
-                onPress: () {},
+              SizedBox(height: getProportionateScreenWidth(20)),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    SpecialOfferCard(
+                      category: 'Smartphones',
+                      numOfBrands: 18,
+                      image: 'assets/images/Image Banner 2.png',
+                      onPress: () {},
+                    ),
+                    SpecialOfferCard(
+                      category: 'Fashions',
+                      numOfBrands: 24,
+                      image: 'assets/images/Image Banner 3.png',
+                      onPress: () {},
+                    ),
+                    SizedBox(width: getProportionateScreenWidth(20))
+                  ],
+                ),
               ),
-              SizedBox(width: getProportionateScreenWidth(20))
             ],
-          ),
-        ),
-      ],
+          );
+        }
+        return const CustomLoadingIndicator();
+      },
     );
   }
 }
