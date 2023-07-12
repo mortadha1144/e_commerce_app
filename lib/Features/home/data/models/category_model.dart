@@ -1,27 +1,24 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class SpecialOffer {
+class CategoryModel {
   final int? id;
-  final String? category;
-  final int? numOfBrands;
+  final String? name;
   final String? image;
 
-  SpecialOffer({
+  CategoryModel({
     this.id,
-    this.category,
-    this.numOfBrands,
+    this.name,
     this.image,
   });
 
-  factory SpecialOffer.fromJson(
+  factory CategoryModel.fromJson(
     DocumentSnapshot<Map<String, dynamic>> snapshot,
     SnapshotOptions? options,
   ) {
     final data = snapshot.data();
-    return SpecialOffer(
+    return CategoryModel(
       id: data?['id'],
-      category: data?['category'],
-      numOfBrands: data?['num_of_brands'],
+      name: data?['name'],
       image: data?['capital'],
     );
   }
@@ -29,8 +26,7 @@ class SpecialOffer {
   Map<String, dynamic> toJson() {
     return {
       if (id != null) "id": id,
-      if (category != null) "category": category,
-      if (numOfBrands != null) "num_of_brands": numOfBrands,
+      if (name != null) "name": name,
       if (image != null) "image": image,
     };
   }

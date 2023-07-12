@@ -1,4 +1,6 @@
+import 'package:e_commerce_app/Features/home/presentation/cubits/categories_cubit/categories_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../size_config.dart';
@@ -18,19 +20,23 @@ class Categories extends StatelessWidget {
     return Padding(
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ...List.generate(
-            categories.length,
-            (index) => CategoryCard(
-              icon: categories[index]['icon'],
-              text: categories[index]['text'],
-              onPress: () {},
-            ),
-          ),
-        ],
+      child: BlocBuilder<CategoriesCubit, CategoriesState>(
+        builder: (context, state) {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ...List.generate(
+                categories.length,
+                (index) => CategoryCard(
+                  icon: categories[index]['icon'],
+                  text: categories[index]['text'],
+                  onPress: () {},
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }

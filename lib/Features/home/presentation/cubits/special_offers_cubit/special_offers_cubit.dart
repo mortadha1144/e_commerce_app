@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../data/models/special_offer.dart';
+import '../../../data/models/special_offer_model.dart';
 import '../../../data/repos/home_repo.dart';
 
 part 'special_offers_state.dart';
@@ -12,7 +12,12 @@ class SpecialOffersCubit extends Cubit<SpecialOffersState> {
   final HomeRepo homeRepo;
 
   Future<void> fetchSpecialOffers() async {
-    await homeRepo.fetchSpecialOffers();
-    
+    emit(SpecialOffersLoading());
+    var result = await homeRepo.fetchSpecialOffers();
+
+    result.fold(
+      (failuer) => emit(SpecialOffersError(message: failuer.errMessagel)),
+      (success) => emit(SpecialOffersSuccess(specialOffers: success)),
+    );
   }
 }

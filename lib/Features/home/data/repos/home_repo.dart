@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:e_commerce_app/Features/home/data/models/product/product.dart';
+import 'package:e_commerce_app/Features/home/data/models/special_offer_model.dart';
 import 'package:e_commerce_app/core/errors/failures.dart';
 
 import '../../../../constants.dart';
@@ -43,8 +44,38 @@ class HomeRepo {
     }
   }
 
-  Future<void> fetchSpecialOffers() async {
-    db.collection(kSpecialOffersCollection).get().then(
+  Future<Either<Failure, List<SpecialOfferModel>>> fetchSpecialOffers() async {
+    // db.collection(kSpecialOffersCollection).get().then(
+    //   (querySnapshot) {
+    //     print("Successfully completed");
+    //     List<SpecialOffer> specialOffers = [];
+    //     for (var docSnapshot in querySnapshot.docs) {
+    //       specialOffers.add(SpecialOffer.fromJson(docSnapshot, null));
+    //       print('${docSnapshot.id} => ${docSnapshot.data()}');
+    //     }
+    //     return right(specialOffers);
+    //   },
+    //   onError: (e) => left(ServerFailure.fromFirebaseAuthException(e)),
+    // );
+
+    try {
+      var data = await db.collection(kSpecialOffersCollection).orderBy('id').get();
+      List<SpecialOfferModel> specialOffers = [];
+      for (var docSnapshot in data.docs) {
+        specialOffers.add(SpecialOfferModel.fromJson(docSnapshot, null));
+      }
+      return right(specialOffers);
+    } catch (e) {
+      return left(
+        ServerFailure(
+          e.toString(),
+        ),
+      );
+    }
+  }
+
+  Future<void> fetchCategories() async {
+    db.collection(kCategoriesCollection).get().then(
       (querySnapshot) {
         print("Successfully completed");
         for (var docSnapshot in querySnapshot.docs) {

@@ -1,4 +1,6 @@
+import 'package:e_commerce_app/Features/home/data/models/special_offer_model.dart';
 import 'package:e_commerce_app/Features/home/presentation/cubits/special_offers_cubit/special_offers_cubit.dart';
+import 'package:e_commerce_app/core/utils/widgets/custom_error_widget.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,7 +17,7 @@ class SpecialOffers extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SpecialOffersCubit, SpecialOffersState>(
       builder: (context, state) {
-        if (state is SpecialOffersLoaded) {
+        if (state is SpecialOffersSuccess) {
           return Column(
             children: [
               SectionTitle(
@@ -27,24 +29,35 @@ class SpecialOffers extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    SpecialOfferCard(
-                      category: 'Smartphones',
-                      numOfBrands: 18,
-                      image: 'assets/images/Image Banner 2.png',
-                      onPress: () {},
-                    ),
-                    SpecialOfferCard(
-                      category: 'Fashions',
-                      numOfBrands: 24,
-                      image: 'assets/images/Image Banner 3.png',
-                      onPress: () {},
-                    ),
+                    ...List.generate(state.specialOffers.length, (index) {
+                      SpecialOfferModel specialOfferModel =
+                          state.specialOffers[index];
+                      return SpecialOfferCard(
+                          category: specialOfferModel.category ?? '',
+                          image: specialOfferModel.image!,
+                          numOfBrands: specialOfferModel.numOfBrands!,
+                          onPress: () {});
+                    }),
+                    // SpecialOfferCard(
+                    //   category: 'Smartphones',
+                    //   numOfBrands: 18,
+                    //   image: 'assets/images/Image Banner 2.png',
+                    //   onPress: () {},
+                    // ),
+                    // SpecialOfferCard(
+                    //   category: 'Fashions',
+                    //   numOfBrands: 24,
+                    //   image: 'assets/images/Image Banner 3.png',
+                    //   onPress: () {},
+                    // ),
                     SizedBox(width: getProportionateScreenWidth(20))
                   ],
                 ),
               ),
             ],
           );
+        } else if (state is SpecialOffersError) {
+          return CustomeErrorWidget(errorMessage: state.message);
         }
         return const CustomLoadingIndicator();
       },
@@ -76,7 +89,7 @@ class SpecialOfferCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           child: Stack(
             children: [
-              Image.asset(
+              Image.network(
                 image,
                 fit: BoxFit.cover,
               ),
