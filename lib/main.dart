@@ -2,6 +2,7 @@ import 'package:e_commerce_app/Features/auth/data/repos/auth_repo.dart';
 import 'package:e_commerce_app/Features/auth/presentation/cubits/auth_cubit/auth_cubit.dart';
 import 'package:e_commerce_app/Features/home/data/repos/home_repo.dart';
 import 'package:e_commerce_app/Features/home/presentation/cubits/categories_cubit/categories_cubit.dart';
+import 'package:e_commerce_app/Features/home/presentation/cubits/home_cubit/home_cubit.dart';
 import 'package:e_commerce_app/Features/home/presentation/cubits/popular_cubit/popular_products_cubit.dart';
 import 'package:e_commerce_app/Features/home/presentation/cubits/special_offers_cubit/special_offers_cubit.dart';
 import 'package:e_commerce_app/bloc_observer.dart';
@@ -33,16 +34,19 @@ class MyApp extends StatelessWidget {
         BlocProvider<AuthCubit>(
           create: (context) => AuthCubit(AuthRepo()),
         ),
-        BlocProvider<PopularProductsCubit>(
-          create: (context) =>
-              PopularProductsCubit(HomeRepo())..fetchPopularProducts(),
+        BlocProvider<HomeCubit>(
+          create: (context) => HomeCubit(HomeRepo())..fetchHomeData(),
         ),
-        BlocProvider<SpecialOffersCubit>(
-          create: (context) => SpecialOffersCubit(HomeRepo())..fetchSpecialOffers(),
-        ),
-        BlocProvider<CategoriesCubit>(
-          create: (context) => CategoriesCubit(HomeRepo())..fetchCategories(),
-        ),
+        // BlocProvider<PopularProductsCubit>(
+        //   create: (context) =>
+        //       PopularProductsCubit(HomeRepo())..fetchPopularProducts(),
+        // ),
+        // BlocProvider<SpecialOffersCubit>(
+        //   create: (context) => SpecialOffersCubit(HomeRepo())..fetchSpecialOffers(),
+        // ),
+        // BlocProvider<CategoriesCubit>(
+        //   create: (context) => CategoriesCubit(HomeRepo())..fetchCategories(),
+        // ),
       ],
       child: MaterialApp.router(
         routerConfig: AppRouter.router,

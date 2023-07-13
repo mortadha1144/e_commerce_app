@@ -28,7 +28,7 @@ class AuthCubit extends Cubit<AuthState> {
         email: email, password: password);
 
     result.fold(
-      (failure) => emit(RegisterFailure(message: failure.errMessagel)),
+      (failure) => emit(RegisterFailure(message: failure.errMessage)),
       (success) => emit(RegisterSuccess()),
     );
   }
@@ -37,7 +37,7 @@ class AuthCubit extends Cubit<AuthState> {
     emit(CompleteProfileLoading());
     var result = await _authRepo.completeProfileData(user);
     result.fold(
-      (failure) => emit(CompleteProfileFailure(message: failure.errMessagel)),
+      (failure) => emit(CompleteProfileFailure(message: failure.errMessage)),
       (success) => emit(CompleteProfileSuccess()),
     );
   }
@@ -48,7 +48,7 @@ class AuthCubit extends Cubit<AuthState> {
     var result = await _authRepo.signInWithEmailAndPassword(
         email: email, password: password);
     result.fold(
-      (failure) => emit(SignInFailure(message:failure.errMessagel)),
+      (failure) => emit(SignInFailure(message: failure.errMessage)),
       (succsess) => emit(SignInSuccess()),
     );
   }
@@ -57,7 +57,7 @@ class AuthCubit extends Cubit<AuthState> {
     emit(ResetPasswordLoading());
     var result = await _authRepo.resetPassword(email: email);
     result.fold(
-      (failure) => emit(ResetPasswordFailure(message: failure.errMessagel)),
+      (failure) => emit(ResetPasswordFailure(message: failure.errMessage)),
       (success) => emit(
         ResetPasswordSuccess(),
       ),
@@ -68,7 +68,7 @@ class AuthCubit extends Cubit<AuthState> {
     emit(SignInWithGoogleLoading());
     var result = await _authRepo.signInWithGoogle();
     result.fold(
-      (failure) => emit(SignInWithGoogleFailure(message: failure.errMessagel)),
+      (failure) => emit(SignInWithGoogleFailure(message: failure.errMessage)),
       (success) => emit(
         SignInWithGoogleSuccess(),
       ),
@@ -79,7 +79,7 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthLoading());
     var result = await _authRepo.signOut();
     result.fold(
-      (failure) => emit(AuthFailure(failure.errMessagel)),
+      (failure) => emit(AuthFailure(failure.errMessage)),
       (_) => null,
     );
   }

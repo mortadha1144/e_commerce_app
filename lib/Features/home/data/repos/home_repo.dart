@@ -1,8 +1,7 @@
-import 'dart:ffi';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:e_commerce_app/Features/home/data/models/category_model.dart';
 import 'package:e_commerce_app/Features/home/data/models/product/product.dart';
 import 'package:e_commerce_app/Features/home/data/models/special_offer_model.dart';
 import 'package:e_commerce_app/core/errors/failures.dart';
@@ -22,7 +21,7 @@ class HomeRepo {
 
   final FirebaseFirestore db;
 
-  Future<Either<Failure, List<Product>>> fetchPopularProducts() async {
+  Future<Either<Failure, List<Product>>> fetchPopularProductsOld() async {
     try {
       var data = await apiService.get(endPoin: 'products?limit=5');
       List<Product> products = [];
@@ -44,7 +43,19 @@ class HomeRepo {
     }
   }
 
-  Future<Either<Failure, List<SpecialOfferModel>>> fetchSpecialOffers() async {
+  Future<List<Product>> fetchPopularProducts() async {
+    var data = await apiService.get(endPoin: 'products');
+    List<Product> products = [];
+
+    for (var item in data) {
+      products.add(Product.fromJson(item));
+    }
+    products.removeWhere((element) => element.rating!.rate! < 3);
+    return products;
+  }
+
+  Future<Either<Failure, List<SpecialOfferModel>>>
+      fetchSpecialOffersOld() async {
     // db.collection(kSpecialOffersCollection).get().then(
     //   (querySnapshot) {
     //     print("Successfully completed");
@@ -59,7 +70,8 @@ class HomeRepo {
     // );
 
     try {
-      var data = await db.collection(kSpecialOffersCollection).orderBy('id').get();
+      var data =
+          await db.collection(kSpecialOffersCollection).orderBy('id').get();
       List<SpecialOfferModel> specialOffers = [];
       for (var docSnapshot in data.docs) {
         specialOffers.add(SpecialOfferModel.fromJson(docSnapshot, null));
@@ -74,15 +86,49 @@ class HomeRepo {
     }
   }
 
-  Future<void> fetchCategories() async {
-    db.collection(kCategoriesCollection).get().then(
-      (querySnapshot) {
-        print("Successfully completed");
-        for (var docSnapshot in querySnapshot.docs) {
-          print('${docSnapshot.id} => ${docSnapshot.data()}');
-        }
-      },
-      onError: (e) => print("Error completing: $e"),
-    );
+  Future<List<SpecialOfferModel>> fetchSpecialOffers() async {
+    var data =
+        await db.collection(kSpecialOffersCollection).orderBy('id').get();
+    List<SpecialOfferModel> specialOffers = [];
+    for (var docSnapshot in data.docs) {
+      specialOffers.add(SpecialOfferModel.fromJson(docSnapshot, null));
+    }
+    return specialOffers;
+  }
+
+  Future<List<CategoryModel>> fetchCategories() async {
+    var data = await db.collection(kCategoriesCollection).orderBy('id').get();
+    // .then(
+    //   (querySnapshot) {
+    //     print("Successfully completed");
+    //     for (var docSnapshot in querySnapshot.docs) {
+    //       print('${docSnapshot.id} => ${docSnapshot.data()}');
+    //     }
+    //   },
+    //   onError: (e) => print("Error completing: $e"),
+    // );
+    List<CategoryModel> categories = [];
+
+    for (var docSnapshot in data.docs) {
+      categories.add(CategoryModel.fromJson(docSnapshot, null));
+    }
+    return categories;
+  }
+
+  Future<Either<Failure, List<List<dynamic>>>> fetchHomeData() async {
+    try {
+      final result = Future.wait([
+        fetchCategories(),
+        fetchSpecialOffers(),
+        fetchPopularProducts(),
+      ]);
+
+      return right(await result);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioExeotion(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
   }
 }

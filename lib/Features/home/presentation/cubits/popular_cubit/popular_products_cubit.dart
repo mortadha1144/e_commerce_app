@@ -15,12 +15,12 @@ class PopularProductsCubit extends Cubit<PopularProductsState> {
     emit(PopularProductsLoading());
     var result = await homeRepo.fetchPopularProducts();
 
-    result.fold(
-      (failure) => emit(PopularProductsFailure(message: failure.errMessagel)),
-      (products) {
-        emit(PopularProductsSuccess(products: products));
-        print(products.first.title);
-      },
-    );
+    //result.fold(
+      //(failure) => emit(PopularProductsFailure(message: failure.errMessagel)),
+      // (products) {
+      //   emit(PopularProductsSuccess(products: products));
+      //   print(products.first.title);
+      // },
+    //);
   }
 }

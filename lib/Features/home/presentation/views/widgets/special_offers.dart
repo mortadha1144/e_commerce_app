@@ -11,56 +11,49 @@ import 'section_title.dart';
 class SpecialOffers extends StatelessWidget {
   const SpecialOffers({
     super.key,
+    required this.specialOffers,
   });
+
+  final List<SpecialOfferModel> specialOffers;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SpecialOffersCubit, SpecialOffersState>(
-      builder: (context, state) {
-        if (state is SpecialOffersSuccess) {
-          return Column(
+    return Column(
+      children: [
+        SectionTitle(
+          text: 'Special for you',
+          onPress: () {},
+        ),
+        SizedBox(height: getProportionateScreenWidth(20)),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
             children: [
-              SectionTitle(
-                text: 'Special for you',
-                onPress: () {},
-              ),
-              SizedBox(height: getProportionateScreenWidth(20)),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    ...List.generate(state.specialOffers.length, (index) {
-                      SpecialOfferModel specialOfferModel =
-                          state.specialOffers[index];
-                      return SpecialOfferCard(
-                          category: specialOfferModel.category ?? '',
-                          image: specialOfferModel.image!,
-                          numOfBrands: specialOfferModel.numOfBrands!,
-                          onPress: () {});
-                    }),
-                    // SpecialOfferCard(
-                    //   category: 'Smartphones',
-                    //   numOfBrands: 18,
-                    //   image: 'assets/images/Image Banner 2.png',
-                    //   onPress: () {},
-                    // ),
-                    // SpecialOfferCard(
-                    //   category: 'Fashions',
-                    //   numOfBrands: 24,
-                    //   image: 'assets/images/Image Banner 3.png',
-                    //   onPress: () {},
-                    // ),
-                    SizedBox(width: getProportionateScreenWidth(20))
-                  ],
-                ),
-              ),
+              ...List.generate(specialOffers.length, (index) {
+                SpecialOfferModel specialOfferModel = specialOffers[index];
+                return SpecialOfferCard(
+                    category: specialOfferModel.category ?? '',
+                    image: specialOfferModel.image!,
+                    numOfBrands: specialOfferModel.numOfBrands!,
+                    onPress: () {});
+              }),
+              // SpecialOfferCard(
+              //   category: 'Smartphones',
+              //   numOfBrands: 18,
+              //   image: 'assets/images/Image Banner 2.png',
+              //   onPress: () {},
+              // ),
+              // SpecialOfferCard(
+              //   category: 'Fashions',
+              //   numOfBrands: 24,
+              //   image: 'assets/images/Image Banner 3.png',
+              //   onPress: () {},
+              // ),
+              SizedBox(width: getProportionateScreenWidth(20))
             ],
-          );
-        } else if (state is SpecialOffersError) {
-          return CustomeErrorWidget(errorMessage: state.message);
-        }
-        return const CustomLoadingIndicator();
-      },
+          ),
+        ),
+      ],
     );
   }
 }

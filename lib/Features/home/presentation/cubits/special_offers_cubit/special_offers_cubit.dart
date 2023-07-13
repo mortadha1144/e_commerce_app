@@ -1,5 +1,5 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../data/models/special_offer_model.dart';
 import '../../../data/repos/home_repo.dart';
@@ -15,9 +15,9 @@ class SpecialOffersCubit extends Cubit<SpecialOffersState> {
     emit(SpecialOffersLoading());
     var result = await homeRepo.fetchSpecialOffers();
 
-    result.fold(
-      (failuer) => emit(SpecialOffersError(message: failuer.errMessagel)),
-      (success) => emit(SpecialOffersSuccess(specialOffers: success)),
-    );
+    //result.fold(
+      //(failuer) => emit(SpecialOffersError(message: failuer.errMessagel)),
+     // (success) => emit(SpecialOffersSuccess(specialOffers: success)),
+    //);
   }
 }

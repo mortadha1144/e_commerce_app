@@ -2,13 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class Failure {
-  final String errMessagel;
+  final String errMessage;
 
-  Failure(this.errMessagel);
+  Failure(this.errMessage);
 }
 
 class ServerFailure extends Failure {
-  ServerFailure(super.errMessagel);
+  ServerFailure(super.errMessage);
 
   factory ServerFailure.fromFirebaseAuthException(
       FirebaseAuthException firebaseAuthException) {

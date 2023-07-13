@@ -19,7 +19,7 @@ class CategoryModel {
     return CategoryModel(
       id: data?['id'],
       name: data?['name'],
-      image: data?['capital'],
+      image: data?['image'],
     );
   }
 
