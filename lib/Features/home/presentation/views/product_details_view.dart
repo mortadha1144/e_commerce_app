@@ -12,7 +12,7 @@ class ProductDetailsView extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         leading: const RoundedIconButton(),
-        automaticallyImplyLeading: false,
+        //automaticallyImplyLeading: false,
       ),
     );
   }
@@ -29,15 +29,14 @@ class RoundedIconButton extends StatelessWidget {
       height: getProportionateScreenWidth(40),
       width: getProportionateScreenWidth(40),
       child: TextButton(
-        style: ButtonStyle(
-            foregroundColor: const MaterialStatePropertyAll(Colors.black),
-            backgroundColor: const MaterialStatePropertyAll(Colors.white),
-            padding: MaterialStatePropertyAll(
-                EdgeInsets.only(left: getProportionateScreenWidth(8))),
-            alignment: Alignment.center,
-            shape: const MaterialStatePropertyAll(CircleBorder())),
         onPressed: () {},
-        child: const Icon(Icons.arrow_back_ios),
+        style: TextButton.styleFrom(
+            backgroundColor: Colors.white,
+            shape: const CircleBorder(),
+            foregroundColor: Colors.black),
+        child: const Icon(
+          Icons.arrow_back_ios_new,
+        ),
       ),
     );
   }
