@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:e_commerce_app/Features/home/data/models/category_model.dart';
-import 'package:e_commerce_app/Features/home/data/models/product/product.dart';
+import 'package:e_commerce_app/Features/home/data/models/product_model.dart';
 import 'package:e_commerce_app/Features/home/data/models/special_offer_model.dart';
 import 'package:e_commerce_app/core/errors/failures.dart';
 
@@ -21,13 +21,13 @@ class HomeRepo {
 
   final FirebaseFirestore db;
 
-  Future<Either<Failure, List<Product>>> fetchPopularProductsOld() async {
+  Future<Either<Failure, List<ProductModel>>> fetchPopularProductsOld() async {
     try {
       var data = await apiService.get(endPoin: 'products?limit=5');
-      List<Product> products = [];
+      List<ProductModel> products = [];
 
       for (var item in data) {
-        products.add(Product.fromJson(item));
+        products.add(ProductModel.fromJson(item));
       }
 
       return right(products);
@@ -43,12 +43,12 @@ class HomeRepo {
     }
   }
 
-  Future<List<Product>> fetchPopularProducts() async {
+  Future<List<ProductModel>> fetchPopularProducts() async {
     var data = await apiService.get(endPoin: 'products');
-    List<Product> products = [];
+    List<ProductModel> products = [];
 
     for (var item in data) {
-      products.add(Product.fromJson(item));
+      products.add(ProductModel.fromJson(item));
     }
     products.removeWhere((element) => element.rating!.rate! < 3);
     return products;

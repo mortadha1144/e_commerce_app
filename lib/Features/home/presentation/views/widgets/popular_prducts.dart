@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/Features/home/data/models/product/product.dart';
+import 'package:e_commerce_app/Features/home/data/models/product_model.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -13,7 +13,7 @@ class PopularProducts extends StatelessWidget {
     required this.products,
   });
 
-  final List<Product> products;
+  final List<ProductModel> products;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,8 @@ class PopularProducts extends StatelessWidget {
                   (index) => ProductCard(
                     product: products[index],
                     onPress: () {
-                      context.push(AppRouter.kProductDetailsView);
+                      context.push(AppRouter.kProductDetailsView,
+                          extra: products[index]);
                     },
                   ),
                 ),

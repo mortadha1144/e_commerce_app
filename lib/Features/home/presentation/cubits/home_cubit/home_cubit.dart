@@ -1,5 +1,5 @@
 import 'package:e_commerce_app/Features/home/data/models/category_model.dart';
-import 'package:e_commerce_app/Features/home/data/models/product/product.dart';
+import 'package:e_commerce_app/Features/home/data/models/product_model.dart';
 import 'package:e_commerce_app/Features/home/data/models/special_offer_model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,7 +22,7 @@ class HomeCubit extends Cubit<HomeState> {
       (success) {
         final categories = success[0] as List<CategoryModel>;
         final specialOffers = success[1] as List<SpecialOfferModel>;
-        final products = success[2] as List<Product>;
+        final products = success[2] as List<ProductModel>;
         emit(HomeSuccess(
           categories: categories,
           specialOffers: specialOffers,

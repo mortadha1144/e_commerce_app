@@ -4,6 +4,7 @@ import 'package:e_commerce_app/Features/auth/presentation/views/login_success_vi
 import 'package:e_commerce_app/Features/auth/presentation/views/otp_view.dart';
 import 'package:e_commerce_app/Features/auth/presentation/views/sign_in_view.dart';
 import 'package:e_commerce_app/Features/auth/presentation/views/sign_up_view.dart';
+import 'package:e_commerce_app/Features/home/data/models/product_model.dart';
 import 'package:e_commerce_app/Features/home/presentation/views/home_view.dart';
 import 'package:e_commerce_app/Features/home/presentation/views/product_details_view.dart';
 import 'package:e_commerce_app/Features/onboarding/presentation/views/onbording_view.dart';
@@ -61,7 +62,8 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kProductDetailsView,
-        builder: (context, state) => const ProductDetailsView(),
+        builder: (context, state) =>
+            ProductDetailsView(product: state.extra as ProductModel),
       ),
     ],
   );

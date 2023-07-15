@@ -12,7 +12,7 @@ class PopularProductsInitial extends PopularProductsState {}
 class PopularProductsLoading extends PopularProductsState {}
 
 class PopularProductsSuccess extends PopularProductsState {
-  final List<Product> products;
+  final List<ProductModel> products;
   const PopularProductsSuccess({required this.products});
   @override
   List<Object> get props => [products];

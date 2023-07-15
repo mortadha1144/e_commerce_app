@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 
-import 'rating.dart';
+import 'rating_model.dart';
 
-class Product extends Equatable {
+class ProductModel extends Equatable {
   final int? id;
   final String? title;
   final double? price;
@@ -11,7 +11,7 @@ class Product extends Equatable {
   final String? image;
   final Rating? rating;
 
-  const Product({
+  const ProductModel({
     this.id,
     this.title,
     this.price,
@@ -21,7 +21,7 @@ class Product extends Equatable {
     this.rating,
   });
 
-  factory Product.fromJson(Map<String, dynamic> json) => Product(
+  factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
         id: json['id'] as int?,
         title: json['title'] as String?,
         price: (json['price'] as num?)?.toDouble(),
