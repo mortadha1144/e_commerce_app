@@ -24,18 +24,18 @@ class _ProductDetailsImagesState extends State<ProductDetailsImages> {
     return Column(
       children: [
         SizedBox(
-          width: getProportionateScreenWidth(238),
+          width: getProportionateScreenWidth(220),
           child: AspectRatio(
             aspectRatio: 1,
             child: Image.network(images[0]),
           ),
         ),
         SizedBox(height: getProportionateScreenWidth(20)),
-        Row(
+        const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ...List.generate(images.length,
-                (index) => buildSmallPreview(index: index, images: images))
+            // ...List.generate(images.length,
+            //     (index) => buildSmallPreview(index: index, images: images))
           ],
         ),
       ],

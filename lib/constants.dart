@@ -17,6 +17,13 @@ const kAnimationDuration = Duration(milliseconds: 200);
 const kSpecialOffersCollection = 'special_offers';
 const kCategoriesCollection = 'ctegories';
 
+const productColors = [
+  Color(0xFFF6625E),
+  Color(0xFF836DB8),
+  Color(0xFFDECB9C),
+  Colors.white,
+];
+
 final headingStyle = TextStyle(
   color: Colors.black,
   fontSize: getProportionateScreenWidth(28),
