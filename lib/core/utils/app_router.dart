@@ -4,6 +4,7 @@ import 'package:e_commerce_app/Features/auth/presentation/views/login_success_vi
 import 'package:e_commerce_app/Features/auth/presentation/views/otp_view.dart';
 import 'package:e_commerce_app/Features/auth/presentation/views/sign_in_view.dart';
 import 'package:e_commerce_app/Features/auth/presentation/views/sign_up_view.dart';
+import 'package:e_commerce_app/Features/cart/presentation/views/cart_view.dart';
 import 'package:e_commerce_app/Features/home/data/models/product_model.dart';
 import 'package:e_commerce_app/Features/home/presentation/views/home_view.dart';
 import 'package:e_commerce_app/Features/home/presentation/views/product_details_view.dart';
@@ -19,17 +20,18 @@ abstract class AppRouter {
   static const kOtpView = '/otpView';
   static const kHomeView = '/homeView';
   static const kProductDetailsView = '/productDetailsView';
+  static const kCartView = '/cartView';
 
   static final router = GoRouter(
     routes: [
-      GoRoute(
-        path: '/',
-        builder: (context, state) => const OnBordingView(),
-      ),
       // GoRoute(
       //   path: '/',
-      //   builder: (context, state) => const HomeView(),
+      //   builder: (context, state) => const OnBordingView(),
       // ),
+      GoRoute(
+        path: '/',
+        builder: (context, state) => const HomeView(),
+      ),
       GoRoute(
         path: kSignInView,
         builder: (context, state) => const SignInView(),
@@ -64,6 +66,10 @@ abstract class AppRouter {
         path: kProductDetailsView,
         builder: (context, state) =>
             ProductDetailsView(product: state.extra as ProductModel),
+      ),
+      GoRoute(
+        path: kCartView,
+        builder: (context, state) => const CartView(),
       ),
     ],
   );

@@ -15,7 +15,7 @@ class ProductDetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return ListView(
       children: [
         ProductDetailsImages(product: product),
         TopRoundedCorner(
@@ -38,7 +38,7 @@ class ProductDetailsViewBody extends StatelessWidget {
                             left: SizeConfig.screenWidth * .15,
                             right: SizeConfig.screenWidth * .15,
                             top: getProportionateScreenWidth(15),
-                            bottom: getProportionateScreenWidth(30),
+                            bottom: getProportionateScreenWidth(40),
                           ),
                           child: CustomButton(
                             text: 'Add to Cart',
