@@ -1,7 +1,10 @@
 import 'package:e_commerce_app/Features/cart/data/models/cart_model.dart';
 import 'package:e_commerce_app/Features/cart/presentation/views/widgets/cart_view_body.dart';
+import 'package:e_commerce_app/constants.dart';
+import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CartView extends StatelessWidget {
   const CartView({super.key});
@@ -57,8 +60,54 @@ class CheckOurCart extends StatelessWidget {
               color: const Color(0xFFDADADA).withOpacity(.15))
         ],
       ),
-      child: const Column(
-        children: [],
+      child: SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  height: getProportionateScreenWidth(40),
+                  width: getProportionateScreenWidth(40),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF5F6F9),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: SvgPicture.asset('assets/icons/receipt.svg'),
+                ),
+                const Spacer(),
+                const Text('Add voucher code'),
+                const SizedBox(width: 10),
+                const Icon(Icons.arrow_forward_ios, size: 12, color: kTextColor)
+              ],
+            ),
+            SizedBox(height: getProportionateScreenWidth(20)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text.rich(
+                  TextSpan(
+                    text: 'Total:\n',
+                    children: [
+                      TextSpan(
+                        text: '\$337.15',
+                        style: TextStyle(fontSize: 16, color: Colors.black),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: getProportionateScreenWidth(190),
+                  child: CustomButton(
+                    text: 'Check Out',
+                    onPressed: () {},
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
