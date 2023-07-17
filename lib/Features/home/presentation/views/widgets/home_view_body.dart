@@ -23,19 +23,15 @@ class HomeViewBody extends StatelessWidget {
             if (state is HomeSuccess) {
               return Column(
                 children: [
-                  SizedBox(height: getProportionateScreenWidth(10)),
+                  SizedBox(height: getProportionateScreenWidth(20)),
                   const HomeHeader(),
                   SizedBox(height: getProportionateScreenWidth(10)),
                   const DiscountBanner(),
-                  SizedBox(height: getProportionateScreenWidth(10)),
-                  Categories(
-                    categories: state.categories,
-                  ),
-                  SizedBox(height: getProportionateScreenWidth(10)),
+                  Categories(categories: state.categories),
                   SpecialOffers(specialOffers: state.specialOffers),
-                  SizedBox(height: getProportionateScreenWidth(10)),
+                  SizedBox(height: getProportionateScreenWidth(30)),
                   PopularProducts(products: state.products),
-                  SizedBox(height: getProportionateScreenWidth(10)),
+                  SizedBox(height: getProportionateScreenWidth(30)),
                 ],
               );
             } else if (state is HomeError) {

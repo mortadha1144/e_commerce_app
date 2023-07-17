@@ -1,9 +1,5 @@
 import 'package:e_commerce_app/Features/home/data/models/special_offer_model.dart';
-import 'package:e_commerce_app/Features/home/presentation/cubits/special_offers_cubit/special_offers_cubit.dart';
-import 'package:e_commerce_app/core/utils/widgets/custom_error_widget.dart';
-import 'package:e_commerce_app/core/utils/widgets/custom_loading_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../size_config.dart';
 import 'section_title.dart';
