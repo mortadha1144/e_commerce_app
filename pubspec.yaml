@@ -28,10 +28,12 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  animated_bottom_navigation_bar: ^1.2.0
   cloud_firestore: ^4.8.2
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
   dio: ^5.2.1+1
+  equatable: ^2.0.0
   firebase_auth: ^4.6.3
   firebase_core: ^2.14.0
   flutter:
@@ -41,7 +43,6 @@ dependencies:
   go_router: ^9.0.0
   google_sign_in: ^6.1.4
   modal_progress_hud_nsn: ^0.4.0
-  equatable: ^2.0.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0

@@ -2,7 +2,7 @@ import 'package:e_commerce_app/Features/profile/presentation/views/widgets/profi
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/utils/widgets/custom_bottom_nav_bar.dart';
+import '../../../../core/utils/widgets/custom_bottom_nav_bar_two.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
