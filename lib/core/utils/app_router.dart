@@ -11,6 +11,8 @@ import 'package:e_commerce_app/Features/home/presentation/views/product_details_
 import 'package:e_commerce_app/Features/profile/presentation/views/profile_view.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../Features/onboarding/presentation/views/onbording_view.dart';
+
 abstract class AppRouter {
   static const kSignInView = '/signInView';
   static const kForgotPasswordView = '/forgotPasswordView';
@@ -25,14 +27,14 @@ abstract class AppRouter {
 
   static final router = GoRouter(
     routes: [
-      // GoRoute(
-      //   path: '/',
-      //   builder: (context, state) => const OnBordingView(),
-      // ),
       GoRoute(
         path: '/',
-        builder: (context, state) => const ProfileView(),
+        builder: (context, state) => const OnBordingView(),
       ),
+      // GoRoute(
+      //   path: '/',
+      //   builder: (context, state) => const ProfileView(),
+      // ),
       GoRoute(
         path: kSignInView,
         builder: (context, state) => const SignInView(),
