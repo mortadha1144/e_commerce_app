@@ -6,12 +6,12 @@ import 'package:e_commerce_app/Features/auth/presentation/views/sign_in_view.dar
 import 'package:e_commerce_app/Features/auth/presentation/views/sign_up_view.dart';
 import 'package:e_commerce_app/Features/cart/presentation/views/cart_view.dart';
 import 'package:e_commerce_app/Features/home/data/models/product_model.dart';
+import 'package:e_commerce_app/Features/home/presentation/cubits/product_cubit/product_cubit.dart';
 import 'package:e_commerce_app/Features/home/presentation/views/home_view.dart';
 import 'package:e_commerce_app/Features/home/presentation/views/product_details_view.dart';
 import 'package:e_commerce_app/Features/profile/presentation/views/profile_view.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../Features/onboarding/presentation/views/onbording_view.dart';
 
 abstract class AppRouter {
   static const kSignInView = '/signInView';
@@ -27,14 +27,14 @@ abstract class AppRouter {
 
   static final router = GoRouter(
     routes: [
-      GoRoute(
-        path: '/',
-        builder: (context, state) => const OnBordingView(),
-      ),
       // GoRoute(
       //   path: '/',
-      //   builder: (context, state) => const ProfileView(),
+      //   builder: (context, state) => const OnBordingView(),
       // ),
+      GoRoute(
+        path: '/',
+        builder: (context, state) => const HomeView(),
+      ),
       GoRoute(
         path: kSignInView,
         builder: (context, state) => const SignInView(),
@@ -67,8 +67,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kProductDetailsView,
-        builder: (context, state) =>
-            ProductDetailsView(product: state.extra as ProductModel),
+        builder: (context, state) => BlocProvider(
+          create: (context) => ProductCubit(),
+          child: ProductDetailsView(product: state.extra as ProductModel),
+        ),
       ),
       GoRoute(
         path: kCartView,

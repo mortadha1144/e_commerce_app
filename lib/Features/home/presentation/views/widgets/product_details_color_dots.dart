@@ -1,4 +1,6 @@
+import 'package:e_commerce_app/Features/home/presentation/cubits/product_cubit/product_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/widgets/rounded_icon_button.dart';
@@ -12,29 +14,46 @@ class ProductDetailsColorDots extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int selectedColor = 3;
+
     return Padding(
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-      child: Row(
-        children: [
-          ...List.generate(
-            productColors.length,
-            (index) => ColorDot(
-              color: productColors[index],
-              isSelected: selectedColor == index,
-            ),
-          ),
-          const Spacer(),
-          RoundedIconButton(
-            iconData: Icons.remove,
-            onPressed: () {},
-          ),
-          SizedBox(width: getProportionateScreenWidth(15)),
-          RoundedIconButton(
-            iconData: Icons.add,
-            onPressed: () {},
-          ),
-        ],
+      child: BlocBuilder<ProductCubit, ProductState>(
+        builder: (context, state) {
+          return Row(
+            children: [
+              ...List.generate(
+                productColors.length,
+                (index) => ColorDot(
+                  color: productColors[index],
+                  isSelected: selectedColor == index,
+                ),
+              ),
+              const Spacer(),
+              RoundedIconButton(
+                iconData: Icons.remove,
+                onPressed: () {
+                  BlocProvider.of<ProductCubit>(context).decrement();
+                },
+              ),
+              SizedBox(width: getProportionateScreenWidth(15)),
+              Text(
+                '${state.number}',
+                style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
+              ),
+              SizedBox(width: getProportionateScreenWidth(15)),
+              RoundedIconButton(
+                iconData: Icons.add,
+                onPressed: () {
+                  BlocProvider.of<ProductCubit>(context).increment();
+                },
+              ),
+            ],
+          );
+        },
       ),
     );
   }

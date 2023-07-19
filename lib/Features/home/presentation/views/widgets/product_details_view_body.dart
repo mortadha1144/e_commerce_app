@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce_app/Features/home/data/models/product_model.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_app/size_config.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'product_details_color_dots.dart';
@@ -42,7 +44,29 @@ class ProductDetailsViewBody extends StatelessWidget {
                           ),
                           child: CustomButton(
                             text: 'Add to Cart',
-                            onPressed: () {},
+                            onPressed: () async {
+                              FirebaseFirestore db = FirebaseFirestore.instance;
+
+                              String email =
+                                  FirebaseAuth.instance.currentUser!.email!;
+                              // String email = 'm1@m1.com';
+
+                              final QuerySnapshot querySnapshot = await db
+                                  .collection('users')
+                                  .where('email', isEqualTo: email)
+                                  .get();
+                              final List<QueryDocumentSnapshot> documents =
+                                  querySnapshot.docs;
+                              if (documents.isNotEmpty) {
+                                // Get the first document
+                                final document = documents.first;
+                                // Print its id
+                                print('Document id: ${document.id}');
+                              } else {
+                                // No user with that email
+                                print('No user found');
+                              }
+                            },
                           ),
                         ))
                   ],

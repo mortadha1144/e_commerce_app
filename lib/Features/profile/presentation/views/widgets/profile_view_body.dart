@@ -10,6 +10,10 @@ class ProfileViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        AppBar(
+          automaticallyImplyLeading: false,
+          title: const Text('Profile'),
+        ),
         const ProfilePicture(),
         const SizedBox(height: 20),
         ProfileMenu(

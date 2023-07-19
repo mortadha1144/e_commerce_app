@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_app/Features/home/data/models/special_offer_model.dart';
 import 'package:flutter/material.dart';
 
@@ -78,9 +79,10 @@ class SpecialOfferCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           child: Stack(
             children: [
-              Image.network(
-                image,
+              CachedNetworkImage(
                 fit: BoxFit.cover,
+                imageUrl: image,
+                errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
               Container(
                 decoration: BoxDecoration(
