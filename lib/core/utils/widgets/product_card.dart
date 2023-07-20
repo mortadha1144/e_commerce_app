@@ -4,6 +4,7 @@ import 'package:e_commerce_app/core/utils/widgets/custom_loading_indicator.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../Features/home/data/models/product_test.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
@@ -17,7 +18,7 @@ class ProductCard extends StatelessWidget {
   });
 
   final double width, aspectRatio;
-  final ProductModel product;
+  final Product product;
   final VoidCallback onPress;
 
   @override
@@ -41,7 +42,7 @@ class ProductCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: CachedNetworkImage(
-                    imageUrl: product.image!,
+                    imageUrl: product.images[0],
                     placeholder: (context, url) =>
                         const CustomLoadingIndicator(),
                     errorWidget: (context, url, error) =>

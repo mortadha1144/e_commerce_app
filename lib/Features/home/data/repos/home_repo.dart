@@ -120,7 +120,7 @@ class HomeRepo {
       final result = Future.wait([
         fetchCategories(),
         fetchSpecialOffers(),
-        fetchPopularProducts(),
+        //fetchPopularProducts(),
       ]);
 
       return right(await result);

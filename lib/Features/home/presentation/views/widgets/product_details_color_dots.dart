@@ -38,7 +38,7 @@ class ProductDetailsColorDots extends StatelessWidget {
               ),
               SizedBox(width: getProportionateScreenWidth(15)),
               Text(
-                '${state.number}',
+                '${(state as ProductInitial).number}',
                 style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,

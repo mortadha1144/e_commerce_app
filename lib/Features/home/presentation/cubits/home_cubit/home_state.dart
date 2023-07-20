@@ -14,10 +14,10 @@ class HomeLoading extends HomeState {}
 class HomeSuccess extends HomeState {
   final List<CategoryModel> categories;
   final List<SpecialOfferModel> specialOffers;
-  final List<ProductModel> products;
+  // final List<ProductModel> products;
   const HomeSuccess(
       {required this.specialOffers,
-      required this.products,
+     // required this.products,
       required this.categories});
   @override
   List<Object> get props => [categories];

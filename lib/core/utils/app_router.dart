@@ -31,10 +31,10 @@ abstract class AppRouter {
       //   path: '/',
       //   builder: (context, state) => const OnBordingView(),
       // ),
-      GoRoute(
-        path: '/',
-        builder: (context, state) => const HomeView(),
-      ),
+      // GoRoute(
+      //   path: '/',
+      //   builder: (context, state) => const HomeView(),
+      // ),
       GoRoute(
         path: kSignInView,
         builder: (context, state) => const SignInView(),
@@ -72,6 +72,7 @@ abstract class AppRouter {
           child: ProductDetailsView(product: state.extra as ProductModel),
         ),
       ),
+      
       GoRoute(
         path: kCartView,
         builder: (context, state) => const CartView(),
