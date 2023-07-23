@@ -34,8 +34,9 @@ class AuthRepo {
       Map<String, dynamic> user) async {
     CollectionReference users =
         FirebaseFirestore.instance.collection(kUsersCollection);
+    final String uid = _firebaseAuth.currentUser!.uid;
     try {
-      await users.add(user);
+      await users.doc(uid).set(user);
       return right(null);
     } catch (e) {
       return left(ServerFailure(e.toString()));

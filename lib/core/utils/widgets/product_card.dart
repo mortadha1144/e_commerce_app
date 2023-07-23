@@ -18,7 +18,7 @@ class ProductCard extends StatelessWidget {
   });
 
   final double width, aspectRatio;
-  final Product product;
+  final ProductModel product;
   final VoidCallback onPress;
 
   @override
@@ -42,7 +42,7 @@ class ProductCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: CachedNetworkImage(
-                    imageUrl: product.images[0],
+                    imageUrl: product.image!,
                     placeholder: (context, url) =>
                         const CustomLoadingIndicator(),
                     errorWidget: (context, url, error) =>

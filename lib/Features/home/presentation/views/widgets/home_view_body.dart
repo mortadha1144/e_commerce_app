@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/widgets/custom_error_widget.dart';
-import '../../../data/models/product_test.dart';
 import 'categories.dart';
 import 'discount_banner.dart';
 import 'home_header.dart';
@@ -31,7 +30,7 @@ class HomeViewBody extends StatelessWidget {
                   Categories(categories: state.categories),
                   SpecialOffers(specialOffers: state.specialOffers),
                   SizedBox(height: getProportionateScreenWidth(30)),
-                  PopularProducts(products: demoProducts),
+                  PopularProducts(products: state.products),
                   SizedBox(height: getProportionateScreenWidth(30)),
                 ],
               );

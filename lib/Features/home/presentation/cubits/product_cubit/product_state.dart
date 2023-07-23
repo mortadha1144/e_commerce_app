@@ -13,3 +13,14 @@ class ProductInitial extends ProductState {
   @override
   List<Object?> get props => [number];
 }
+
+class ProductLoading extends ProductState {}
+
+class ProductLoaded extends ProductState {}
+
+class ProductError extends ProductState {
+  final String message;
+  const ProductError(this.message);
+  @override
+  List<Object?> get props => [message];
+}

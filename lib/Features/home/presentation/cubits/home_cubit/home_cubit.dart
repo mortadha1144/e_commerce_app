@@ -22,12 +22,14 @@ class HomeCubit extends Cubit<HomeState> {
       (success) {
         final categories = success[0] as List<CategoryModel>;
         final specialOffers = success[1] as List<SpecialOfferModel>;
-        //final products = success[2] as List<ProductModel>;
-        emit(HomeSuccess(
-          categories: categories,
-          specialOffers: specialOffers,
-          //products: products,
-        ));
+        final products = success[2] as List<ProductModel>;
+        emit(
+          HomeSuccess(
+            categories: categories,
+            specialOffers: specialOffers,
+            products: products,
+          ),
+        );
       },
     );
   }
