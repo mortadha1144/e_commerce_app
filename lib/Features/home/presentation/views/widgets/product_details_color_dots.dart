@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/Features/home/presentation/cubits/product_cubit/product_cubit.dart';
+import 'package:e_commerce_app/core/utils/functions/custom_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,7 +19,14 @@ class ProductDetailsColorDots extends StatelessWidget {
     return Padding(
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-      child: BlocBuilder<ProductCubit, ProductState>(
+      child: BlocConsumer<ProductCubit, ProductState>(
+        listener: (context, state) {
+          if (state is ProductError) {
+            customSnackBar(context, state.message);
+          } else if (state is ProductLoaded) {
+            customSnackBar(context, 'Product Added to cart successfully');
+          }
+        },
         builder: (context, state) {
           return Row(
             children: [
@@ -38,7 +46,7 @@ class ProductDetailsColorDots extends StatelessWidget {
               ),
               SizedBox(width: getProportionateScreenWidth(15)),
               Text(
-                '${(state as ProductInitial).number}',
+                '${context.watch<ProductCubit>().quantity}',
                 style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,

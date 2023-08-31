@@ -86,6 +86,7 @@ class HomeRepo {
     }
   }
 
+
   Future<List<SpecialOfferModel>> fetchSpecialOffers() async {
     var data =
         await db.collection(kSpecialOffersCollection).orderBy('id').get();

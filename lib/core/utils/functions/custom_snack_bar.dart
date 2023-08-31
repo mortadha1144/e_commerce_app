@@ -5,9 +5,9 @@ void customSnackBar(context, String text) {
     SnackBar(
       content: Text(
         text,
-        style: const TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.black),
       ),
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
     ),
   );
 }

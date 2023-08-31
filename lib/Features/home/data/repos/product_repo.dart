@@ -8,7 +8,7 @@ class ProductRepo {
   FirebaseFirestore db = FirebaseFirestore.instance;
 
   Future<Either<Failure, void>> addToCart(
-    {required Map<String, dynamic> product, required int quantity}) async {
+      {required Map<String, dynamic> product, required int quantity}) async {
     Map<String, dynamic> data = {
       'product': product,
       'quantity': quantity,
@@ -19,8 +19,8 @@ class ProductRepo {
           .collection(kUsersCollection)
           .doc(uId)
           .collection(kCartCollection)
-          .doc(product['id'])
-          .set(data);
+          .doc(product['id'].toString())
+          .set(data,);
       return right(null);
     } catch (e) {
       return left(ServerFailure(e.toString()));

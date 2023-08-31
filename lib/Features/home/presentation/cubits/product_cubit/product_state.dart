@@ -8,19 +8,33 @@ abstract class ProductState extends Equatable {
 }
 
 class ProductInitial extends ProductState {
-  final int number;
-  const ProductInitial(this.number);
+  const ProductInitial();
   @override
-  List<Object?> get props => [number];
+  List<Object?> get props => [];
 }
 
-class ProductLoading extends ProductState {}
+class ProductLoading extends ProductState {
+  const ProductLoading();
+  @override
+  List<Object?> get props => [];
+}
 
-class ProductLoaded extends ProductState {}
+class ProductLoaded extends ProductState {
+  const ProductLoaded();
+  @override
+  List<Object?> get props => [];
+}
+
+class ProductQuantityChanged extends ProductState {
+  final int quantity;
+  const ProductQuantityChanged(this.quantity);
+  @override
+  List<Object?> get props => [quantity];
+}
 
 class ProductError extends ProductState {
   final String message;
-  const ProductError(this.message);
+  const ProductError({required this.message});
   @override
   List<Object?> get props => [message];
 }
