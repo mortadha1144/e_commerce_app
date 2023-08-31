@@ -1,5 +1,4 @@
 import 'package:e_commerce_app/Features/home/presentation/cubits/product_cubit/product_cubit.dart';
-import 'package:e_commerce_app/core/utils/functions/custom_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,49 +18,36 @@ class ProductDetailsColorDots extends StatelessWidget {
     return Padding(
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-      child: BlocConsumer<ProductCubit, ProductState>(
-        listener: (context, state) {
-          if (state is ProductError) {
-            customSnackBar(context, state.message);
-          } else if (state is ProductLoaded) {
-            customSnackBar(context, 'Product Added to cart successfully');
-          }
-        },
-        builder: (context, state) {
-          return Row(
-            children: [
-              ...List.generate(
-                productColors.length,
-                (index) => ColorDot(
-                  color: productColors[index],
-                  isSelected: selectedColor == index,
-                ),
-              ),
-              const Spacer(),
-              RoundedIconButton(
-                iconData: Icons.remove,
-                onPressed: () {
-                  BlocProvider.of<ProductCubit>(context).decrement();
-                },
-              ),
-              SizedBox(width: getProportionateScreenWidth(15)),
-              Text(
-                '${context.watch<ProductCubit>().quantity}',
-                style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black),
-              ),
-              SizedBox(width: getProportionateScreenWidth(15)),
-              RoundedIconButton(
-                iconData: Icons.add,
-                onPressed: () {
-                  BlocProvider.of<ProductCubit>(context).increment();
-                },
-              ),
-            ],
-          );
-        },
+      child: Row(
+        children: [
+          ...List.generate(
+            productColors.length,
+            (index) => ColorDot(
+              color: productColors[index],
+              isSelected: selectedColor == index,
+            ),
+          ),
+          const Spacer(),
+          RoundedIconButton(
+            iconData: Icons.remove,
+            onPressed: () {
+              context.read<ProductCubit>().decrement();
+            },
+          ),
+          SizedBox(width: getProportionateScreenWidth(15)),
+          Text(
+            '${context.watch<ProductCubit>().quantity}',
+            style: const TextStyle(
+                fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
+          ),
+          SizedBox(width: getProportionateScreenWidth(15)),
+          RoundedIconButton(
+            iconData: Icons.add,
+            onPressed: () {
+              context.read<ProductCubit>().increment();
+            },
+          ),
+        ],
       ),
     );
   }

@@ -1,12 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce_app/Features/home/data/models/product_model.dart';
 import 'package:e_commerce_app/Features/home/presentation/cubits/product_cubit/product_cubit.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_app/size_config.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/utils/functions/custom_snack_bar.dart';
+import 'custom_prodect_details_appbar.dart';
 import 'product_details_color_dots.dart';
 import 'product_details_description.dart';
 import 'product_details_images.dart';
@@ -21,6 +21,7 @@ class ProductDetailsViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
+        CustomAppBar(rating: product.rating?.rate ?? 0),
         ProductDetailsImages(product: product),
         TopRoundedCorner(
           color: Colors.white,
@@ -44,11 +45,19 @@ class ProductDetailsViewBody extends StatelessWidget {
                             top: getProportionateScreenWidth(15),
                             bottom: getProportionateScreenWidth(40),
                           ),
-                          child: BlocBuilder<ProductCubit, ProductState>(
+                          child: BlocConsumer<ProductCubit, ProductState>(
+                            listener: (context, state) {
+                              if (state is ProductAddedToCartError) {
+                                customSnackBar(context, state.message);
+                              } else if (state is ProductAddedToCartSuccess) {
+                                customSnackBar(context,
+                                    'Product Added to cart successfully');
+                              }
+                            },
                             builder: (context, state) {
                               return CustomButton(
                                 text: 'Add to Cart',
-                                isLoading: state is ProductLoading,
+                                isLoading: state is ProductAddedToCartLoading,
                                 onPressed: () async {
                                   context
                                       .read<ProductCubit>()

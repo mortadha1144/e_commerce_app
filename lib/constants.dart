@@ -44,6 +44,7 @@ const String kPhoneNumberNullError = "Please Enter your phone number";
 const String kAddressNullError = "Please Enter your address";
 const String kUsersCollection = "users";
 const String kCartCollection = "cart";
+const String kFavoritesCollection = "favorites";
 
 final otpInputDecoration = InputDecoration(
   contentPadding:

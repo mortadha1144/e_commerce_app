@@ -14,6 +14,10 @@ class ProductCubit extends Cubit<ProductState> {
 
   int get quantity => _quantity;
 
+  bool _isFavourite = false;
+
+  bool get isFavourite => _isFavourite;
+
   void increment() {
     _quantity++;
     emit(ProductQuantityChanged(quantity));
@@ -26,8 +30,26 @@ class ProductCubit extends Cubit<ProductState> {
     }
   }
 
-  Future<void> addToCart(ProductModel product) async {
+  Future<void> checkProductInFavourites(String productId) async {
     emit(const ProductLoading());
+
+    var result = await _productRepo.checkProductInFavourites(
+      productId: productId,
+    );
+
+    result.fold(
+      (fail) {
+        emit(ProductError(message: fail.errMessage));
+      },
+      (success) {
+        _isFavourite = success;
+        emit(const ProductLoaded());
+      },
+    );
+  }
+
+  Future<void> addToCart(ProductModel product) async {
+    emit(const ProductAddedToCartLoading());
 
     var result = await _productRepo.addToCart(
       product: product.toJson(),
@@ -36,9 +58,44 @@ class ProductCubit extends Cubit<ProductState> {
 
     result.fold(
       (fail) {
-        emit(ProductError(message: fail.errMessage));
+        emit(ProductAddedToCartError(message: fail.errMessage));
       },
-      (success) => emit(const ProductLoaded()),
+      (success) => emit(const ProductAddedToCartSuccess()),
+    );
+  }
+
+  Future<void> toggleFavourite(ProductModel product) async {
+    if (_isFavourite) {
+      await removeFromFavourites(product);
+    } else {
+      await addToFavourite(product);
+    }
+  }
+
+  Future<void> removeFromFavourites(ProductModel product) async {
+    var result =
+        await _productRepo.removeFromFavourites(product: product.toJson());
+    result.fold(
+      (fail) {
+        emit(ProductAddToFavoritesError(message: fail.errMessage));
+      },
+      (success) {
+        _isFavourite = !_isFavourite;
+        emit(ProductAddToFavoritesSuccess(_isFavourite));
+      },
+    );
+  }
+
+  Future<void> addToFavourite(ProductModel product) async {
+    var result = await _productRepo.addToFavourites(product: product.toJson());
+    result.fold(
+      (fail) {
+        emit(ProductAddToFavoritesError(message: fail.errMessage));
+      },
+      (success) {
+        _isFavourite = !_isFavourite;
+        emit(ProductAddToFavoritesSuccess(_isFavourite));
+      },
     );
   }
 }
