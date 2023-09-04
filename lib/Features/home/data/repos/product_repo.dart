@@ -3,9 +3,15 @@ import 'package:dartz/dartz.dart';
 import 'package:e_commerce_app/constants.dart';
 import 'package:e_commerce_app/core/errors/failures.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:injectable/injectable.dart';
 
+
+@lazySingleton
 class ProductRepo {
-  FirebaseFirestore db = FirebaseFirestore.instance;
+  final FirebaseAuth _firebaseAuth;
+  final FirebaseFirestore _firebaseFirestore;
+
+  ProductRepo(this._firebaseAuth, this._firebaseFirestore);
 
   Future<Either<Failure, void>> addToCart(
       {required Map<String, dynamic> product, required int quantity}) async {
@@ -13,14 +19,17 @@ class ProductRepo {
       'product': product,
       'quantity': quantity,
     };
-    String uId = FirebaseAuth.instance.currentUser!.uid;
+
     try {
-      await db
+      final uId = _firebaseAuth.currentUser!.uid;
+      await _firebaseFirestore
           .collection(kUsersCollection)
           .doc(uId)
           .collection(kCartCollection)
           .doc(product['id'].toString())
-          .set(data,);
+          .set(
+            data,
+          );
       return right(null);
     } catch (e) {
       return left(ServerFailure(e.toString()));
@@ -29,9 +38,9 @@ class ProductRepo {
 
   Future<Either<Failure, void>> addToFavourites(
       {required Map<String, dynamic> product}) async {
-    String uId = FirebaseAuth.instance.currentUser!.uid;
     try {
-      await db
+      final uId = _firebaseAuth.currentUser!.uid;
+      await _firebaseFirestore
           .collection(kUsersCollection)
           .doc(uId)
           .collection(kFavoritesCollection)
@@ -45,9 +54,9 @@ class ProductRepo {
 
   Future<Either<Failure, void>> removeFromFavourites(
       {required Map<String, dynamic> product}) async {
-    String uId = FirebaseAuth.instance.currentUser!.uid;
     try {
-      await db
+      final uId = _firebaseAuth.currentUser!.uid;
+      await _firebaseFirestore
           .collection(kUsersCollection)
           .doc(uId)
           .collection(kFavoritesCollection)
@@ -61,9 +70,9 @@ class ProductRepo {
 
   Future<Either<Failure, bool>> checkProductInFavourites(
       {required String productId}) async {
-    String uId = FirebaseAuth.instance.currentUser!.uid;
     try {
-      var result = await db
+      final uId = _firebaseAuth.currentUser!.uid;
+      var result = await _firebaseFirestore
           .collection(kUsersCollection)
           .doc(uId)
           .collection(kFavoritesCollection)

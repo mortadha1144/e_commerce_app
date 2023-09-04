@@ -1,24 +1,18 @@
 import 'package:e_commerce_app/Features/auth/data/repos/auth_repo.dart';
 import 'package:e_commerce_app/Features/auth/presentation/cubits/auth_cubit/auth_cubit.dart';
 import 'package:e_commerce_app/Features/home/data/repos/home_repo.dart';
-import 'package:e_commerce_app/Features/home/presentation/cubits/categories_cubit/categories_cubit.dart';
 import 'package:e_commerce_app/Features/home/presentation/cubits/home_cubit/home_cubit.dart';
-import 'package:e_commerce_app/Features/home/presentation/cubits/popular_cubit/popular_products_cubit.dart';
-import 'package:e_commerce_app/Features/home/presentation/cubits/special_offers_cubit/special_offers_cubit.dart';
 import 'package:e_commerce_app/bloc_observer.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/utils/theme.dart';
-import 'firebase_options.dart';
+import 'injection.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+ await configureDependencies();
   Bloc.observer = const AppBlocObserver();
   runApp(const MyApp());
 }

@@ -14,6 +14,8 @@ import 'package:e_commerce_app/Features/profile/presentation/views/profile_view.
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../injection.dart';
+
 abstract class AppRouter {
   static const kSignInView = '/signInView';
   static const kForgotPasswordView = '/forgotPasswordView';
@@ -73,7 +75,7 @@ abstract class AppRouter {
       GoRoute(
         path: kProductDetailsView,
         builder: (context, state) => BlocProvider(
-          create: (context) => ProductCubit(ProductRepo()),
+          create: (context) => getIt<ProductCubit>(),
           child: ProductDetailsView(product: state.extra as ProductModel),
         ),
       ),

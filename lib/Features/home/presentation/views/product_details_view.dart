@@ -46,4 +46,6 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
       ),
     );
   }
+
+  
 }

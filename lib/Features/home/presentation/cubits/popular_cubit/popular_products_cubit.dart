@@ -5,7 +5,6 @@ import '../../../data/models/product_model.dart';
 import '../../../data/repos/home_repo.dart';
 
 part 'popular_products_state.dart';
-
 class PopularProductsCubit extends Cubit<PopularProductsState> {
   PopularProductsCubit(this.homeRepo) : super(PopularProductsInitial());
 

@@ -8,15 +8,18 @@ It includes features such as user registration, login, and secure authentication
   - Firebase Firestore database
   - Get products data from Api
   - MVVM & BLoC Architecture Pattern
+  - Dependency injection using get_it
 
 ## Screenshots 
   - OnBoarding Screen :
+<br>
 <br>
 <img src="https://github.com/mortadha1144/e_commerce_app/assets/105784062/1415df1a-1718-4c8c-a457-6b2a947e3240" width="200" height="400">
  <br>
  <br>
  
   - Authintication :
+<br>
 <br>
 <img src="https://github.com/mortadha1144/e_commerce_app/assets/105784062/1d90e9a4-7858-47c3-b734-4fde17f63433" width="200" height="400">
 <img src="https://github.com/mortadha1144/e_commerce_app/assets/105784062/6d8a71b2-4022-4eba-9ad2-1ae29865dad2" width="200" height="400">
@@ -29,12 +32,32 @@ It includes features such as user registration, login, and secure authentication
 <br>
 
 - Home Screen :
-<br>
+<br> 
+<br> 
  <img src="https://github.com/mortadha1144/e_commerce_app/assets/105784062/959099be-fa73-4d4a-9b39-65189b5cd1c4" width="200" height="400">
 <br>
 <br>
 
 - Product Details Screen :
 <br>
+<br>
  <img src="https://github.com/mortadha1144/e_commerce_app/assets/105784062/3f92fa2e-9c4a-42cf-b9c5-cfe6c6e7b70a" width="200" height="400">
+<br>
+
+<br>
+<br>
+
+- Cart Screen :
+<br>
+<br>
+ <img src="screenshots/photo1.jpg" width="200" height="400">
+<br>
+
+<br>
+<br>
+
+- Profile Screen :
+<br>
+<br>
+ <img src="screenshots/photo2.jpg" width="200" height="400">
 <br>
