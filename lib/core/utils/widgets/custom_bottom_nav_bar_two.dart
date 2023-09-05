@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../constants.dart';
-import '../enums.dart';
+import '../enums/enums.dart';
 
 class CustomBottomNavBarTwo extends StatelessWidget {
   const CustomBottomNavBarTwo({
