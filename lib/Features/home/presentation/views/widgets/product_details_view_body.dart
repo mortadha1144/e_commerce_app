@@ -45,26 +45,33 @@ class ProductDetailsViewBody extends StatelessWidget {
                             top: getProportionateScreenWidth(15),
                             bottom: getProportionateScreenWidth(40),
                           ),
-                          child: BlocConsumer<ProductCubit, ProductState>(
-                            listener: (context, state) {
-                              if (state is ProductAddedToCartError) {
-                                customSnackBar(context, state.message);
-                              } else if (state is ProductAddedToCartSuccess) {
-                                customSnackBar(context,
-                                    'Product Added to cart successfully');
-                              }
+                          child: CustomButton(
+                            text: 'Add to Cart',
+                            // isLoading: state is ProductAddedToCartLoading,
+                            onPressed: () async {
+                              // context
+                              //     .read<ProductCubit>()
+                              //     .addToCart(product);
                             },
-                            builder: (context, state) {
-                              return CustomButton(
-                                text: 'Add to Cart',
-                                isLoading: state is ProductAddedToCartLoading,
-                                onPressed: () async {
-                                  context
-                                      .read<ProductCubit>()
-                                      .addToCart(product);
-                                },
-                              );
-                            },
+
+                            //  BlocConsumer<ProductCubit, ProductState>(
+                            //   listener: (context, state) {
+                            //     if (state is ProductAddedToCartError) {
+                            //       customSnackBar(context, state.message);
+                            //     } else if (state is ProductAddedToCartSuccess) {
+                            //       customSnackBar(context,
+                            //           'Product Added to cart successfully');
+                            //     }
+                            //   },
+                            //   builder: (context, state) {
+                            //     return CustomButton(
+                            //       text: 'Add to Cart',
+                            //       isLoading: state is ProductAddedToCartLoading,
+                            //       onPressed: () async {
+                            //         context
+                            //             .read<ProductCubit>()
+                            //             .addToCart(product);
+                            //       },
                           ),
                         ))
                   ],

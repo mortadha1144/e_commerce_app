@@ -3,9 +3,14 @@ import 'package:e_commerce_app/constants.dart';
 import 'package:e_commerce_app/core/errors/failures.dart';
 import 'package:e_commerce_app/core/utils/services/firebase_service.dart';
 import 'package:e_commerce_app/core/utils/type_defs.dart';
-import 'package:injectable/injectable.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-@lazySingleton
+final productRepoProvider = Provider(
+  (ref) => ProductRepo(
+    ref.read(firebaseServiceProvider),
+  ),
+);
+
 class ProductRepo {
   final FirebaseService _firebaseService;
 
@@ -69,22 +74,13 @@ class ProductRepo {
     }
   }
 
-  Future<Either<Failure, bool>> checkProductInFavourites(
-      {required String productId}) async {
-    try {
-      DocSnapshot result = await _firebaseService
-          .getProductRef(
-            productId: productId,
-            innerCollection: kFavoritesCollection,
-          )
-          .get();
-      if (result.exists) {
-        return right(true);
-      } else {
-        return right(false);
-      }
-    } catch (e) {
-      return left(ServerFailure(e.toString()));
-    }
+  Future<bool> checkProductInFavourites({required String productId}) async {
+    DocSnapshot result = await _firebaseService
+        .getProductRef(
+          productId: productId,
+          innerCollection: kFavoritesCollection,
+        )
+        .get();
+    return result.exists;
   }
 }

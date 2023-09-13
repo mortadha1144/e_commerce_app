@@ -31,20 +31,21 @@ class ProductDetailsColorDots extends StatelessWidget {
           RoundedIconButton(
             iconData: Icons.remove,
             onPressed: () {
-              context.read<ProductCubit>().decrement();
+              // context.read<ProductCubit>().decrement();
             },
           ),
           SizedBox(width: getProportionateScreenWidth(15)),
-          Text(
-            '${context.watch<ProductCubit>().quantity}',
-            style: const TextStyle(
+          const Text(
+            // '${context.watch<ProductCubit>().quantity}',
+            '1',
+            style: TextStyle(
                 fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
           ),
           SizedBox(width: getProportionateScreenWidth(15)),
           RoundedIconButton(
             iconData: Icons.add,
             onPressed: () {
-              context.read<ProductCubit>().increment();
+              //context.read<ProductCubit>().increment();
             },
           ),
         ],

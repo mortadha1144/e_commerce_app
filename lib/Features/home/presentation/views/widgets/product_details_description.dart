@@ -35,15 +35,16 @@ class ProductDetailsDescription extends StatelessWidget {
         Align(
           alignment: Alignment.centerRight,
           child: InkWell(
-            onTap: () => context
-                .read<ProductCubit>()
-                .toggleFavourite(product),
+            // onTap: () => context
+            //     .read<ProductCubit>()
+            //     .toggleFavourite(product),
             child: Container(
               padding: EdgeInsets.all(getProportionateScreenWidth(15)),
               width: getProportionateScreenWidth(64),
               decoration: BoxDecoration(
-                  color: context.watch<ProductCubit>().isFavourite
-                      ? const Color(0xFFFFE6E6)
+                  color:
+                  //  context.watch<ProductCubit>().isFavourite
+                    true  ? const Color(0xFFFFE6E6)
                       : const Color(0xFFF5F6F9),
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(20),
@@ -51,8 +52,8 @@ class ProductDetailsDescription extends StatelessWidget {
                   )),
               child: SvgPicture.asset('assets/icons/Heart Icon_2.svg',
                   colorFilter: ColorFilter.mode(
-                      context.watch<ProductCubit>().isFavourite
-                          ? const Color(0xFFFF4848)
+                      // context.watch<ProductCubit>().isFavourite
+                        true  ? const Color(0xFFFF4848)
                           : const Color(0xFFDBDEE4),
                       BlendMode.srcIn)),
             ),

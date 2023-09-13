@@ -374,6 +374,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.3.1"
+  flutter_hooks:
+    dependency: transitive
+    description:
+      name: flutter_hooks
+      sha256: "6ae13b1145c589112cbd5c4fda6c65908993a9cb18d4f82042e9c28dd9fbf611"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.20.1"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -382,6 +390,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.2"
+  flutter_riverpod:
+    dependency: transitive
+    description:
+      name: flutter_riverpod
+      sha256: "1bd39b04f1bcd217a969589777ca6bd642d116e3e5de65c3e6a8e8bdd8b178ec"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.0"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -408,14 +424,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.0"
-  get_it:
-    dependency: "direct main"
-    description:
-      name: get_it
-      sha256: "66c270f23f1b49d3af9c6651d8c40367319f4abefffc23380e4e7c5efd9fe4a7"
-      url: "https://pub.dev"
-    source: hosted
-    version: "7.6.2"
   glob:
     dependency: transitive
     description:
@@ -488,6 +496,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.1"
+  hooks_riverpod:
+    dependency: "direct main"
+    description:
+      name: hooks_riverpod
+      sha256: ad7b877c3687e38764633d221a1f65491bc7a540e724101e9a404a84db2a4276
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.0"
   http:
     dependency: transitive
     description:
@@ -512,22 +528,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
-  injectable:
-    dependency: "direct main"
-    description:
-      name: injectable
-      sha256: "5217c45fec809286a7b1b4fbcbd70aab1662bf18d9eb207490df421323f7883f"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.3.0"
-  injectable_generator:
-    dependency: "direct dev"
-    description:
-      name: injectable_generator
-      sha256: "5c21787f854dfb94c9e50c43788f93232867ad80ada38a6db81e0bbb51ee5905"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.4.0"
   io:
     dependency: transitive
     description:
@@ -768,14 +768,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.1"
-  recase:
+  riverpod:
     dependency: transitive
     description:
-      name: recase
-      sha256: e4eb4ec2dcdee52dcf99cb4ceabaffc631d7424ee55e56f280bc039737f89213
+      name: riverpod
+      sha256: a600120d6f213a9922860eea1abc32597436edd5b2c4e73b91410f8c2af67d22
       url: "https://pub.dev"
     source: hosted
-    version: "4.1.0"
+    version: "2.4.0"
   rxdart:
     dependency: transitive
     description:
@@ -853,6 +853,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.0"
+  state_notifier:
+    dependency: transitive
+    description:
+      name: state_notifier
+      sha256: b8677376aa54f2d7c58280d5a007f9e8774f1968d1fb1c096adcb4792fba29bb
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   stream_channel:
     dependency: transitive
     description:
