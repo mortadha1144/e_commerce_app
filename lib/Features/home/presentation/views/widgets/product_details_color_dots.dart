@@ -1,18 +1,18 @@
-import 'package:e_commerce_app/Features/home/presentation/cubits/product_cubit/product_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/widgets/rounded_icon_button.dart';
 import '../../../../../size_config.dart';
+import '../../providers/quantity_prvider.dart';
 
-class ProductDetailsColorDots extends StatelessWidget {
+class ProductDetailsColorDots extends ConsumerWidget {
   const ProductDetailsColorDots({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     int selectedColor = 3;
 
     return Padding(
@@ -28,26 +28,7 @@ class ProductDetailsColorDots extends StatelessWidget {
             ),
           ),
           const Spacer(),
-          RoundedIconButton(
-            iconData: Icons.remove,
-            onPressed: () {
-              // context.read<ProductCubit>().decrement();
-            },
-          ),
-          SizedBox(width: getProportionateScreenWidth(15)),
-          const Text(
-            // '${context.watch<ProductCubit>().quantity}',
-            '1',
-            style: TextStyle(
-                fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
-          ),
-          SizedBox(width: getProportionateScreenWidth(15)),
-          RoundedIconButton(
-            iconData: Icons.add,
-            onPressed: () {
-              //context.read<ProductCubit>().increment();
-            },
-          ),
+          const CounterWidget(),
         ],
       ),
     );
@@ -82,6 +63,37 @@ class ColorDot extends StatelessWidget {
           shape: BoxShape.circle,
         ),
       ),
+    );
+  }
+}
+
+class CounterWidget extends ConsumerWidget {
+  const CounterWidget({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final quantity = ref.watch(quantityProvider);
+    return Row(
+      children: [
+        RoundedIconButton(
+          iconData: Icons.remove,
+          onPressed: ref.read(quantityProvider.notifier).decrement,
+        ),
+        SizedBox(width: getProportionateScreenWidth(15)),
+        Text(
+          ref.watch(quantityProvider).toString(),
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        ),
+        SizedBox(width: getProportionateScreenWidth(15)),
+        RoundedIconButton(
+          iconData: Icons.add,
+          onPressed: ref.read(quantityProvider.notifier).increment,
+        ),
+      ],
     );
   }
 }

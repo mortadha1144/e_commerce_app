@@ -8,18 +8,18 @@ final firebaseAuthProvider = Provider((ref) => FirebaseAuth.instance);
 
 final firebaseFirestoreProvider = Provider((ref) => FirebaseFirestore.instance);
 
-final firebaseServiceProvider = Provider(
-  (ref) => FirebaseService(
+final productServiceProvider = Provider(
+  (ref) => ProductService(
     ref.read(firebaseAuthProvider),
     ref.read(firebaseFirestoreProvider),
   ),
 );
 
-class FirebaseService {
+class ProductService {
   final FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firebaseFirestore;
 
-  FirebaseService(this._firebaseAuth, this._firebaseFirestore);
+  ProductService(this._firebaseAuth, this._firebaseFirestore);
 
   DocumentReference<Map<String, dynamic>> getProductRef(
       {required String productId, required String innerCollection}) {
