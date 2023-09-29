@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:e_commerce_app/Features/home/data/models/product_model.dart';
+import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

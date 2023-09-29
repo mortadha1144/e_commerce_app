@@ -1,9 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce_app/constants.dart';
 import 'package:e_commerce_app/core/errors/failures.dart';
-import 'package:e_commerce_app/core/utils/services/product_services.dart';
-import 'package:e_commerce_app/core/utils/type_defs.dart';
+import 'package:e_commerce_app/Features/product/data/services/product_services.dart';
 import 'package:e_commerce_app/core/utils/typedefs.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -20,12 +18,11 @@ class ProductRepo {
 
   Future<Either<Failure, void>> addToCart(
       {required Map<String, dynamic> product, required int quantity}) async {
-    Map<String, dynamic> data = {
-      'product': product,
-      'quantity': quantity,
-    };
-
     try {
+      Map<String, dynamic> data = {
+        'product': product,
+        'quantity': quantity,
+      };
       DocRef productRef = _productService.getProductRef(
         productId: product['id'].toString(),
         innerCollection: kCartCollection,
@@ -76,9 +73,30 @@ class ProductRepo {
     }
   }
 
-  Stream<DocumentSnapshot<Map<String, dynamic>>> checkProductInFavourites(
-      {required ProductId productId}) {
-    DocumentReference<Map<String, dynamic>> result =  _productService.getProductRef(
+  Future<Either<Failure, void>> toggleFavourite(
+      {required Map<String, dynamic> product}) async {
+    try {
+      DocRef productRef = _productService.getProductRef(
+        productId: product['id'].toString(),
+        innerCollection: kFavoritesCollection,
+      );
+      // check if product already exists in favourites
+      DocSnapshot oldProduct = await productRef.get();
+      if (oldProduct.exists) {
+        // remove product from favourites
+        await productRef.delete();
+      } else {
+        // add new product to favourites
+        await productRef.set(product);
+      }
+      return right(null);
+    } catch (e) {
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  Stream<DocSnapshot> checkProductInFavourites({required ProductId productId}) {
+    DocRef result = _productService.getProductRef(
       productId: productId,
       innerCollection: kFavoritesCollection,
     );

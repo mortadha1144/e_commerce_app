@@ -1,6 +1,9 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class QuantityNorifier extends Notifier<int> {
+final quantityProvider =
+    NotifierProvider.autoDispose<QuantityNorifier, int>(QuantityNorifier.new);
+
+class QuantityNorifier extends AutoDisposeNotifier<int> {
   @override
   build() {
     return 1;

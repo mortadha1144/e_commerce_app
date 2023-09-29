@@ -1,12 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-import '../../../constants.dart';
-
-final firebaseAuthProvider = Provider((ref) => FirebaseAuth.instance);
-
-final firebaseFirestoreProvider = Provider((ref) => FirebaseFirestore.instance);
+import '../../../../constants.dart';
+import '../../../../core/utils/providers/firebase_providers.dart';
 
 final productServiceProvider = Provider(
   (ref) => ProductService(

@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import 'rating_model.dart';
+import '../../../home/data/models/rating_model.dart';
 
 class ProductModel extends Equatable {
   final int? id;

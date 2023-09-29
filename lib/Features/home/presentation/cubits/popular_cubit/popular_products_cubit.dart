@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../data/models/product_model.dart';
+import '../../../../product/data/models/product_model.dart';
 import '../../../data/repos/home_repo.dart';
 
 part 'popular_products_state.dart';

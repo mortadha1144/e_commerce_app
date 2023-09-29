@@ -1,5 +1,5 @@
-import 'package:e_commerce_app/Features/home/data/models/product_model.dart';
-import 'package:e_commerce_app/Features/home/data/repos/product_repo.dart';
+import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
+import 'package:e_commerce_app/Features/product/data/repos/product_repo.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -55,12 +55,12 @@ class ProductCubit extends Cubit<ProductState> {
       quantity: _quantity,
     );
 
-    result.fold(
-      (fail) {
-        emit(ProductAddedToCartError(message: fail.errMessage));
-      },
-      (success) => emit(const ProductAddedToCartSuccess()),
-    );
+    // result.fold(
+    //   (fail) {
+    //     emit(ProductAddedToCartError(message: fail.errMessage));
+    //   },
+    //   (success) => emit(const ProductAddedToCartSuccess()),
+    // );
   }
 
   Future<void> toggleFavourite(ProductModel product) async {

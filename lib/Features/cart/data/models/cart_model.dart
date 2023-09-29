@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/Features/home/data/models/product_model.dart';
+import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
 import 'package:e_commerce_app/Features/home/data/models/rating_model.dart';
 
 class CartModel {
