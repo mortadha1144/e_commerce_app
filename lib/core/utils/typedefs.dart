@@ -5,3 +5,5 @@ typedef DocRef = DocumentReference<Map<String, dynamic>>;
 typedef DocSnapshot = DocumentSnapshot<Map<String, dynamic>>;
 
 typedef ProductId = String;
+
+typedef UserId = String;
