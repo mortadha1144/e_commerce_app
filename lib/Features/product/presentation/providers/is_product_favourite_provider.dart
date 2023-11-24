@@ -14,27 +14,32 @@ final isProductFavoriteProvider =
     ref,
     ProductId productId,
   ) {
+    final productRepo = ref.watch(productRepoProvider);
+    
     final userId = ref.watch(userIdProvider);
 
     if (userId == null) {
       return Stream<bool>.value(false);
     }
 
-    final productRepo = ref.watch(productRepoProvider);
+    
 
     final controller = StreamController<bool>();
 
     final sub = productRepo
         .checkProductInFavorites(
       productId: productId,
+      userId: userId,
     )
-        .listen((snapshot) {
-      if (snapshot.exists) {
-        controller.add(true);
-      } else {
-        controller.add(false);
-      }
-    });
+        .listen(
+      (snapshot) {
+        if (snapshot.exists) {
+          controller.add(true);
+        } else {
+          controller.add(false);
+        }
+      },
+    );
 
     ref.onDispose(() {
       sub.cancel();

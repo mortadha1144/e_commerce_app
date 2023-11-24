@@ -35,6 +35,7 @@ class ProductCubit extends Cubit<ProductState> {
 
     var result = await _productRepo.checkProductInFavorites(
       productId: productId,
+      userId: '',
     );
 
     // result.fold(
@@ -73,7 +74,7 @@ class ProductCubit extends Cubit<ProductState> {
   }
 
   Future<void> removeFromFavourites(String productId) async {
-    var result = await _productRepo.removeFromFavourites(productId: productId);
+    var result = await _productRepo.removeFromFavorites(productId: productId);
     result.fold(
       (fail) {
         emit(ProductAddToFavoritesError(message: fail.errMessage));
@@ -86,7 +87,7 @@ class ProductCubit extends Cubit<ProductState> {
   }
 
   Future<void> addToFavourite(ProductModel product) async {
-    var result = await _productRepo.addToFavourites(product: product.toJson());
+    var result = await _productRepo.addToFavorites(product: product.toJson());
     result.fold(
       (fail) {
         emit(ProductAddToFavoritesError(message: fail.errMessage));

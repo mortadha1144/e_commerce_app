@@ -1,20 +1,26 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce_app/constants.dart';
 import 'package:e_commerce_app/core/errors/failures.dart';
 import 'package:e_commerce_app/Features/product/data/services/product_services.dart';
+import 'package:e_commerce_app/core/utils/constants/firebase_collection_name.dart';
+import 'package:e_commerce_app/core/utils/providers/firebase_providers.dart';
 import 'package:e_commerce_app/core/utils/typedefs.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final productRepoProvider = Provider(
   (ref) => ProductRepo(
     ref.read(productServiceProvider),
+    ref.read(firebaseFirestoreProvider),
   ),
 );
 
 class ProductRepo {
   final ProductService _productService;
 
-  ProductRepo(this._productService);
+  final FirebaseFirestore _firebaseFirestore;
+
+  ProductRepo(this._productService, this._firebaseFirestore);
 
   Future<Either<Failure, void>> addToCart(
       {required Map<String, dynamic> product, required int quantity}) async {
@@ -95,11 +101,15 @@ class ProductRepo {
     }
   }
 
-  Stream<DocSnapshot> checkProductInFavorites({required ProductId productId}) {
-    DocRef result = _productService.getProductRef(
-      productId: productId,
-      innerCollection: kFavoritesCollection,
-    );
-    return result.snapshots();
+  Stream<DocSnapshot> checkProductInFavorites({
+    required ProductId productId,
+    required UserId userId,
+  }) {
+    return _firebaseFirestore
+        .collection(FirebaseCollectionName.users)
+        .doc(userId)
+        .collection(FirebaseCollectionName.favorites)
+        .doc(productId)
+        .snapshots();
   }
 }

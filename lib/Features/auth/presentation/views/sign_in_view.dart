@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/Features/auth/presentation/cubits/auth_cubit/auth_cubit.dart';
 import 'package:e_commerce_app/Features/auth/presentation/views/widgets/sign_in_view_body.dart';
 import 'package:e_commerce_app/Features/home/presentation/views/home_view.dart';
+import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
 
 class SignInView extends StatelessWidget {
@@ -24,6 +25,7 @@ class SignInView extends StatelessWidget {
     //       ),
     //     );
     //   }
+    SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sign In'),
