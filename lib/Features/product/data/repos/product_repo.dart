@@ -44,7 +44,7 @@ class ProductRepo {
     }
   }
 
-  Future<Either<Failure, void>> addToFavourites(
+  Future<Either<Failure, void>> addToFavorites(
       {required Map<String, dynamic> product}) async {
     try {
       await _productService
@@ -58,7 +58,7 @@ class ProductRepo {
     }
   }
 
-  Future<Either<Failure, void>> removeFromFavourites(
+  Future<Either<Failure, void>> removeFromFavorites(
       {required String productId}) async {
     try {
       await _productService
@@ -73,20 +73,20 @@ class ProductRepo {
     }
   }
 
-  Future<Either<Failure, void>> toggleFavourite(
+  Future<Either<Failure, void>> toggleFavorite(
       {required Map<String, dynamic> product}) async {
     try {
       DocRef productRef = _productService.getProductRef(
         productId: product['id'].toString(),
         innerCollection: kFavoritesCollection,
       );
-      // check if product already exists in favourites
+      // check if product already exists in favorites
       DocSnapshot oldProduct = await productRef.get();
       if (oldProduct.exists) {
-        // remove product from favourites
+        // remove product from favorites
         await productRef.delete();
       } else {
-        // add new product to favourites
+        // add new product to favorites
         await productRef.set(product);
       }
       return right(null);
@@ -95,7 +95,7 @@ class ProductRepo {
     }
   }
 
-  Stream<DocSnapshot> checkProductInFavourites({required ProductId productId}) {
+  Stream<DocSnapshot> checkProductInFavorites({required ProductId productId}) {
     DocRef result = _productService.getProductRef(
       productId: productId,
       innerCollection: kFavoritesCollection,

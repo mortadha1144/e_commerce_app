@@ -4,6 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'product_state.dart';
+
 class ProductCubit extends Cubit<ProductState> {
   ProductCubit(this._productRepo) : super(const ProductInitial());
 
@@ -32,7 +33,7 @@ class ProductCubit extends Cubit<ProductState> {
   Future<void> checkProductInFavourites(String productId) async {
     emit(const ProductLoading());
 
-    var result = await _productRepo.checkProductInFavourites(
+    var result = await _productRepo.checkProductInFavorites(
       productId: productId,
     );
 
@@ -72,8 +73,7 @@ class ProductCubit extends Cubit<ProductState> {
   }
 
   Future<void> removeFromFavourites(String productId) async {
-    var result =
-        await _productRepo.removeFromFavourites(productId: productId);
+    var result = await _productRepo.removeFromFavourites(productId: productId);
     result.fold(
       (fail) {
         emit(ProductAddToFavoritesError(message: fail.errMessage));

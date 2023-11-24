@@ -93,7 +93,7 @@ class FavouriteButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen<AsyncValue<void>>(
-      toggleFavouriteProvider,
+      toggleFavoriteProvider,
       (_, state) => state.whenOrNull(
         error: (error, stackTrace) {
           customSnackBar(
@@ -103,15 +103,14 @@ class FavouriteButton extends ConsumerWidget {
         },
       ),
     );
-    final state = ref.watch(isProductFavouriteProvider(product.id.toString()));
+    final state = ref.watch(isProductFavoriteProvider(product.id.toString()));
 
     return state.when(
       data: (isFavourite) {
         return InkWell(
-          onTap: () =>
-              ref.read(toggleFavouriteProvider.notifier).toggleFavourite(
-                    product: product,
-                  ),
+          onTap: () => ref.read(toggleFavoriteProvider.notifier).toggleFavorite(
+                product: product,
+              ),
           child: Container(
             padding: EdgeInsets.all(getProportionateScreenWidth(15)),
             width: getProportionateScreenWidth(64),

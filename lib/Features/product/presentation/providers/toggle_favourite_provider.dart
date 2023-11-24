@@ -3,21 +3,21 @@ import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
 import 'package:e_commerce_app/Features/product/data/repos/product_repo.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final toggleFavouriteProvider =
-    AsyncNotifierProvider.autoDispose<ToggleFavouriteNotifier, void>(
-  ToggleFavouriteNotifier.new,
+final toggleFavoriteProvider =
+    AsyncNotifierProvider.autoDispose<ToggleFavoriteNotifier, void>(
+  ToggleFavoriteNotifier.new,
 );
 
-class ToggleFavouriteNotifier extends AutoDisposeAsyncNotifier<void>  {
+class ToggleFavoriteNotifier extends AutoDisposeAsyncNotifier<void> {
   @override
   FutureOr<void> build() {
     return null;
   }
 
-  Future<void> toggleFavourite({required ProductModel product}) async {
+  Future<void> toggleFavorite({required ProductModel product}) async {
     final productRepo = ref.read(productRepoProvider);
     state = const AsyncValue.loading();
-    var result = await productRepo.toggleFavourite(
+    var result = await productRepo.toggleFavorite(
       product: product.toJson(),
     );
     result.fold(
