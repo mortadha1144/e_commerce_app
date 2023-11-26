@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
 import 'package:e_commerce_app/Features/product/data/repos/product_repo.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'quantity_prvider.dart';
+import 'quantity_provider.dart';
 
 final addToCartProvider =
     AsyncNotifierProvider.autoDispose<AddToCartNotifier, void>(

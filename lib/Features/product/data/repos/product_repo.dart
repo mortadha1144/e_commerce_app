@@ -1,9 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:e_commerce_app/Features/product/data/models/favorite_model.dart';
+import 'package:e_commerce_app/Features/product/data/models/favorite_un_favorite_request.dart';
 import 'package:e_commerce_app/constants.dart';
 import 'package:e_commerce_app/core/errors/failures.dart';
 import 'package:e_commerce_app/Features/product/data/services/product_services.dart';
 import 'package:e_commerce_app/core/utils/constants/firebase_collection_name.dart';
+import 'package:e_commerce_app/core/utils/constants/firebase_field_name.dart';
 import 'package:e_commerce_app/core/utils/providers/firebase_providers.dart';
 import 'package:e_commerce_app/core/utils/typedefs.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -64,52 +67,50 @@ class ProductRepo {
     }
   }
 
-  Future<Either<Failure, void>> removeFromFavorites(
-      {required String productId}) async {
-    try {
-      await _productService
-          .getProductRef(
-            productId: productId,
-            innerCollection: kFavoritesCollection,
-          )
-          .delete();
-      return right(null);
-    } catch (e) {
-      return left(ServerFailure(e.toString()));
-    }
-  }
 
-  Future<Either<Failure, void>> toggleFavorite(
-      {required Map<String, dynamic> product}) async {
-    try {
-      DocRef productRef = _productService.getProductRef(
-        productId: product['id'].toString(),
-        innerCollection: kFavoritesCollection,
+
+  Future<void> toggleFavorite(
+      {required FavoriteUnFavoriteRequest request}) async {
+    final query = FirebaseFirestore.instance
+        .collection(FirebaseCollectionName.favorites)
+        .where(FirebaseFieldName.productId, isEqualTo: request.productId)
+        .where(FirebaseFieldName.userId, isEqualTo: request.likedBy)
+        .get();
+
+     final hasFavored = await query.then(
+      (snapshot) => snapshot.docs.isNotEmpty,
+    );
+    if (hasFavored) {
+      // delete the like
+      await query.then(
+          (snapshot) async {
+            for (final doc in snapshot.docs) {
+              await doc.reference.delete();
+            }
+          },
+        );
+    } else {
+      // post a favorite model
+      final favorite = FavoriteModel(
+        productId: request.productId,
+        likedBy: request.likedBy,
+        date: DateTime.now(),
       );
-      // check if product already exists in favorites
-      DocSnapshot oldProduct = await productRef.get();
-      if (oldProduct.exists) {
-        // remove product from favorites
-        await productRef.delete();
-      } else {
-        // add new product to favorites
-        await productRef.set(product);
-      }
-      return right(null);
-    } catch (e) {
-      return left(ServerFailure(e.toString()));
-    }
+
+      await FirebaseFirestore.instance
+          .collection(FirebaseCollectionName.favorites)
+          .add(favorite.toJson());
+    } 
   }
 
-  Stream<DocSnapshot> checkProductInFavorites({
+  Stream<QSnapshot> checkProductInFavorites({
     required ProductId productId,
     required UserId userId,
   }) {
     return _firebaseFirestore
-        .collection(FirebaseCollectionName.users)
-        .doc(userId)
         .collection(FirebaseCollectionName.favorites)
-        .doc(productId)
+        .where(FirebaseFieldName.productId, isEqualTo: productId)
+        .where(FirebaseFieldName.userId, isEqualTo: userId)
         .snapshots();
   }
 }

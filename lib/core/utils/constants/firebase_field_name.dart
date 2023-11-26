@@ -10,6 +10,7 @@ class FirebaseFieldName {
   static const lastName = 'lastName';
   static const phoneNumber = 'phoneNumber';
   static const product = 'product';
+  static const productId = 'product_id';
   static const category = 'category';
   static const description = 'description';
   static const id = 'id';

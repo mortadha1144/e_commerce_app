@@ -1,29 +1,27 @@
 import 'dart:async';
-import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
+
+import 'package:e_commerce_app/Features/product/data/models/favorite_un_favorite_request.dart';
 import 'package:e_commerce_app/Features/product/data/repos/product_repo.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_state/riverpod_state.dart';
 
 final toggleFavoriteProvider =
-    AsyncNotifierProvider.autoDispose<ToggleFavoriteNotifier, void>(
+    AsyncNotifierProvider.autoDispose<ToggleFavoriteNotifier, AsyncX<void>>(
   ToggleFavoriteNotifier.new,
 );
 
-class ToggleFavoriteNotifier extends AutoDisposeAsyncNotifier<void> {
+class ToggleFavoriteNotifier extends AutoDisposeAsyncNotifier<AsyncX<void>>
+    with AsyncXNotifierMixin<void> {
   @override
-  FutureOr<void> build() {
-    return null;
-  }
+  BuildXCallback<void> build() => idle();
 
-  Future<void> toggleFavorite({required ProductModel product}) async {
-    final productRepo = ref.read(productRepoProvider);
-    state = const AsyncValue.loading();
-    var result = await productRepo.toggleFavorite(
-      product: product.toJson(),
-    );
-    result.fold(
-      (failure) =>
-          state = AsyncValue.error(failure.errMessage, StackTrace.current),
-      (success) => state = const AsyncValue.data(null),
-    );
-  }
+  @useResult
+  RunXCallback<void> run(FavoriteUnFavoriteRequest request) => handle(
+        () async {
+          return await ref
+              .read(productRepoProvider)
+              .toggleFavorite(request: request);
+        },
+      );
 }

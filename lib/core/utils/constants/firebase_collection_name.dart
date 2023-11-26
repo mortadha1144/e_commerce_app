@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 @immutable
 class FirebaseCollectionName {
   static const thumbnails = 'thumbnails';
-  static const ctegories = 'ctegories';
+  static const categories = 'categories';
   static const home = 'home';
   static const specialOffers = 'special_offers';
   static const users = 'users';

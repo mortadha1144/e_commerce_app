@@ -67,24 +67,12 @@ class ProductCubit extends Cubit<ProductState> {
 
   Future<void> toggleFavourite(ProductModel product) async {
     if (_isFavourite) {
-      await removeFromFavourites(product.id.toString());
+      
     } else {
       await addToFavourite(product);
     }
   }
 
-  Future<void> removeFromFavourites(String productId) async {
-    var result = await _productRepo.removeFromFavorites(productId: productId);
-    result.fold(
-      (fail) {
-        emit(ProductAddToFavoritesError(message: fail.errMessage));
-      },
-      (success) {
-        _isFavourite = !_isFavourite;
-        emit(ProductAddToFavoritesSuccess(_isFavourite));
-      },
-    );
-  }
 
   Future<void> addToFavourite(ProductModel product) async {
     var result = await _productRepo.addToFavorites(product: product.toJson());

@@ -34,7 +34,7 @@ abstract class AppRouter {
       // ),
       GoRoute(
         path: '/',
-        builder: (context, state) => const SignInView(),
+        builder: (context, state) => const HomeView(),
       ),
       GoRoute(
         path: kHomeView,

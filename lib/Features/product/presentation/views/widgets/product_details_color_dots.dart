@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/widgets/rounded_icon_button.dart';
 import '../../../../../size_config.dart';
-import '../../providers/quantity_prvider.dart';
+import '../../providers/quantity_provider.dart';
 
 class ProductDetailsColorDots extends ConsumerWidget {
   const ProductDetailsColorDots({
