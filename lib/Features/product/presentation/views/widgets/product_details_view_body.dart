@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/Features/auth/providers/user_id_provider.dart';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
 import 'package:e_commerce_app/Features/product/presentation/providers/add_to_cart_provider.dart';
 import 'package:e_commerce_app/core/utils/functions/custom_snack_bar.dart';
@@ -5,6 +6,7 @@ import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_state/riverpod_state.dart';
 import '../../../../home/presentation/views/widgets/custom_prodect_details_appbar.dart';
 import 'product_details_color_dots.dart';
 import 'product_details_description.dart';
@@ -46,47 +48,49 @@ class ProductDetailsViewBody extends StatelessWidget {
                           ),
                           child: Consumer(
                             builder: (context, ref, child) {
-                              ref.listen<AsyncValue<void>>(
-                                addToCartProvider,
-                                (_, state) => state.whenOrNull(
-                                  error: (error, stackTrace) {
-                                    customSnackBar(
-                                      context,
-                                      error as String,
-                                    );
-                                  },
-                                  data: (data) => customSnackBar(
-                                    context,
-                                    'Product Added to cart successfully',
-                                  ),
-                                ),
-                              );
-                              final state = ref.watch(addToCartProvider);
+                              // ref.listen<AsyncValue<void>>(
+                              //   addToCartProvider,
+                              //   (_, state) => state.whenOrNull(
+                              //     error: (error, stackTrace) {
+                              //       customSnackBar(
+                              //         context,
+                              //         error as String,
+                              //       );
+                              //     },
+                              //     data: (data) => customSnackBar(
+                              //       context,
+                              //       'Product Added to cart successfully',
+                              //     ),
+                              //   ),
+                              // );
+                              final state = ref.watch(addProductToCartProvider);
                               return CustomButton(
                                 text: 'Add to Cart',
-                                isLoading: state is AsyncLoading,
-                                onPressed: () => ref
-                                    .read(addToCartProvider.notifier)
-                                    .addToCart(product: product),
+                                isLoading: state.isLoading,
+                                onPressed: () async {
+                                  final userId = ref.read(userIdProvider);
 
-                                //  BlocConsumer<ProductCubit, ProductState>(
-                                //   listener: (context, state) {
-                                //     if (state is ProductAddedToCartError) {
-                                //       customSnackBar(context, state.message);
-                                //     } else if (state is ProductAddedToCartSuccess) {
-                                //       customSnackBar(context,
-                                //           'Product Added to cart successfully');
-                                //     }
-                                //   },
-                                //   builder: (context, state) {
-                                //     return CustomButton(
-                                //       text: 'Add to Cart',
-                                //       isLoading: state is ProductAddedToCartLoading,
-                                //       onPressed: () async {
-                                //         context
-                                //             .read<ProductCubit>()
-                                //             .addToCart(product);
-                                //       },
+                                  if (userId == null) {
+                                    return;
+                                  }
+                                final addProduct = await  ref
+                                      .read(addProductToCartProvider.notifier)
+                                      .run(product);
+                                  addProduct.whenDataOrError(
+                                    data: (_) {
+                                      customSnackBar(
+                                        context,
+                                        'Product Added to cart successfully',
+                                      );
+                                    },
+                                    error: (error, stackTrace) {
+                                      customSnackBar(
+                                        context,
+                                        error as String,
+                                      );
+                                    },
+                                  );
+                                },
                               );
                             },
                           ),

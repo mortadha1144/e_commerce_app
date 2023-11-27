@@ -1,33 +1,35 @@
-import 'dart:async';
+import 'package:e_commerce_app/Features/auth/providers/user_id_provider.dart';
+import 'package:e_commerce_app/Features/cart/data/models/add_product_to_cart_request.dart';
+import 'package:e_commerce_app/Features/cart/providers/cart_repo_provider.dart';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
-import 'package:e_commerce_app/Features/product/data/repos/product_repo.dart';
+import 'package:e_commerce_app/Features/product/presentation/providers/quantity_provider.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'quantity_provider.dart';
+import 'package:riverpod_state/riverpod_state.dart';
 
-final addToCartProvider =
-    AsyncNotifierProvider.autoDispose<AddToCartNotifier, void>(
-  AddToCartNotifier.new,
+final addProductToCartProvider =
+    AsyncNotifierProvider.autoDispose<AddProductToCartNotifier, AsyncX<void>>(
+  AddProductToCartNotifier.new,
 );
 
-class AddToCartNotifier extends AutoDisposeAsyncNotifier<void>  {
+class AddProductToCartNotifier extends AutoDisposeAsyncNotifier<AsyncX<void>>
+    with AsyncXNotifierMixin<void> {
   @override
-  FutureOr<void> build() {
-    return null;
-  }
+  BuildXCallback<void> build() => idle();
 
-  Future<void> addToCart({required ProductModel product}) async {
-    final quantity = ref.read(quantityProvider);
-    final productRepo = ref.read(productRepoProvider);
-    state = const AsyncValue.loading();
-
-    var result = await productRepo.addToCart(
-      product: product.toJson(),
+  @useResult
+  RunXCallback<void> run(ProductModel product) {
+    final userId = ref.read(userIdProvider);
+    final quantity = ref.watch(quantityProvider);
+    final request = AddProductToCartRequest(
+      product: product,
+      userId: userId!,
       quantity: quantity,
     );
-    result.fold(
-      (failure) =>
-          state = AsyncValue.error(failure.errMessage, StackTrace.current),
-      (success) => state = const AsyncValue.data(null),
+    return handle(
+      () async {
+        return await ref.read(cartRepoProvider).addProductToCart(request);
+      },
     );
   }
 }

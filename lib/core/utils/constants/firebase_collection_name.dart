@@ -8,6 +8,7 @@ class FirebaseCollectionName {
   static const specialOffers = 'special_offers';
   static const users = 'users';
   static const cart = 'cart';
+  static const cartItems = 'cart_items';
   static const favorites = 'favorites';
   const FirebaseCollectionName._();
 }

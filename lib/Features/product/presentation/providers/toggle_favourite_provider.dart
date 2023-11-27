@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:e_commerce_app/Features/product/data/models/favorite_un_favorite_request.dart';
 import 'package:e_commerce_app/Features/product/data/repos/product_repo.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
