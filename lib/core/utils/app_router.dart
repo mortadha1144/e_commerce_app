@@ -6,12 +6,9 @@ import 'package:e_commerce_app/Features/auth/presentation/views/sign_in_view.dar
 import 'package:e_commerce_app/Features/auth/presentation/views/sign_up_view.dart';
 import 'package:e_commerce_app/Features/cart/presentation/views/cart_view.dart';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
-import 'package:e_commerce_app/Features/product/data/repos/product_repo.dart';
-import 'package:e_commerce_app/Features/home/presentation/cubits/product_cubit/product_cubit.dart';
 import 'package:e_commerce_app/Features/home/presentation/views/home_view.dart';
 import 'package:e_commerce_app/Features/product/presentation/views/product_details_view.dart';
 import 'package:e_commerce_app/Features/profile/presentation/views/profile_view.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class AppRouter {

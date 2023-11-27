@@ -3,12 +3,12 @@ import 'package:e_commerce_app/core/utils/typedefs.dart';
 import 'package:flutter/foundation.dart' show immutable;
 
 @immutable
-class AddProductToCartRequest {
+class AddOrDeleteProductInCartRequest {
   final ProductModel product;
   final UserId userId;
   final int quantity;
 
-  const AddProductToCartRequest({
+  const AddOrDeleteProductInCartRequest({
     required this.product,
     required this.userId,
     required this.quantity,

@@ -1,31 +1,66 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_commerce_app/Features/cart/data/models/add_product_to_cart_request.dart';
-import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
+import 'package:e_commerce_app/Features/cart/data/models/add_or_delete_product_in_cart_request.dart';
 import 'package:e_commerce_app/core/utils/constants/firebase_collection_name.dart';
 import 'package:e_commerce_app/core/utils/constants/firebase_field_name.dart';
-import 'package:e_commerce_app/core/utils/providers/firebase_providers.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:e_commerce_app/core/utils/typedefs.dart';
 
 abstract class CartRepo {
-  Future<void> addProductToCart(AddProductToCartRequest request);
+  Future<void> addOrDeleteProductInCart(
+      AddOrDeleteProductInCartRequest request);
+
+  Stream<DocSnapshot> isProductInCart({
+    required ProductId productId,
+    required UserId userId,
+  });
 }
 
 class CartRepoImpl implements CartRepo {
-  final FirebaseFirestore _firestore;
+  final FirebaseFirestore _firebaseFirestore;
 
-  CartRepoImpl(this._firestore);
+  CartRepoImpl(this._firebaseFirestore);
 
   @override
-  Future<void> addProductToCart(AddProductToCartRequest request) async {
-    Map<String, dynamic> data = {
-      FirebaseFieldName.product: request.product.toJson(),
-      FirebaseFieldName.quantity: request.quantity,
-    };
-    await _firestore
-        .collection(FirebaseCollectionName.cart)
+  Future<void> addOrDeleteProductInCart(
+      AddOrDeleteProductInCartRequest request) async {
+    final query = FirebaseFirestore.instance
+        .collection(FirebaseCollectionName.users)
         .doc(request.userId)
-        .collection(FirebaseCollectionName.cartItems)
+        .collection(FirebaseCollectionName.cart)
         .doc(request.product.id.toString())
-        .set(data); 
+        .get();
+
+    final isProductInCart = await query.then((snapshot) => snapshot.exists);
+
+    if (isProductInCart) {
+      // delete product from cart
+      await query.then((snapshot) => snapshot.reference.delete());
+    } else {
+      Map<String, dynamic> data = {
+        FirebaseFieldName.product: request.product.toJson(),
+        FirebaseFieldName.quantity: request.quantity,
+      };
+      await _firebaseFirestore
+          .collection(FirebaseCollectionName.users)
+          .doc(request.userId)
+          .collection(FirebaseCollectionName.cart)
+          .doc(request.product.id.toString())
+          .set(data);
+    }
+  }
+
+  @override
+  Stream<DocSnapshot> isProductInCart({
+    required ProductId productId,
+    required UserId userId,
+  }) {
+    return _firebaseFirestore
+        .collection(FirebaseCollectionName.users)
+        .doc(userId)
+        .collection(FirebaseCollectionName.cart)
+        .doc(productId)
+        .snapshots();
+    // .where(FirebaseFieldName.productId, isEqualTo: productId)
+    // .where(FirebaseFieldName.userId, isEqualTo: userId)
+    // .snapshots();
   }
 }
