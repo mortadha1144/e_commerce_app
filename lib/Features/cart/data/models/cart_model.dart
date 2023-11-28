@@ -4,11 +4,20 @@ import 'package:e_commerce_app/Features/home/data/models/rating_model.dart';
 class CartModel {
   final ProductModel product;
   final int numOfItem;
- final DateTime date = DateTime.now();
   CartModel({
     required this.product,
     required this.numOfItem,
   });
+
+  factory CartModel.fromJson(Map<String, dynamic> json) => CartModel(
+        product: ProductModel.fromJson(json["product"]),
+        numOfItem: json["numOfItem"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "product": product.toJson(),
+        "numOfItem": numOfItem,
+      };
 }
 
 List<CartModel> demoCarts = [

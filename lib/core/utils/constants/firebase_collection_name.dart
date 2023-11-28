@@ -10,5 +10,6 @@ class FirebaseCollectionName {
   static const cart = 'cart';
   static const cartItems = 'cart_items';
   static const favorites = 'favorites';
+  static const products = 'products';
   const FirebaseCollectionName._();
 }

@@ -17,8 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$FavoriteModel {
   String get productId => throw _privateConstructorUsedError;
-  @JsonKey(name: FirebaseFieldName.userId)
-  String get likedBy => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -33,10 +31,7 @@ abstract class $FavoriteModelCopyWith<$Res> {
           FavoriteModel value, $Res Function(FavoriteModel) then) =
       _$FavoriteModelCopyWithImpl<$Res, FavoriteModel>;
   @useResult
-  $Res call(
-      {String productId,
-      @JsonKey(name: FirebaseFieldName.userId) String likedBy,
-      DateTime date});
+  $Res call({String productId, DateTime date});
 }
 
 /// @nodoc
@@ -53,17 +48,12 @@ class _$FavoriteModelCopyWithImpl<$Res, $Val extends FavoriteModel>
   @override
   $Res call({
     Object? productId = null,
-    Object? likedBy = null,
     Object? date = null,
   }) {
     return _then(_value.copyWith(
       productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
-              as String,
-      likedBy: null == likedBy
-          ? _value.likedBy
-          : likedBy // ignore: cast_nullable_to_non_nullable
               as String,
       date: null == date
           ? _value.date
@@ -81,10 +71,7 @@ abstract class _$$FavoriteModelImplCopyWith<$Res>
       __$$FavoriteModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String productId,
-      @JsonKey(name: FirebaseFieldName.userId) String likedBy,
-      DateTime date});
+  $Res call({String productId, DateTime date});
 }
 
 /// @nodoc
@@ -99,17 +86,12 @@ class __$$FavoriteModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? productId = null,
-    Object? likedBy = null,
     Object? date = null,
   }) {
     return _then(_$FavoriteModelImpl(
       productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
-              as String,
-      likedBy: null == likedBy
-          ? _value.likedBy
-          : likedBy // ignore: cast_nullable_to_non_nullable
               as String,
       date: null == date
           ? _value.date
@@ -123,23 +105,17 @@ class __$$FavoriteModelImplCopyWithImpl<$Res>
 
 @jsonSerializableRequest
 class _$FavoriteModelImpl extends _FavoriteModel {
-  const _$FavoriteModelImpl(
-      {required this.productId,
-      @JsonKey(name: FirebaseFieldName.userId) required this.likedBy,
-      required this.date})
+  const _$FavoriteModelImpl({required this.productId, required this.date})
       : super._();
 
   @override
   final String productId;
   @override
-  @JsonKey(name: FirebaseFieldName.userId)
-  final String likedBy;
-  @override
   final DateTime date;
 
   @override
   String toString() {
-    return 'FavoriteModel(productId: $productId, likedBy: $likedBy, date: $date)';
+    return 'FavoriteModel(productId: $productId, date: $date)';
   }
 
   @override
@@ -149,13 +125,12 @@ class _$FavoriteModelImpl extends _FavoriteModel {
             other is _$FavoriteModelImpl &&
             (identical(other.productId, productId) ||
                 other.productId == productId) &&
-            (identical(other.likedBy, likedBy) || other.likedBy == likedBy) &&
             (identical(other.date, date) || other.date == date));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, productId, likedBy, date);
+  int get hashCode => Object.hash(runtimeType, productId, date);
 
   @JsonKey(ignore: true)
   @override
@@ -174,15 +149,11 @@ class _$FavoriteModelImpl extends _FavoriteModel {
 abstract class _FavoriteModel extends FavoriteModel {
   const factory _FavoriteModel(
       {required final String productId,
-      @JsonKey(name: FirebaseFieldName.userId) required final String likedBy,
       required final DateTime date}) = _$FavoriteModelImpl;
   const _FavoriteModel._() : super._();
 
   @override
   String get productId;
-  @override
-  @JsonKey(name: FirebaseFieldName.userId)
-  String get likedBy;
   @override
   DateTime get date;
   @override

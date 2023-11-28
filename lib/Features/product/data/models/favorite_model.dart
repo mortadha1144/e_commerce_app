@@ -15,7 +15,6 @@ class FavoriteModel with _$FavoriteModel {
   @jsonSerializableRequest
   const factory FavoriteModel({
     required ProductId productId,
-    @JsonKey(name: FirebaseFieldName.userId) required UserId likedBy,
     required DateTime date,
   }) = _FavoriteModel;
 }

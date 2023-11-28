@@ -9,6 +9,5 @@ part of 'favorite_model.dart';
 Map<String, dynamic> _$$FavoriteModelImplToJson(_$FavoriteModelImpl instance) =>
     <String, dynamic>{
       'product_id': instance.productId,
-      'uid': instance.likedBy,
       'date': instance.date.toIso8601String(),
     };

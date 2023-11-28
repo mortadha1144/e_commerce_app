@@ -67,40 +67,38 @@ class ProductRepo {
     }
   }
 
-
-
   Future<void> toggleFavorite(
       {required FavoriteUnFavoriteRequest request}) async {
-    final query = FirebaseFirestore.instance
+    final query = _firebaseFirestore
+        .collection(FirebaseCollectionName.users)
+        .doc(request.likedBy)
         .collection(FirebaseCollectionName.favorites)
         .where(FirebaseFieldName.productId, isEqualTo: request.productId)
-        .where(FirebaseFieldName.userId, isEqualTo: request.likedBy)
         .get();
 
-     final hasFavored = await query.then(
+    final hasFavored = await query.then(
       (snapshot) => snapshot.docs.isNotEmpty,
     );
     if (hasFavored) {
       // delete the like
       await query.then(
-          (snapshot) async {
-            for (final doc in snapshot.docs) {
-              await doc.reference.delete();
-            }
-          },
-        );
+        (snapshot) async {
+          for (final doc in snapshot.docs) {
+            await doc.reference.delete();
+          }
+        },
+      );
     } else {
       // post a favorite model
       final favorite = FavoriteModel(
         productId: request.productId,
-        likedBy: request.likedBy,
         date: DateTime.now(),
       );
 
       await FirebaseFirestore.instance
           .collection(FirebaseCollectionName.favorites)
           .add(favorite.toJson());
-    } 
+    }
   }
 
   Stream<QSnapshot> checkProductInFavorites({

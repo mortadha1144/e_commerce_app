@@ -5,6 +5,7 @@ import 'package:e_commerce_app/Features/home/data/models/category_model.dart';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
 import 'package:e_commerce_app/Features/home/data/models/special_offer_model.dart';
 import 'package:e_commerce_app/core/errors/failures.dart';
+import 'package:e_commerce_app/core/utils/constants/firebase_collection_name.dart';
 
 import '../../../../constants.dart';
 import '../../../../core/utils/api_service.dart';
@@ -44,13 +45,19 @@ class HomeRepo {
   }
 
   Future<List<ProductModel>> fetchPopularProducts() async {
-    var data = await apiService.get(endPoin: 'products');
-    List<ProductModel> products = [];
+    // var data = await apiService.get(endPoin: 'products');
+    // List<ProductModel> products = [];
 
-    for (var item in data) {
-      products.add(ProductModel.fromJson(item));
+    // for (var item in data) {
+    //   products.add(ProductModel.fromJson(item));
+    // }
+    // products.removeWhere((element) => element.rating!.rate! < 3);
+    var data = await db.collection(FirebaseCollectionName.products).get();
+    List<ProductModel> products = [];
+    for (var docSnapshot in data.docs) {
+      products.add(ProductModel.fromJson(docSnapshot.data()));
     }
-    products.removeWhere((element) => element.rating!.rate! < 3);
+
     return products;
   }
 
@@ -85,7 +92,6 @@ class HomeRepo {
       );
     }
   }
-
 
   Future<List<SpecialOfferModel>> fetchSpecialOffers() async {
     var data =
