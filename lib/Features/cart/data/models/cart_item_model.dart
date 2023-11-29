@@ -8,7 +8,6 @@ part 'cart_item_model.g.dart';
 
 @freezed
 class CartItemModel with _$CartItemModel {
-  const CartItemModel._();
   
  const factory CartItemModel({
     required ProductModel product,

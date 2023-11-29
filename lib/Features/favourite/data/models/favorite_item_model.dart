@@ -9,7 +9,6 @@ part 'favorite_item_model.g.dart';
 
 @freezed
 class FavoriteItemModel with _$FavoriteItemModel {
-  const FavoriteItemModel._();
 
    factory FavoriteItemModel({
     required ProductModel product,

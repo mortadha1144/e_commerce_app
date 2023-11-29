@@ -9,6 +9,6 @@ class FavouritView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(cartProvider);
     return Center(
-        child: Text(state.cartItems[0].product.description.toString()));
+        child: Text(state[0].product.description.toString()));
   }
 }

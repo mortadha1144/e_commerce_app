@@ -107,9 +107,8 @@ class __$$FavoriteItemModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$FavoriteItemModelImpl extends _FavoriteItemModel {
-  _$FavoriteItemModelImpl({required this.product, required this.date})
-      : super._();
+class _$FavoriteItemModelImpl implements _FavoriteItemModel {
+  _$FavoriteItemModelImpl({required this.product, required this.date});
 
   factory _$FavoriteItemModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$FavoriteItemModelImplFromJson(json);
@@ -152,11 +151,10 @@ class _$FavoriteItemModelImpl extends _FavoriteItemModel {
   }
 }
 
-abstract class _FavoriteItemModel extends FavoriteItemModel {
+abstract class _FavoriteItemModel implements FavoriteItemModel {
   factory _FavoriteItemModel(
       {required final ProductModel product,
       required final DateTime date}) = _$FavoriteItemModelImpl;
-  _FavoriteItemModel._() : super._();
 
   factory _FavoriteItemModel.fromJson(Map<String, dynamic> json) =
       _$FavoriteItemModelImpl.fromJson;

@@ -72,7 +72,6 @@ class CounterWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final quantity = ref.watch(quantityProvider);
     return Row(
       children: [
         RoundedIconButton(

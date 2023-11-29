@@ -52,7 +52,6 @@ class ProductDetailsViewBody extends StatelessWidget {
                             builder: (context, ref, child) {
                               final isProductInCart = ref
                                   .watch(cartProvider)
-                                  .cartItems
                                   .any((x) => x.product.id == product.id);
                               return CustomButton(
                                 text: isProductInCart

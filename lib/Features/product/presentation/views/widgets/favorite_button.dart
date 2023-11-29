@@ -1,7 +1,7 @@
 import 'package:e_commerce_app/Features/auth/providers/user_id_provider.dart';
-import 'package:e_commerce_app/Features/product/data/models/favorite_item_model.dart';
+import 'package:e_commerce_app/Features/favourite/data/models/favorite_item_model.dart';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
-import 'package:e_commerce_app/Features/product/presentation/providers/favorites_provider.dart';
+import 'package:e_commerce_app/Features/favourite/providers/favorites_provider.dart';
 import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -17,10 +17,8 @@ class FavoriteButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isProductFavorite = ref
-        .watch(favoritesProvider)
-        .favoriteItems
-        .any((x) => x.product.id == product.id);
+    final isProductFavorite =
+        ref.watch(favoriteProvider).any((x) => x.product.id == product.id);
 
     return InkWell(
       onTap: () async {
@@ -31,11 +29,11 @@ class FavoriteButton extends ConsumerWidget {
         }
 
         if (isProductFavorite) {
-          ref.read(favoritesProvider.notifier).remove(product.id!);
+          ref.read(favoriteProvider.notifier).remove(product.id!);
         } else {
           final favoriteItemModel =
               FavoriteItemModel(product: product, date: DateTime.now());
-          ref.read(favoritesProvider.notifier).add(favoriteItemModel);
+          ref.read(favoriteProvider.notifier).add(favoriteItemModel);
         }
       },
       child: Container(
