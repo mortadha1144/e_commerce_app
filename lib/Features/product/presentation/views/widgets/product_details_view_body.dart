@@ -3,6 +3,7 @@ import 'package:e_commerce_app/Features/cart/data/models/cart_item_model.dart';
 import 'package:e_commerce_app/Features/cart/providers/cart_provider.dart';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
 import 'package:e_commerce_app/Features/product/presentation/providers/quantity_provider.dart';
+import 'package:e_commerce_app/core/utils/constants/strings.dart';
 import 'package:e_commerce_app/core/utils/functions/custom_snack_bar.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_app/size_config.dart';
@@ -50,12 +51,13 @@ class ProductDetailsViewBody extends StatelessWidget {
                           child: Consumer(
                             builder: (context, ref, child) {
                               final isProductInCart = ref
-                                  .watch(cartProvider.notifier)
-                                  .contains(product.id!);
+                                  .watch(cartProvider)
+                                  .cartItems
+                                  .any((x) => x.product.id == product.id);
                               return CustomButton(
                                 text: isProductInCart
-                                    ? 'Remove From Cart'
-                                    : 'Add to Cart',
+                                    ? Strings.removeFromCart
+                                    : Strings.addToCart,
                                 // isLoading: state.isLoading,
                                 onPressed: () async {
                                   final userId = ref.read(userIdProvider);
@@ -73,7 +75,7 @@ class ProductDetailsViewBody extends StatelessWidget {
                                         .then(
                                           (value) => customSnackBar(
                                             context,
-                                            'Product Removed from cart successfully',
+                                            Strings.productRemovedFromCart,
                                           ),
                                         );
                                   } else {
@@ -88,7 +90,7 @@ class ProductDetailsViewBody extends StatelessWidget {
                                         .then(
                                           (value) => customSnackBar(
                                             context,
-                                            'Product Added to cart successfully',
+                                            Strings.productAddedToCart,
                                           ),
                                         );
                                   }

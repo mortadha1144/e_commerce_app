@@ -56,4 +56,5 @@ mixin PrefKeys {
   static const String authentication = 'authentication';
   static const String settings = 'settings';
   static const String cart = 'cartItems';
+  static const String favoriteItems = 'favoriteItems';
 }

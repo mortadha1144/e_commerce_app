@@ -1,14 +1,8 @@
-import 'package:e_commerce_app/Features/product/presentation/providers/toggle_favourite_provider.dart';
 import 'package:e_commerce_app/Features/product/presentation/views/widgets/favorite_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-
 import '../../../../../constants.dart';
-import '../../../../../core/utils/functions/custom_snack_bar.dart';
 import '../../../../../size_config.dart';
 import '../../../data/models/product_model.dart';
-import '../../providers/is_product_favourite_provider.dart';
 
 class ProductDetailsDescription extends StatelessWidget {
   const ProductDetailsDescription({
