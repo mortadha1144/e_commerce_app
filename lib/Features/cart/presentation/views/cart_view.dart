@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/Features/cart/data/models/cart_model.dart';
+import 'package:e_commerce_app/Features/cart/data/models/cart_item_model.dart';
 import 'package:e_commerce_app/Features/cart/presentation/views/widgets/cart_view_body.dart';
 import 'package:e_commerce_app/constants.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';

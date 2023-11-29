@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../constants.dart';
-import '../../../data/models/cart_model.dart';
+import '../../../data/models/cart_item_model.dart';
 
 class CartItemCard extends StatelessWidget {
   const CartItemCard({
@@ -9,7 +9,7 @@ class CartItemCard extends StatelessWidget {
     required this.card,
   });
 
-  final CartModel card;
+  final CartItemModel card;
 
   @override
   Widget build(BuildContext context) {

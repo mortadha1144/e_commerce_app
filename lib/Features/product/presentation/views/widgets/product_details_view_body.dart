@@ -1,17 +1,13 @@
 import 'package:e_commerce_app/Features/auth/providers/user_id_provider.dart';
-import 'package:e_commerce_app/Features/cart/data/models/add_or_delete_product_in_cart_request.dart';
-import 'package:e_commerce_app/Features/cart/data/models/cart_model.dart';
-import 'package:e_commerce_app/Features/cart/providers/cashed_card_provider.dart';
+import 'package:e_commerce_app/Features/cart/data/models/cart_item_model.dart';
+import 'package:e_commerce_app/Features/cart/providers/cart_provider.dart';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
-import 'package:e_commerce_app/Features/product/presentation/providers/add_or_delete_product_in_cart_provider.dart';
-import 'package:e_commerce_app/Features/product/presentation/providers/is_product_in_cart_provider.dart';
 import 'package:e_commerce_app/Features/product/presentation/providers/quantity_provider.dart';
 import 'package:e_commerce_app/core/utils/functions/custom_snack_bar.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod_state/riverpod_state.dart';
 import '../../../../home/presentation/views/widgets/custom_prodect_details_appbar.dart';
 import 'product_details_color_dots.dart';
 import 'product_details_description.dart';
@@ -53,16 +49,14 @@ class ProductDetailsViewBody extends StatelessWidget {
                           ),
                           child: Consumer(
                             builder: (context, ref, child) {
-                              final state =
-                                  ref.watch(addOrDeleteProductInCartProvider);
                               final isProductInCart = ref
-                                  .watch(cashedCardProvider.notifier)
+                                  .watch(cartProvider.notifier)
                                   .contains(product.id!);
                               return CustomButton(
                                 text: isProductInCart
                                     ? 'Remove From Cart'
                                     : 'Add to Cart',
-                                isLoading: state.isLoading,
+                                // isLoading: state.isLoading,
                                 onPressed: () async {
                                   final userId = ref.read(userIdProvider);
 
@@ -74,45 +68,30 @@ class ProductDetailsViewBody extends StatelessWidget {
 
                                   if (isProductInCart) {
                                     await ref
-                                        .read(cashedCardProvider.notifier)
-                                        .remove(product.id!);
+                                        .read(cartProvider.notifier)
+                                        .remove(product.id!)
+                                        .then(
+                                          (value) => customSnackBar(
+                                            context,
+                                            'Product Removed from cart successfully',
+                                          ),
+                                        );
                                   } else {
-                                    final cartItem = CartModel(
-                                        product: product, numOfItem: quantity);
+                                    final cartItem = CartItemModel(
+                                      product: product,
+                                      quantity: quantity,
+                                    );
 
                                     await ref
-                                        .read(cashedCardProvider.notifier)
-                                        .add(cartItem);
+                                        .read(cartProvider.notifier)
+                                        .add(cartItem)
+                                        .then(
+                                          (value) => customSnackBar(
+                                            context,
+                                            'Product Added to cart successfully',
+                                          ),
+                                        );
                                   }
-
-                                  final request =
-                                      AddOrDeleteProductInCartRequest(
-                                    product: product,
-                                    userId: userId,
-                                    quantity: quantity,
-                                  );
-
-                                  final addOrDeleteProduct = await ref
-                                      .read(addOrDeleteProductInCartProvider
-                                          .notifier)
-                                      .run(request);
-
-                                  addOrDeleteProduct.whenDataOrError(
-                                    data: (_) {
-                                      customSnackBar(
-                                        context,
-                                        isProductInCart
-                                            ? 'Product Removed from cart successfully'
-                                            : 'Product Added to cart successfully',
-                                      );
-                                    },
-                                    error: (error, stackTrace) {
-                                      customSnackBar(
-                                        context,
-                                        error as String,
-                                      );
-                                    },
-                                  );
                                 },
                               );
                             },
