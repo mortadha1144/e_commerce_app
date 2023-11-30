@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/Features/auth/providers/user_id_provider.dart';
 import 'package:e_commerce_app/Features/cart/data/models/cart_item_model.dart';
 import 'package:e_commerce_app/Features/cart/providers/cart_provider.dart';
+import 'package:e_commerce_app/Features/cart/providers/is_product_in_cart_provider.dart';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
 import 'package:e_commerce_app/Features/product/presentation/providers/quantity_provider.dart';
 import 'package:e_commerce_app/core/utils/constants/strings.dart';
@@ -51,8 +52,7 @@ class ProductDetailsViewBody extends StatelessWidget {
                           child: Consumer(
                             builder: (context, ref, child) {
                               final isProductInCart = ref
-                                  .watch(cartProvider)
-                                  .any((x) => x.product.id == product.id);
+                                  .watch(isProductInCartProvider(product.id!));
                               return CustomButton(
                                 text: isProductInCart
                                     ? Strings.removeFromCart

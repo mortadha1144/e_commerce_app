@@ -1,7 +1,7 @@
 import 'package:e_commerce_app/Features/auth/providers/user_id_provider.dart';
 import 'package:e_commerce_app/Features/favourite/data/models/favorite_item_model.dart';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
-import 'package:e_commerce_app/Features/favourite/providers/favorites_provider.dart';
+import 'package:e_commerce_app/Features/favourite/providers/favorite_provider.dart';
 import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
