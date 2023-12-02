@@ -1,24 +1,35 @@
 import 'package:e_commerce_app/Features/auth/data/constants/constants.dart';
+import 'package:e_commerce_app/Features/auth/data/models/auth_state.dart';
 import 'package:e_commerce_app/core/utils/enums/enums.dart';
 import 'package:e_commerce_app/core/utils/typedefs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class Authenticator {
-  const Authenticator();
+abstract class AuthRepo {
   UserId? get userId => FirebaseAuth.instance.currentUser?.uid;
   bool get isAlreadyLoggedIn => userId != null;
   String get displayName =>
       FirebaseAuth.instance.currentUser?.displayName ?? '';
   String? get email => FirebaseAuth.instance.currentUser?.email;
+  Future<AuthResult> loginWithFacebook();
+  Future<AuthResult> loginWithGoogle();
+  Future<AuthState> loginWithEmailAndPassword({
+    required String email,
+    required String password,
+  });
+  Future<void> logOut();
+}
 
+class AuthRepoImpl extends AuthRepo {
+  @override
   Future<void> logOut() async {
     await FirebaseAuth.instance.signOut();
     await GoogleSignIn().signOut();
     await FirebaseAuth.instance.signOut();
   }
 
+  @override
   Future<AuthResult> loginWithFacebook() async {
     final loginResult = await FacebookAuth.instance.login();
     final token = loginResult.accessToken?.token;
@@ -50,6 +61,7 @@ class Authenticator {
     }
   }
 
+  @override
   Future<AuthResult> loginWithGoogle() async {
     final GoogleSignIn googleSignIn = GoogleSignIn(
       scopes: [
@@ -70,8 +82,22 @@ class Authenticator {
     try {
       await FirebaseAuth.instance.signInWithCredential(oauthCredentials);
       return AuthResult.success;
-    } catch(e) {
+    } catch (e) {
       return AuthResult.failure;
     }
+  }
+
+  @override
+  Future<AuthState> loginWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
+    
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return AuthState(result: AuthResult.success, isLoading: false, userId: userId);
+   
   }
 }

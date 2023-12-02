@@ -3,13 +3,17 @@ import 'package:e_commerce_app/Features/auth/data/models/user_info_payload.dart'
 import 'package:e_commerce_app/core/utils/constants/firebase_collection_name.dart';
 import 'package:e_commerce_app/core/utils/constants/firebase_field_name.dart';
 import 'package:e_commerce_app/core/utils/typedefs.dart';
-import 'package:flutter/foundation.dart' show immutable;
 
+abstract class UserRepo {
+  Future<bool> saveUserInfo({
+    required UserId userId,
+    required String displayName,
+    required String? email,
+  });
+}
 
-@immutable
-class UserInfoStorage {
-  const UserInfoStorage();
-
+class UserRepoImpl extends UserRepo {
+  @override
   Future<bool> saveUserInfo({
     required UserId userId,
     required String displayName,
@@ -26,7 +30,7 @@ class UserInfoStorage {
           )
           .limit(1)
           .get();
-
+      // first check if the user already exists
       if (userInfo.docs.isNotEmpty) {
         // user already exists
         await userInfo.docs.first.reference.update({
@@ -52,6 +56,6 @@ class UserInfoStorage {
     } catch (e) {
       return false;
     }
-    // first check if the user already exists
+    
   }
 }
