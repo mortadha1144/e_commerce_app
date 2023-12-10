@@ -5,8 +5,10 @@ import 'package:e_commerce_app/Features/auth/providers/auth_provider_test.dart';
 import 'package:e_commerce_app/Features/auth/providers/auth_state_provider.dart';
 import 'package:e_commerce_app/Features/auth/providers/is_logged_in_provider.dart';
 import 'package:e_commerce_app/Features/auth/providers/login_with_email_and_password.dart';
+import 'package:e_commerce_app/core/errors/failures.dart';
 import 'package:e_commerce_app/core/utils/enums/enums.dart';
 import 'package:e_commerce_app/core/utils/functions/custom_snack_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -90,13 +92,14 @@ class _SignInFormState extends State<SignInForm> {
           ),
           Consumer(
             builder: (context, ref, child) {
-              ref.listen(authStateProvider2, (previous, next) {
-                if (next.hasError) {
-                  // addError(error: errors.toString());
-                }
-              });
-
-              final authState = ref.watch(authStateProvider2);
+              // ref.listen(authStateProvider2, (previous, next) {
+              //   if (next.hasError) {
+              //     // addError(error: errors.toString());
+              //   }
+              // });
+              final isLogged = ref.watch(isLoggedInT);
+              final authState =
+                  ref.watch(loginWithEmailAndPasswordNotifierProvider);
 
               return CustomButton(
                 text: 'Continue',
@@ -112,30 +115,20 @@ class _SignInFormState extends State<SignInForm> {
                     //     .signInUser(email: email!, password: password!);
 
                     final login = await ref
-                        .read(authStateProvider2.notifier)
+                        .read(
+                            loginWithEmailAndPasswordNotifierProvider.notifier)
                         .loginWithEmailAndPassword(
                           email: email!,
                           password: password!,
                         );
-                    login.whenOrNull(
+                    print(isLogged);
+                    login.whenDataOrError(
+                      data: (data) {},
                       error: (error, stackTrace) {
                         errors.clear();
-                        addError(error: error.toString());
+                        addError(error: error!.getErrorMessage);
                       },
                     );
-
-                    // authState.whenOrNull(
-                    //     data: (data) {
-                    //       if (data.result == AuthResult.success) {
-                    //         errors.clear();
-                    //         context.push(AppRouter.kLoginSuccessView);
-                    //       }
-                    //     },
-                    //     loading: () {},
-                    //     error: (error, stack) {
-                    //       errors.clear();
-                    //       addError(error: error.toString());
-                    //     });
                   }
                 },
               );
