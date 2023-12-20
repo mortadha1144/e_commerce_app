@@ -30,7 +30,11 @@ class CustomFormError extends StatelessWidget {
         SizedBox(
           width: getProportionateScreenWidth(10),
         ),
-        Text(error),
+        Text(
+          error,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
       ],
     );
   }

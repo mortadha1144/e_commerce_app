@@ -1,6 +1,6 @@
 {
-    "helloWorld": "Hello World!",
-    "@helloWorld": {
-      "description": "The conventional newborn programmer greeting"
-    }
+    "emailAlreadyInUse": "The email address is already in use by another account.",
+    "http_unexpected_error": "Unexpected error occurred",
+    "wrongPassword": "Wrong password provided for that user."
+
 }

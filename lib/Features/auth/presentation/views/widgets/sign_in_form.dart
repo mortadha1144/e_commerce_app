@@ -7,6 +7,7 @@ import 'package:e_commerce_app/Features/auth/providers/is_logged_in_provider.dar
 import 'package:e_commerce_app/Features/auth/providers/login_with_email_and_password.dart';
 import 'package:e_commerce_app/core/errors/failures.dart';
 import 'package:e_commerce_app/core/utils/enums/enums.dart';
+import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/utils/functions/custom_snack_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -126,7 +127,7 @@ class _SignInFormState extends State<SignInForm> {
                       data: (data) {},
                       error: (error, stackTrace) {
                         errors.clear();
-                        addError(error: error!.getErrorMessage);
+                        addError(error: context.getErrorMessage(error));
                       },
                     );
                   }

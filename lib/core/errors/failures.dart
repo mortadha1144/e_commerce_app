@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 abstract class Failure {
   final String errMessage;
@@ -74,17 +75,17 @@ class ServerFailure extends Failure {
 }
 
 
-extension GetError on Object {
-  String get getErrorMessage {
-    String errMessage = '';
-    if (this is FirebaseAuthException) {
-      errMessage =
-          ServerFailure.fromFirebaseAuthException(this as FirebaseAuthException)
-              .errMessage;
+// extension GetError on Object {
+//   String get getErrorMessage {
+//     String errMessage = '';
+//     if (this is FirebaseAuthException) {
+//       errMessage =
+//           ServerFailure.fromFirebaseAuthException(this as FirebaseAuthException)
+//               .errMessage;
    
-    } else {
-      errMessage = ServerFailure(toString()).errMessage;
-    }
-    return errMessage;
-  }
-}
+//     } else {
+//       errMessage = ServerFailure(toString()).errMessage;
+//     }
+//     return errMessage;
+//   }
+// }

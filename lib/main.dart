@@ -64,6 +64,7 @@ class MyApp extends StatelessWidget {
         theme: theme(),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
+        locale: const Locale("ar"),
       ),
     );
   }
