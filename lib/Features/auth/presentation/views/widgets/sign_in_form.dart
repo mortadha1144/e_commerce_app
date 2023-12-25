@@ -9,12 +9,12 @@ import 'package:e_commerce_app/core/errors/failures.dart';
 import 'package:e_commerce_app/core/utils/enums/enums.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/utils/functions/custom_snack_bar.dart';
+import 'package:e_commerce_app/core/utils/network/state.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod_state/riverpod_state.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_router.dart';
@@ -122,10 +122,10 @@ class _SignInFormState extends State<SignInForm> {
                           email: email!,
                           password: password!,
                         );
-                    print(isLogged);
+                    
                     login.whenDataOrError(
-                      data: (data) {},
-                      error: (error, stackTrace) {
+                      data: (_) => context.push(AppRouter.kLoginSuccessView),
+                      error: (error, _) {
                         errors.clear();
                         addError(error: context.getErrorMessage(error));
                       },

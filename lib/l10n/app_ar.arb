@@ -1,6 +1,12 @@
 {
     "emailAlreadyInUse": "الايميل مستخدم بالفعل",
     "http_unexpected_error": "حدث خطأ غير متوقع",
-    "wrongPassword": "كلمة المرور خاطئة"
-
+    "wrongPassword": "كلمة المرور خاطئة",
+    "invalidEmail": "الايميل غير صحيح",
+    "operationNotAllowed": "هذا الحساب غير فعال",
+    "weakPassword": "كلمة المرور ضعيفة",
+    "userDisabled": "هذا الحساب غير فعال",
+    "userNotFound": "الحساب غير موجود",
+    "authInvalidEmail": "الايميل غير صحيح",
+    "authUserNotFound": "الحساب غير موجود"
 }

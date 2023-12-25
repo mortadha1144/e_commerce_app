@@ -26,6 +26,13 @@ enum Update { force }
 class NetworkExceptions with _$NetworkExceptions {
   const factory NetworkExceptions.emailAlreadyInUse() = EmailAlreadyInUse;
   const factory NetworkExceptions.wrongPassword() = WrongPassword;
+  const factory NetworkExceptions.invalidEmail() = InvalidEmail;
+  const factory NetworkExceptions.operationNotAllowed() = OperationNotAllowed;
+  const factory NetworkExceptions.weakPassword() = WeakPassword;
+  const factory NetworkExceptions.userDisabled() = UserDisabled;
+  const factory NetworkExceptions.userNotFound() = UserNotFound;
+  const factory NetworkExceptions.authInvalidEmail() = AuthInvalidEmail;
+  const factory NetworkExceptions.authUserNotFound() = AuthUserNotFound;
   // const factory NetworkExceptions.requestCancelled() = RequestCancelled;
 
   // const factory NetworkExceptions.httpError(Response response) = HttpError;
@@ -104,6 +111,27 @@ class NetworkExceptions with _$NetworkExceptions {
             case "wrong-password":
               networkExceptions = const NetworkExceptions.wrongPassword();
               break;
+            case "invalid-email":
+              networkExceptions = const NetworkExceptions.invalidEmail();
+              break;
+            case "operation-not-allowed":
+              networkExceptions = const NetworkExceptions.operationNotAllowed();
+              break;
+            case "weak-password":
+              networkExceptions = const NetworkExceptions.weakPassword();
+              break;
+            case "user-disabled":
+              networkExceptions = const NetworkExceptions.userDisabled();
+              break;
+            case "user-not-found":
+              networkExceptions = const NetworkExceptions.userNotFound();
+              break;
+            case "auth/invalid-email":
+              networkExceptions = const NetworkExceptions.authInvalidEmail();
+              break;
+            case "auth/user-not-found":
+              networkExceptions = const NetworkExceptions.authUserNotFound();
+              break;
             default:
               networkExceptions = const NetworkExceptions.unexpectedError();
           }
@@ -145,6 +173,28 @@ extension NetworkErrorHandler on NetworkExceptions {
       unexpectedError: () {
         errorMessage = translation.httpUnexpectedError;
       },
+      invalidEmail: () {
+        errorMessage = translation.invalidEmail;
+      },
+      operationNotAllowed: () {
+        errorMessage = translation.operationNotAllowed;
+      },
+      weakPassword: () {
+        errorMessage = translation.weakPassword;
+      },
+      userDisabled: () {
+        errorMessage = translation.userDisabled;
+      },
+      userNotFound: () {
+        errorMessage = translation.userNotFound;
+      },
+      authInvalidEmail: () {
+        errorMessage = translation.authInvalidEmail;
+      },
+      authUserNotFound: () {
+        errorMessage = translation.authUserNotFound;
+      },
+      
     );
     // when(
     //   requestCancelled: () {
@@ -207,6 +257,13 @@ abstract class NetworkErrorLocalizations {
   String get emailAlreadyInUse;
   String get wrongPassword;
   String get httpUnexpectedError;
+  String get invalidEmail;
+  String get operationNotAllowed;
+  String get weakPassword;
+  String get userDisabled;
+  String get userNotFound;
+  String get authInvalidEmail;
+  String get authUserNotFound;
   // String get httpRequestCancel;
   // String get httpError413;
   // String get unexpectedErrorOccurred;
@@ -233,6 +290,27 @@ class NetworkErrorLocalizationsImpl implements NetworkErrorLocalizations {
   
   @override
   String get httpUnexpectedError => context.l10n.http_unexpected_error;
+
+  @override
+  String get invalidEmail => context.l10n.invalidEmail;
+
+  @override
+  String get operationNotAllowed => context.l10n.operationNotAllowed;
+
+  @override
+  String get weakPassword => context.l10n.weakPassword;
+
+  @override
+  String get userDisabled => context.l10n.userDisabled;
+
+  @override
+  String get userNotFound => context.l10n.userNotFound;
+
+  @override
+  String get authInvalidEmail => context.l10n.authInvalidEmail;
+
+  @override
+  String get authUserNotFound => context.l10n.authUserNotFound;
   
   // @override
   // String get httpError413 => context.l10n.http_error_413;

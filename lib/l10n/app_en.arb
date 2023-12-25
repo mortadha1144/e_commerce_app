@@ -1,6 +1,12 @@
 {
     "emailAlreadyInUse": "The email address is already in use by another account.",
     "http_unexpected_error": "Unexpected error occurred",
-    "wrongPassword": "Wrong password provided for that user."
-
+    "wrongPassword": "Wrong password provided for that user.",
+    "invalidEmail": "The email provided is invalid.",
+    "operationNotAllowed": "This account isn't enabled.",
+    "weakPassword": "The password provided is too weak.",
+    "userDisabled": "This user has been disabled.",
+    "userNotFound": "No user found for that email.",
+    "authInvalidEmail": "The email provided is invalid.",
+    "authUserNotFound": "No user found for that email."
 }

@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/core/errors/network_exceptions.dart';
+import 'package:e_commerce_app/core/utils/network/network_exceptions.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
@@ -24,8 +24,8 @@ extension AppLocalizationsExtension on BuildContext {
 }
 
 extension GetError on BuildContext {
-  String getErrorMessage(error) {
-    final exertion = NetworkExceptions.getDioException(error);
-    return exertion.getErrorMessage(NetworkErrorLocalizationsImpl(this));
+  String getErrorMessage(NetworkExceptions error) {
+    // final exertion = NetworkExceptions.getDioException(error);
+    return error.getErrorMessage(NetworkErrorLocalizationsImpl(this));
   }
 }
