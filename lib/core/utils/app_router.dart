@@ -5,6 +5,7 @@ import 'package:e_commerce_app/Features/auth/presentation/views/otp_view.dart';
 import 'package:e_commerce_app/Features/auth/presentation/views/sign_in_view.dart';
 import 'package:e_commerce_app/Features/auth/presentation/views/sign_up_view.dart';
 import 'package:e_commerce_app/Features/cart/presentation/views/cart_view.dart';
+import 'package:e_commerce_app/Features/choose_language/choose_your_language_page.dart';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
 import 'package:e_commerce_app/Features/home/presentation/views/home_view.dart';
 import 'package:e_commerce_app/Features/product/presentation/views/product_details_view.dart';
@@ -23,6 +24,7 @@ abstract class AppRouter {
   static const kProductDetailsView = '/productDetailsView';
   static const kCartView = '/cartView';
   static const kProfileView = '/profileView';
+  static const kChooseLanguage = '/chooseLanguage';
 
   static final router = GoRouter(
     routes: [
@@ -32,6 +34,10 @@ abstract class AppRouter {
       // ),
       GoRoute(
         path: '/',
+        builder: (context, state) => const ChooseYourLanguagePage(),
+      ),
+      GoRoute(
+        path:kSignInView,
         builder: (context, state) => const SignInView(),
       ),
       GoRoute(

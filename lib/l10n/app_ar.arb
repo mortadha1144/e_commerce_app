@@ -8,5 +8,7 @@
     "userDisabled": "هذا الحساب غير فعال",
     "userNotFound": "الحساب غير موجود",
     "authInvalidEmail": "الايميل غير صحيح",
-    "authUserNotFound": "الحساب غير موجود"
+    "authUserNotFound": "الحساب غير موجود",
+    "chooseYourLanguage": "اختر لغتك",
+    "next": "التالي"
 }

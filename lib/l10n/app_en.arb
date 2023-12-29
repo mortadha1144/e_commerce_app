@@ -8,5 +8,7 @@
     "userDisabled": "This user has been disabled.",
     "userNotFound": "No user found for that email.",
     "authInvalidEmail": "The email provided is invalid.",
-    "authUserNotFound": "No user found for that email."
+    "authUserNotFound": "No user found for that email.",
+    "chooseYourLanguage": "Choose your language",
+    "next": "Next"
 }
