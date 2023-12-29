@@ -5,6 +5,7 @@ import 'package:e_commerce_app/Features/home/presentation/cubits/home_cubit/home
 import 'package:e_commerce_app/bloc_observer.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/providers/provider.dart';
+import 'package:e_commerce_app/core/utils/providers/settings_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,12 +34,13 @@ void main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final settings = ref.watch(settingsProvider);
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthCubit>(
@@ -64,7 +66,7 @@ class MyApp extends StatelessWidget {
         theme: theme(),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        locale: const Locale("ar"),
+        locale: settings.locale,
       ),
     );
   }
