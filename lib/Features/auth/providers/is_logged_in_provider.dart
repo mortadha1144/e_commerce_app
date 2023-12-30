@@ -1,5 +1,5 @@
 import 'package:e_commerce_app/Features/auth/data/models/auth_state.dart';
-import 'package:e_commerce_app/Features/auth/providers/login_with_email_and_password.dart';
+import 'package:e_commerce_app/Features/auth/providers/authentication_provider.dart';
 import 'package:e_commerce_app/core/utils/enums/enums.dart';
 import 'package:e_commerce_app/core/utils/network/state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

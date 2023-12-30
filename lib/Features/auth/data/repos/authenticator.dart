@@ -18,6 +18,10 @@ abstract class AuthRepo {
     required String email,
     required String password,
   });
+  Future<String?> createUserWithEmailAndPassword({
+    required String email,
+    required String password,
+  });
   Future<void> logOut();
 }
 
@@ -27,6 +31,18 @@ class AuthRepoImpl extends AuthRepo {
     await FirebaseAuth.instance.signOut();
     await GoogleSignIn().signOut();
     await FacebookAuth.instance.logOut();
+  }
+
+  @override
+  Future<String?> createUserWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
+    final result = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    return result.user?.uid;
   }
 
   @override

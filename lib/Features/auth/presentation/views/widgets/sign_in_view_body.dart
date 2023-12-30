@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/Features/auth/providers/login_with_email_and_password.dart';
+import 'package:e_commerce_app/Features/auth/providers/authentication_provider.dart';
 import 'package:e_commerce_app/constants.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/constants/assets.dart';
