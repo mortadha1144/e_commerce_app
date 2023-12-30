@@ -13,7 +13,7 @@ abstract class AuthRepo {
       FirebaseAuth.instance.currentUser?.displayName ?? '';
   String? get email => FirebaseAuth.instance.currentUser?.email;
   Future<AuthResult> loginWithFacebook();
-  Future<AuthResult> loginWithGoogle();
+  Future<AuthState> loginWithGoogle();
   Future<AuthState> loginWithEmailAndPassword({
     required String email,
     required String password,
@@ -26,7 +26,7 @@ class AuthRepoImpl extends AuthRepo {
   Future<void> logOut() async {
     await FirebaseAuth.instance.signOut();
     await GoogleSignIn().signOut();
-    await FirebaseAuth.instance.signOut();
+    await FacebookAuth.instance.logOut();
   }
 
   @override
@@ -62,7 +62,7 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  Future<AuthResult> loginWithGoogle() async {
+  Future<AuthState> loginWithGoogle() async {
     final GoogleSignIn googleSignIn = GoogleSignIn(
       scopes: [
         Constants.emailScope,
@@ -72,19 +72,16 @@ class AuthRepoImpl extends AuthRepo {
     final signInAccount = await googleSignIn.signIn();
     if (signInAccount == null) {
       // user has aborted the login in process
-      return AuthResult.aborted;
+      return const AuthState.aborted();
     }
     final googleAuth = await signInAccount.authentication;
     final oauthCredentials = GoogleAuthProvider.credential(
       idToken: googleAuth.idToken,
       accessToken: googleAuth.accessToken,
     );
-    try {
-      await FirebaseAuth.instance.signInWithCredential(oauthCredentials);
-      return AuthResult.success;
-    } catch (e) {
-      return AuthResult.failure;
-    }
+
+    await FirebaseAuth.instance.signInWithCredential(oauthCredentials);
+    return AuthState(result: AuthResult.success, userId: userId);
   }
 
   @override
@@ -92,12 +89,10 @@ class AuthRepoImpl extends AuthRepo {
     required String email,
     required String password,
   }) async {
-    
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      return AuthState(result: AuthResult.success, isLoading: false, userId: userId);
-   
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    return AuthState(result: AuthResult.success, userId: userId);
   }
 }

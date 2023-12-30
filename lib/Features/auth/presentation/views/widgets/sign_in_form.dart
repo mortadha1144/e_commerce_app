@@ -1,21 +1,10 @@
-import 'dart:developer';
-
-import 'package:e_commerce_app/Features/auth/presentation/cubits/auth_cubit/auth_cubit.dart';
-import 'package:e_commerce_app/Features/auth/providers/auth_provider_test.dart';
-import 'package:e_commerce_app/Features/auth/providers/auth_state_provider.dart';
 import 'package:e_commerce_app/Features/auth/providers/is_logged_in_provider.dart';
 import 'package:e_commerce_app/Features/auth/providers/login_with_email_and_password.dart';
-import 'package:e_commerce_app/core/errors/failures.dart';
-import 'package:e_commerce_app/core/utils/enums/enums.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
-import 'package:e_commerce_app/core/utils/functions/custom_snack_bar.dart';
 import 'package:e_commerce_app/core/utils/network/state.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/widgets/custom_button.dart';
@@ -98,9 +87,8 @@ class _SignInFormState extends State<SignInForm> {
               //     // addError(error: errors.toString());
               //   }
               // });
-              final isLogged = ref.watch(isLoggedInT);
-              final authState =
-                  ref.watch(loginWithEmailAndPasswordNotifierProvider);
+              final isLogged = ref.watch(isLoggedInProvider);
+              final authState = ref.watch(authenticationProvider);
 
               return CustomButton(
                 text: 'Continue',
@@ -116,13 +104,12 @@ class _SignInFormState extends State<SignInForm> {
                     //     .signInUser(email: email!, password: password!);
 
                     final login = await ref
-                        .read(
-                            loginWithEmailAndPasswordNotifierProvider.notifier)
+                        .read(authenticationProvider.notifier)
                         .loginWithEmailAndPassword(
                           email: email!,
                           password: password!,
                         );
-                    
+
                     login.whenDataOrError(
                       data: (_) => context.push(AppRouter.kLoginSuccessView),
                       error: (error, _) {

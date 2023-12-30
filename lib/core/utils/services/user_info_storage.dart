@@ -5,7 +5,7 @@ import 'package:e_commerce_app/core/utils/constants/firebase_field_name.dart';
 import 'package:e_commerce_app/core/utils/typedefs.dart';
 
 abstract class UserRepo {
-  Future<bool> saveUserInfo({
+  Future<void> saveUserInfo({
     required UserId userId,
     required String displayName,
     required String? email,
@@ -14,12 +14,12 @@ abstract class UserRepo {
 
 class UserRepoImpl extends UserRepo {
   @override
-  Future<bool> saveUserInfo({
+  Future<void> saveUserInfo({
     required UserId userId,
     required String displayName,
     required String? email,
   }) async {
-    try {
+    
       final userInfo = await FirebaseFirestore.instance
           .collection(
             FirebaseCollectionName.users,
@@ -37,7 +37,7 @@ class UserRepoImpl extends UserRepo {
           FirebaseFieldName.displayName: displayName,
           FirebaseFieldName.email: email ?? '',
         });
-        return true;
+        return;
       }
 
       // user does not exist , create a new one
@@ -52,10 +52,5 @@ class UserRepoImpl extends UserRepo {
             FirebaseCollectionName.users,
           )
           .add(payload);
-      return true;
-    } catch (e) {
-      return false;
-    }
-    
   }
 }
