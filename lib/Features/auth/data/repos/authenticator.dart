@@ -1,6 +1,8 @@
 import 'package:e_commerce_app/Features/auth/data/constants/constants.dart';
 import 'package:e_commerce_app/Features/auth/data/models/auth_state.dart';
+import 'package:e_commerce_app/Features/auth/data/models/user_model.dart';
 import 'package:e_commerce_app/core/utils/enums/enums.dart';
+import 'package:e_commerce_app/core/utils/services/user_info_storage.dart';
 import 'package:e_commerce_app/core/utils/typedefs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -13,8 +15,8 @@ abstract class AuthRepo {
       FirebaseAuth.instance.currentUser?.displayName ?? '';
   String? get email => FirebaseAuth.instance.currentUser?.email;
   Future<AuthResult> loginWithFacebook();
-  Future<AuthState> loginWithGoogle();
-  Future<AuthState> loginWithEmailAndPassword({
+  Future<UserModel> loginWithGoogle();
+  Future<UserModel> loginWithEmailAndPassword({
     required String email,
     required String password,
   });
@@ -26,6 +28,10 @@ abstract class AuthRepo {
 }
 
 class AuthRepoImpl extends AuthRepo {
+  final UserRepo userRepo;
+
+  AuthRepoImpl({required this.userRepo});
+
   @override
   Future<void> logOut() async {
     await FirebaseAuth.instance.signOut();
@@ -39,9 +45,9 @@ class AuthRepoImpl extends AuthRepo {
     required String password,
   }) async {
     final result = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
+      email: email,
+      password: password,
+    );
     return result.user?.uid;
   }
 
@@ -78,7 +84,7 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  Future<AuthState> loginWithGoogle() async {
+  Future<UserModel> loginWithGoogle() async {
     final GoogleSignIn googleSignIn = GoogleSignIn(
       scopes: [
         Constants.emailScope,
@@ -86,22 +92,29 @@ class AuthRepoImpl extends AuthRepo {
     );
 
     final signInAccount = await googleSignIn.signIn();
-    if (signInAccount == null) {
-      // user has aborted the login in process
-      return const AuthState.aborted();
-    }
-    final googleAuth = await signInAccount.authentication;
+    // if (signInAccount == null) {
+    //   // user has aborted the login in process
+    //   return null;
+    // }
+    final googleAuth = await signInAccount!.authentication;
     final oauthCredentials = GoogleAuthProvider.credential(
       idToken: googleAuth.idToken,
       accessToken: googleAuth.accessToken,
     );
 
     await FirebaseAuth.instance.signInWithCredential(oauthCredentials);
-    return AuthState(result: AuthResult.success, userId: userId);
+
+    final user = userRepo.saveUserInfo(
+      userId: userId!,
+      displayName: displayName,
+      email: email,
+    );
+
+    return user;
   }
 
   @override
-  Future<AuthState> loginWithEmailAndPassword({
+  Future<UserModel> loginWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
@@ -109,6 +122,8 @@ class AuthRepoImpl extends AuthRepo {
       email: email,
       password: password,
     );
-    return AuthState(result: AuthResult.success, userId: userId);
+
+    final user = userRepo.getUserInfo(userId: userId!);
+    return user;
   }
 }

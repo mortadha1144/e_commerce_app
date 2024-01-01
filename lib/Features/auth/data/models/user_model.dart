@@ -1,27 +1,25 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'dart:convert';
 
-class UserModel {
-  final String email;
-  final String firstName;
-  final String lastName;
-  final String phoneNumber;
-  final String address;
+import 'package:e_commerce_app/core/utils/constants/firebase_field_name.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  UserModel({
-    required this.email,
-    required this.firstName,
-    required this.lastName,
-    required this.phoneNumber,
-    required this.address,
-  });
+part 'user_model.freezed.dart';
+part 'user_model.g.dart';
 
-  Map<String, dynamic> toMap() => {
-        'email': email,
-        'firstName': firstName,
-        'lastName': lastName,
-        'phoneNumber': phoneNumber,
-        'address': address,
-      };
+@freezed
+class UserModel with _$UserModel {
+  @JsonSerializable(includeIfNull: false)
+  const factory UserModel({
+    @JsonKey(name: FirebaseFieldName.userId) String? userId,
+    @JsonKey(name: FirebaseFieldName.email) String? email,
+    @JsonKey(name: FirebaseFieldName.displayName) String? displayName,
+    @JsonKey(name: FirebaseFieldName.phoneNumber) String? phoneNumber,
+    @JsonKey(name: FirebaseFieldName.address) String? address,
+    @JsonKey(name: FirebaseFieldName.image) String? image,
+  }) = _UserModel;
 
-      String encode() => json.encode(toMap());
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson(json);
 }

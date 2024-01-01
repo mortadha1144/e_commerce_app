@@ -19,7 +19,7 @@ class SignInViewBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(authenticationProvider);
+    final state = ref.watch(loginWithGoogleProvider);
     // return BlocConsumer<AuthCubit, AuthState>(
     //   listener: (context, state) {
     //     if (state is SignInWithGoogleFailure) {
@@ -72,8 +72,8 @@ class SignInViewBody extends ConsumerWidget {
                       icon: Assets.assetsIconsGoogleIcon,
                       onPressed: () async {
                         final login = await ref
-                            .read(authenticationProvider.notifier)
-                            .loginWithGoogle();
+                            .read(loginWithGoogleProvider.notifier)
+                            .run();
                         login.whenDataOrError(
                           data: (_) =>
                               context.push(AppRouter.kLoginSuccessView),

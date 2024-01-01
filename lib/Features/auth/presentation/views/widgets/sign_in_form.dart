@@ -87,12 +87,12 @@ class _SignInFormState extends State<SignInForm> {
               //     // addError(error: errors.toString());
               //   }
               // });
-              final isLogged = ref.watch(isLoggedInProvider);
-              final authState = ref.watch(authenticationProvider);
+              
+              final loginState = ref.watch(loginWithEmailAndPasswordProvider);
 
               return CustomButton(
                 text: 'Continue',
-                isLoading: authState.isLoading,
+                isLoading: loginState.isLoading,
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
@@ -104,8 +104,8 @@ class _SignInFormState extends State<SignInForm> {
                     //     .signInUser(email: email!, password: password!);
 
                     final login = await ref
-                        .read(authenticationProvider.notifier)
-                        .loginWithEmailAndPassword(
+                        .read(loginWithEmailAndPasswordProvider.notifier)
+                        .run(
                           email: email!,
                           password: password!,
                         );

@@ -59,14 +59,14 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                       _formKey.currentState!.save();
 
                       UserModel userModel = UserModel(
-                          firstName: firstName!,
-                          lastName: lastName ?? '',
+                          displayName: firstName!,
+                          
                           phoneNumber: phoneNumber!,
                           address: address!,
                           email: widget.email);
 
                       context.read<AuthCubit>()
-                          .completeProfileData(userModel.toMap());
+                          .completeProfileData(userModel.toJson());
                     }
                   }),
             ],

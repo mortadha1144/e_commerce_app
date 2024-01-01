@@ -6,12 +6,13 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final userIdProvider = Provider.autoDispose<UserId?>(
   (ref) {
-    final authRepo = ref.watch(authenticationProvider);
+    final authRepo = ref.watch(loginWithGoogleProvider);
     return authRepo.maybeWhen(
       orElse: () => null,
       data: (data) {
         if (data is AsyncXData<AuthState>) {
-          return data.data.userId;
+          return '';
+          // data.data.userId;
         }
         return null;
       },
