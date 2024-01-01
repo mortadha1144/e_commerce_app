@@ -1,8 +1,12 @@
 import 'package:e_commerce_app/Features/auth/data/models/user_model.dart';
 import 'package:e_commerce_app/Features/auth/presentation/cubits/auth_cubit/auth_cubit.dart';
+import 'package:e_commerce_app/Features/auth/providers/complete_profile_provider.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
+import 'package:e_commerce_app/core/utils/extensions.dart';
+import 'package:e_commerce_app/core/utils/network/state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../constants.dart';
@@ -12,9 +16,7 @@ import 'custom_form_error.dart';
 import 'custom_suffix_icon.dart';
 
 class CompleteProfileForm extends StatefulWidget {
-  const CompleteProfileForm({super.key, required this.email});
-
-  final String email;
+  const CompleteProfileForm({super.key});
 
   @override
   State<CompleteProfileForm> createState() => _CompleteProfileFormState();
@@ -22,58 +24,73 @@ class CompleteProfileForm extends StatefulWidget {
 
 class _CompleteProfileFormState extends State<CompleteProfileForm> {
   final _formKey = GlobalKey<FormState>();
-  String? firstName, lastName, phoneNumber, address;
+  String? displayName, phoneNumber, address;
   final List<String> errors = [];
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AuthCubit, AuthState>(
-      listener: (context, state) {
-        if (state is CompleteProfileFailure) {
-          addError(error: state.message);
-        } else if (state is CompleteProfileSuccess) {
-          errors.clear();
-          context.pushReplacement(AppRouter.kOtpView);
-        }
-      },
-      builder: (context, state) {
+    // return BlocConsumer<AuthCubit, AuthState>(
+    //   listener: (context, state) {
+    //     if (state is CompleteProfileFailure) {
+    //       addError(error: state.message);
+    //     } else if (state is CompleteProfileSuccess) {
+    //       errors.clear();
+    //       context.pushReplacement(AppRouter.kOtpView);
+    //     }
+    //   },
+    //   builder: (context, state) {
         return Form(
           key: _formKey,
           child: Column(
             children: [
               buildFirstNameFormField(),
               SizedBox(height: getProportionateScreenHeight(30)),
-              buildLastNameFormField(),
               SizedBox(height: getProportionateScreenHeight(30)),
               buildPhoneNumberFormField(),
               SizedBox(height: getProportionateScreenHeight(30)),
               buildAddressFormField(),
               CustomFormError(errors: errors),
               SizedBox(height: getProportionateScreenHeight(40)),
-              CustomButton(
-                  text: 'Continue',
-                  isLoading: state is CompleteProfileLoading,
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      // Go to OTP view
+              Consumer(
+                builder:(context, ref, child) {
+                  final state = ref.watch(completeProfileProvider);
+                  return CustomButton(
+                    text: 'Continue',
+                    isLoading: state.isLoading,
+                    onPressed: () async{
+                      if (_formKey.currentState!.validate()) {
+                        // Go to OTP view
+                
+                        _formKey.currentState!.save();
+                
+                        final data = UserModel(
+                          displayName: displayName,
+                          phoneNumber: phoneNumber,
+                          address: address,
+                        );
 
-                      _formKey.currentState!.save();
-
-                      UserModel userModel = UserModel(
-                          displayName: firstName!,
-                          
-                          phoneNumber: phoneNumber!,
-                          address: address!,
-                          email: widget.email);
-
-                      context.read<AuthCubit>()
-                          .completeProfileData(userModel.toJson());
-                    }
-                  }),
+                        final completeProfile = await ref
+                            .read(completeProfileProvider.notifier)
+                            .run( data);
+                        
+                        completeProfile.whenDataOrError(
+                          data: (_) => context.pushReplacement(AppRouter.kLoginSuccessView),
+                          error: (error, _) {
+                            errors.clear();
+                            addError(error: context.getErrorMessage(error));
+                          },
+                        );
+                
+                        // context
+                        //     .read<AuthCubit>()
+                        //     .completeProfileData(userModel.toJson());
+                      }
+                    });
+                },
+              ),
             ],
           ),
         );
-      },
-    );
+      
   }
 
   TextFormField buildAddressFormField() {
@@ -126,22 +143,11 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
     );
   }
 
-  TextFormField buildLastNameFormField() {
-    return TextFormField(
-      onSaved: (newValue) => lastName = newValue,
-      decoration: const InputDecoration(
-        labelText: 'Last Name',
-        hintText: 'Enter your last name',
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: 'assets/icons/User.svg'),
-      ),
-    );
-  }
 
   TextFormField buildFirstNameFormField() {
     return TextFormField(
       keyboardType: TextInputType.name,
-      onSaved: (newValue) => firstName = newValue,
+      onSaved: (newValue) => displayName = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kNamelNullError);
@@ -155,8 +161,8 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         return null;
       },
       decoration: const InputDecoration(
-        labelText: 'First Name',
-        hintText: 'Enter your first name',
+        labelText: 'Display Name',
+        hintText: 'Enter your name',
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSurffixIcon(svgIcon: 'assets/icons/User.svg'),
       ),

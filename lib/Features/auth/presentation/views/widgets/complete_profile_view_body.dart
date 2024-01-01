@@ -5,9 +5,7 @@ import 'package:flutter/material.dart';
 import 'complete_profile_form.dart';
 
 class CompleteProfileViewBody extends StatelessWidget {
-  const CompleteProfileViewBody({super.key, required this.email});
-
-  final String email;
+  const CompleteProfileViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +27,7 @@ class CompleteProfileViewBody extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: SizeConfig.screenHeight * .05),
-              CompleteProfileForm(
-                email: email,
-              ),
+              const CompleteProfileForm(),
               SizedBox(height: getProportionateScreenHeight(30)),
               Text(
                 'By continuing your confirm that you agree \nwith our Term and Condition',

@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/Features/auth/data/constants/constants.dart';
 import 'package:e_commerce_app/Features/auth/data/models/auth_state.dart';
+import 'package:e_commerce_app/Features/auth/data/models/create_user_request.dart';
 import 'package:e_commerce_app/Features/auth/data/models/user_model.dart';
 import 'package:e_commerce_app/core/utils/enums/enums.dart';
 import 'package:e_commerce_app/core/utils/services/user_info_storage.dart';
@@ -20,9 +21,11 @@ abstract class AuthRepo {
     required String email,
     required String password,
   });
-  Future<String?> createUserWithEmailAndPassword({
-    required String email,
-    required String password,
+  Future<void> createUserWithEmailAndPassword({
+    required CreateUserRequest request,
+  });
+  Future<UserModel> updateUserInfo({
+    required UserModel user,
   });
   Future<void> logOut();
 }
@@ -40,15 +43,20 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  Future<String?> createUserWithEmailAndPassword({
-    required String email,
-    required String password,
+  Future<void> createUserWithEmailAndPassword({
+    required CreateUserRequest request,
   }) async {
-    final result = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: email,
-      password: password,
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: request.email,
+      password: request.password,
     );
-    return result.user?.uid;
+
+    final user = UserModel(
+      userId: userId,
+      email: request.email,
+    );
+
+    await userRepo.addNewUser(user: user);
   }
 
   @override
@@ -123,7 +131,17 @@ class AuthRepoImpl extends AuthRepo {
       password: password,
     );
 
-    final user = userRepo.getUserInfo(userId: userId!);
+    final user = userRepo.getUser(userId: userId!);
     return user;
+  }
+
+  @override
+  Future<UserModel> updateUserInfo({
+    required UserModel user,
+  }) {
+    return userRepo.updateUserInfo(
+      userId: userId!,
+      user: user,
+    );
   }
 }

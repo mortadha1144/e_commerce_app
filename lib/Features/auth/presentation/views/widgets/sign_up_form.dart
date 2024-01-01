@@ -25,30 +25,16 @@ class SignUpForm extends StatefulWidget {
 class _SignUpFormState extends State<SignUpForm> {
   final _formKey = GlobalKey<FormState>();
   String? email;
-  String? displayName;
   String? password;
   String? confirmPassword;
   final List<String> errors = [];
   @override
   Widget build(BuildContext context) {
-    // return BlocConsumer<AuthCubit, AuthState>(
-    //   listener: (context, state) {
-    //     if (state is RegisterFailure) {
-    //       errors.clear();
-    //       addError(error: state.message);
-    //     } else if (state is RegisterSuccess) {
-    //       errors.clear();
-    //       context.push(AppRouter.kCompleteProfileView, extra: email);
-    //     }
-    //   },
-    //   builder: (context, state) {
     return Form(
       key: _formKey,
       child: Column(
         children: [
           buildEmailFormField(),
-          SizedBox(height: getProportionateScreenHeight(30)),
-          buildDisplayNameFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
           buildPasswordFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
@@ -72,16 +58,15 @@ class _SignUpFormState extends State<SignUpForm> {
 
                     final request = CreateUserRequest(
                       email: email!,
-                      displayName: displayName!,
                       password: password!,
                     );
 
                     final createUser = await ref
                         .read(createUserProvider.notifier)
-                        .createUser(request: request);
+                        .run(request: request);
 
                     createUser.whenDataOrError(
-                      data: (_) => context.push(AppRouter.kLoginSuccessView),
+                      data: (_) => context.pushReplacement(AppRouter.kCompleteProfileView),
                       error: (error, _) {
                         errors.clear();
                         addError(error: context.getErrorMessage(error));
@@ -190,31 +175,6 @@ class _SignUpFormState extends State<SignUpForm> {
         labelText: 'Email',
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSurffixIcon(svgIcon: 'assets/icons/Mail.svg'),
-      ),
-    );
-  }
-
-  TextFormField buildDisplayNameFormField() {
-    return TextFormField(
-      keyboardType: TextInputType.name,
-      onSaved: (newValue) => displayName = newValue,
-      onChanged: (value) {
-        if (value.isNotEmpty) {
-          removeError(error: kNamelNullError);
-        }
-      },
-      validator: (value) {
-        if (value!.isEmpty) {
-          addError(error: kNamelNullError);
-          return '';
-        }
-        return null;
-      },
-      decoration: const InputDecoration(
-        labelText: 'First Name',
-        hintText: 'Enter your first name',
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: 'assets/icons/User.svg'),
       ),
     );
   }

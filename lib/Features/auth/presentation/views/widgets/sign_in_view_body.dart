@@ -20,15 +20,6 @@ class SignInViewBody extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(loginWithGoogleProvider);
-    // return BlocConsumer<AuthCubit, AuthState>(
-    //   listener: (context, state) {
-    //     if (state is SignInWithGoogleFailure) {
-    //       customSnackBar(context, state.message);
-    //     } else if (state is SignInWithGoogleSuccess) {
-    //       context.push(AppRouter.kLoginSuccessView);
-    //     }
-    //   },
-    //   builder: (context, state) {
     return ModalProgressHUD(
       inAsyncCall: state.isLoading,
       progressIndicator: const CircularProgressIndicator(

@@ -16,22 +16,12 @@ class CreateUserNotifier extends AutoDisposeAsyncNotifier<AsyncX<void>>
   BuildXCallback<void> build() => idle();
 
   @useResult
-  RunXCallback<void> createUser({
+  RunXCallback<void> run({
     required CreateUserRequest request,
   }) =>
       handle(
-        () async {
-         final userId = await ref.read(authRepoProvider).createUserWithEmailAndPassword(
-                email: request.email,
-                password: request.password,
-              );
-          if (userId != null) {
-            await ref.read(userRepoProvider).saveUserInfo(
-                  userId: userId,
-                  displayName: request.displayName,
-                  email: request.email,
-                );
-          }
-        },
+        () => ref.read(authRepoProvider).createUserWithEmailAndPassword(
+                request: request,
+              ),
       );
 }

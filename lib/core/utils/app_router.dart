@@ -37,7 +37,7 @@ abstract class AppRouter {
         builder: (context, state) => const ChooseYourLanguagePage(),
       ),
       GoRoute(
-        path:kSignInView,
+        path: kSignInView,
         builder: (context, state) => const SignInView(),
       ),
       GoRoute(
@@ -62,9 +62,7 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kCompleteProfileView,
-        builder: (context, state) => CompleteProfileView(
-          email: state.extra as String,
-        ),
+        builder: (context, state) => const CompleteProfileView(),
       ),
       GoRoute(
         path: kOtpView,

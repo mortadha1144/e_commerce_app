@@ -16,15 +16,6 @@ class LoginWithGoogleNotifier
   BuildXCallback<UserModel> build() => idle();
 
   @useResult
-  RunXCallback<UserModel> loginWithEmailAndPassword(
-          {required String email, required String password}) =>
-      handle(() => ref.read(authRepoProvider).loginWithGoogle()
-          // () => ref.read(authRepoProvider).loginWithEmailAndPassword(
-          //       email: email,
-          //       password: password,
-          //     ),
-          );
-  @useResult
   RunXCallback<UserModel> run() =>
       handle(() => ref.read(authRepoProvider).loginWithGoogle());
 }
