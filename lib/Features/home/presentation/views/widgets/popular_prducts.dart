@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
+import 'package:e_commerce_app/core/utils/app_router2.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -35,7 +36,7 @@ class PopularProducts extends StatelessWidget {
                   (index) => ProductCard(
                     product: products[index],
                     onPress: () {
-                      context.push(AppRouter.kProductDetailsView,
+                      context.push(RoutesDocument.productDetailsView,
                           extra: products[index]);
                     },
                   ),

@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/utils/app_router2.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -51,7 +52,7 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
                 currentPage: currentPage,
                 itemCount: onBoardingData.length,
                 onPressed: () {
-                  context.push(AppRouter.kSignInView);
+                  context.push(RoutesDocument.login);
                 },
               ),
             ),

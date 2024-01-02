@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/core/utils/app_router.dart';
+import 'package:e_commerce_app/core/utils/app_router2.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -23,7 +24,7 @@ class HomeHeader extends StatelessWidget {
           IconBtnWithCounter(
             svgSrc: 'assets/icons/Cart Icon.svg',
             onPress: () {
-              context.push(AppRouter.kCartView);
+              context.push(RoutesDocument.cartView);
             },
           ),
           IconBtnWithCounter(

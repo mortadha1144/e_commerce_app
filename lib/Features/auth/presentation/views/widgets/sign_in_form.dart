@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/Features/auth/providers/is_logged_in_provider.dart';
 import 'package:e_commerce_app/Features/auth/providers/auth_provider.dart';
+import 'package:e_commerce_app/core/utils/app_router2.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/utils/network/state.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +67,7 @@ class _SignInFormState extends State<SignInForm> {
               const Spacer(),
               GestureDetector(
                 onTap: () =>
-                    GoRouter.of(context).push(AppRouter.kForgotPasswordView),
+                    GoRouter.of(context).push(RoutesDocument.forgotPasswordView),
                 child: const Text(
                   'Forgot Password',
                   style: TextStyle(decoration: TextDecoration.underline),
@@ -111,7 +112,7 @@ class _SignInFormState extends State<SignInForm> {
                         );
 
                     login.whenDataOrError(
-                      data: (_) => context.push(AppRouter.kLoginSuccessView),
+                      data: (_) => context.push(RoutesDocument.loginSuccessView),
                       error: (error, _) {
                         errors.clear();
                         addError(error: context.getErrorMessage(error));

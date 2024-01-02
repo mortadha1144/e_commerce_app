@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/Features/auth/data/models/user_model.dart';
+import 'package:e_commerce_app/core/utils/app_router2.dart';
 import 'package:e_commerce_app/core/utils/providers/object_preference_provider.dart';
 import 'package:e_commerce_app/core/utils/providers/settings_provider.dart';
 import 'package:e_commerce_app/core/utils/shared_preference/helper.dart';
@@ -25,11 +26,7 @@ class UserNotifier extends AutoDisposeNotifier<UserModel?>
   @override
   Map<String, dynamic>? toJson(UserModel? value) => value?.toJson();
 
-  Future<void> logout() async {
-    await clear();
-    // ignore: avoid_manual_providers_as_generated_provider_dependency
-    // ref.read(routerProvider).go(RoutesDocument.login);
-  }
+  Future<void> logout()  =>  clear();
 
   bool isSignedIn() => build() != null;
 }

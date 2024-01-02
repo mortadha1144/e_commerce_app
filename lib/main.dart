@@ -4,6 +4,7 @@ import 'package:e_commerce_app/Features/home/data/repos/home_repo.dart';
 import 'package:e_commerce_app/Features/home/presentation/cubits/home_cubit/home_cubit.dart';
 import 'package:e_commerce_app/bloc_observer.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
+import 'package:e_commerce_app/core/utils/app_router2.dart';
 import 'package:e_commerce_app/core/utils/providers/provider.dart';
 import 'package:e_commerce_app/core/utils/providers/settings_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -41,6 +42,7 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(settingsProvider);
+    final router = ref.watch(routerProvider);
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthCubit>(
@@ -61,7 +63,7 @@ class MyApp extends ConsumerWidget {
         // ),
       ],
       child: MaterialApp.router(
-        routerConfig: AppRouter.router,
+        routerConfig: router,
         debugShowCheckedModeBanner: false,
         theme: theme(),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
