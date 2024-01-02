@@ -1,5 +1,5 @@
 import 'package:e_commerce_app/Features/auth/providers/is_logged_in_provider.dart';
-import 'package:e_commerce_app/Features/auth/providers/authentication_provider.dart';
+import 'package:e_commerce_app/Features/auth/providers/auth_provider.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/utils/network/state.dart';
 import 'package:flutter/material.dart';

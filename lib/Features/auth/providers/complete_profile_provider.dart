@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/Features/auth/data/models/user_model.dart';
 import 'package:e_commerce_app/Features/auth/providers/auth_repo_provider.dart';
+import 'package:e_commerce_app/Features/auth/providers/user_provider.dart';
 import 'package:e_commerce_app/core/utils/network/state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -17,5 +18,9 @@ class CompleteProfileNotifier
 
   @useResult
   RunXCallback<UserModel> run(UserModel user) =>
-      handle(() => ref.read(authRepoProvider).updateUserInfo(user: user));
+      handle(() async{
+        final result = await ref.read(authRepoProvider).updateUserInfo(user: user);
+        await ref.read(userProvider.notifier).update((state) => result,);
+        return result;
+      });
 }

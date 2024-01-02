@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/Features/auth/data/models/user_model.dart';
 import 'package:e_commerce_app/core/utils/shared_preference/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -14,7 +15,6 @@ class AppSettings with _$AppSettings {
   const factory AppSettings({
     @Default(ThemeMode.system) ThemeMode themeMode,
     @Default(null) String? localeCode,
-    // UserModel? user,
   }) = _AppSettings;
 
   Locale? get locale => localeCode == null ? null : Locale(localeCode!);
@@ -49,8 +49,6 @@ class SettingsNotifier extends AutoDisposeNotifier<AppSettings> with ObjectPrefe
 
   Future<void> setLocale(Locale? locale) =>
       update((state) => state.copyWith(localeCode: locale?.languageCode));
-  // Future<void> setUser(UserModel? user) =>
-  //     update((state) => state.copyWith(user: user));
   
 
   Future<void> toggleLocale() => update((state) => state.copyWith(

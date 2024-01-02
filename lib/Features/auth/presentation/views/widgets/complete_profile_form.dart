@@ -28,16 +28,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
   final List<String> errors = [];
   @override
   Widget build(BuildContext context) {
-    // return BlocConsumer<AuthCubit, AuthState>(
-    //   listener: (context, state) {
-    //     if (state is CompleteProfileFailure) {
-    //       addError(error: state.message);
-    //     } else if (state is CompleteProfileSuccess) {
-    //       errors.clear();
-    //       context.pushReplacement(AppRouter.kOtpView);
-    //     }
-    //   },
-    //   builder: (context, state) {
+    
         return Form(
           key: _formKey,
           child: Column(
@@ -70,7 +61,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
 
                         final completeProfile = await ref
                             .read(completeProfileProvider.notifier)
-                            .run( data);
+                            .run(data);
                         
                         completeProfile.whenDataOrError(
                           data: (_) => context.pushReplacement(AppRouter.kLoginSuccessView),
@@ -80,9 +71,6 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                           },
                         );
                 
-                        // context
-                        //     .read<AuthCubit>()
-                        //     .completeProfileData(userModel.toJson());
                       }
                     });
                 },
