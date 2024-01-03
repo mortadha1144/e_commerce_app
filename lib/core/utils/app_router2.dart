@@ -20,8 +20,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-final navigatorKey = GlobalKey<NavigatorState>();
-final _shellNavigatorKey = GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> _rootNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'root');
+final GlobalKey<NavigatorState> _shellNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'shell');
 // We need to have access to the previous location of the router. Otherwise, we would start from '/' on rebuild.
 GoRouter? _previousRouter;
 
@@ -31,55 +33,63 @@ final routerProvider = Provider.autoDispose((ref) {
   return GoRouter(
     initialLocation:
         _previousRouter?.routerDelegate.currentConfiguration.fullPath,
-    navigatorKey: navigatorKey,
+    navigatorKey: _rootNavigatorKey,
     routes: [
-      // ShellRoute(
-      //   navigatorKey: _shellNavigatorKey,
-      //   builder: (context, state, child) =>
-      //       BottomNavigationBarScaffold(child: child),
-      //   routes: [
-      //     GoRoute(
-      //       path: RoutesDocument.homeView,
-      //       parentNavigatorKey: _shellNavigatorKey,
-      //       builder: (context, state) => const HomeView(),
-      //     ),
-      //     GoRoute(
-      //       path: RoutesDocument.favoriteView,
-      //       parentNavigatorKey: _shellNavigatorKey,
-      //       builder: (context, state) => const FavoriteView(),
-      //     ),
-      //     GoRoute(
-      //       path: RoutesDocument.chatView,
-      //       parentNavigatorKey: _shellNavigatorKey,
-      //       builder: (context, state) => const ChatView(),
-      //     ),
-      //     GoRoute(
-      //       path: RoutesDocument.profileView,
-      //       parentNavigatorKey: _shellNavigatorKey,
-      //       builder: (context, state) => const ProfileView(),
-      //     ),
-      //   ],
+      ShellRoute(
+        navigatorKey: _shellNavigatorKey,
+        builder: (context, state, child) =>
+            BottomNavigationBarScaffold(child: child),
+        routes: [
+          GoRoute(
+            path: RoutesDocument.homeView,
+            parentNavigatorKey: _shellNavigatorKey,
+            builder: (context, state) => const HomeView(),
+            routes: [
+              GoRoute(
+                path: RoutesDocument.productDetailsView,
+                parentNavigatorKey:_rootNavigatorKey,
+                builder: (context, state) =>
+                    ProductDetailsView(product: state.extra as ProductModel),
+              ),
+            ],
+          ),
+          GoRoute(
+            path: RoutesDocument.favoriteView,
+            parentNavigatorKey: _shellNavigatorKey,
+            builder: (context, state) => const FavoriteView(),
+          ),
+          GoRoute(
+            path: RoutesDocument.chatView,
+            parentNavigatorKey: _shellNavigatorKey,
+            builder: (context, state) => const ChatView(),
+          ),
+          GoRoute(
+            path: RoutesDocument.profileView,
+            parentNavigatorKey: _shellNavigatorKey,
+            builder: (context, state) => const ProfileView(),
+          ),
+        ],
+      ),
+      // GoRoute(
+      //   path: RoutesDocument.homeView,
+      //   builder: (context, state) => const BottomNavigationBarScaffold(),
       // ),
-      GoRoute(
-        path: RoutesDocument.homeView,
-        builder: (context, state) => const BottomNavigationBarScaffold(),
-      ),
-      GoRoute(
-        path: RoutesDocument.homeViewBody,
-        builder: (context, state) => const HomeView(),
-      ),
-      GoRoute(
-        path: RoutesDocument.favoriteView,
-        builder: (context, state) => const FavoriteView(),
-      ),
-      GoRoute(
-        path: RoutesDocument.chatView,
-        builder: (context, state) => const ChatView(),
-      ),
-      GoRoute(
-        path: RoutesDocument.profileView,
-        builder: (context, state) => const ProfileView(),
-      ),
+      // GoRoute(
+      //   path: RoutesDocument.homeViewBody,
+      //   builder: (context, state) => const HomeView(),
+      // ),
+      // GoRoute(
+      //   path: RoutesDocument.favoriteView,
+      //   builder: (context, state) => const FavoriteView(),
+      // ),
+      // GoRoute(
+      //   path: RoutesDocument.chatView,
+      //   builder: (context, state) => const ChatView(),
+      // ),
+      // GoRoute(
+      //   path: RoutesDocument.profileView,
+      //   builder: (context, state) => const ProfileView(),
+      // ),
       GoRoute(
         path: RoutesDocument.chooseLanguage,
         builder: (context, state) => const ChooseYourLanguagePage(),
@@ -109,11 +119,6 @@ final routerProvider = Provider.autoDispose((ref) {
         builder: (context, state) => const OtpView(),
       ),
       GoRoute(
-        path: RoutesDocument.productDetailsView,
-        builder: (context, state) =>
-            ProductDetailsView(product: state.extra as ProductModel),
-      ),
-      GoRoute(
         path: RoutesDocument.cartView,
         builder: (context, state) => const CartView(),
       ),
@@ -139,7 +144,7 @@ final routerProvider = Provider.autoDispose((ref) {
 
 class RoutesDocument {
   static const homeView = '/';
-  static const homeViewBody = '/homeViewBody';
+  // static const homeViewBody = '/homeViewBody';
   static const login = '/login';
   static const signUp = '/signUp';
   static const welcome = '/welcome';
@@ -147,7 +152,7 @@ class RoutesDocument {
   static const loginSuccessView = '/loginSuccessView';
   static const completeProfileView = '/completeProfileView';
   static const otpView = '/otpView';
-  static const productDetailsView = '/productDetailsView';
+  static const productDetailsView = 'productDetailsView';
   static const cartView = '/cartView';
   static const profileView = '/profileView';
   static const chooseLanguage = '/chooseLanguage';

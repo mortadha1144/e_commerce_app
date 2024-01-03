@@ -16,32 +16,34 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: BlocBuilder<HomeCubit, HomeState>(
-          builder: (context, state) {
-            if (state is HomeSuccess) {
-              return Column(
-                children: [
-                  SizedBox(height: getProportionateScreenWidth(20)),
-                  const HomeHeader(),
-                  SizedBox(height: getProportionateScreenWidth(10)),
-                  const DiscountBanner(),
-                  Categories(categories: state.categories),
-                  SpecialOffers(specialOffers: state.specialOffers),
-                  SizedBox(height: getProportionateScreenWidth(30)),
-                  PopularProducts(products: state.products),
-                  SizedBox(height: getProportionateScreenWidth(30)),
-                ],
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: BlocBuilder<HomeCubit, HomeState>(
+            builder: (context, state) {
+              if (state is HomeSuccess) {
+                return Column(
+                  children: [
+                    SizedBox(height: getProportionateScreenWidth(20)),
+                    const HomeHeader(),
+                    SizedBox(height: getProportionateScreenWidth(10)),
+                    const DiscountBanner(),
+                    Categories(categories: state.categories),
+                    SpecialOffers(specialOffers: state.specialOffers),
+                    SizedBox(height: getProportionateScreenWidth(30)),
+                    PopularProducts(products: state.products),
+                    SizedBox(height: getProportionateScreenWidth(30)),
+                  ],
+                );
+              } else if (state is HomeError) {
+                return CustomeErrorWidget(errorMessage: state.message);
+              }
+              return SizedBox(
+                height: SizeConfig.screenHeight,
+                child: const CustomLoadingIndicator(),
               );
-            } else if (state is HomeError) {
-              return CustomeErrorWidget(errorMessage: state.message);
-            }
-            return SizedBox(
-              height: SizeConfig.screenHeight,
-              child: const CustomLoadingIndicator(),
-            );
-          },
+            },
+          ),
         ),
       ),
     );

@@ -8,6 +8,6 @@ class FavoriteView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(cartProvider);
-    return const Center(child: Text('FavoriteView'));
+    return const Scaffold(body: Center(child: Text('FavoriteView')));
   }
 }
