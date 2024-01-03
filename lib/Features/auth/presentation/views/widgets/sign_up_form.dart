@@ -1,7 +1,7 @@
 import 'package:e_commerce_app/Features/auth/data/models/create_user_request.dart';
 import 'package:e_commerce_app/Features/auth/providers/create_user_provider.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
-import 'package:e_commerce_app/core/utils/app_router2.dart';
+import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/utils/network/state.dart';
 import 'package:flutter/material.dart';

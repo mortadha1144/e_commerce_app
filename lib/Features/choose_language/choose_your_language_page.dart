@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:e_commerce_app/core/utils/app_router.dart';
-import 'package:e_commerce_app/core/utils/app_router2.dart';
+import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/constants/sizes.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/utils/providers/settings_provider.dart';

@@ -1,10 +1,6 @@
-import 'package:e_commerce_app/Features/auth/providers/user_provider.dart';
 import 'package:e_commerce_app/Features/profile/presentation/views/widgets/logout_dialog.dart';
-import 'package:e_commerce_app/core/utils/app_router2.dart';
-import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
 import 'profile_menu.dart';
 import 'profile_picture.dart';

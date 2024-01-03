@@ -2,7 +2,7 @@ import 'package:e_commerce_app/Features/auth/data/models/user_model.dart';
 import 'package:e_commerce_app/Features/auth/presentation/cubits/auth_cubit/auth_cubit.dart';
 import 'package:e_commerce_app/Features/auth/providers/complete_profile_provider.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
-import 'package:e_commerce_app/core/utils/app_router2.dart';
+import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/utils/network/state.dart';
 import 'package:flutter/material.dart';
