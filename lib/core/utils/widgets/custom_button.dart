@@ -9,21 +9,27 @@ class CustomButton extends StatelessWidget {
     required this.text,
     required this.onPressed,
     this.isLoading = false,
+    this.backgroundColor,
+    this.size,
+    this.fontSize,
   });
 
   final String text;
   final VoidCallback onPressed;
   final bool isLoading;
+  final Color? backgroundColor;
+  final Size? size;
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
-      height: getProportionateScreenHeight(56),
+      width: size?.width ?? double.infinity,
+      height: size?.height ?? getProportionateScreenHeight(56),
       child: TextButton(
         style: ButtonStyle(
-            backgroundColor: const MaterialStatePropertyAll(
-              kPrimaryColor,
+            backgroundColor: MaterialStatePropertyAll(
+              backgroundColor ?? kPrimaryColor,
             ),
             shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20)))),
@@ -36,8 +42,8 @@ class CustomButton extends StatelessWidget {
             : Text(
                 text,
                 style: TextStyle(
-                  fontSize: getProportionateScreenWidth(18),
-                  color: Colors.white,
+                  fontSize: fontSize ?? getProportionateScreenWidth(18),
+                  color: backgroundColor == null ? Colors.white : Colors.black,
                 ),
               ),
       ),
