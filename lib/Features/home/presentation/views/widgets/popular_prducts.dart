@@ -36,8 +36,7 @@ class PopularProducts extends StatelessWidget {
                   (index) => ProductCard(
                     product: products[index],
                     onPress: () {
-                      context.push(
-                          '${RoutesDocument.homeView}/${RoutesDocument.productDetailsView}',
+                      context.push('/${RoutesDocument.productDetailsView}',
                           extra: products[index]);
                     },
                   ),

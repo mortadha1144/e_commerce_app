@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
+import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -84,7 +85,7 @@ class ProductCard extends StatelessWidget {
                               : kSecondaryColor.withOpacity(.1),
                           shape: BoxShape.circle),
                       child: SvgPicture.asset(
-                        'assets/icons/Heart Icon_2.svg',
+                        Assets.assetsIconsHeartIcon2,
                         //colorFilter: product.isFavourite
                         colorFilter: false
                             ? const ColorFilter.mode(

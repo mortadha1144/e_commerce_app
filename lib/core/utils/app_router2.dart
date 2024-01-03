@@ -47,9 +47,14 @@ final routerProvider = Provider.autoDispose((ref) {
             routes: [
               GoRoute(
                 path: RoutesDocument.productDetailsView,
-                parentNavigatorKey:_rootNavigatorKey,
+                parentNavigatorKey: _rootNavigatorKey,
                 builder: (context, state) =>
                     ProductDetailsView(product: state.extra as ProductModel),
+              ),
+              GoRoute(
+                path: RoutesDocument.cartView,
+                parentNavigatorKey: _rootNavigatorKey,
+                builder: (context, state) => const CartView(),
               ),
             ],
           ),
@@ -118,10 +123,6 @@ final routerProvider = Provider.autoDispose((ref) {
         path: RoutesDocument.otpView,
         builder: (context, state) => const OtpView(),
       ),
-      GoRoute(
-        path: RoutesDocument.cartView,
-        builder: (context, state) => const CartView(),
-      ),
     ],
     redirect: (context, state) {
       // if the user is not logged in, they need to login
@@ -153,7 +154,7 @@ class RoutesDocument {
   static const completeProfileView = '/completeProfileView';
   static const otpView = '/otpView';
   static const productDetailsView = 'productDetailsView';
-  static const cartView = '/cartView';
+  static const cartView = 'cartView';
   static const profileView = '/profileView';
   static const chooseLanguage = '/chooseLanguage';
   static const favoriteView = '/favoriteView';

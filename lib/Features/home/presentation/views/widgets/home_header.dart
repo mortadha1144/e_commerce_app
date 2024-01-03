@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/app_router2.dart';
+import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -22,13 +23,13 @@ class HomeHeader extends StatelessWidget {
         children: [
           const CustomSearchField(),
           IconBtnWithCounter(
-            svgSrc: 'assets/icons/Cart Icon.svg',
+            svgSrc: Assets.assetsIconsCartIcon,
             onPress: () {
-              context.push(RoutesDocument.cartView);
+              context.push('/${RoutesDocument.cartView}');
             },
           ),
           IconBtnWithCounter(
-            svgSrc: 'assets/icons/Bell.svg',
+            svgSrc: Assets.assetsIconsBell,
             numOfItems: 3,
             onPress: () {},
           ),
