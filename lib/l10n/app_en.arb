@@ -10,5 +10,21 @@
     "authInvalidEmail": "The email provided is invalid.",
     "authUserNotFound": "No user found for that email.",
     "chooseYourLanguage": "Choose your language",
-    "next": "Next"
+    "next": "Next",
+    "validationMaxLength": "max length is {n}",
+    "@validationMaxLength": {
+        "placeholders": {
+            "n": {}
+        }
+    },
+    "validationMinLength": "min length is {n}",
+    "@validationMinLength": {
+        "placeholders": {
+            "n": {}
+        }
+    },
+    "validationRequired": "this field is required",
+    "validationUrl": "invalid url",
+    "invalidPhoneNumber": "invalid phone number",
+    "password": "Password"
 }

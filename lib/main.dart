@@ -14,7 +14,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'core/utils/theme.dart';
+import 'core/utils/theme/theme.dart';
 import 'firebase_options.dart';
 
 void main() async {
