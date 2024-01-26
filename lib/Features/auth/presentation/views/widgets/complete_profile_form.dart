@@ -29,57 +29,55 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
   final List<String> errors = [];
   @override
   Widget build(BuildContext context) {
-    
-        return Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              buildFirstNameFormField(),
-              SizedBox(height: getProportionateScreenHeight(30)),
-              SizedBox(height: getProportionateScreenHeight(30)),
-              buildPhoneNumberFormField(),
-              SizedBox(height: getProportionateScreenHeight(30)),
-              buildAddressFormField(),
-              CustomFormError(errors: errors),
-              SizedBox(height: getProportionateScreenHeight(40)),
-              Consumer(
-                builder:(context, ref, child) {
-                  final state = ref.watch(completeProfileProvider);
-                  return CustomButton(
-                    text: 'Continue',
-                    isLoading: state.isLoading,
-                    onPressed: () async{
-                      if (_formKey.currentState!.validate()) {
-                        // Go to OTP view
-                
-                        _formKey.currentState!.save();
-                
-                        final data = UserModel(
-                          displayName: displayName,
-                          phoneNumber: phoneNumber,
-                          address: address,
-                        );
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          buildFirstNameFormField(),
+          SizedBox(height: getProportionateScreenHeight(30)),
+          SizedBox(height: getProportionateScreenHeight(30)),
+          buildPhoneNumberFormField(),
+          SizedBox(height: getProportionateScreenHeight(30)),
+          buildAddressFormField(),
+          CustomFormError(errors: errors),
+          SizedBox(height: getProportionateScreenHeight(40)),
+          Consumer(
+            builder: (context, ref, child) {
+              final state = ref.watch(completeProfileProvider);
+              return CustomButton(
+                  text: 'Continue',
+                  isLoading: state.isLoading,
+                  onPressed: () async {
+                    if (_formKey.currentState!.validate()) {
+                      // Go to OTP view
 
-                        final completeProfile = await ref
-                            .read(completeProfileProvider.notifier)
-                            .run(data);
-                        
-                        completeProfile.whenDataOrError(
-                          data: (_) => context.pushReplacement(RoutesDocument.loginSuccessView),
-                          error: (error, _) {
-                            errors.clear();
-                            addError(error: context.getErrorMessage(error));
-                          },
-                        );
-                
-                      }
-                    });
-                },
-              ),
-            ],
+                      _formKey.currentState!.save();
+
+                      final data = UserModel(
+                        displayName: displayName,
+                        phoneNumber: phoneNumber,
+                        address: address,
+                      );
+
+                      final completeProfile = await ref
+                          .read(completeProfileProvider.notifier)
+                          .run(data);
+
+                      completeProfile.whenDataOrError(
+                        data: (_) => context
+                            .pushReplacement(RoutesDocument.loginSuccessView),
+                        error: (error, _) {
+                          errors.clear();
+                          addError(error: context.getErrorMessage(error));
+                        },
+                      );
+                    }
+                  });
+            },
           ),
-        );
-      
+        ],
+      ),
+    );
   }
 
   TextFormField buildAddressFormField() {
@@ -102,7 +100,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         hintText: 'Enter your address',
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon:
-            CustomSurffixIcon(svgIcon: 'assets/icons/Location point.svg'),
+            CustomSuffixIcon(svgIcon: 'assets/icons/Location point.svg'),
       ),
     );
   }
@@ -127,11 +125,10 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         labelText: 'Phone Number',
         hintText: 'Enter your phone number',
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: 'assets/icons/Phone.svg'),
+        suffixIcon: CustomSuffixIcon(svgIcon: 'assets/icons/Phone.svg'),
       ),
     );
   }
-
 
   TextFormField buildFirstNameFormField() {
     return TextFormField(
@@ -153,7 +150,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         labelText: 'Display Name',
         hintText: 'Enter your name',
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: 'assets/icons/User.svg'),
+        suffixIcon: CustomSuffixIcon(svgIcon: 'assets/icons/User.svg'),
       ),
     );
   }

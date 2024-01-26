@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 class AppFormValidatorLocale extends FormValidatorLocale {
   final BuildContext context;
 
@@ -11,7 +10,7 @@ class AppFormValidatorLocale extends FormValidatorLocale {
   AppLocalizations get _l10n => AppLocalizations.of(context)!;
 
   @override
-  String email(String v) => "";
+  String email(String v) => _l10n.invalidEmail;
 
   @override
   String maxLength(String v, int n) => _l10n.validationMaxLength(n);

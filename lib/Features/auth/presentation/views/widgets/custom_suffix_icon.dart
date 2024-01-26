@@ -3,8 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../size_config.dart';
 
-class CustomSurffixIcon extends StatelessWidget {
-  const CustomSurffixIcon({super.key, required this.svgIcon});
+class CustomSuffixIcon extends StatelessWidget {
+  const CustomSuffixIcon({super.key, required this.svgIcon});
 
   final String svgIcon;
 
@@ -12,7 +12,7 @@ class CustomSurffixIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
-        0,
+        getProportionateScreenWidth(16),
         getProportionateScreenWidth(20),
         getProportionateScreenWidth(20),
         getProportionateScreenWidth(20),

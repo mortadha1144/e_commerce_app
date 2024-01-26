@@ -5,6 +5,15 @@
     "validationRequired",
     "validationUrl",
     "invalidPhoneNumber",
-    "password"
+    "password",
+    "welcomeBack",
+    "signInWithEmailAndPassword",
+    "email",
+    "emailHint",
+    "passwordHint",
+    "rememberMe",
+    "forgotPassword",
+    "login",
+    "continueText"
   ]
 }

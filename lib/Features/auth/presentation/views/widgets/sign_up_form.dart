@@ -68,7 +68,8 @@ class _SignUpFormState extends State<SignUpForm> {
 
                     createUser.whenDataOrError(
                       data: (_) => context.pushReplacement(
-                        RoutesDocument.completeProfileView,),
+                        RoutesDocument.completeProfileView,
+                      ),
                       error: (error, _) {
                         errors.clear();
                         addError(error: context.getErrorMessage(error));
@@ -112,7 +113,7 @@ class _SignUpFormState extends State<SignUpForm> {
         hintText: 'Re-enter your password',
         labelText: 'Confirm Password',
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: 'assets/icons/Lock.svg'),
+        suffixIcon: CustomSuffixIcon(svgIcon: 'assets/icons/Lock.svg'),
       ),
     );
   }
@@ -145,7 +146,7 @@ class _SignUpFormState extends State<SignUpForm> {
         hintText: 'Enter your password',
         labelText: 'Password',
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: 'assets/icons/Lock.svg'),
+        suffixIcon: CustomSuffixIcon(svgIcon: 'assets/icons/Lock.svg'),
       ),
     );
   }
@@ -176,7 +177,7 @@ class _SignUpFormState extends State<SignUpForm> {
         hintText: 'Enter your email',
         labelText: 'Email',
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: 'assets/icons/Mail.svg'),
+        suffixIcon: CustomSuffixIcon(svgIcon: 'assets/icons/Mail.svg'),
       ),
     );
   }

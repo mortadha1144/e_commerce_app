@@ -8,4 +8,5 @@ abstract final class AppIcons {
   static const IconData phone = Icons.phone_outlined;
   static const IconData visible = Icons.visibility_outlined;
   static const IconData invisible = Icons.visibility_off_outlined;
+  static const IconData email = Icons.email_outlined;
 }

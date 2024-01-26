@@ -1,5 +1,3 @@
-
-
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/utils/theme/icons.dart';
 import 'package:e_commerce_app/validator/extension.dart';
@@ -24,10 +22,12 @@ class PasswordFormField extends HookWidget {
     return TextFormField(
       controller: controller,
       obscureText: obscure.value,
-      keyboardType: TextInputType.phone,
+      keyboardType: TextInputType.text,
       validator: context.validator(optional: optional).build(),
       decoration: InputDecoration(
         labelText: l10n.password,
+        hintText: l10n.passwordHint,
+        floatingLabelBehavior: FloatingLabelBehavior.always,
         prefixIcon: const Icon(AppIcons.password),
         suffixIcon: IconButton(
           icon: Icon(

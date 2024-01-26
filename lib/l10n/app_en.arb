@@ -26,5 +26,14 @@
     "validationRequired": "this field is required",
     "validationUrl": "invalid url",
     "invalidPhoneNumber": "invalid phone number",
-    "password": "Password"
+        "password": "Password",
+    "welcomeBack": "Welcome Back",
+    "signInWithEmailAndPassword": "Sign in with your email and password  \nor continue with social media",
+    "email": "Email",
+    "emailHint": "Enter your email",
+    "passwordHint": "Enter your password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "login": "Login",
+    "continueText": "Continue"
 }

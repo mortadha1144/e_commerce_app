@@ -1,9 +1,11 @@
 // This is super important - otherwise, we would throw away the whole widget tree when the provider is updated.
+import 'dart:async';
+
 import 'package:e_commerce_app/Features/auth/presentation/views/complete_profile_view.dart';
 import 'package:e_commerce_app/Features/auth/presentation/views/forgot_password_view.dart';
+import 'package:e_commerce_app/Features/auth/presentation/views/login_page.dart';
 import 'package:e_commerce_app/Features/auth/presentation/views/login_success_view.dart';
 import 'package:e_commerce_app/Features/auth/presentation/views/otp_view.dart';
-import 'package:e_commerce_app/Features/auth/presentation/views/sign_in_view.dart';
 import 'package:e_commerce_app/Features/auth/presentation/views/sign_up_view.dart';
 import 'package:e_commerce_app/Features/auth/providers/is_logged_in_provider.dart';
 import 'package:e_commerce_app/Features/cart/presentation/views/cart_view.dart';
@@ -16,7 +18,7 @@ import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
 import 'package:e_commerce_app/Features/product/presentation/views/all_products_view.dart';
 import 'package:e_commerce_app/Features/product/presentation/views/product_details_view.dart';
 import 'package:e_commerce_app/Features/profile/presentation/views/profile_view.dart';
-import 'package:e_commerce_app/core/utils/app_router.dart';
+import 'package:e_commerce_app/core/utils/providers/settings_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -30,6 +32,29 @@ GoRouter? _previousRouter;
 
 final routerProvider = Provider.autoDispose((ref) {
   final bool loggedIn = ref.watch(isLoggedInProvider);
+  final local = ref.watch(settingsProvider).locale;
+
+  FutureOr<String?> redirect(BuildContext context, GoRouterState state) {
+    // if` the user is not logged in, they need to login
+    final bool loggingIn = state.matchedLocation == RoutesDocument.login;
+
+    if (local == null) {
+      return RoutesDocument.chooseLanguage;
+    }
+
+    if (!loggedIn) {
+      return loggingIn ? null : RoutesDocument.login;
+    }
+
+    // if the user is logged in but still on the login page, send them to
+    // the home page
+    if (loggingIn) {
+      return RoutesDocument.loginSuccessView;
+    }
+
+    // no need to redirect at all
+    return null;
+  }
 
   return GoRouter(
     initialLocation:
@@ -45,6 +70,7 @@ final routerProvider = Provider.autoDispose((ref) {
             path: RoutesDocument.homeView,
             parentNavigatorKey: _shellNavigatorKey,
             builder: (context, state) => const HomeView(),
+            redirect: redirect,
             routes: [
               GoRoute(
                 path: RoutesDocument.productDetailsView,
@@ -68,39 +94,22 @@ final routerProvider = Provider.autoDispose((ref) {
             path: RoutesDocument.favoriteView,
             parentNavigatorKey: _shellNavigatorKey,
             builder: (context, state) => const FavoriteView(),
+            redirect: redirect,
           ),
           GoRoute(
             path: RoutesDocument.chatView,
             parentNavigatorKey: _shellNavigatorKey,
             builder: (context, state) => const ChatView(),
+            redirect: redirect,
           ),
           GoRoute(
             path: RoutesDocument.profileView,
             parentNavigatorKey: _shellNavigatorKey,
             builder: (context, state) => const ProfileView(),
+            redirect: redirect,
           ),
         ],
       ),
-      // GoRoute(
-      //   path: RoutesDocument.homeView,
-      //   builder: (context, state) => const BottomNavigationBarScaffold(),
-      // ),
-      // GoRoute(
-      //   path: RoutesDocument.homeViewBody,
-      //   builder: (context, state) => const HomeView(),
-      // ),
-      // GoRoute(
-      //   path: RoutesDocument.favoriteView,
-      //   builder: (context, state) => const FavoriteView(),
-      // ),
-      // GoRoute(
-      //   path: RoutesDocument.chatView,
-      //   builder: (context, state) => const ChatView(),
-      // ),
-      // GoRoute(
-      //   path: RoutesDocument.profileView,
-      //   builder: (context, state) => const ProfileView(),
-      // ),
       GoRoute(
         path: RoutesDocument.chooseLanguage,
         builder: (context, state) => const ChooseYourLanguagePage(),
@@ -111,7 +120,7 @@ final routerProvider = Provider.autoDispose((ref) {
       ),
       GoRoute(
         path: RoutesDocument.login,
-        builder: (context, state) => const SignInView(),
+        builder: (context, state) => const LoginPage(),
       ),
       GoRoute(
         path: RoutesDocument.forgotPasswordView,
@@ -130,22 +139,6 @@ final routerProvider = Provider.autoDispose((ref) {
         builder: (context, state) => const OtpView(),
       ),
     ],
-    redirect: (context, state) {
-      // if the user is not logged in, they need to login
-      final bool loggingIn = state.path == RoutesDocument.login;
-      if (!loggedIn) {
-        return loggingIn ? null : RoutesDocument.login;
-      }
-
-      // if the user is logged in but still on the login page, send them to
-      // the home page
-      if (loggingIn) {
-        return '/';
-      }
-
-      // no need to redirect at all
-      return null;
-    },
   );
 });
 
