@@ -1,5 +1,7 @@
 import 'package:e_commerce_app/core/utils/app_router.dart';
+import 'package:e_commerce_app/core/utils/providers/settings_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/utils/app_router.dart';
@@ -48,12 +50,16 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
             ),
             Expanded(
               flex: 2,
-              child: OnBoardingAction(
-                currentPage: currentPage,
-                itemCount: onBoardingData.length,
-                onPressed: () {
-                  context.push(RoutesDocument.login);
-                },
+              child: Consumer(
+                builder: (context, ref, child) => OnBoardingAction(
+                  currentPage: currentPage,
+                  itemCount: onBoardingData.length,
+                  onPressed: () {
+                    ref.read(settingsProvider.notifier).update(
+                        (state) => state.copyWith(isOnBoardingShown: true));
+                    context.push(RoutesDocument.login);
+                  },
+                ),
               ),
             ),
           ],

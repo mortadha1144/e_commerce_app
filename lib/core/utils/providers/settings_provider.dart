@@ -15,6 +15,7 @@ class AppSettings with _$AppSettings {
   const factory AppSettings({
     @Default(ThemeMode.system) ThemeMode themeMode,
     @Default(null) String? localeCode,
+    @Default(false) bool isOnBoardingShown,
   }) = _AppSettings;
 
   Locale? get locale => localeCode == null ? null : Locale(localeCode!);

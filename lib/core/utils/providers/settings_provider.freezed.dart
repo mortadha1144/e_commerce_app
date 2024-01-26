@@ -22,6 +22,7 @@ AppSettings _$AppSettingsFromJson(Map<String, dynamic> json) {
 mixin _$AppSettings {
   ThemeMode get themeMode => throw _privateConstructorUsedError;
   String? get localeCode => throw _privateConstructorUsedError;
+  bool get isOnBoardingShown => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,7 @@ abstract class $AppSettingsCopyWith<$Res> {
           AppSettings value, $Res Function(AppSettings) then) =
       _$AppSettingsCopyWithImpl<$Res, AppSettings>;
   @useResult
-  $Res call({ThemeMode themeMode, String? localeCode});
+  $Res call({ThemeMode themeMode, String? localeCode, bool isOnBoardingShown});
 }
 
 /// @nodoc
@@ -53,6 +54,7 @@ class _$AppSettingsCopyWithImpl<$Res, $Val extends AppSettings>
   $Res call({
     Object? themeMode = null,
     Object? localeCode = freezed,
+    Object? isOnBoardingShown = null,
   }) {
     return _then(_value.copyWith(
       themeMode: null == themeMode
@@ -63,6 +65,10 @@ class _$AppSettingsCopyWithImpl<$Res, $Val extends AppSettings>
           ? _value.localeCode
           : localeCode // ignore: cast_nullable_to_non_nullable
               as String?,
+      isOnBoardingShown: null == isOnBoardingShown
+          ? _value.isOnBoardingShown
+          : isOnBoardingShown // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -75,7 +81,7 @@ abstract class _$$AppSettingsImplCopyWith<$Res>
       __$$AppSettingsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ThemeMode themeMode, String? localeCode});
+  $Res call({ThemeMode themeMode, String? localeCode, bool isOnBoardingShown});
 }
 
 /// @nodoc
@@ -91,6 +97,7 @@ class __$$AppSettingsImplCopyWithImpl<$Res>
   $Res call({
     Object? themeMode = null,
     Object? localeCode = freezed,
+    Object? isOnBoardingShown = null,
   }) {
     return _then(_$AppSettingsImpl(
       themeMode: null == themeMode
@@ -101,6 +108,10 @@ class __$$AppSettingsImplCopyWithImpl<$Res>
           ? _value.localeCode
           : localeCode // ignore: cast_nullable_to_non_nullable
               as String?,
+      isOnBoardingShown: null == isOnBoardingShown
+          ? _value.isOnBoardingShown
+          : isOnBoardingShown // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -109,7 +120,9 @@ class __$$AppSettingsImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AppSettingsImpl extends _AppSettings {
   const _$AppSettingsImpl(
-      {this.themeMode = ThemeMode.system, this.localeCode = null})
+      {this.themeMode = ThemeMode.system,
+      this.localeCode = null,
+      this.isOnBoardingShown = false})
       : super._();
 
   factory _$AppSettingsImpl.fromJson(Map<String, dynamic> json) =>
@@ -121,10 +134,13 @@ class _$AppSettingsImpl extends _AppSettings {
   @override
   @JsonKey()
   final String? localeCode;
+  @override
+  @JsonKey()
+  final bool isOnBoardingShown;
 
   @override
   String toString() {
-    return 'AppSettings(themeMode: $themeMode, localeCode: $localeCode)';
+    return 'AppSettings(themeMode: $themeMode, localeCode: $localeCode, isOnBoardingShown: $isOnBoardingShown)';
   }
 
   @override
@@ -135,12 +151,15 @@ class _$AppSettingsImpl extends _AppSettings {
             (identical(other.themeMode, themeMode) ||
                 other.themeMode == themeMode) &&
             (identical(other.localeCode, localeCode) ||
-                other.localeCode == localeCode));
+                other.localeCode == localeCode) &&
+            (identical(other.isOnBoardingShown, isOnBoardingShown) ||
+                other.isOnBoardingShown == isOnBoardingShown));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, themeMode, localeCode);
+  int get hashCode =>
+      Object.hash(runtimeType, themeMode, localeCode, isOnBoardingShown);
 
   @JsonKey(ignore: true)
   @override
@@ -159,7 +178,8 @@ class _$AppSettingsImpl extends _AppSettings {
 abstract class _AppSettings extends AppSettings {
   const factory _AppSettings(
       {final ThemeMode themeMode,
-      final String? localeCode}) = _$AppSettingsImpl;
+      final String? localeCode,
+      final bool isOnBoardingShown}) = _$AppSettingsImpl;
   const _AppSettings._() : super._();
 
   factory _AppSettings.fromJson(Map<String, dynamic> json) =
@@ -169,6 +189,8 @@ abstract class _AppSettings extends AppSettings {
   ThemeMode get themeMode;
   @override
   String? get localeCode;
+  @override
+  bool get isOnBoardingShown;
   @override
   @JsonKey(ignore: true)
   _$$AppSettingsImplCopyWith<_$AppSettingsImpl> get copyWith =>

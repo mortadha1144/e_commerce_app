@@ -14,6 +14,7 @@ import 'package:e_commerce_app/Features/choose_language/choose_your_language_pag
 import 'package:e_commerce_app/Features/favourite/views/favorite_view.dart';
 import 'package:e_commerce_app/Features/home/presentation/views/bottom_navigation.dart';
 import 'package:e_commerce_app/Features/home/presentation/views/home_view.dart';
+import 'package:e_commerce_app/Features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
 import 'package:e_commerce_app/Features/product/presentation/views/all_products_view.dart';
 import 'package:e_commerce_app/Features/product/presentation/views/product_details_view.dart';
@@ -33,6 +34,7 @@ GoRouter? _previousRouter;
 final routerProvider = Provider.autoDispose((ref) {
   final bool loggedIn = ref.watch(isLoggedInProvider);
   final local = ref.watch(settingsProvider).locale;
+  final bool isOnBoardingShown = ref.watch(settingsProvider).isOnBoardingShown;
 
   FutureOr<String?> redirect(BuildContext context, GoRouterState state) {
     // if` the user is not logged in, they need to login
@@ -42,6 +44,10 @@ final routerProvider = Provider.autoDispose((ref) {
       return RoutesDocument.chooseLanguage;
     }
 
+    if (!isOnBoardingShown) {
+      return RoutesDocument.onBoardingView;
+    }
+
     if (!loggedIn) {
       return loggingIn ? null : RoutesDocument.login;
     }
@@ -49,7 +55,7 @@ final routerProvider = Provider.autoDispose((ref) {
     // if the user is logged in but still on the login page, send them to
     // the home page
     if (loggingIn) {
-      return RoutesDocument.loginSuccessView;
+      return RoutesDocument.homeView;
     }
 
     // no need to redirect at all
@@ -138,6 +144,10 @@ final routerProvider = Provider.autoDispose((ref) {
         path: RoutesDocument.otpView,
         builder: (context, state) => const OtpView(),
       ),
+      GoRoute(
+        path: RoutesDocument.onBoardingView,
+        builder: (context, state) => const OnBoardingView(),
+      ),
     ],
   );
 });
@@ -152,6 +162,7 @@ class RoutesDocument {
   static const loginSuccessView = '/loginSuccessView';
   static const completeProfileView = '/completeProfileView';
   static const otpView = '/otpView';
+  static const onBoardingView = '/onBoardingView';
   static const productDetailsView = 'productDetailsView';
   static const allProductsView = 'allProductsView';
   static const cartView = 'cartView';

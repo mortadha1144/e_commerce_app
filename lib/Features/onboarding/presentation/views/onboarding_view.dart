@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'widgets/onboarding_body.dart';
 
-class OnBordingView extends StatelessWidget {
-  const OnBordingView({super.key});
+class OnBoardingView extends StatelessWidget {
+  const OnBoardingView({super.key});
 
   @override
   Widget build(BuildContext context) {
