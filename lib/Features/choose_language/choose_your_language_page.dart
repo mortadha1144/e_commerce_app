@@ -1,6 +1,4 @@
-import 'dart:developer';
 
-import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/constants/sizes.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
@@ -10,7 +8,6 @@ import 'package:e_commerce_app/core/utils/widgets/flex_padded.dart';
 import 'package:e_commerce_app/gen/assets.gen.dart';
 import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

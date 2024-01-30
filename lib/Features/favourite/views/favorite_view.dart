@@ -1,7 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce_app/Features/cart/providers/cart_provider.dart';
-import 'package:e_commerce_app/Features/favourite/views/test.dart';
-import 'package:e_commerce_app/core/utils/constants/firebase_collection_name.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

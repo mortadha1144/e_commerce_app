@@ -5,7 +5,6 @@ import 'package:e_commerce_app/core/utils/widgets/custom_loading_indicator.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../Features/home/data/models/product_test.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 

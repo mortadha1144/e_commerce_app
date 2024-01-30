@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class FormBody extends StatelessWidget {
@@ -25,7 +24,7 @@ class FormBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Align(
-        alignment: Alignment.center,
+        alignment: alignment,
         child: SingleChildScrollView(
           padding: padding,
           child: Form(

@@ -1,18 +1,15 @@
 import 'package:e_commerce_app/Features/auth/data/models/create_user_request.dart';
 import 'package:e_commerce_app/Features/auth/providers/create_user_provider.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
-import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/utils/network/state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/widgets/custom_button.dart';
 import '../../../../../size_config.dart';
-import '../../cubits/auth_cubit/auth_cubit.dart';
 import 'custom_form_error.dart';
 import 'custom_suffix_icon.dart';
 

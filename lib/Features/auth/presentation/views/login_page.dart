@@ -6,7 +6,6 @@ import 'package:e_commerce_app/constants.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
-import 'package:e_commerce_app/core/utils/functions/custom_snack_bar.dart';
 import 'package:e_commerce_app/core/utils/network/state.dart';
 import 'package:e_commerce_app/core/utils/snackbar.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
@@ -82,7 +81,7 @@ class LoginPage extends HookConsumerWidget {
                 GestureDetector(
                   onTap: () => context.push(RoutesDocument.forgotPasswordView),
                   child: Text(
-                    context.l10n.forgotPassword,
+                    context.l10n.forgotPasswordQ,
                     style:
                         const TextStyle(decoration: TextDecoration.underline),
                   ),

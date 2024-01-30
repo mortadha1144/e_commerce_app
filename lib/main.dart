@@ -1,9 +1,6 @@
-import 'package:e_commerce_app/Features/auth/data/repos/auth_repo.dart';
-import 'package:e_commerce_app/Features/auth/presentation/cubits/auth_cubit/auth_cubit.dart';
 import 'package:e_commerce_app/Features/home/data/repos/home_repo.dart';
 import 'package:e_commerce_app/Features/home/presentation/cubits/home_cubit/home_cubit.dart';
 import 'package:e_commerce_app/bloc_observer.dart';
-import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/providers/provider.dart';
 import 'package:e_commerce_app/core/utils/providers/settings_provider.dart';
@@ -45,9 +42,6 @@ class MyApp extends ConsumerWidget {
     final router = ref.watch(routerProvider);
     return MultiBlocProvider(
       providers: [
-        BlocProvider<AuthCubit>(
-          create: (context) => AuthCubit(AuthRepo()),
-        ),
         BlocProvider<HomeCubit>(
           create: (context) => HomeCubit(HomeRepo())..fetchHomeData(),
         ),

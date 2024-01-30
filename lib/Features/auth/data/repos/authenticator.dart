@@ -1,9 +1,8 @@
 import 'package:e_commerce_app/Features/auth/data/constants/constants.dart';
-import 'package:e_commerce_app/Features/auth/data/models/auth_state.dart';
 import 'package:e_commerce_app/Features/auth/data/models/create_user_request.dart';
 import 'package:e_commerce_app/Features/auth/data/models/user_model.dart';
 import 'package:e_commerce_app/core/utils/enums/enums.dart';
-import 'package:e_commerce_app/core/utils/services/user_info_storage.dart';
+import 'package:e_commerce_app/Features/auth/data/repos/user_repo.dart';
 import 'package:e_commerce_app/core/utils/typedefs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -28,6 +27,10 @@ abstract class AuthRepo {
     required UserModel user,
   });
   Future<void> logOut();
+
+  Future<void> resetPassword({
+    required String email,
+  });
 }
 
 class AuthRepoImpl extends AuthRepo {
@@ -142,6 +145,13 @@ class AuthRepoImpl extends AuthRepo {
     return userRepo.updateUserInfo(
       userId: userId!,
       user: user,
+    );
+  }
+
+  @override
+  Future<void> resetPassword({required String email})  {
+    return FirebaseAuth.instance.sendPasswordResetEmail(
+      email: email,
     );
   }
 }

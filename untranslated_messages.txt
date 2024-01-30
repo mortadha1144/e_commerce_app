@@ -12,8 +12,10 @@
     "emailHint",
     "passwordHint",
     "rememberMe",
+    "forgotPasswordQ",
     "forgotPassword",
     "login",
-    "continueText"
+    "continueText",
+    "pleaseEnterYourEmailToResetPassword"
   ]
 }

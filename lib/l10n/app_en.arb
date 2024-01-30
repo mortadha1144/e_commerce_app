@@ -33,7 +33,9 @@
     "emailHint": "Enter your email",
     "passwordHint": "Enter your password",
     "rememberMe": "Remember me",
-    "forgotPassword": "Forgot password?",
+    "forgotPasswordQ": "Forgot password?",
+    "forgotPassword": "Forgot password",
     "login": "Login",
-    "continueText": "Continue"
+    "continueText": "Continue",
+    "pleaseEnterYourEmailToResetPassword": "Please enter your email and we will send \nyou a link to return to your account"
 }

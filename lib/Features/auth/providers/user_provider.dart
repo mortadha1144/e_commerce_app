@@ -1,7 +1,5 @@
 import 'package:e_commerce_app/Features/auth/data/models/user_model.dart';
-import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/providers/object_preference_provider.dart';
-import 'package:e_commerce_app/core/utils/providers/settings_provider.dart';
 import 'package:e_commerce_app/core/utils/shared_preference/helper.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
