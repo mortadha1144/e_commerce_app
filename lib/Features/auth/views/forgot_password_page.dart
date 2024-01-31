@@ -1,6 +1,6 @@
 
-import 'package:e_commerce_app/Features/auth/presentation/views/widgets/no_account_text.dart';
 import 'package:e_commerce_app/Features/auth/providers/reset_password_provider.dart';
+import 'package:e_commerce_app/Features/auth/views/widgets/no_account_text.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/utils/network/state.dart';
 import 'package:e_commerce_app/core/utils/snackbar.dart';

@@ -1,13 +1,12 @@
 // This is super important - otherwise, we would throw away the whole widget tree when the provider is updated.
 import 'dart:async';
-
-import 'package:e_commerce_app/Features/auth/presentation/views/complete_profile_view.dart';
-import 'package:e_commerce_app/Features/auth/presentation/views/forgot_password_page.dart';
-import 'package:e_commerce_app/Features/auth/presentation/views/login_page.dart';
-import 'package:e_commerce_app/Features/auth/presentation/views/login_success_view.dart';
-import 'package:e_commerce_app/Features/auth/presentation/views/otp_view.dart';
-import 'package:e_commerce_app/Features/auth/presentation/views/sign_up_view.dart';
 import 'package:e_commerce_app/Features/auth/providers/is_logged_in_provider.dart';
+import 'package:e_commerce_app/Features/auth/views/complete_profile_view.dart';
+import 'package:e_commerce_app/Features/auth/views/forgot_password_page.dart';
+import 'package:e_commerce_app/Features/auth/views/login_page.dart';
+import 'package:e_commerce_app/Features/auth/views/login_success_view.dart';
+import 'package:e_commerce_app/Features/auth/views/otp_view.dart';
+import 'package:e_commerce_app/Features/auth/views/sign_up_view.dart';
 import 'package:e_commerce_app/Features/cart/presentation/views/cart_view.dart';
 import 'package:e_commerce_app/Features/chat/presentation/views/chat_view.dart';
 import 'package:e_commerce_app/Features/choose_language/choose_your_language_page.dart';
