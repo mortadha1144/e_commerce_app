@@ -3,16 +3,19 @@ import 'package:e_commerce_app/core/utils/theme/icons.dart';
 import 'package:e_commerce_app/validator/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:form_validator/form_validator.dart';
 
 class PasswordFormField extends HookWidget {
   const PasswordFormField({
     super.key,
     required this.controller,
     required this.optional,
+    this.validation,
   });
 
   final TextEditingController controller;
   final bool optional;
+  final StringValidationCallback? validation;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,7 @@ class PasswordFormField extends HookWidget {
       controller: controller,
       obscureText: obscure.value,
       keyboardType: TextInputType.text,
-      validator: context.validator(optional: optional).build(),
+      validator: validation ?? context.validator(optional: optional).build(),
       decoration: InputDecoration(
         labelText: l10n.password,
         hintText: l10n.passwordHint,

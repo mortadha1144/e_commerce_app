@@ -6,6 +6,7 @@ import 'package:e_commerce_app/Features/auth/views/forgot_password_page.dart';
 import 'package:e_commerce_app/Features/auth/views/login_page.dart';
 import 'package:e_commerce_app/Features/auth/views/login_success_view.dart';
 import 'package:e_commerce_app/Features/auth/views/otp_view.dart';
+import 'package:e_commerce_app/Features/auth/views/sign_up_page.dart';
 import 'package:e_commerce_app/Features/auth/views/sign_up_view.dart';
 import 'package:e_commerce_app/Features/cart/presentation/views/cart_view.dart';
 import 'package:e_commerce_app/Features/chat/presentation/views/chat_view.dart';
@@ -129,7 +130,7 @@ final routerProvider = Provider.autoDispose((ref) {
       ),
       GoRoute(
         path: RoutesDocument.forgotPasswordView,
-        builder: (context, state) => const ForgotPasswordPage(),
+        builder: (context, state) => const SignUpPage(),
       ),
       GoRoute(
         path: RoutesDocument.loginSuccessView,
