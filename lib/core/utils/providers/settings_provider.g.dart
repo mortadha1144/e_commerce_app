@@ -11,14 +11,12 @@ _$AppSettingsImpl _$$AppSettingsImplFromJson(Map<String, dynamic> json) =>
       themeMode: $enumDecodeNullable(_$ThemeModeEnumMap, json['themeMode']) ??
           ThemeMode.system,
       localeCode: json['localeCode'] as String? ?? null,
-      isOnBoardingShown: json['isOnBoardingShown'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$AppSettingsImplToJson(_$AppSettingsImpl instance) =>
     <String, dynamic>{
       'themeMode': _$ThemeModeEnumMap[instance.themeMode]!,
       'localeCode': instance.localeCode,
-      'isOnBoardingShown': instance.isOnBoardingShown,
     };
 
 const _$ThemeModeEnumMap = {

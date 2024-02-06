@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/widgets/custom_button.dart';
-import '../../../../../size_config.dart';
+import '../../../../core/utils/widgets/custom_button.dart';
+import '../../../../size_config.dart';
 import 'custom_animated_container.dart';
 
 class OnBoardingAction extends StatelessWidget {

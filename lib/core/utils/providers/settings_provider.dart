@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/core/utils/shared_preference/helper.dart';
+import 'package:e_commerce_app/core/utils/shared_preference/preference_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -14,7 +14,6 @@ class AppSettings with _$AppSettings {
   const factory AppSettings({
     @Default(ThemeMode.system) ThemeMode themeMode,
     @Default(null) String? localeCode,
-    @Default(false) bool isOnBoardingShown,
   }) = _AppSettings;
 
   Locale? get locale => localeCode == null ? null : Locale(localeCode!);

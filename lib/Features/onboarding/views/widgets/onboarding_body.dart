@@ -1,10 +1,8 @@
 import 'package:e_commerce_app/core/utils/app_router.dart';
-import 'package:e_commerce_app/core/utils/providers/settings_provider.dart';
+import 'package:e_commerce_app/core/utils/providers/preference_helper_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../../../../core/utils/app_router.dart';
 import 'onboarding_action.dart';
 import 'onboarding_page_view.dart';
 
@@ -54,11 +52,12 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
                 builder: (context, ref, child) => OnBoardingAction(
                   currentPage: currentPage,
                   itemCount: onBoardingData.length,
-                  onPressed: () {
-                    ref.read(settingsProvider.notifier).update(
-                        (state) => state.copyWith(isOnBoardingShown: true));
-                    context.push(RoutesDocument.login);
-                  },
+                  onPressed: ()  => ref
+                        .read(preferenceHelperProvider)
+                        .saveIsOnboardingShown()
+                        .then(
+                          (_) => context.push(RoutesDocument.login),
+                        ),
                 ),
               ),
             ),

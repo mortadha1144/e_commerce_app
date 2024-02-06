@@ -12,11 +12,12 @@ import 'package:e_commerce_app/Features/choose_language/choose_your_language_pag
 import 'package:e_commerce_app/Features/favourite/views/favorite_view.dart';
 import 'package:e_commerce_app/Features/home/presentation/views/bottom_navigation.dart';
 import 'package:e_commerce_app/Features/home/presentation/views/home_view.dart';
-import 'package:e_commerce_app/Features/onboarding/presentation/views/onboarding_view.dart';
+import 'package:e_commerce_app/Features/onboarding/views/onboarding_view.dart';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
 import 'package:e_commerce_app/Features/product/presentation/views/all_products_view.dart';
 import 'package:e_commerce_app/Features/product/presentation/views/product_details_view.dart';
 import 'package:e_commerce_app/Features/profile/presentation/views/profile_view.dart';
+import 'package:e_commerce_app/core/utils/providers/preference_helper_provider.dart';
 import 'package:e_commerce_app/core/utils/providers/settings_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -32,7 +33,7 @@ GoRouter? _previousRouter;
 final routerProvider = Provider.autoDispose((ref) {
   final bool loggedIn = ref.watch(isLoggedInProvider);
   final local = ref.watch(settingsProvider).locale;
-  final bool isOnBoardingShown = ref.watch(settingsProvider).isOnBoardingShown;
+  final bool isOnBoardingShown = ref.read(preferenceHelperProvider).isOnboardingShown;
 
   FutureOr<String?> redirect(BuildContext context, GoRouterState state) {
     // if` the user is not logged in, they need to login
