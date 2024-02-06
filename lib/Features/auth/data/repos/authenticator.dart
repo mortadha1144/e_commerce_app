@@ -1,5 +1,4 @@
 import 'package:e_commerce_app/Features/auth/data/constants/constants.dart';
-import 'package:e_commerce_app/Features/auth/data/models/create_user_request.dart';
 import 'package:e_commerce_app/Features/auth/data/models/user_model.dart';
 import 'package:e_commerce_app/core/utils/enums/enums.dart';
 import 'package:e_commerce_app/Features/auth/data/repos/user_repo.dart';
@@ -21,7 +20,8 @@ abstract class AuthRepo {
     required String password,
   });
   Future<void> createUserWithEmailAndPassword({
-    required CreateUserRequest request,
+    required UserModel user,
+    required String password,
   });
   Future<UserModel> updateUserInfo({
     required UserModel user,
@@ -47,19 +47,16 @@ class AuthRepoImpl extends AuthRepo {
 
   @override
   Future<void> createUserWithEmailAndPassword({
-    required CreateUserRequest request,
+    required UserModel user,
+    required String password,
   }) async {
     await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: request.email,
-      password: request.password,
+      email: user.email!,
+      password: password,
     );
 
-    final user = UserModel(
-      userId: userId,
-      email: request.email,
-    );
-
-    await userRepo.addNewUser(user: user);
+    final newUser = user.copyWith(userId: userId);
+    await userRepo.addNewUser(user: newUser);
   }
 
   @override

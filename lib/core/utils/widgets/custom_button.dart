@@ -12,6 +12,7 @@ class CustomButton extends StatelessWidget {
     this.backgroundColor,
     this.size,
     this.fontSize,
+    this.isOutline = false,
   });
 
   final String text;
@@ -20,6 +21,7 @@ class CustomButton extends StatelessWidget {
   final Color? backgroundColor;
   final Size? size;
   final double? fontSize;
+  final bool isOutline;
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +30,18 @@ class CustomButton extends StatelessWidget {
       height: size?.height ?? getProportionateScreenHeight(56),
       child: TextButton(
         style: ButtonStyle(
-            backgroundColor: MaterialStatePropertyAll(
-              backgroundColor ?? kPrimaryColor,
+          backgroundColor: MaterialStatePropertyAll(
+            backgroundColor ?? kPrimaryColor,
+          ),
+          shape: MaterialStatePropertyAll(
+            RoundedRectangleBorder(
+              side: isOutline
+                  ? const BorderSide(color: kTextColor)
+                  : BorderSide.none,
+              borderRadius: BorderRadius.circular(20),
             ),
-            shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20)))),
+          ),
+        ),
         onPressed: onPressed,
         child: isLoading
             ? const CircularProgressIndicator(

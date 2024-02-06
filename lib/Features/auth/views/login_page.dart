@@ -1,5 +1,5 @@
 import 'package:e_commerce_app/Features/auth/providers/auth_provider.dart';
-import 'package:e_commerce_app/Features/auth/views/password_form_field.dart';
+import 'package:e_commerce_app/Features/auth/views/widgets/password_form_field.dart';
 import 'package:e_commerce_app/Features/auth/views/widgets/custom_social_card.dart';
 import 'package:e_commerce_app/Features/auth/views/widgets/no_account_text.dart';
 import 'package:e_commerce_app/constants.dart';

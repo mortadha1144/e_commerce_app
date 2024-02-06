@@ -40,7 +40,16 @@
     "pleaseEnterYourEmailToResetPassword": "Please enter your email and we will send \nyou a link to return to your account",
     "signUp": "Sign Up",
     "registerAccount": "Register Account",
+    "completeProfile": "Complete Profile",
     "completeYourDetails":"Complete your details or continue \nwith social media",
     "byContinuingYourConfirm": "By continuing your confirm that you agree \nwith our Term and Condition",
-    "passwordDoesNotMatch": "Password does not match"
+    "passwordDoesNotMatch": "Password does not match",
+    "displayName": "Display Name",
+    "displayNameHint": "Enter your name",
+    "phoneNumber": "Phone Number",
+    "phoneNumberHint": "Enter your phone number",
+    "address": "Address",
+    "addressHint": "Enter your address",
+    "back": "Back",
+    "accountCreatedSuccessfully": "Account created successfully"
 }

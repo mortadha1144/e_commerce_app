@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/Features/auth/data/models/create_user_request.dart';
+import 'package:e_commerce_app/Features/auth/data/models/user_model.dart';
 import 'package:e_commerce_app/Features/auth/providers/auth_repo_provider.dart';
 import 'package:e_commerce_app/core/utils/network/state.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -16,11 +16,13 @@ class CreateUserNotifier extends AutoDisposeAsyncNotifier<AsyncX<void>>
 
   @useResult
   RunXCallback<void> run({
-    required CreateUserRequest request,
+    required UserModel user,
+    required String password,
   }) =>
       handle(
         () => ref.read(authRepoProvider).createUserWithEmailAndPassword(
-                request: request,
+                user: user,
+                password: password,
               ),
       );
 }

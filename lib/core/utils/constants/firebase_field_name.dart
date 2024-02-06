@@ -5,6 +5,7 @@ class FirebaseFieldName {
   static const userId = 'uid';
   static const address = 'address';
   static const email = 'email';
+  static const password = 'password';
   static const displayName = 'display_name';
   static const firstName = 'firstName';
   static const lastName = 'lastName';

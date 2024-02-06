@@ -5,14 +5,12 @@ class FormBody extends StatelessWidget {
     super.key,
     required this.formKey,
     this.padding = const EdgeInsets.all(16.0),
-    this.alignment = Alignment.center,
     this.mainAxisAlignment = MainAxisAlignment.center,
     this.crossAxisAlignment = CrossAxisAlignment.stretch,
     this.mainAxisSize = MainAxisSize.min,
     required this.children,
   });
 
-  final Alignment alignment;
   final EdgeInsets padding;
   final GlobalKey<FormState> formKey;
   final MainAxisAlignment mainAxisAlignment;
@@ -23,18 +21,15 @@ class FormBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Align(
-        alignment: alignment,
-        child: SingleChildScrollView(
-          padding: padding,
-          child: Form(
-            key: formKey,
-            child: Column(
-              mainAxisAlignment: mainAxisAlignment,
-              crossAxisAlignment: crossAxisAlignment,
-              mainAxisSize: mainAxisSize,
-              children: children,
-            ),
+      child: SingleChildScrollView(
+        padding: padding,
+        child: Form(
+          key: formKey,
+          child: Column(
+            mainAxisAlignment: mainAxisAlignment,
+            crossAxisAlignment: crossAxisAlignment,
+            mainAxisSize: mainAxisSize,
+            children: children,
           ),
         ),
       ),

@@ -24,7 +24,6 @@ class ForgotPasswordPage extends HookConsumerWidget {
       ),
       body: FormBody(
         mainAxisAlignment: MainAxisAlignment.start,
-        alignment: Alignment.topCenter,
         formKey: formKey,
         children: [
           const SizedBox.square(

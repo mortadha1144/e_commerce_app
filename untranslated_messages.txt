@@ -19,8 +19,17 @@
     "pleaseEnterYourEmailToResetPassword",
     "signUp",
     "registerAccount",
+    "completeProfile",
     "completeYourDetails",
     "byContinuingYourConfirm",
-    "passwordDoesNotMatch"
+    "passwordDoesNotMatch",
+    "displayName",
+    "displayNameHint",
+    "phoneNumber",
+    "phoneNumberHint",
+    "address",
+    "addressHint",
+    "back",
+    "accountCreatedSuccessfully"
   ]
 }
