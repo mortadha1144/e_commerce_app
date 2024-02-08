@@ -13,4 +13,7 @@
         "**/*.freezed.dart": true,
         "**/*.gen.dart": true
     },
+    "cSpell.words": [
+        "Firestore"
+    ],
 }

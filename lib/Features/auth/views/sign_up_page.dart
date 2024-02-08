@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/Features/auth/data/models/sign_up_model.dart';
 import 'package:e_commerce_app/Features/auth/data/models/user_model.dart';
 import 'package:e_commerce_app/Features/auth/providers/create_user_provider.dart';
 import 'package:e_commerce_app/Features/auth/views/widgets/custom_social_card.dart';
@@ -189,8 +190,9 @@ class SignUpPage extends HookConsumerWidget {
                       onPressed: () async {
                         if (!formTwoKey.currentState!.validate()) return;
 
-                        final user = UserModel(
+                        final body = SignUpModel(
                           email: emailController.text,
+                          password: passwordController.text,
                           displayName: displayNameController.text,
                           phoneNumber: phoneNumberController.text,
                           address: addressController.text,
@@ -198,8 +200,7 @@ class SignUpPage extends HookConsumerWidget {
 
                         final createUser =
                             await ref.read(createUserProvider.notifier).run(
-                                  user: user,
-                                  password: passwordController.text,
+                                  body: body,
                                 );
 
                         createUser.whenDataOrError(

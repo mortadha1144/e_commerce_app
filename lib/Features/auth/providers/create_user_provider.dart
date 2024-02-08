@@ -1,5 +1,5 @@
-import 'package:e_commerce_app/Features/auth/data/models/user_model.dart';
-import 'package:e_commerce_app/Features/auth/providers/auth_repo_provider.dart';
+import 'package:e_commerce_app/Features/auth/data/models/sign_up_model.dart';
+import 'package:e_commerce_app/Features/auth/data/repos/auth_repo.dart';
 import 'package:e_commerce_app/core/utils/network/state.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -16,13 +16,11 @@ class CreateUserNotifier extends AutoDisposeAsyncNotifier<AsyncX<void>>
 
   @useResult
   RunXCallback<void> run({
-    required UserModel user,
-    required String password,
+    required SignUpModel body,
   }) =>
       handle(
-        () => ref.read(authRepoProvider).createUserWithEmailAndPassword(
-                user: user,
-                password: password,
-              ),
+        () => ref.read(authRepoProvider).signUp(
+              body: body,
+            ),
       );
 }
