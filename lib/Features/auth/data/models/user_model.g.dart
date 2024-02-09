@@ -50,8 +50,8 @@ _$UserDataImpl _$$UserDataImplFromJson(Map<String, dynamic> json) =>
       uid: json['uid'] as String,
       email: json['email'] as String,
       displayName: json['displayName'] as String,
-      phoneNumber: json['phoneNumber'] as String,
-      address: json['address'] as String,
+      phoneNumber: json['phoneNumber'] as String?,
+      address: json['address'] as String?,
       createdAt: const TimeStampJsonConverter()
           .fromJson(json['createdAt'] as Timestamp),
       avatar: json['avatar'] as String?,

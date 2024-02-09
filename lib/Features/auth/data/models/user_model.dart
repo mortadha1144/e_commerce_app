@@ -49,8 +49,8 @@ class UserData with _$UserData {
     required String uid,
     required String email,
     required String displayName,
-    required String phoneNumber,
-    required String address,
+    required String? phoneNumber,
+    required String? address,
     @TimeStampJsonConverter() required DateTime createdAt,
     required String? avatar,
   }) = _UserData;

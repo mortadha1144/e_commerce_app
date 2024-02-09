@@ -4,25 +4,25 @@ import 'package:e_commerce_app/core/utils/shared_preference/preference_helper.da
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-final userProvider = AutoDisposeNotifierProvider<UserNotifier, UserModel?>(
+final userProvider = AutoDisposeNotifierProvider<UserNotifier, UserData?>(
   UserNotifier.new,
 );
 
-class UserNotifier extends AutoDisposeNotifier<UserModel?>
+class UserNotifier extends AutoDisposeNotifier<UserData?>
     with NullableObjectPreferenceProvider {
   @override
   @protected
   String get key => PrefKeys.user;
 
   @override
-  UserModel? build() => firstBuild();
+  UserData? build() => firstBuild();
 
   @override
-  UserModel? fromJson(Map<String, dynamic>? map) =>
-      map == null ? null : UserModel.fromJson(map);
+  UserData? fromJson(Map<String, dynamic>? map) =>
+      map == null ? null : UserData.fromJson(map);
 
   @override
-  Map<String, dynamic>? toJson(UserModel? value) => value?.toJson();
+  Map<String, dynamic>? toJson(UserData? value) => value?.toJson();
 
   Future<void> logout()  =>  clear();
 

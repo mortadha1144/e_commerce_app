@@ -542,8 +542,8 @@ mixin _$UserData {
   String get uid => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get displayName => throw _privateConstructorUsedError;
-  String get phoneNumber => throw _privateConstructorUsedError;
-  String get address => throw _privateConstructorUsedError;
+  String? get phoneNumber => throw _privateConstructorUsedError;
+  String? get address => throw _privateConstructorUsedError;
   @TimeStampJsonConverter()
   DateTime get createdAt => throw _privateConstructorUsedError;
   String? get avatar => throw _privateConstructorUsedError;
@@ -563,8 +563,8 @@ abstract class $UserDataCopyWith<$Res> {
       {String uid,
       String email,
       String displayName,
-      String phoneNumber,
-      String address,
+      String? phoneNumber,
+      String? address,
       @TimeStampJsonConverter() DateTime createdAt,
       String? avatar});
 }
@@ -585,8 +585,8 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
     Object? uid = null,
     Object? email = null,
     Object? displayName = null,
-    Object? phoneNumber = null,
-    Object? address = null,
+    Object? phoneNumber = freezed,
+    Object? address = freezed,
     Object? createdAt = null,
     Object? avatar = freezed,
   }) {
@@ -603,14 +603,14 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
               as String,
-      phoneNumber: null == phoneNumber
+      phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      address: null == address
+              as String?,
+      address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -635,8 +635,8 @@ abstract class _$$UserDataImplCopyWith<$Res>
       {String uid,
       String email,
       String displayName,
-      String phoneNumber,
-      String address,
+      String? phoneNumber,
+      String? address,
       @TimeStampJsonConverter() DateTime createdAt,
       String? avatar});
 }
@@ -655,8 +655,8 @@ class __$$UserDataImplCopyWithImpl<$Res>
     Object? uid = null,
     Object? email = null,
     Object? displayName = null,
-    Object? phoneNumber = null,
-    Object? address = null,
+    Object? phoneNumber = freezed,
+    Object? address = freezed,
     Object? createdAt = null,
     Object? avatar = freezed,
   }) {
@@ -673,14 +673,14 @@ class __$$UserDataImplCopyWithImpl<$Res>
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
               as String,
-      phoneNumber: null == phoneNumber
+      phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      address: null == address
+              as String?,
+      address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -715,9 +715,9 @@ class _$UserDataImpl implements _UserData {
   @override
   final String displayName;
   @override
-  final String phoneNumber;
+  final String? phoneNumber;
   @override
-  final String address;
+  final String? address;
   @override
   @TimeStampJsonConverter()
   final DateTime createdAt;
@@ -770,8 +770,8 @@ abstract class _UserData implements UserData {
       {required final String uid,
       required final String email,
       required final String displayName,
-      required final String phoneNumber,
-      required final String address,
+      required final String? phoneNumber,
+      required final String? address,
       @TimeStampJsonConverter() required final DateTime createdAt,
       required final String? avatar}) = _$UserDataImpl;
 
@@ -785,9 +785,9 @@ abstract class _UserData implements UserData {
   @override
   String get displayName;
   @override
-  String get phoneNumber;
+  String? get phoneNumber;
   @override
-  String get address;
+  String? get address;
   @override
   @TimeStampJsonConverter()
   DateTime get createdAt;

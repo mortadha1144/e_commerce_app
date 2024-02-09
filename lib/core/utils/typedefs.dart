@@ -8,3 +8,5 @@ typedef QSnapshot = QuerySnapshot<Map<String, dynamic>>;
 typedef ProductId = String;
 
 typedef UserId = String;
+
+typedef CollectionReferenceMap = CollectionReference<Map<String, dynamic>>;

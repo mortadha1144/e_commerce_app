@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/Features/auth/data/models/login_request.dart';
 import 'package:e_commerce_app/Features/auth/providers/auth_provider.dart';
 import 'package:e_commerce_app/Features/auth/views/widgets/password_form_field.dart';
 import 'package:e_commerce_app/Features/auth/views/widgets/custom_social_card.dart';
@@ -97,11 +98,15 @@ class LoginPage extends HookConsumerWidget {
               onPressed: () async {
                 if (!formKey.currentState!.validate()) return;
 
+                final request = LoginRequest(
+                  email: emailController.text,
+                  password: passwordController.text,
+                );
+
                 final login = await ref
                     .read(loginWithEmailAndPasswordProvider.notifier)
                     .run(
-                      email: emailController.text,
-                      password: passwordController.text,
+                      request: request,
                     );
 
                 login.whenDataOrError(

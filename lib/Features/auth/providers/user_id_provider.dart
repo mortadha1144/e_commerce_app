@@ -5,6 +5,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 final userIdProvider = Provider.autoDispose<UserId?>(
   (ref) {
     final user = ref.watch(userProvider);
-    return user?.userId;
+    return user?.uid;
   },
 );

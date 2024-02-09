@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce_app/Features/auth/data/constants/constants.dart';
+import 'package:e_commerce_app/Features/auth/data/models/login_request.dart';
 import 'package:e_commerce_app/Features/auth/data/models/sign_up_model.dart';
 import 'package:e_commerce_app/Features/auth/data/models/user_model.dart';
 import 'package:e_commerce_app/Features/auth/providers/user_repo_provider.dart';
 import 'package:e_commerce_app/core/utils/constants/firebase_collection_name.dart';
+import 'package:e_commerce_app/core/utils/constants/firebase_field_name.dart';
 import 'package:e_commerce_app/core/utils/enums/enums.dart';
 import 'package:e_commerce_app/Features/auth/data/repos/user_repo.dart';
 import 'package:e_commerce_app/core/utils/typedefs.dart';
@@ -23,6 +25,9 @@ class AuthRepo {
       FirebaseAuth.instance.currentUser?.displayName ?? '';
   String? get email => FirebaseAuth.instance.currentUser?.email;
   final UserRepo userRepo;
+
+  CollectionReferenceMap get _collection =>
+      FirebaseFirestore.instance.collection(FirebaseCollectionName.users);
 
   AuthRepo({required this.userRepo});
 
@@ -44,9 +49,7 @@ class AuthRepo {
     final uid = credential.user!.uid;
 
     if (credential.additionalUserInfo!.isNewUser) {
-      final docRef = FirebaseFirestore.instance
-          .collection(FirebaseCollectionName.users)
-          .doc(uid);
+      final docRef = _collection.doc(uid);
 
       final result = await docRef.get();
 
@@ -126,16 +129,25 @@ class AuthRepo {
     return user;
   }
 
-  Future<UserModel> loginWithEmailAndPassword({
-    required String email,
-    required String password,
+  Future<UserData> loginWithEmailAndPassword({
+    required LoginRequest request,
   }) async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: email,
-      password: password,
+    final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: request.email,
+      password: request.password,
     );
 
-    final user = userRepo.getUser(userId: userId!);
+    final uid = credential.user!.uid;
+
+    final result = await _collection
+        .where(
+          FirebaseFieldName.userId,
+          isEqualTo: uid,
+        )
+        .limit(1)
+        .get();
+
+    final user = UserData.fromJson(result.docs.first.data());
     return user;
   }
 
