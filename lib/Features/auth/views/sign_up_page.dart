@@ -1,5 +1,4 @@
 import 'package:e_commerce_app/Features/auth/data/models/sign_up_model.dart';
-import 'package:e_commerce_app/Features/auth/data/models/user_model.dart';
 import 'package:e_commerce_app/Features/auth/providers/create_user_provider.dart';
 import 'package:e_commerce_app/Features/auth/views/widgets/custom_social_card.dart';
 import 'package:e_commerce_app/Features/auth/views/widgets/custom_suffix_icon.dart';

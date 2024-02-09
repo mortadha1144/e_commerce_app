@@ -10,7 +10,7 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
     _$UserModelImpl(
       userId: json['uid'] as String?,
       email: json['email'] as String?,
-      displayName: json['display_name'] as String?,
+      displayName: json['displayName'] as String?,
       phoneNumber: json['phoneNumber'] as String?,
       address: json['address'] as String?,
       image: json['image'] as String?,
@@ -27,7 +27,7 @@ Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) {
 
   writeNotNull('uid', instance.userId);
   writeNotNull('email', instance.email);
-  writeNotNull('display_name', instance.displayName);
+  writeNotNull('displayName', instance.displayName);
   writeNotNull('phoneNumber', instance.phoneNumber);
   writeNotNull('address', instance.address);
   writeNotNull('image', instance.image);

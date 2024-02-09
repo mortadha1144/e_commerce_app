@@ -695,7 +695,7 @@ class __$$UserDataImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$UserDataImpl implements _UserData {
+class _$UserDataImpl extends _UserData {
   _$UserDataImpl(
       {required this.uid,
       required this.email,
@@ -703,7 +703,8 @@ class _$UserDataImpl implements _UserData {
       required this.phoneNumber,
       required this.address,
       @TimeStampJsonConverter() required this.createdAt,
-      required this.avatar});
+      required this.avatar})
+      : super._();
 
   factory _$UserDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserDataImplFromJson(json);
@@ -765,7 +766,7 @@ class _$UserDataImpl implements _UserData {
   }
 }
 
-abstract class _UserData implements UserData {
+abstract class _UserData extends UserData {
   factory _UserData(
       {required final String uid,
       required final String email,
@@ -774,6 +775,7 @@ abstract class _UserData implements UserData {
       required final String? address,
       @TimeStampJsonConverter() required final DateTime createdAt,
       required final String? avatar}) = _$UserDataImpl;
+  _UserData._() : super._();
 
   factory _UserData.fromJson(Map<String, dynamic> json) =
       _$UserDataImpl.fromJson;

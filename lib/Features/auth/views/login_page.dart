@@ -8,6 +8,7 @@ import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/utils/network/state.dart';
+import 'package:e_commerce_app/core/utils/riverpod/riverpod_extensions.dart';
 import 'package:e_commerce_app/core/utils/snackbar.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_app/core/utils/widgets/email_form_field.dart';
@@ -31,7 +32,9 @@ class LoginPage extends HookConsumerWidget {
 
     final remember = useState(false);
 
-    final loginState = ref.watch(loginWithEmailAndPasswordProvider);
+    final loginWithEmailAndPasswordState =
+        ref.watch(loginWithEmailAndPasswordProvider);
+
     final googleLoginState = ref.watch(loginWithGoogleProvider);
     return Scaffold(
       appBar: AppBar(
@@ -94,7 +97,7 @@ class LoginPage extends HookConsumerWidget {
             ),
             CustomButton(
               text: context.l10n.continueText,
-              isLoading: loginState.isLoading,
+              isLoading: loginWithEmailAndPasswordState.isLoading,
               onPressed: () async {
                 if (!formKey.currentState!.validate()) return;
 
@@ -105,7 +108,7 @@ class LoginPage extends HookConsumerWidget {
 
                 final login = await ref
                     .read(loginWithEmailAndPasswordProvider.notifier)
-                    .run(
+                    .login(
                       request: request,
                     );
 

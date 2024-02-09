@@ -45,6 +45,8 @@ FieldValue fieldValueToJson(FieldValue fieldValue) => fieldValue;
 
 @freezed
 class UserData with _$UserData {
+  const UserData._();
+
   factory UserData({
     required String uid,
     required String email,
@@ -57,6 +59,21 @@ class UserData with _$UserData {
 
   factory UserData.fromJson(Map<String, dynamic> json) =>
       _$UserDataFromJson(json);
+
+  factory UserData.fromPrefJson(Map<String, dynamic> json) {
+    // convert ISO 8601 string to DateTime
+    json[FirebaseFieldName.createdAt] = DateTime.parse(json[FirebaseFieldName.createdAt] as String);
+    return UserData.fromJson(json);
+  }
+
+  Map<String, dynamic> toPrefJson() {
+
+    final json = toJson();
+    // convert TimeStamp to ISO 8601 string
+    json[FirebaseFieldName.createdAt] = createdAt.toIso8601String();
+    return json;
+  }
+
 }
 
 class TimeStampJsonConverter extends JsonConverter<DateTime, Timestamp> {

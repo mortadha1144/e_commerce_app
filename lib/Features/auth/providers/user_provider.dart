@@ -19,12 +19,12 @@ class UserNotifier extends AutoDisposeNotifier<UserData?>
 
   @override
   UserData? fromJson(Map<String, dynamic>? map) =>
-      map == null ? null : UserData.fromJson(map);
+      map == null ? null : UserData.fromPrefJson(map);
 
   @override
-  Map<String, dynamic>? toJson(UserData? value) => value?.toJson();
+  Map<String, dynamic>? toJson(UserData? value) => value?.toPrefJson();
 
-  Future<void> logout()  =>  clear();
+  Future<void> logout() => clear();
 
   bool isSignedIn() => build() != null;
 }

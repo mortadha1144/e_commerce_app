@@ -5,6 +5,7 @@ import 'package:e_commerce_app/Features/auth/data/models/user_model.dart';
 import 'package:e_commerce_app/Features/auth/data/repos/auth_repo.dart';
 import 'package:e_commerce_app/Features/auth/providers/user_provider.dart';
 import 'package:e_commerce_app/core/utils/network/state.dart';
+import 'package:e_commerce_app/core/utils/riverpod/riverpod_extensions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -29,31 +30,30 @@ class LoginWithGoogleNotifier
 }
 
 final loginWithEmailAndPasswordProvider = AutoDisposeAsyncNotifierProvider<
-    LoginWithEmailAndPasswordNotifier, AsyncX<UserData>>(
-  () => LoginWithEmailAndPasswordNotifier(),
+    LoginWithEmailAndPasswordNotifier, UserData?>(
+  LoginWithEmailAndPasswordNotifier.new,
 );
 
 class LoginWithEmailAndPasswordNotifier
-    extends AutoDisposeAsyncNotifier<AsyncX<UserData>>
-    with AsyncXNotifierMixin<UserData> {
+    extends AutoDisposeAsyncNotifier<UserData?> {
   @override
-  BuildXCallback<UserData> build() => idle();
+  FutureOr<UserData?> build() => null;
 
-  @useResult
-  RunXCallback<UserData> run({
+  AsyncValueCallback<UserData?> login({
     required LoginRequest request,
-  }) =>
-      handle(
-        () async {
-          final user =
-              await ref.read(authRepoProvider).loginWithEmailAndPassword(
-                    request: request,
-                  );
-          await ref.read(userProvider.notifier).update(
-                (state) => user,
-              );
+  }) async {
+    state = const AsyncValue.loading();
+    return state = await AsyncValue.guard(
+      () async {
+        final user = await ref.read(authRepoProvider).loginWithEmailAndPassword(
+              request: request,
+            );
+        await ref.read(userProvider.notifier).update(
+              (state) => user,
+            );
 
-          return user;
-        },
-      );
+        return user;
+      },
+    );
+  }
 }
