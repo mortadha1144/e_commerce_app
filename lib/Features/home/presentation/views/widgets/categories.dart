@@ -67,7 +67,10 @@ class CategoryCard extends StatelessWidget {
                 ),
                 child: SvgPicture.network(
                   icon,
-                  color: kPrimaryColor,
+                  colorFilter: const ColorFilter.mode(
+                    kPrimaryColor,
+                    BlendMode.srcIn,
+                  ),
                 ),
               ),
             ),

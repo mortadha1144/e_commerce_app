@@ -4,29 +4,29 @@ import 'package:e_commerce_app/Features/auth/data/models/login_request.dart';
 import 'package:e_commerce_app/Features/auth/data/models/user_model.dart';
 import 'package:e_commerce_app/Features/auth/data/repos/auth_repo.dart';
 import 'package:e_commerce_app/Features/auth/providers/user_provider.dart';
-import 'package:e_commerce_app/core/utils/network/state.dart';
 import 'package:e_commerce_app/core/utils/riverpod/riverpod_extensions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final loginWithGoogleProvider = AutoDisposeAsyncNotifierProvider<
-    LoginWithGoogleNotifier, AsyncX<UserModel>>(
-  () => LoginWithGoogleNotifier(),
+final loginWithGoogleProvider =
+    AutoDisposeAsyncNotifierProvider<LoginWithGoogleNotifier, UserData?>(
+  LoginWithGoogleNotifier.new,
 );
 
-class LoginWithGoogleNotifier
-    extends AutoDisposeAsyncNotifier<AsyncX<UserModel>>
-    with AsyncXNotifierMixin<UserModel> {
+class LoginWithGoogleNotifier extends AutoDisposeAsyncNotifier<UserData?> {
   @override
-  BuildXCallback<UserModel> build() => idle();
+  FutureOr<UserData?> build() => null;
 
   @useResult
-  RunXCallback<UserModel> run() => handle(() async {
-        final user = await ref.read(authRepoProvider).loginWithGoogle();
-        // TODO(mortadha): edit this
-        // await ref.read(userProvider.notifier).update((state) => user,);
-        return user;
-      });
+  AsyncValueCallback<UserData?> login() async {
+    state = const AsyncValue.loading();
+    return state = await AsyncValue.guard(() async {
+      final user = await ref.read(authRepoProvider).loginWithGoogle();
+      // TODO(mortadha): edit this
+      await ref.read(userProvider.notifier).update((state) => user,);
+      return user;
+    });
+  }
 }
 
 final loginWithEmailAndPasswordProvider = AutoDisposeAsyncNotifierProvider<

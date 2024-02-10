@@ -145,8 +145,7 @@ class __$$SignUpModelImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(createFactory: false)
 class _$SignUpModelImpl implements _SignUpModel {
   _$SignUpModelImpl(
       {required this.email,

@@ -3,11 +3,9 @@ import 'package:e_commerce_app/Features/auth/data/constants/constants.dart';
 import 'package:e_commerce_app/Features/auth/data/models/login_request.dart';
 import 'package:e_commerce_app/Features/auth/data/models/sign_up_model.dart';
 import 'package:e_commerce_app/Features/auth/data/models/user_model.dart';
-import 'package:e_commerce_app/Features/auth/providers/user_repo_provider.dart';
 import 'package:e_commerce_app/core/utils/constants/firebase_collection_name.dart';
 import 'package:e_commerce_app/core/utils/constants/firebase_field_name.dart';
 import 'package:e_commerce_app/core/utils/enums/enums.dart';
-import 'package:e_commerce_app/Features/auth/data/repos/user_repo.dart';
 import 'package:e_commerce_app/core/utils/typedefs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -15,7 +13,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final authRepoProvider = Provider<AuthRepo>((ref) {
-  return AuthRepo(userRepo: ref.read(userRepoProvider));
+  return AuthRepo();
 });
 
 class AuthRepo {
@@ -24,12 +22,10 @@ class AuthRepo {
   String get displayName =>
       FirebaseAuth.instance.currentUser?.displayName ?? '';
   String? get email => FirebaseAuth.instance.currentUser?.email;
-  final UserRepo userRepo;
+  // final UserRepo userRepo;
 
   CollectionReferenceMap get _collection =>
       FirebaseFirestore.instance.collection(FirebaseCollectionName.users);
-
-  AuthRepo({required this.userRepo});
 
   Future<void> logOut() async {
     await FirebaseAuth.instance.signOut();
@@ -100,7 +96,7 @@ class AuthRepo {
     }
   }
 
-  Future<UserModel> loginWithGoogle() async {
+  Future<UserData> loginWithGoogle() async {
     final GoogleSignIn googleSignIn = GoogleSignIn(
       scopes: [
         Constants.emailScope,
@@ -118,15 +114,39 @@ class AuthRepo {
       accessToken: googleAuth.accessToken,
     );
 
-    await FirebaseAuth.instance.signInWithCredential(oauthCredentials);
+    final credential =
+        await FirebaseAuth.instance.signInWithCredential(oauthCredentials);
+    final uid = credential.user!.uid;
 
-    final user = userRepo.saveUserInfo(
-      userId: userId!,
-      displayName: displayName,
-      email: email,
-    );
+    final docRef = _collection.doc(uid);
 
-    return user;
+    final result = await docRef.get();
+    // if the user does not exist, create a new one
+    if (!result.exists) {
+      final user = UserCreate(
+        uid: uid,
+        displayName: credential.user!.displayName ?? '',
+        email: credential.user!.email ?? '',
+        phoneNumber: null,
+        address: null,
+        createdAt: FieldValue.serverTimestamp(),
+        image: credential.user!.photoURL,
+      );
+
+      await docRef.set(user.toJson());
+      final newResult = await docRef.get();
+      return UserData.fromJson(newResult.data()!);
+    }
+    // user already exists
+    await docRef.update({
+      FirebaseFieldName.displayName: credential.user!.displayName,
+      FirebaseFieldName.email: credential.user!.email,
+      FirebaseFieldName.image: credential.user!.photoURL,
+    });
+
+    final newResult = await docRef.get();
+
+    return UserData.fromJson(newResult.data()!);
   }
 
   Future<UserData> loginWithEmailAndPassword({
@@ -147,17 +167,7 @@ class AuthRepo {
         .limit(1)
         .get();
 
-    final user = UserData.fromJson(result.docs.first.data());
-    return user;
-  }
-
-  Future<UserModel> updateUserInfo({
-    required UserModel user,
-  }) {
-    return userRepo.updateUserInfo(
-      userId: userId!,
-      user: user,
-    );
+    return UserData.fromJson(result.docs.first.data());
   }
 
   Future<void> resetPassword({required String email}) {

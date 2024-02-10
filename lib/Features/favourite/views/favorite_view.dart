@@ -7,7 +7,7 @@ class FavoriteView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(cartProvider);
+    // final state = ref.watch(cartProvider);
     return Scaffold(
         body: Center(
             child: Column(

@@ -15,8 +15,8 @@ class LogoutDialog extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return AlertDialog(
       backgroundColor: Colors.white,
-      title: Text('Confirm Logout'),
-      content: Text(
+      title: const Text('Confirm Logout'),
+      content: const Text(
         'Are you sure you want to logout?',
       ),
       contentPadding:

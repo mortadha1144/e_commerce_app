@@ -9,22 +9,6 @@ part 'user_model.freezed.dart';
 part 'user_model.g.dart';
 
 
-@freezed
-class UserModel with _$UserModel {
-  @JsonSerializable(includeIfNull: false)
-  const factory UserModel({
-    @JsonKey(name: FirebaseFieldName.userId) String? userId,
-    @JsonKey(name: FirebaseFieldName.email) String? email,
-    @JsonKey(name: FirebaseFieldName.displayName) String? displayName,
-    @JsonKey(name: FirebaseFieldName.phoneNumber) String? phoneNumber,
-    @JsonKey(name: FirebaseFieldName.address) String? address,
-    @JsonKey(name: FirebaseFieldName.image) String? image,
-  }) = _UserModel;
-
-  factory UserModel.fromJson(Map<String, dynamic> json) =>
-      _$UserModelFromJson(json);
-}
-
 @Freezed(
   fromJson: false,
   toJson: true,
@@ -34,8 +18,8 @@ class UserCreate with _$UserCreate {
     required String uid,
     required String email,
     required String displayName,
-    required String phoneNumber,
-    required String address,
+    required String? phoneNumber,
+    required String? address,
     @JsonKey(toJson: fieldValueToJson) required FieldValue createdAt,
     required String? image,
   }) = _UserCreate;

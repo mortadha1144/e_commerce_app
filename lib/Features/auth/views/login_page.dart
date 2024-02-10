@@ -7,7 +7,6 @@ import 'package:e_commerce_app/constants.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
-import 'package:e_commerce_app/core/utils/network/state.dart';
 import 'package:e_commerce_app/core/utils/riverpod/riverpod_extensions.dart';
 import 'package:e_commerce_app/core/utils/snackbar.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
@@ -129,7 +128,7 @@ class LoginPage extends HookConsumerWidget {
                   icon: Assets.assetsIconsGoogleIcon,
                   onPressed: () async {
                     final login =
-                        await ref.read(loginWithGoogleProvider.notifier).run();
+                        await ref.read(loginWithGoogleProvider.notifier).login();
                     login.whenDataOrError(
                       data: (_) =>
                           context.push(RoutesDocument.loginSuccessView),

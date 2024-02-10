@@ -281,8 +281,8 @@ mixin _$UserCreate {
   String get uid => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get displayName => throw _privateConstructorUsedError;
-  String get phoneNumber => throw _privateConstructorUsedError;
-  String get address => throw _privateConstructorUsedError;
+  String? get phoneNumber => throw _privateConstructorUsedError;
+  String? get address => throw _privateConstructorUsedError;
   @JsonKey(toJson: fieldValueToJson)
   FieldValue get createdAt => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
@@ -303,8 +303,8 @@ abstract class $UserCreateCopyWith<$Res> {
       {String uid,
       String email,
       String displayName,
-      String phoneNumber,
-      String address,
+      String? phoneNumber,
+      String? address,
       @JsonKey(toJson: fieldValueToJson) FieldValue createdAt,
       String? image});
 }
@@ -325,8 +325,8 @@ class _$UserCreateCopyWithImpl<$Res, $Val extends UserCreate>
     Object? uid = null,
     Object? email = null,
     Object? displayName = null,
-    Object? phoneNumber = null,
-    Object? address = null,
+    Object? phoneNumber = freezed,
+    Object? address = freezed,
     Object? createdAt = null,
     Object? image = freezed,
   }) {
@@ -343,14 +343,14 @@ class _$UserCreateCopyWithImpl<$Res, $Val extends UserCreate>
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
               as String,
-      phoneNumber: null == phoneNumber
+      phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      address: null == address
+              as String?,
+      address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -375,8 +375,8 @@ abstract class _$$UserCreateImplCopyWith<$Res>
       {String uid,
       String email,
       String displayName,
-      String phoneNumber,
-      String address,
+      String? phoneNumber,
+      String? address,
       @JsonKey(toJson: fieldValueToJson) FieldValue createdAt,
       String? image});
 }
@@ -395,8 +395,8 @@ class __$$UserCreateImplCopyWithImpl<$Res>
     Object? uid = null,
     Object? email = null,
     Object? displayName = null,
-    Object? phoneNumber = null,
-    Object? address = null,
+    Object? phoneNumber = freezed,
+    Object? address = freezed,
     Object? createdAt = null,
     Object? image = freezed,
   }) {
@@ -413,14 +413,14 @@ class __$$UserCreateImplCopyWithImpl<$Res>
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
               as String,
-      phoneNumber: null == phoneNumber
+      phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      address: null == address
+              as String?,
+      address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -452,9 +452,9 @@ class _$UserCreateImpl implements _UserCreate {
   @override
   final String displayName;
   @override
-  final String phoneNumber;
+  final String? phoneNumber;
   @override
-  final String address;
+  final String? address;
   @override
   @JsonKey(toJson: fieldValueToJson)
   final FieldValue createdAt;
@@ -507,8 +507,8 @@ abstract class _UserCreate implements UserCreate {
       {required final String uid,
       required final String email,
       required final String displayName,
-      required final String phoneNumber,
-      required final String address,
+      required final String? phoneNumber,
+      required final String? address,
       @JsonKey(toJson: fieldValueToJson) required final FieldValue createdAt,
       required final String? image}) = _$UserCreateImpl;
 
@@ -519,9 +519,9 @@ abstract class _UserCreate implements UserCreate {
   @override
   String get displayName;
   @override
-  String get phoneNumber;
+  String? get phoneNumber;
   @override
-  String get address;
+  String? get address;
   @override
   @JsonKey(toJson: fieldValueToJson)
   FieldValue get createdAt;

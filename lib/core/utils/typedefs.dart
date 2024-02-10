@@ -10,3 +10,5 @@ typedef ProductId = String;
 typedef UserId = String;
 
 typedef CollectionReferenceMap = CollectionReference<Map<String, dynamic>>;
+
+typedef DocumentReferenceMap = DocumentReference<Map<String, dynamic>>;
