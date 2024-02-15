@@ -1,25 +1,28 @@
+import 'dart:async';
+
 import 'package:e_commerce_app/Features/auth/data/repos/auth_repo.dart';
-import 'package:e_commerce_app/core/utils/network/state.dart';
+import 'package:e_commerce_app/core/utils/riverpod/riverpod_extensions.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 final resetPasswordProvider =
-    AutoDisposeAsyncNotifierProvider<ResetPasswordNotifier, AsyncX<void>>(
+    AutoDisposeAsyncNotifierProvider<ResetPasswordNotifier, void>(
   ResetPasswordNotifier.new,
 );
 
-class ResetPasswordNotifier extends AutoDisposeAsyncNotifier<AsyncX<void>>
-    with AsyncXNotifierMixin<void> {
+class ResetPasswordNotifier extends AutoDisposeAsyncNotifier<void> {
   @override
-  BuildXCallback<void> build() => idle();
+  FutureOr<void> build() => null;
 
   @useResult
-  RunXCallback<void> run({
+  AsyncValueCallback<void> run({
     required String email,
-  }) =>
-      handle(
-        () => ref.read(authRepoProvider).resetPassword(
-              email: email,
-            ),
-      );
+  }) async {
+    state = const AsyncValue.loading();
+    return state = await AsyncValue.guard(
+      () => ref.read(authRepoProvider).resetPassword(
+            email: email,
+          ),
+    );
+  }
 }

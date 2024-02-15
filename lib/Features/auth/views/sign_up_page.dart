@@ -6,7 +6,7 @@ import 'package:e_commerce_app/Features/auth/views/widgets/password_with_confirm
 import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:e_commerce_app/core/utils/constants/sizes.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
-import 'package:e_commerce_app/core/utils/network/state.dart';
+import 'package:e_commerce_app/core/utils/riverpod/riverpod_extensions.dart';
 import 'package:e_commerce_app/core/utils/snackbar.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_text_form_field.dart';
@@ -122,7 +122,7 @@ class SignUpPage extends HookConsumerWidget {
           FormBody(
             formKey: formTwoKey,
             children: [
-              Gap(10),
+              const Gap(10),
               Text(
                 context.l10n.completeProfile,
                 textAlign: TextAlign.center,

@@ -6,34 +6,6 @@ part of 'user_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
-    _$UserModelImpl(
-      userId: json['uid'] as String?,
-      email: json['email'] as String?,
-      displayName: json['displayName'] as String?,
-      phoneNumber: json['phoneNumber'] as String?,
-      address: json['address'] as String?,
-      image: json['image'] as String?,
-    );
-
-Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('uid', instance.userId);
-  writeNotNull('email', instance.email);
-  writeNotNull('displayName', instance.displayName);
-  writeNotNull('phoneNumber', instance.phoneNumber);
-  writeNotNull('address', instance.address);
-  writeNotNull('image', instance.image);
-  return val;
-}
-
 Map<String, dynamic> _$$UserCreateImplToJson(_$UserCreateImpl instance) =>
     <String, dynamic>{
       'uid': instance.uid,

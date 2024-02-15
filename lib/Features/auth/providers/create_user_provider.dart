@@ -1,26 +1,27 @@
+import 'dart:async';
+
 import 'package:e_commerce_app/Features/auth/data/models/sign_up_model.dart';
 import 'package:e_commerce_app/Features/auth/data/repos/auth_repo.dart';
-import 'package:e_commerce_app/core/utils/network/state.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:e_commerce_app/core/utils/riverpod/riverpod_extensions.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final createUserProvider =
-    AutoDisposeAsyncNotifierProvider<CreateUserNotifier, AsyncX<void>>(
+    AutoDisposeAsyncNotifierProvider<CreateUserNotifier, void>(
   CreateUserNotifier.new,
 );
 
-class CreateUserNotifier extends AutoDisposeAsyncNotifier<AsyncX<void>>
-    with AsyncXNotifierMixin<void> {
+class CreateUserNotifier extends AutoDisposeAsyncNotifier<void> {
   @override
-  BuildXCallback<void> build() => idle();
+  FutureOr<void> build() => null;
 
-  @useResult
-  RunXCallback<void> run({
+  AsyncValueCallback<void> run({
     required SignUpModel body,
-  }) =>
-      handle(
-        () => ref.read(authRepoProvider).signUp(
-              body: body,
-            ),
-      );
+  }) async {
+    state = const AsyncValue.loading();
+    return state = await AsyncValue.guard(
+      () => ref.read(authRepoProvider).signUp(
+            body: body,
+          ),
+    );
+  }
 }

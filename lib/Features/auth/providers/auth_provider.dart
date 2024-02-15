@@ -22,8 +22,9 @@ class LoginWithGoogleNotifier extends AutoDisposeAsyncNotifier<UserData?> {
     state = const AsyncValue.loading();
     return state = await AsyncValue.guard(() async {
       final user = await ref.read(authRepoProvider).loginWithGoogle();
-      // TODO(mortadha): edit this
-      await ref.read(userProvider.notifier).update((state) => user,);
+      await ref.read(userProvider.notifier).update(
+            (state) => user,
+          );
       return user;
     });
   }
