@@ -25,7 +25,7 @@ class ProductDetailsViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        CustomAppBar(rating: product.rating?.rate ?? 0),
+        CustomAppBar(rating: product.rating.rate),
         ProductDetailsImages(product: product),
         TopRoundedCorner(
           color: Colors.white,
@@ -52,7 +52,7 @@ class ProductDetailsViewBody extends StatelessWidget {
                           child: Consumer(
                             builder: (context, ref, child) {
                               final isProductInCart = ref
-                                  .watch(isProductInCartProvider(product.id!));
+                                  .watch(isProductInCartProvider(product.id));
                               return CustomButton(
                                 text: isProductInCart
                                     ? Strings.removeFromCart
@@ -70,7 +70,7 @@ class ProductDetailsViewBody extends StatelessWidget {
                                   if (isProductInCart) {
                                     await ref
                                         .read(cartProvider.notifier)
-                                        .remove(product.id!)
+                                        .remove(product.id)
                                         .then(
                                           (value) => customSnackBar(
                                             context,

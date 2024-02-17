@@ -23,7 +23,7 @@ class ProductDetailsDescription extends StatelessWidget {
           padding:
               EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
           child: Text(
-            product.title ?? '',
+            product.title,
             maxLines: 1,
             style: Theme.of(context).textTheme.titleLarge,
           ),
@@ -41,7 +41,7 @@ class ProductDetailsDescription extends StatelessWidget {
             right: getProportionateScreenWidth(64),
           ),
           child: Text(
-            product.description ?? '',
+            product.description,
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
           ),

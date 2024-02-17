@@ -30,7 +30,7 @@ class FavoriteButton extends ConsumerWidget {
         }
 
         if (isProductFavorite) {
-          ref.read(favoriteProvider.notifier).remove(product.id!);
+          ref.read(favoriteProvider.notifier).remove(product.id);
         } else {
           final favoriteItemModel =
               FavoriteItemModel(product: product, date: DateTime.now());

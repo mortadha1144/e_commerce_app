@@ -29,9 +29,9 @@ class SpecialOffers extends StatelessWidget {
               ...List.generate(specialOffers.length, (index) {
                 SpecialOfferModel specialOfferModel = specialOffers[index];
                 return SpecialOfferCard(
-                    category: specialOfferModel.category ?? '',
-                    image: specialOfferModel.image!,
-                    numOfBrands: specialOfferModel.numOfBrands!,
+                    category: specialOfferModel.category,
+                    image: specialOfferModel.image,
+                    numOfBrands: specialOfferModel.numOfBrands,
                     onPress: () {});
               }),
               // SpecialOfferCard(

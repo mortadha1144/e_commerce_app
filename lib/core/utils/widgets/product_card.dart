@@ -54,7 +54,7 @@ class ProductCard extends StatelessWidget {
                 height: 10,
               ),
               Text(
-                product.title ?? '',
+                product.title,
                 style: const TextStyle(color: Colors.black),
                 maxLines: 2,
               ),
@@ -78,14 +78,13 @@ class ProductCard extends StatelessWidget {
                       height: getProportionateScreenWidth(28),
                       width: getProportionateScreenWidth(28),
                       decoration: BoxDecoration(
-                          //color: product.isFavourite
+                          
                           color: false
                               ? kPrimaryColor.withOpacity(.15)
                               : kSecondaryColor.withOpacity(.1),
                           shape: BoxShape.circle),
                       child: SvgPicture.asset(
                         Assets.assetsIconsHeartIcon2,
-                        //colorFilter: product.isFavourite
                         colorFilter: false
                             ? const ColorFilter.mode(
                                 Color(0xFFFF4848), BlendMode.srcIn)

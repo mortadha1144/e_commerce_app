@@ -12,13 +12,13 @@ class FavoriteView extends ConsumerWidget {
             child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('FavoriteView'),
+        const Text('FavoriteView'),
         TextButton(
             onPressed: () async {
-              // final reff = FirebaseFirestore.instance
+              // final ref = FirebaseFirestore.instance
               //     .collection(FirebaseCollectionName.products);
               // for (var product in products) {
-              //   await reff.add(product.toJson());
+              //   await ref.add(product.toJson());
               // }
             },
             child: const Text('Add Test Products')),

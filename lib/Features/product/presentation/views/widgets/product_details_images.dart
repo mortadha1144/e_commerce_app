@@ -20,7 +20,7 @@ class _ProductDetailsImagesState extends State<ProductDetailsImages> {
   int selectedImage = 0;
   @override
   Widget build(BuildContext context) {
-    List<String> images = [widget.product.image!];
+    List<String> images = [widget.product.image];
     return Column(
       children: [
         SizedBox(

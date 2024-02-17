@@ -1,7 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
 import 'package:e_commerce_app/Features/product/data/repos/product_repo.dart';
-import 'package:e_commerce_app/core/utils/constants/firebase_collection_name.dart';
 import 'package:firebase_ui_firestore/firebase_ui_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -18,7 +16,7 @@ class AllProductsView extends ConsumerWidget {
           query: ref.read(productRepoProvider).getAllProducts,
           itemBuilder: (context, doc) {
             final product = doc.data();
-            return Text(product.title ?? '', style: TextStyle(fontSize: 40));
+            return Text(product.title, style: const TextStyle(fontSize: 40));
           },
         ),
       ),

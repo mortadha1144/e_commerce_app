@@ -33,7 +33,7 @@ class CustomErrorWidget extends StatelessWidget {
             CustomButton(
               text: 'Retry',
               onPressed: onRetry,
-              size: Size(140, 40),
+              size: const Size(140, 40),
             )
           ],
         ),
