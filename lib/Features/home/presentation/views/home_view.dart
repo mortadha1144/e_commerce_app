@@ -1,8 +1,9 @@
-import 'package:e_commerce_app/Features/home/presentation/cubits/home_cubit/home_cubit.dart';
+import 'package:e_commerce_app/Features/home/providers/home_provider.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_loading_indicator.dart';
 import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../core/utils/widgets/custom_error_widget.dart';
 import 'widgets/categories.dart';
@@ -11,38 +12,43 @@ import 'widgets/home_header.dart';
 import 'widgets/popular_prducts.dart';
 import 'widgets/special_offers.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends ConsumerWidget {
   const HomeView({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final homeState = ref.watch(homeProvider);
+
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: BlocBuilder<HomeCubit, HomeState>(
-            builder: (context, state) {
-              if (state is HomeSuccess) {
-                return Column(
+      body: RefreshIndicator(
+        onRefresh: () => ref.refresh(homeProvider.future),
+        child: SafeArea(
+          child: homeState.when(
+            data: (homeData) {
+              return SingleChildScrollView(
+                child: Column(
                   children: [
-                    SizedBox(height: getProportionateScreenWidth(20)),
+                    const Gap(10),
                     const HomeHeader(),
-                    SizedBox(height: getProportionateScreenWidth(10)),
+                    const Gap(10),
                     const DiscountBanner(),
-                    Categories(categories: state.categories),
-                    SpecialOffers(specialOffers: state.specialOffers),
-                    SizedBox(height: getProportionateScreenWidth(30)),
-                    PopularProducts(products: state.products),
-                    SizedBox(height: getProportionateScreenWidth(30)),
+                    Categories(categories: homeData.categories),
+                    SpecialOffers(specialOffers: homeData.specialOffers),
+                    const Gap(10),
+                    PopularProducts(products: homeData.popularProducts),
+                    const Gap(30),
                   ],
-                );
-              } else if (state is HomeError) {
-                return CustomeErrorWidget(errorMessage: state.message);
-              }
-              return SizedBox(
-                height: SizeConfig.screenHeight,
-                child: const CustomLoadingIndicator(),
+                ),
               );
             },
+            loading: () => SizedBox(
+              height: SizeConfig.screenHeight,
+              child: const CustomLoadingIndicator(),
+            ),
+            error: (error, stackTrace) => CustomErrorWidget(
+              errorMessage: error.toString(),
+              onRetry: () => ref.refresh(homeProvider.future),
+            ),
           ),
         ),
       ),

@@ -1,33 +1,17 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 
-class CategoryModel {
-  final int? id;
-  final String? name;
-  final String? image;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  CategoryModel({
-    this.id,
-    this.name,
-    this.image,
-  });
+part 'category_model.g.dart';
+part 'category_model.freezed.dart';
 
-  factory CategoryModel.fromJson(
-    DocumentSnapshot<Map<String, dynamic>> snapshot,
-    SnapshotOptions? options,
-  ) {
-    final data = snapshot.data();
-    return CategoryModel(
-      id: data?['id'],
-      name: data?['name'],
-      image: data?['image'],
-    );
-  }
+@Freezed(fromJson: true, toJson: false)
+class CategoryModel with _$CategoryModel {
+  const factory CategoryModel({
+    required int id,
+    required String name,
+    required String image,
+  }) = _CategoryModel;
 
-  Map<String, dynamic> toJson() {
-    return {
-      if (id != null) "id": id,
-      if (name != null) "name": name,
-      if (image != null) "image": image,
-    };
-  }
+  factory CategoryModel.fromJson(Map<String, dynamic> json) =>
+      _$CategoryModelFromJson(json);
 }

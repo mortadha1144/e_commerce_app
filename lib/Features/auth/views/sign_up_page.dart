@@ -6,6 +6,7 @@ import 'package:e_commerce_app/Features/auth/views/widgets/password_with_confirm
 import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:e_commerce_app/core/utils/constants/sizes.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
+import 'package:e_commerce_app/core/utils/hook/form_key.dart';
 import 'package:e_commerce_app/core/utils/riverpod/riverpod_extensions.dart';
 import 'package:e_commerce_app/core/utils/snackbar.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
@@ -24,8 +25,8 @@ class SignUpPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final formOneKey = useMemoized(GlobalKey<FormState>.new, const []);
-    final formTwoKey = useMemoized(GlobalKey<FormState>.new, const []);
+    final formOneKey =useFormKey();
+    final formTwoKey = useFormKey();
     final pageController = usePageController();
     final emailController = useTextEditingController();
     final passwordController = useTextEditingController();

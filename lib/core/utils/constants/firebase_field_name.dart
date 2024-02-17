@@ -26,6 +26,6 @@ class FirebaseFieldName {
   static const name = 'name';
   static const categoryId = 'categoryId';
   static const categoryName = 'categoryName';
-  static const numOfBrands = 'numOfBrands';
+  static const numOfBrands = 'num_of_brands';
   const FirebaseFieldName._();
 }

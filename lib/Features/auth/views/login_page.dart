@@ -7,6 +7,7 @@ import 'package:e_commerce_app/constants.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
+import 'package:e_commerce_app/core/utils/hook/form_key.dart';
 import 'package:e_commerce_app/core/utils/riverpod/riverpod_extensions.dart';
 import 'package:e_commerce_app/core/utils/snackbar.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
@@ -24,7 +25,7 @@ class LoginPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     SizeConfig().init(context);
-    final formKey = useMemoized(GlobalKey<FormState>.new, const []);
+    final formKey = useFormKey();
 
     final emailController = useTextEditingController();
     final passwordController = useTextEditingController();

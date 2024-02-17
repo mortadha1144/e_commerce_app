@@ -36,6 +36,8 @@ abstract class $FavoriteItemModelCopyWith<$Res> {
       _$FavoriteItemModelCopyWithImpl<$Res, FavoriteItemModel>;
   @useResult
   $Res call({ProductModel product, DateTime date});
+
+  $ProductModelCopyWith<$Res> get product;
 }
 
 /// @nodoc
@@ -65,6 +67,14 @@ class _$FavoriteItemModelCopyWithImpl<$Res, $Val extends FavoriteItemModel>
               as DateTime,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductModelCopyWith<$Res> get product {
+    return $ProductModelCopyWith<$Res>(_value.product, (value) {
+      return _then(_value.copyWith(product: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -76,6 +86,9 @@ abstract class _$$FavoriteItemModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call({ProductModel product, DateTime date});
+
+  @override
+  $ProductModelCopyWith<$Res> get product;
 }
 
 /// @nodoc

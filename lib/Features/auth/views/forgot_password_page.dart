@@ -1,7 +1,7 @@
-
 import 'package:e_commerce_app/Features/auth/providers/reset_password_provider.dart';
 import 'package:e_commerce_app/Features/auth/views/widgets/no_account_text.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
+import 'package:e_commerce_app/core/utils/hook/form_key.dart';
 import 'package:e_commerce_app/core/utils/riverpod/riverpod_extensions.dart';
 import 'package:e_commerce_app/core/utils/snackbar.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
@@ -16,7 +16,7 @@ class ForgotPasswordPage extends HookConsumerWidget {
   const ForgotPasswordPage({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final formKey = useMemoized(GlobalKey<FormState>.new, const []);
+    final formKey = useFormKey();
     final emailController = useTextEditingController();
     return Scaffold(
       appBar: AppBar(

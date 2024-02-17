@@ -1,21 +1,15 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class Rating extends Equatable {
-  final double? rate;
-  final int? count;
+part 'rating_model.g.dart';
+part 'rating_model.freezed.dart';
 
-  const Rating({this.rate, this.count});
+@Freezed(fromJson: true, toJson: true)
+class RatingModel with _$RatingModel {
+  const factory RatingModel({
+    required double rate,
+    required int count,
+  }) = _RatingModel;
 
-  factory Rating.fromJson(Map<String, dynamic> json) => Rating(
-        rate: (json['rate'] as num?)?.toDouble(),
-        count: json['count'] as int?,
-      );
-
-  Map<String, dynamic> toJson() => {
-        'rate': rate,
-        'count': count,
-      };
-
-  @override
-  List<Object?> get props => [rate, count];
+  factory RatingModel.fromJson(Map<String, dynamic> json) =>
+      _$RatingModelFromJson(json);
 }

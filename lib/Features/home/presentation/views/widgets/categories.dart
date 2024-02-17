@@ -20,7 +20,7 @@ class Categories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.all(getProportionateScreenWidth(20)),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,8 +28,8 @@ class Categories extends StatelessWidget {
             ...List.generate(
               categories.length,
               (index) => CategoryCard(
-                icon: categories[index].image ?? '',
-                text: categories[index].name ?? '',
+                icon: categories[index].image,
+                text: categories[index].name,
                 onPress: () {},
               ),
             ),
@@ -79,7 +79,8 @@ class CategoryCard extends StatelessWidget {
               text,
               textAlign: TextAlign.center,
               //style: TextStyle(fontSize: getProportionateScreenWidth(12)),
-              maxLines: 2,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
           ],
         ),

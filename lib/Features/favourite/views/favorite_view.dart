@@ -1,4 +1,3 @@
-import 'package:e_commerce_app/Features/cart/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -22,7 +21,7 @@ class FavoriteView extends ConsumerWidget {
               //   await reff.add(product.toJson());
               // }
             },
-            child: Text('Add Test Products')),
+            child: const Text('Add Test Products')),
       ],
     )));
   }

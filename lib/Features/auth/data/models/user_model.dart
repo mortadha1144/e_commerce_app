@@ -46,7 +46,7 @@ class UserData with _$UserData {
 
   factory UserData.fromPrefJson(Map<String, dynamic> json) {
     // convert ISO 8601 string to DateTime
-    json[FirebaseFieldName.createdAt] = DateTime.parse(json[FirebaseFieldName.createdAt] as String);
+    json[FirebaseFieldName.createdAt] =Timestamp.fromDate(DateTime.parse(json[FirebaseFieldName.createdAt] as String));
     return UserData.fromJson(json);
   }
 
