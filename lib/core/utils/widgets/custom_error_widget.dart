@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/utils/network/network_exceptions.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -5,11 +6,11 @@ import 'package:gap/gap.dart';
 class CustomErrorWidget extends StatelessWidget {
   const CustomErrorWidget({
     super.key,
-    required this.errorMessage,
+    required this.error,
     required this.onRetry,
   });
 
-  final String errorMessage;
+  final NetworkExceptions error;
   final VoidCallback onRetry;
 
   @override
@@ -22,7 +23,7 @@ class CustomErrorWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              errorMessage,
+              error.getDefaultErrorMessage(context),
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w600,

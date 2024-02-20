@@ -5,7 +5,9 @@ import 'package:e_commerce_app/Features/cart/providers/is_product_in_cart_provid
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
 import 'package:e_commerce_app/Features/product/presentation/providers/quantity_provider.dart';
 import 'package:e_commerce_app/core/utils/constants/strings.dart';
+import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/utils/functions/custom_snack_bar.dart';
+import 'package:e_commerce_app/core/utils/snackbar.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
@@ -65,8 +67,6 @@ class ProductDetailsViewBody extends StatelessWidget {
                                     return;
                                   }
 
-                                  final quantity = ref.watch(quantityProvider);
-
                                   if (isProductInCart) {
                                     await ref
                                         .read(cartProvider.notifier)
@@ -78,6 +78,8 @@ class ProductDetailsViewBody extends StatelessWidget {
                                           ),
                                         );
                                   } else {
+                                    final quantity =
+                                        ref.watch(quantityProvider);
                                     final cartItem = CartItemModel(
                                       product: product,
                                       quantity: quantity,
@@ -86,12 +88,10 @@ class ProductDetailsViewBody extends StatelessWidget {
                                     await ref
                                         .read(cartProvider.notifier)
                                         .add(cartItem)
-                                        .then(
-                                          (value) => customSnackBar(
-                                            context,
-                                            Strings.productAddedToCart,
-                                          ),
-                                        );
+                                        .then((value) =>
+                                            context.showSuccessSnackBar(
+                                              context.l10n.productAddedToCart,
+                                            ));
                                   }
                                 },
                               );

@@ -30,16 +30,17 @@ class PopularProducts extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ...List.generate(
-                  products.length,
-                  (index) => ProductCard(
-                    product: products[index],
-                    onPress: () {
-                      context.push('/${RoutesDocument.productDetailsView}',
-                          extra: products[index]);
-                    },
-                  ),
-                ),
+                ...products
+                    .map(
+                      (product) => ProductCard(
+                        product: product,
+                        onPress: () {
+                          context.push('/${RoutesDocument.productDetailsView}',
+                              extra: product);
+                        },
+                      ),
+                    )
+                    .toList(),
                 SizedBox(
                   width: getProportionateScreenWidth(20),
                 )

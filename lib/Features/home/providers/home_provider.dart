@@ -8,12 +8,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 final homeProvider = FutureProvider<HomeData>(
   (ref) async {
     final homeRepo = ref.read(homeRepoProvider);
+
     final result = await Future.wait([
       homeRepo.getCategories(),
       homeRepo.getSpecialOffers(),
       homeRepo.getPopularProducts(),
     ]);
-
     return HomeData(
       categories: result[0] as List<CategoryModel>,
       specialOffers: result[1] as List<SpecialOfferModel>,

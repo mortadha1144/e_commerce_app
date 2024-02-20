@@ -18,4 +18,22 @@ extension AsyncValueHandle<T> on AsyncValue<T> {
       }
     );
   }
+
+  R whenState<R>({
+    required R Function(T data) data,
+    required R Function() loading,
+    required R Function(NetworkExceptions error, StackTrace? stackTrace) error,
+  }) {
+    return when(
+      data: (value) {
+        return data(value);
+      },
+      loading: () {
+        return loading();
+      },
+      error: (e, stackTrace) {
+       return error(NetworkExceptions.getDioException(e), stackTrace);
+      },
+    );
+  }
 }

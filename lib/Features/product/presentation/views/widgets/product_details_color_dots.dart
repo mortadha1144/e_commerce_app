@@ -76,7 +76,7 @@ class CounterWidget extends ConsumerWidget {
       children: [
         RoundedIconButton(
           iconData: Icons.remove,
-          onPressed: ref.read(quantityProvider.notifier).decrement,
+          onPressed: () => ref.read(quantityProvider.notifier).state--,
         ),
         SizedBox(width: getProportionateScreenWidth(15)),
         Text(
@@ -90,7 +90,7 @@ class CounterWidget extends ConsumerWidget {
         SizedBox(width: getProportionateScreenWidth(15)),
         RoundedIconButton(
           iconData: Icons.add,
-          onPressed: ref.read(quantityProvider.notifier).increment,
+          onPressed: () => ref.read(quantityProvider.notifier).state++,
         ),
       ],
     );

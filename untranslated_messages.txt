@@ -30,6 +30,7 @@
     "address",
     "addressHint",
     "back",
-    "accountCreatedSuccessfully"
+    "accountCreatedSuccessfully",
+    "productAddedToCart"
   ]
 }

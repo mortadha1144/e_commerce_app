@@ -51,5 +51,6 @@
     "address": "Address",
     "addressHint": "Enter your address",
     "back": "Back",
-    "accountCreatedSuccessfully": "Account created successfully"
+    "accountCreatedSuccessfully": "Account created successfully",
+    "productAddedToCart": "Product Added to cart successfully"
 }

@@ -32,7 +32,6 @@ class HomeRepo {
         .orderBy(FirebaseFieldName.id)
         .get();
 
-    logger(result.docs.length.toString(), tag: 'getCategories');
     return result.docs
         .map(
           (item) => CategoryModel.fromJson(

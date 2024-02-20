@@ -32,8 +32,7 @@ class LoginPage extends HookConsumerWidget {
 
     final remember = useState(false);
 
-    final loginWithEmailAndPasswordState =
-        ref.watch(loginWithEmailAndPasswordProvider);
+    final loginState = ref.watch(loginWithEmailAndPasswordProvider);
 
     final googleLoginState = ref.watch(loginWithGoogleProvider);
     return Scaffold(
@@ -97,7 +96,7 @@ class LoginPage extends HookConsumerWidget {
             ),
             CustomButton(
               text: context.l10n.continueText,
-              isLoading: loginWithEmailAndPasswordState.isLoading,
+              isLoading: loginState.isLoading,
               onPressed: () async {
                 if (!formKey.currentState!.validate()) return;
 
@@ -112,10 +111,9 @@ class LoginPage extends HookConsumerWidget {
                       request: request,
                     );
 
-                login.whenDataOrError(
+                login.whenOrNull(
                   data: (_) => context.push(RoutesDocument.loginSuccessView),
-                  error: (error, _) =>
-                      context.showErrorSnackBar(context.getErrorMessage(error)),
+                  error: (error) => context.showErrorMessage(error),
                 );
               },
             ),
@@ -128,8 +126,9 @@ class LoginPage extends HookConsumerWidget {
                 CustomSocialCard(
                   icon: Assets.assetsIconsGoogleIcon,
                   onPressed: () async {
-                    final login =
-                        await ref.read(loginWithGoogleProvider.notifier).login();
+                    final login = await ref
+                        .read(loginWithGoogleProvider.notifier)
+                        .login();
                     login.whenDataOrError(
                       data: (_) =>
                           context.push(RoutesDocument.loginSuccessView),

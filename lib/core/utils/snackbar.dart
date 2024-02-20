@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/utils/network/network_exceptions.dart';
 import 'package:flutter/material.dart';
 
 class Utils {
@@ -71,6 +72,14 @@ extension SnackBarX on BuildContext {
           ),
         ),
         backgroundColor: theme.colorScheme.error,
+      ),
+    );
+  }
+
+  void showErrorMessage(NetworkExceptions error) {
+    return showErrorSnackBar(
+      error.getErrorMessage(
+        NetworkErrorLocalizationsImpl(this),
       ),
     );
   }

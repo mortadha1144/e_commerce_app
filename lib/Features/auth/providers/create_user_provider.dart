@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:e_commerce_app/Features/auth/data/models/sign_up_model.dart';
 import 'package:e_commerce_app/Features/auth/data/repos/auth_repo.dart';
+import 'package:e_commerce_app/core/utils/network/async_state.dart';
 import 'package:e_commerce_app/core/utils/riverpod/riverpod_extensions.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
