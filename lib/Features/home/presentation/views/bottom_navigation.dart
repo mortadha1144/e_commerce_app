@@ -1,5 +1,5 @@
 import 'package:e_commerce_app/Features/chat/presentation/views/chat_view.dart';
-import 'package:e_commerce_app/Features/favourite/views/favorite_view.dart';
+import 'package:e_commerce_app/Features/favorite/views/favorite_view.dart';
 import 'package:e_commerce_app/Features/profile/presentation/views/profile_view.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:flutter/material.dart';

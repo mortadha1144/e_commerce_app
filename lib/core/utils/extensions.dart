@@ -53,3 +53,12 @@ extension AdditionalColors on ColorScheme {
   Color get n7 => const Color(0xFFF6625E);
   Color get n8 => const Color(0xFFF6625E);
 }
+
+extension Capitalize on String {
+  String capitalize() {
+    if ( isEmpty) {
+      return this;
+    }
+    return "${this[0].toUpperCase()}${substring(1)}";
+  }
+}

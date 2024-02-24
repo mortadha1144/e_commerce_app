@@ -6,7 +6,7 @@ import 'package:e_commerce_app/Features/auth/data/models/user_model.dart';
 import 'package:e_commerce_app/core/utils/constants/firebase_collection_name.dart';
 import 'package:e_commerce_app/core/utils/constants/firebase_field_name.dart';
 import 'package:e_commerce_app/core/utils/enums/enums.dart';
-import 'package:e_commerce_app/core/utils/typedefs.dart';
+import 'package:e_commerce_app/core/utils/type_defs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';

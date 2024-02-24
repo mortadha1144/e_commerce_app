@@ -9,7 +9,7 @@ import '../../../../core/utils/widgets/custom_error_widget.dart';
 import 'widgets/categories.dart';
 import 'widgets/discount_banner.dart';
 import 'widgets/home_header.dart';
-import 'widgets/popular_prducts.dart';
+import 'widgets/popular_products.dart';
 import 'widgets/special_offers.dart';
 
 class HomeView extends ConsumerWidget {

@@ -9,8 +9,12 @@ ThemeData theme() {
     fontFamily: 'Muli',
     appBarTheme: appBarTheme(),
     textTheme: textTheme(),
+   
     inputDecorationTheme: inputDecorationTheme(),
     visualDensity: VisualDensity.adaptivePlatformDensity,
+    popupMenuTheme: const PopupMenuThemeData(
+      color: Colors.white,
+    ),
   );
 }
 
@@ -41,6 +45,8 @@ TextTheme textTheme() {
 
 AppBarTheme appBarTheme() {
   return const AppBarTheme(
+      scrolledUnderElevation: 0,
+      titleSpacing: 0,
       color: Colors.white,
       elevation: 0,
       iconTheme: IconThemeData(color: Colors.black),

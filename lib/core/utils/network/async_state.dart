@@ -3,7 +3,6 @@ import 'dart:developer';
 
 import 'package:e_commerce_app/core/utils/network/network_exceptions.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'async_state.freezed.dart';

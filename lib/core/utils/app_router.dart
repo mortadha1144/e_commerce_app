@@ -9,7 +9,7 @@ import 'package:e_commerce_app/Features/auth/views/sign_up_page.dart';
 import 'package:e_commerce_app/Features/cart/presentation/views/cart_view.dart';
 import 'package:e_commerce_app/Features/chat/presentation/views/chat_view.dart';
 import 'package:e_commerce_app/Features/choose_language/choose_your_language_page.dart';
-import 'package:e_commerce_app/Features/favourite/views/favorite_view.dart';
+import 'package:e_commerce_app/Features/favorite/views/favorite_view.dart';
 import 'package:e_commerce_app/Features/home/presentation/views/bottom_navigation.dart';
 import 'package:e_commerce_app/Features/home/presentation/views/home_view.dart';
 import 'package:e_commerce_app/Features/onboarding/views/onboarding_view.dart';

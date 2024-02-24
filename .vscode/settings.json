@@ -14,6 +14,7 @@
         "**/*.gen.dart": true
     },
     "cSpell.words": [
+        "autofocus",
         "Firestore",
         "Muli"
     ],

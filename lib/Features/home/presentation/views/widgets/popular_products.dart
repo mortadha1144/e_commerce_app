@@ -3,7 +3,6 @@ import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../core/utils/widgets/product_card.dart';
-import '../../../../../size_config.dart';
 import 'section_title.dart';
 
 class PopularProducts extends StatelessWidget {
@@ -24,27 +23,26 @@ class PopularProducts extends StatelessWidget {
             context.push('/${RoutesDocument.allProductsView}');
           },
         ),
-        SizedBox(height: getProportionateScreenWidth(20)),
+        const SizedBox(height: 10),
         SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ...products
-                    .map(
-                      (product) => ProductCard(
-                        product: product,
-                        onPress: () {
-                          context.push('/${RoutesDocument.productDetailsView}',
-                              extra: product);
-                        },
-                      ),
-                    )
-                    .toList(),
-                SizedBox(
-                  width: getProportionateScreenWidth(20),
-                )
-              ],
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ...products
+                      .map(
+                        (product) => ProductCard(
+                          product: product,
+                        ),
+                      )
+                      .toList(),
+                  const SizedBox(
+                    width: 20,
+                  )
+                ],
+              ),
             )),
       ],
     );
