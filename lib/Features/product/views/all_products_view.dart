@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:e_commerce_app/Features/home/presentation/views/widgets/custom_search_field.dart';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
+import 'package:e_commerce_app/Features/product/data/models/products_filter.dart';
 import 'package:e_commerce_app/Features/product/providers/products_query_provider.dart';
 import 'package:e_commerce_app/Features/product/views/widgets/sort_popup_menu.dart';
 import 'package:e_commerce_app/core/utils/enums/sort.dart';
@@ -15,7 +18,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class AllProductsView extends StatefulHookConsumerWidget {
-  const AllProductsView({super.key});
+  final String? category;
+  const AllProductsView({super.key, this.category});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -27,14 +31,15 @@ class _AllProductsViewState extends ConsumerState<AllProductsView> {
   Widget build(BuildContext context) {
     final isSearch = useState<bool>(false);
     final searchController = useTextEditingController();
-    final sort = useState<Sort?>(null);
-    final query = ref.watch(productQueryProvider);
+    final filter =
+        useState<ProductsFilter>(const ProductsFilter(category: 'Electronics'));
+    final query = ref.watch(productQueryProvider(filter.value));
 
     return Scaffold(
       appBar: _buildAppBar(
         isSearch: isSearch,
         searchController: searchController,
-        sort: sort,
+        filter: filter,
       ),
       body: SafeArea(
         child: FirestoreQueryBuilder<Map<String, dynamic>>(
@@ -46,7 +51,11 @@ class _AllProductsViewState extends ConsumerState<AllProductsView> {
             if (snapshot.hasError) {
               return CustomErrorWidget(
                 error: NetworkExceptions.getDioException(snapshot.error),
-                onRetry: () {},
+                onRetry: () {
+                  ref
+                      .read(productQueryProvider(filter.value).notifier)
+                      .getAllProducts(filter.value);
+                },
               );
             }
             return _buildGridView(snapshot);
@@ -79,7 +88,7 @@ class _AllProductsViewState extends ConsumerState<AllProductsView> {
   AppBar _buildAppBar({
     required ValueNotifier<bool> isSearch,
     required TextEditingController searchController,
-    required ValueNotifier<Sort?> sort,
+    required ValueNotifier<ProductsFilter> filter,
   }) {
     final searchDeBouncer = TimeDeBouncer(milliseconds: 500);
     return AppBar(
@@ -88,7 +97,9 @@ class _AllProductsViewState extends ConsumerState<AllProductsView> {
               controller: searchController,
               onChanged: (value) {
                 searchDeBouncer.run(() {
-                  ref.read(productQueryProvider.notifier).search(value);
+                  ref
+                      .read(productQueryProvider(filter.value).notifier)
+                      .search(value);
                 });
               },
             )
@@ -103,7 +114,9 @@ class _AllProductsViewState extends ConsumerState<AllProductsView> {
                     searchController.clear();
 
                     searchDeBouncer.run(() {
-                      ref.read(productQueryProvider.notifier).build();
+                      ref
+                          .read(productQueryProvider(filter.value).notifier)
+                          .getAllProducts(filter.value);
                     });
                   }
                 },
@@ -116,10 +129,12 @@ class _AllProductsViewState extends ConsumerState<AllProductsView> {
               ),
               SortPopupMenu(
                 sorts: sorts,
-                selectedSort: sort.value,
+                selectedSort: filter.value.sort,
                 onSelected: (value) {
-                  sort.value = value;
-                  ref.read(productQueryProvider.notifier).sort(sort.value);
+                  filter.value = filter.value.copyWith(sort: value);
+                  ref
+                      .read(productQueryProvider(filter.value).notifier)
+                      .getAllProducts(filter.value);
                 },
               ),
             ],

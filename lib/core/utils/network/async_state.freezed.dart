@@ -119,15 +119,24 @@ class __$$AsyncStateDataImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$AsyncStateDataImpl<T> extends AsyncStateData<T> {
+class _$AsyncStateDataImpl<T> extends AsyncStateData<T>
+    with DiagnosticableTreeMixin {
   const _$AsyncStateDataImpl(this.data) : super._();
 
   @override
   final T data;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AsyncState<$T>.data(data: $data)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AsyncState<$T>.data'))
+      ..add(DiagnosticsProperty('data', data));
   }
 
   @override
@@ -252,12 +261,19 @@ class __$$AsyncStateIdleImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$AsyncStateIdleImpl<T> extends AsyncStateIdle<T> {
+class _$AsyncStateIdleImpl<T> extends AsyncStateIdle<T>
+    with DiagnosticableTreeMixin {
   const _$AsyncStateIdleImpl() : super._();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AsyncState<$T>.idle()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AsyncState<$T>.idle'));
   }
 
   @override
@@ -367,12 +383,19 @@ class __$$AsyncStateLoadingImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$AsyncStateLoadingImpl<T> extends AsyncStateLoading<T> {
+class _$AsyncStateLoadingImpl<T> extends AsyncStateLoading<T>
+    with DiagnosticableTreeMixin {
   const _$AsyncStateLoadingImpl() : super._();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AsyncState<$T>.loading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AsyncState<$T>.loading'));
   }
 
   @override
@@ -508,15 +531,24 @@ class __$$AsyncStateErrorImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$AsyncStateErrorImpl<T> extends AsyncStateError<T> {
+class _$AsyncStateErrorImpl<T> extends AsyncStateError<T>
+    with DiagnosticableTreeMixin {
   const _$AsyncStateErrorImpl(this.error) : super._();
 
   @override
   final NetworkExceptions error;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AsyncState<$T>.error(error: $error)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AsyncState<$T>.error'))
+      ..add(DiagnosticsProperty('error', error));
   }
 
   @override

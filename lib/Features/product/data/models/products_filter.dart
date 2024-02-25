@@ -1,26 +1,12 @@
 import 'package:e_commerce_app/core/utils/enums/sort.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class ProductsFilter {
-  final String? searchQuery;
-  final Sort? sort;
-  final String? category;
+part 'products_filter.freezed.dart';
 
- const ProductsFilter({
-    this.searchQuery,
-    this.sort,
-    this.category,
-  });
-
-  // copyWith method
-  ProductsFilter copyWith({
-    String? searchQuery,
-    Sort? sort,
+@freezed
+class ProductsFilter with _$ProductsFilter {
+  const factory ProductsFilter({
     String? category,
-  }) {
-    return ProductsFilter(
-      searchQuery: searchQuery ?? this.searchQuery,
-      sort: sort ?? this.sort,
-      category: category ?? this.category,
-    );
-  }
+    Sort? sort,
+  }) = _ProductsFilter;
 }
