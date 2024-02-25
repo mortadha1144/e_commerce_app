@@ -5,3 +5,9 @@ enum MenuState {
   message,
   profile,
 }
+
+enum AuthResult {
+  aborted,
+  success,
+  failure,
+}

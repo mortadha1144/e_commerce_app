@@ -1,10 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:e_commerce_app/Features/home/data/models/product_model.dart';
+import 'package:e_commerce_app/Features/auth/providers/user_id_provider.dart';
+import 'package:e_commerce_app/Features/favorite/providers/favorite_provider.dart';
+import 'package:e_commerce_app/Features/favorite/providers/is_product_favorite_provider.dart';
+import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
+import 'package:e_commerce_app/core/utils/app_router.dart';
+import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../Features/home/data/models/product_test.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
@@ -14,19 +20,23 @@ class ProductCard extends StatelessWidget {
     this.width = 140,
     this.aspectRatio = 1.02,
     required this.product,
-    required this.onPress,
+    this.onPress,
   });
 
   final double width, aspectRatio;
   final ProductModel product;
-  final VoidCallback onPress;
+  final VoidCallback? onPress;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: getProportionateScreenWidth(20)),
+      padding: const EdgeInsets.all(5),
       child: GestureDetector(
-        onTap: onPress,
+        onTap: onPress ??
+            () => context.push(
+                  '/${RoutesDocument.productDetailsView}',
+                  extra: product,
+                ),
         child: SizedBox(
           width: getProportionateScreenWidth(width),
           // height: getProportionateScreenWidth(220),
@@ -54,7 +64,7 @@ class ProductCard extends StatelessWidget {
                 height: 10,
               ),
               Text(
-                product.title ?? '',
+                product.title,
                 style: const TextStyle(color: Colors.black),
                 maxLines: 2,
               ),
@@ -70,30 +80,42 @@ class ProductCard extends StatelessWidget {
                       color: kPrimaryColor,
                     ),
                   ),
-                  InkWell(
-                    onTap: () {},
-                    borderRadius: BorderRadius.circular(30),
-                    child: Container(
-                      padding: EdgeInsets.all(getProportionateScreenWidth(8)),
-                      height: getProportionateScreenWidth(28),
-                      width: getProportionateScreenWidth(28),
-                      decoration: BoxDecoration(
-                          //color: product.isFavourite
-                          color: false
-                              ? kPrimaryColor.withOpacity(.15)
-                              : kSecondaryColor.withOpacity(.1),
-                          shape: BoxShape.circle),
-                      child: SvgPicture.asset(
-                        'assets/icons/Heart Icon_2.svg',
-                        //colorFilter: product.isFavourite
-                        colorFilter: false
-                            ? const ColorFilter.mode(
-                                Color(0xFFFF4848), BlendMode.srcIn)
-                            : const ColorFilter.mode(
-                                Color(0xFFDBDEE4), BlendMode.srcIn),
+                  Consumer(builder: (context, ref, child) {
+                    final isProductFavorite =
+                        ref.watch(isProductFavoriteProvider(product.id));
+                    return InkWell(
+                      onTap: () async {
+                        final userId = ref.read(userIdProvider);
+
+                        if (userId == null) {
+                          return;
+                        }
+
+                        await ref
+                            .read(favoriteProvider.notifier)
+                            .toggle(product);
+                      },
+                      borderRadius: BorderRadius.circular(30),
+                      child: Container(
+                        padding: EdgeInsets.all(getProportionateScreenWidth(8)),
+                        height: getProportionateScreenWidth(28),
+                        width: getProportionateScreenWidth(28),
+                        decoration: BoxDecoration(
+                            color: isProductFavorite
+                                ? kPrimaryColor.withOpacity(.15)
+                                : kSecondaryColor.withOpacity(.1),
+                            shape: BoxShape.circle),
+                        child: SvgPicture.asset(
+                          Assets.assetsIconsHeartIcon2,
+                          colorFilter: isProductFavorite
+                              ? const ColorFilter.mode(
+                                  Color(0xFFFF4848), BlendMode.srcIn)
+                              : const ColorFilter.mode(
+                                  Color(0xFFDBDEE4), BlendMode.srcIn),
+                        ),
                       ),
-                    ),
-                  )
+                    );
+                  })
                 ],
               )
             ],

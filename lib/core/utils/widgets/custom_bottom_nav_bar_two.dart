@@ -71,7 +71,7 @@ class CustomBottomNavBarTwo extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {
-                context.push(AppRouter.kProfileView);
+                context.push(RoutesDocument.profileView);
               },
               icon: SvgPicture.asset(
                 'assets/icons/User Icon.svg',

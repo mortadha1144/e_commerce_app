@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../constants.dart';
-import '../../../data/models/cart_model.dart';
+import '../../../data/models/cart_item_model.dart';
 
 class CartItemCard extends StatelessWidget {
   const CartItemCard({
@@ -9,7 +9,7 @@ class CartItemCard extends StatelessWidget {
     required this.card,
   });
 
-  final CartModel card;
+  final CartItemModel card;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class CartItemCard extends StatelessWidget {
               decoration: BoxDecoration(
                   color: const Color(0xFFF5F6F9),
                   borderRadius: BorderRadius.circular(15)),
-              child: Image.network(card.product.image!),
+              child: Image.network(card.product.image),
             ),
           ),
         ),
@@ -34,7 +34,7 @@ class CartItemCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                card.product.title!,
+                card.product.title,
                 style: const TextStyle(fontSize: 16, color: Colors.black),
                 maxLines: 2,
               ),

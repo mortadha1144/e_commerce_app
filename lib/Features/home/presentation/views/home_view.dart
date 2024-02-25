@@ -1,43 +1,54 @@
-import 'package:e_commerce_app/Features/chat/presentation/views/chat_view.dart';
-import 'package:e_commerce_app/Features/favourite/presentation/views/favourite_view.dart';
-import 'package:e_commerce_app/Features/profile/presentation/views/profile_view.dart';
+import 'package:e_commerce_app/Features/home/providers/home_provider.dart';
+import 'package:e_commerce_app/core/utils/riverpod/riverpod_extensions.dart';
+import 'package:e_commerce_app/core/utils/widgets/custom_loading_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../../core/utils/widgets/custom_bottom_nav_bar.dart';
-import '../../../../size_config.dart';
-import 'widgets/home_view_body.dart';
+import '../../../../core/utils/widgets/custom_error_widget.dart';
+import 'widgets/categories.dart';
+import 'widgets/discount_banner.dart';
+import 'widgets/home_header.dart';
+import 'widgets/popular_products.dart';
+import 'widgets/special_offers.dart';
 
-class HomeView extends StatefulWidget {
+class HomeView extends ConsumerWidget {
   const HomeView({super.key});
 
   @override
-  State<HomeView> createState() => _HomeViewState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final homeState = ref.watch(homeProvider);
 
-class _HomeViewState extends State<HomeView> {
-  List<Widget> views = const [
-    HomeViewBody(),
-    FavouritView(),
-    ChatView(),
-    ProfileView(),
-  ];
-  int selectedIndex = 0;
-  @override
-  Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Scaffold(
-      body: views[selectedIndex],
-      extendBody: true,
-      bottomNavigationBar: CustomBottomNavBar(
-        selectedIndex: selectedIndex,
-        onTap: (value) {
-          setState(() {
-            selectedIndex = value;
-          });
-        },
+      body: RefreshIndicator(
+        onRefresh: () => ref.refresh(homeProvider.future),
+        child: SafeArea(
+          child: homeState.whenState(
+            data: (homeData) {
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const Gap(10),
+                    const HomeHeader(),
+                    const Gap(10),
+                    const DiscountBanner(),
+                    Categories(categories: homeData.categories),
+                    SpecialOffers(specialOffers: homeData.specialOffers),
+                    const Gap(10),
+                    PopularProducts(products: homeData.popularProducts),
+                    const Gap(30),
+                  ],
+                ),
+              );
+            },
+            loading: () => const CustomLoadingIndicator(),
+            error: (error, _) => CustomErrorWidget(
+              error: error,
+              onRetry: () => ref.refresh(homeProvider.future),
+            ),
+          ),
+        ),
       ),
-
-      // bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.home),
     );
   }
 }

@@ -72,3 +72,19 @@ class ServerFailure extends Failure {
     return ServerFailure('Opps There was an error ,Please try later!');
   }
 }
+
+
+// extension GetError on Object {
+//   String get getErrorMessage {
+//     String errMessage = '';
+//     if (this is FirebaseAuthException) {
+//       errMessage =
+//           ServerFailure.fromFirebaseAuthException(this as FirebaseAuthException)
+//               .errMessage;
+   
+//     } else {
+//       errMessage = ServerFailure(toString()).errMessage;
+//     }
+//     return errMessage;
+//   }
+// }

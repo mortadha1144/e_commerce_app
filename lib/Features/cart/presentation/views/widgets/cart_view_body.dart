@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/Features/cart/data/models/cart_model.dart';
+import 'package:e_commerce_app/Features/cart/data/models/cart_item_model.dart';
 import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

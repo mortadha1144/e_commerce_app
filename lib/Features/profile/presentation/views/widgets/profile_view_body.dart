@@ -1,13 +1,15 @@
+import 'package:e_commerce_app/Features/profile/presentation/views/widgets/logout_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'profile_menu.dart';
 import 'profile_picture.dart';
 
-class ProfileViewBody extends StatelessWidget {
+class ProfileViewBody extends ConsumerWidget {
   const ProfileViewBody({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       children: [
         AppBar(
@@ -39,9 +41,19 @@ class ProfileViewBody extends StatelessWidget {
         ProfileMenu(
           text: 'Log Out',
           icon: 'assets/icons/Log out.svg',
-          onPress: () {},
+          onPress: () {
+            showDialog(
+              context: context,
+              builder: (context) => const LogoutDialog(),
+            );
+            // ref
+            //     .read(userProvider.notifier)
+            //     .logout()
+            //     .then((value) => context.go(RoutesDocument.login));
+          },
         ),
       ],
     );
   }
 }
+

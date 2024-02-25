@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -5,7 +6,9 @@ import '../../../constants.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({
-    super.key, required this.selectedIndex, required this.onTap,
+    super.key,
+    required this.selectedIndex,
+    required this.onTap,
   });
 
   final int selectedIndex;
@@ -35,7 +38,7 @@ class CustomBottomNavBar extends StatelessWidget {
           height: 70,
           child: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            currentIndex:selectedIndex,
+            currentIndex: selectedIndex,
             onTap: onTap,
             backgroundColor: Colors.white,
             selectedItemColor: kPrimaryColor,
@@ -44,7 +47,7 @@ class CustomBottomNavBar extends StatelessWidget {
               BottomNavigationBarItem(
                 label: 'Home',
                 icon: SvgPicture.asset(
-                  'assets/icons/Shop Icon.svg',
+                  Assets.assetsIconsShopIcon,
                   colorFilter: ColorFilter.mode(
                       selectedIndex == 0
                           ? kPrimaryColor
@@ -56,7 +59,7 @@ class CustomBottomNavBar extends StatelessWidget {
               BottomNavigationBarItem(
                 label: 'Home',
                 icon: SvgPicture.asset(
-                  'assets/icons/Heart Icon.svg',
+                  Assets.assetsIconsHeartIcon,
                   colorFilter: ColorFilter.mode(
                       selectedIndex == 1
                           ? kPrimaryColor
@@ -68,7 +71,7 @@ class CustomBottomNavBar extends StatelessWidget {
               BottomNavigationBarItem(
                 label: 'Home',
                 icon: SvgPicture.asset(
-                  'assets/icons/Chat bubble Icon.svg',
+                  Assets.assetsIconsChatbubbleIcon,
                   colorFilter: ColorFilter.mode(
                       selectedIndex == 2
                           ? kPrimaryColor
@@ -80,7 +83,7 @@ class CustomBottomNavBar extends StatelessWidget {
               BottomNavigationBarItem(
                 label: 'Profile',
                 icon: SvgPicture.asset(
-                  'assets/icons/User Icon.svg',
+                  Assets.assetsIconsUserIcon,
                   colorFilter: ColorFilter.mode(
                       selectedIndex == 3
                           ? kPrimaryColor

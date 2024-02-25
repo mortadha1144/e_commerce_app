@@ -1,37 +1,20 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 
-class SpecialOfferModel {
-  final int? id;
-  final String? category;
-  final int? numOfBrands;
-  final String? image;
+import 'package:e_commerce_app/core/utils/constants/firebase_field_name.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  SpecialOfferModel({
-    this.id,
-    this.category,
-    this.numOfBrands,
-    this.image,
-  });
+part 'special_offer_model.g.dart';
+part 'special_offer_model.freezed.dart';
 
-  factory SpecialOfferModel.fromJson(
-    DocumentSnapshot<Map<String, dynamic>> snapshot,
-    SnapshotOptions? options,
-  ) {
-    final data = snapshot.data();
-    return SpecialOfferModel(
-      id: data?['id'],
-      category: data?['category'],
-      numOfBrands: data?['num_of_brands'],
-      image: data?['image'],
-    );
-  }
+@Freezed(fromJson: true, toJson: false)
+class SpecialOfferModel with _$SpecialOfferModel {
+  const factory SpecialOfferModel({
+    required int id,
+    required String category,
+   @JsonKey(name:FirebaseFieldName.numOfBrands)
+    required int numOfBrands,
+    required String image,
+  }) = _SpecialOfferModel;
 
-  Map<String, dynamic> toJson() {
-    return {
-      if (id != null) "id": id,
-      if (category != null) "category": category,
-      if (numOfBrands != null) "num_of_brands": numOfBrands,
-      if (image != null) "image": image,
-    };
-  }
+  factory SpecialOfferModel.fromJson(Map<String, dynamic> json) =>
+      _$SpecialOfferModelFromJson(json);
 }

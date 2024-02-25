@@ -4,19 +4,20 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
-            "name": "e_commerce_app (debug mode)",
+            "name": "run App (debug mode)",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "e_commerce_app (profile mode)",
+            "name": "run App (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "e_commerce_app (release mode)",
+            "name": "run App (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
