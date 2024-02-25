@@ -1,8 +1,8 @@
-import 'package:e_commerce_app/Features/product/presentation/views/widgets/favorite_button.dart';
+import 'package:e_commerce_app/Features/product/views/widgets/favorite_button.dart';
 import 'package:flutter/material.dart';
-import '../../../../../constants.dart';
-import '../../../../../size_config.dart';
-import '../../../data/models/product_model.dart';
+import '../../../../constants.dart';
+import '../../../../size_config.dart';
+import '../../data/models/product_model.dart';
 
 class ProductDetailsDescription extends StatelessWidget {
   const ProductDetailsDescription({

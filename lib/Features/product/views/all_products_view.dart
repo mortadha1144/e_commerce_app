@@ -1,7 +1,7 @@
 import 'package:e_commerce_app/Features/home/presentation/views/widgets/custom_search_field.dart';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
-import 'package:e_commerce_app/Features/product/data/repos/product_repo.dart';
-import 'package:e_commerce_app/Features/product/presentation/views/widgets/sort_popup_menu.dart';
+import 'package:e_commerce_app/Features/product/providers/products_query_provider.dart';
+import 'package:e_commerce_app/Features/product/views/widgets/sort_popup_menu.dart';
 import 'package:e_commerce_app/core/utils/enums/sort.dart';
 import 'package:e_commerce_app/core/utils/network/network_exceptions.dart';
 import 'package:e_commerce_app/core/utils/search_base.dart';
@@ -28,19 +28,17 @@ class _AllProductsViewState extends ConsumerState<AllProductsView> {
     final isSearch = useState<bool>(false);
     final searchController = useTextEditingController();
     final sort = useState<Sort?>(null);
-    final query = useState<QueryMap>(
-        ref.read(productRepoProvider).getAllProducts(sort.value));
+    final query = ref.watch(productQueryProvider);
 
     return Scaffold(
       appBar: _buildAppBar(
         isSearch: isSearch,
         searchController: searchController,
         sort: sort,
-        query: query,
       ),
       body: SafeArea(
         child: FirestoreQueryBuilder<Map<String, dynamic>>(
-          query: query.value,
+          query: query,
           builder: (context, snapshot, child) {
             if (snapshot.isFetching) {
               return const CustomLoadingIndicator();
@@ -82,22 +80,16 @@ class _AllProductsViewState extends ConsumerState<AllProductsView> {
     required ValueNotifier<bool> isSearch,
     required TextEditingController searchController,
     required ValueNotifier<Sort?> sort,
-    required ValueNotifier<QueryMap> query,
   }) {
     final searchDeBouncer = TimeDeBouncer(milliseconds: 500);
-
     return AppBar(
       title: isSearch.value
           ? CustomSearchField(
               controller: searchController,
               onChanged: (value) {
-                searchDeBouncer.run(
-                  () {
-                    query.value = ref
-                        .read(productRepoProvider)
-                        .searchProducts(value, sort.value);
-                  },
-                );
+                searchDeBouncer.run(() {
+                  ref.read(productQueryProvider.notifier).search(value);
+                });
               },
             )
           : const Text('All Products'),
@@ -109,13 +101,10 @@ class _AllProductsViewState extends ConsumerState<AllProductsView> {
                   isSearch.value = false;
                   if (searchController.text.isNotEmpty) {
                     searchController.clear();
-                    searchDeBouncer.run(
-                      () {
-                        query.value = ref
-                            .read(productRepoProvider)
-                            .getAllProducts(sort.value);
-                      },
-                    );
+
+                    searchDeBouncer.run(() {
+                      ref.read(productQueryProvider.notifier).build();
+                    });
                   }
                 },
               ),
@@ -130,8 +119,7 @@ class _AllProductsViewState extends ConsumerState<AllProductsView> {
                 selectedSort: sort.value,
                 onSelected: (value) {
                   sort.value = value;
-                  query.value =
-                      ref.read(productRepoProvider).getAllProducts(value);
+                  ref.read(productQueryProvider.notifier).sort(sort.value);
                 },
               ),
             ],

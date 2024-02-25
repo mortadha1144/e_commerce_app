@@ -14,8 +14,8 @@ import 'package:e_commerce_app/Features/home/presentation/views/bottom_navigatio
 import 'package:e_commerce_app/Features/home/presentation/views/home_view.dart';
 import 'package:e_commerce_app/Features/onboarding/views/onboarding_view.dart';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
-import 'package:e_commerce_app/Features/product/presentation/views/all_products_view.dart';
-import 'package:e_commerce_app/Features/product/presentation/views/product_details_view.dart';
+import 'package:e_commerce_app/Features/product/views/all_products_view.dart';
+import 'package:e_commerce_app/Features/product/views/product_details_view.dart';
 import 'package:e_commerce_app/Features/profile/presentation/views/profile_view.dart';
 import 'package:e_commerce_app/core/utils/providers/preference_helper_provider.dart';
 import 'package:e_commerce_app/core/utils/providers/settings_provider.dart';

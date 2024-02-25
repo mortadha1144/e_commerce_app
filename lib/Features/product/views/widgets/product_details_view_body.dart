@@ -3,7 +3,7 @@ import 'package:e_commerce_app/Features/cart/data/models/cart_item_model.dart';
 import 'package:e_commerce_app/Features/cart/providers/cart_provider.dart';
 import 'package:e_commerce_app/Features/cart/providers/is_product_in_cart_provider.dart';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
-import 'package:e_commerce_app/Features/product/presentation/providers/quantity_provider.dart';
+import 'package:e_commerce_app/Features/product/providers/quantity_provider.dart';
 import 'package:e_commerce_app/core/utils/constants/strings.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/utils/functions/custom_snack_bar.dart';
@@ -12,11 +12,11 @@ import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../../../home/presentation/views/widgets/custom_prodect_details_appbar.dart';
+import '../../../home/presentation/views/widgets/custom_prodect_details_appbar.dart';
 import 'product_details_color_dots.dart';
 import 'product_details_description.dart';
 import 'product_details_images.dart';
-import '../../../../home/presentation/views/widgets/top_rounded_corner.dart';
+import '../../../home/presentation/views/widgets/top_rounded_corner.dart';
 
 class ProductDetailsViewBody extends StatelessWidget {
   const ProductDetailsViewBody({super.key, required this.product});
