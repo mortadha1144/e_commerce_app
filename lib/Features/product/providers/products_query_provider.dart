@@ -14,7 +14,7 @@ class ProductQueryNotifier extends AutoDisposeFamilyNotifier<QueryMap,ProductsFi
     return ref.read(productRepoProvider).getAllProducts(arg);
   }
 
-  void search(String query,[String? category]) {
+  void search(String query,String? category) {
     state = ref.read(productRepoProvider).searchProducts(query, category);
   }
 

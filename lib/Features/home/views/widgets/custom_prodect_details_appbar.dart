@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../../core/utils/widgets/rounded_icon_button.dart';
-import '../../../../../size_config.dart';
+import '../../../../core/utils/widgets/rounded_icon_button.dart';
+import '../../../../size_config.dart';
 
 class CustomAppBar extends StatelessWidget  {
   const CustomAppBar({

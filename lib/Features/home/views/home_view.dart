@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../../core/utils/widgets/custom_error_widget.dart';
+import '../../../core/utils/widgets/custom_error_widget.dart';
 import 'widgets/categories.dart';
 import 'widgets/discount_banner.dart';
 import 'widgets/home_header.dart';

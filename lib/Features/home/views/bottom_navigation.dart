@@ -5,8 +5,8 @@ import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/utils/widgets/custom_bottom_nav_bar.dart';
-import '../../../../size_config.dart';
+import '../../../core/utils/widgets/custom_bottom_nav_bar.dart';
+import '../../../size_config.dart';
 import 'home_view.dart';
 
 class BottomNavigationBarScaffold extends StatefulWidget {

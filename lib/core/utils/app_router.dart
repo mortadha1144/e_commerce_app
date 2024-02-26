@@ -10,11 +10,11 @@ import 'package:e_commerce_app/Features/cart/presentation/views/cart_view.dart';
 import 'package:e_commerce_app/Features/chat/presentation/views/chat_view.dart';
 import 'package:e_commerce_app/Features/choose_language/choose_your_language_page.dart';
 import 'package:e_commerce_app/Features/favorite/views/favorite_view.dart';
-import 'package:e_commerce_app/Features/home/presentation/views/bottom_navigation.dart';
-import 'package:e_commerce_app/Features/home/presentation/views/home_view.dart';
+import 'package:e_commerce_app/Features/home/views/bottom_navigation.dart';
+import 'package:e_commerce_app/Features/home/views/home_view.dart';
 import 'package:e_commerce_app/Features/onboarding/views/onboarding_view.dart';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
-import 'package:e_commerce_app/Features/product/views/all_products_view.dart';
+import 'package:e_commerce_app/Features/product/views/paginated_products_grid_view.dart';
 import 'package:e_commerce_app/Features/product/views/product_details_view.dart';
 import 'package:e_commerce_app/Features/profile/presentation/views/profile_view.dart';
 import 'package:e_commerce_app/core/utils/providers/preference_helper_provider.dart';
@@ -33,7 +33,8 @@ GoRouter? _previousRouter;
 final routerProvider = Provider.autoDispose((ref) {
   final bool loggedIn = ref.watch(isLoggedInProvider);
   final local = ref.watch(settingsProvider).locale;
-  final bool isOnBoardingShown = ref.read(preferenceHelperProvider).isOnboardingShown;
+  final bool isOnBoardingShown =
+      ref.read(preferenceHelperProvider).isOnboardingShown;
 
   FutureOr<String?> redirect(BuildContext context, GoRouterState state) {
     // if` the user is not logged in, they need to login
@@ -89,9 +90,20 @@ final routerProvider = Provider.autoDispose((ref) {
                 builder: (context, state) => const CartView(),
               ),
               GoRoute(
+                path: '${RoutesDocument.allProductsView}/:category',
+                parentNavigatorKey: _rootNavigatorKey,
+                builder: (context, state) {
+                  return PaginatedProductsGridView(
+                    category: state.pathParameters['category'],
+                  );
+                },
+              ),
+              GoRoute(
                 path: RoutesDocument.allProductsView,
                 parentNavigatorKey: _rootNavigatorKey,
-                builder: (context, state) => const AllProductsView(),
+                builder: (context, state) {
+                  return const PaginatedProductsGridView();
+                },
               ),
             ],
           ),

@@ -12,11 +12,11 @@ import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../../home/presentation/views/widgets/custom_prodect_details_appbar.dart';
+import '../../../home/views/widgets/custom_prodect_details_appbar.dart';
 import 'product_details_color_dots.dart';
 import 'product_details_description.dart';
 import 'product_details_images.dart';
-import '../../../home/presentation/views/widgets/top_rounded_corner.dart';
+import '../../../home/views/widgets/top_rounded_corner.dart';
 
 class ProductDetailsViewBody extends StatelessWidget {
   const ProductDetailsViewBody({super.key, required this.product});

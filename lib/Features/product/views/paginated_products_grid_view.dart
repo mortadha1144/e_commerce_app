@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:e_commerce_app/Features/home/presentation/views/widgets/custom_search_field.dart';
+import 'package:e_commerce_app/Features/home/views/widgets/custom_search_field.dart';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
 import 'package:e_commerce_app/Features/product/data/models/products_filter.dart';
 import 'package:e_commerce_app/Features/product/providers/products_query_provider.dart';
@@ -17,22 +17,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class AllProductsView extends StatefulHookConsumerWidget {
+class PaginatedProductsGridView extends StatefulHookConsumerWidget {
   final String? category;
-  const AllProductsView({super.key, this.category});
+  const PaginatedProductsGridView({super.key, this.category});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
       _AllProductsViewState();
 }
 
-class _AllProductsViewState extends ConsumerState<AllProductsView> {
+class _AllProductsViewState extends ConsumerState<PaginatedProductsGridView> {
   @override
   Widget build(BuildContext context) {
     final isSearch = useState<bool>(false);
     final searchController = useTextEditingController();
     final filter =
-        useState<ProductsFilter>(const ProductsFilter(category: 'Electronics'));
+        useState<ProductsFilter>(ProductsFilter(category: widget.category));
     final query = ref.watch(productQueryProvider(filter.value));
 
     return Scaffold(
@@ -99,11 +99,11 @@ class _AllProductsViewState extends ConsumerState<AllProductsView> {
                 searchDeBouncer.run(() {
                   ref
                       .read(productQueryProvider(filter.value).notifier)
-                      .search(value);
+                      .search(value, widget.category);
                 });
               },
             )
-          : const Text('All Products'),
+          : Text('${widget.category ?? 'All'} Products'),
       actions: isSearch.value
           ? [
               IconButton(
