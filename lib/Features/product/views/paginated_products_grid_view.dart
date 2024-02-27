@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:e_commerce_app/Features/home/views/widgets/custom_search_field.dart';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';

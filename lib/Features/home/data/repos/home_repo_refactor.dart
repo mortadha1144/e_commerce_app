@@ -4,7 +4,6 @@ import 'package:e_commerce_app/Features/home/data/models/special_offer_model.dar
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
 import 'package:e_commerce_app/core/utils/constants/firebase_collection_name.dart';
 import 'package:e_commerce_app/core/utils/constants/firebase_field_name.dart';
-import 'package:e_commerce_app/core/utils/logger.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final homeRepoProvider = AutoDisposeProvider<HomeRepo>(

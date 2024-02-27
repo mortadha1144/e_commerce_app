@@ -52,7 +52,7 @@ class ProductCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: CachedNetworkImage(
-                    imageUrl: product.image!,
+                    imageUrl: product.image,
                     placeholder: (context, url) =>
                         const CustomLoadingIndicator(),
                     errorWidget: (context, url, error) =>
