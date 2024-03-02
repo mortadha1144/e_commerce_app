@@ -1,39 +1,30 @@
 import 'package:e_commerce_app/Features/home/views/widgets/custom_search_field.dart';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
-import 'package:e_commerce_app/Features/product/data/models/products_filter.dart';
-import 'package:e_commerce_app/Features/product/providers/all_products_query_provider.dart';
+import 'package:e_commerce_app/Features/product/providers/special_offers_query_provider.dart';
+import 'package:e_commerce_app/Features/product/views/widgets/product_list_tile.dart';
 import 'package:e_commerce_app/Features/product/views/widgets/sort_popup_menu.dart';
 import 'package:e_commerce_app/core/utils/enums/sort.dart';
-import 'package:e_commerce_app/core/utils/models/named_object.dart';
-import 'package:e_commerce_app/core/utils/network/network_exceptions.dart';
 import 'package:e_commerce_app/core/utils/search_base.dart';
-import 'package:e_commerce_app/core/utils/type_defs.dart';
-import 'package:e_commerce_app/core/utils/widgets/custom_error_widget.dart';
-import 'package:e_commerce_app/core/utils/widgets/custom_loading_indicator.dart';
-import 'package:e_commerce_app/core/utils/widgets/product_card.dart';
 import 'package:firebase_ui_firestore/firebase_ui_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import '../data/models/products_filter.dart';
 
-class PaginatedProductsGridView extends StatefulHookConsumerWidget {
-  final NamedObject? category;
-  const PaginatedProductsGridView({super.key, this.category});
-
+class PaginatedProductsList extends StatefulHookConsumerWidget {
+  final ProductsFilter filter;
+  const PaginatedProductsList({super.key, required this.filter});
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>
-      _AllProductsViewState();
+  ConsumerState createState() => _PaginatedProductsListState();
 }
 
-class _AllProductsViewState extends ConsumerState<PaginatedProductsGridView> {
+class _PaginatedProductsListState extends ConsumerState<PaginatedProductsList> {
   @override
   Widget build(BuildContext context) {
     final isSearch = useState<bool>(false);
     final searchController = useTextEditingController();
-    final filter =
-        useState<ProductsFilter>(ProductsFilter(category:widget.category));
-    final query = ref.watch(allProductQueryProvider(filter.value));
-
+    final filter = useState<ProductsFilter>(widget.filter);
+    final query = ref.watch(specialOffersQueryProvider(filter.value));
     return Scaffold(
       appBar: _buildAppBar(
         isSearch: isSearch,
@@ -41,46 +32,14 @@ class _AllProductsViewState extends ConsumerState<PaginatedProductsGridView> {
         filter: filter,
       ),
       body: SafeArea(
-        child: FirestoreQueryBuilder<Map<String, dynamic>>(
+        child: FirestoreListView<ProductModel>(
           query: query,
-          builder: (context, snapshot, child) {
-            if (snapshot.isFetching) {
-              return const CustomLoadingIndicator();
-            }
-            if (snapshot.hasError) {
-              return CustomErrorWidget(
-                error: NetworkExceptions.getDioException(snapshot.error),
-                onRetry: () {
-                  ref
-                      .read(allProductQueryProvider(filter.value).notifier)
-                      .getAllProducts(filter.value);
-                },
-              );
-            }
-            return _buildGridView(snapshot);
+          itemBuilder: (context, doc) {
+            final product = doc.data();
+            return ProductListTile(product: product);
           },
         ),
       ),
-    );
-  }
-
-  GridView _buildGridView(QueryBuilderMap snapshot) {
-    return GridView.builder(
-      padding: const EdgeInsets.all(10),
-      itemCount: snapshot.docs.length,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 0.75,
-      ),
-      itemBuilder: (context, index) {
-        if (snapshot.hasMore && index + 1 == snapshot.docs.length) {
-          snapshot.fetchMore();
-        }
-        final product = ProductModel.fromJson(snapshot.docs[index].data());
-        return ProductCard(
-          product: product,
-        );
-      },
     );
   }
 
@@ -91,18 +50,20 @@ class _AllProductsViewState extends ConsumerState<PaginatedProductsGridView> {
   }) {
     final searchDeBouncer = TimeDeBouncer(milliseconds: 500);
     return AppBar(
+
       title: isSearch.value
           ? CustomSearchField(
               controller: searchController,
               onChanged: (value) {
                 searchDeBouncer.run(() {
                   ref
-                      .read(allProductQueryProvider(filter.value).notifier)
-                      .search(value, widget.category?.id);
+                      .read(specialOffersQueryProvider(filter.value).notifier)
+                      .search(value, widget.filter);
                 });
               },
             )
-          : Text('${widget.category?.name ?? 'All'} Products'),
+          : Text(
+              'Special Offers: ${widget.filter.category?.name ?? widget.filter.subCategory?.name ?? ''}'),
       actions: isSearch.value
           ? [
               IconButton(
@@ -114,7 +75,8 @@ class _AllProductsViewState extends ConsumerState<PaginatedProductsGridView> {
 
                     searchDeBouncer.run(() {
                       ref
-                          .read(allProductQueryProvider(filter.value).notifier)
+                          .read(
+                              specialOffersQueryProvider(filter.value).notifier)
                           .getAllProducts(filter.value);
                     });
                   }
@@ -132,7 +94,7 @@ class _AllProductsViewState extends ConsumerState<PaginatedProductsGridView> {
                 onSelected: (value) {
                   filter.value = filter.value.copyWith(sort: value);
                   ref
-                      .read(allProductQueryProvider(filter.value).notifier)
+                      .read(specialOffersQueryProvider(filter.value).notifier)
                       .getAllProducts(filter.value);
                 },
               ),

@@ -1,15 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:e_commerce_app/Features/auth/providers/user_id_provider.dart';
-import 'package:e_commerce_app/Features/favorite/providers/favorite_provider.dart';
-import 'package:e_commerce_app/Features/favorite/providers/is_product_favorite_provider.dart';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
+import 'package:e_commerce_app/Features/product/views/widgets/favorite_button.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
-import 'package:e_commerce_app/core/utils/constants/assets.dart';
-import 'package:e_commerce_app/core/utils/widgets/custom_loading_indicator.dart';
+import 'package:e_commerce_app/core/utils/widgets/cashed_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -17,7 +11,7 @@ import '../../../size_config.dart';
 class ProductCard extends StatelessWidget {
   const ProductCard({
     super.key,
-    this.width = 140,
+    this.width = 120,
     this.aspectRatio = 1.02,
     required this.product,
     this.onPress,
@@ -45,20 +39,7 @@ class ProductCard extends StatelessWidget {
             children: [
               AspectRatio(
                 aspectRatio: aspectRatio,
-                child: Container(
-                  padding: EdgeInsets.all(getProportionateScreenWidth(20)),
-                  decoration: BoxDecoration(
-                    color: kSecondaryColor.withOpacity(.1),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: CachedNetworkImage(
-                    imageUrl: product.image,
-                    placeholder: (context, url) =>
-                        const CustomLoadingIndicator(),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
-                  ),
-                ),
+                child: CashedImage(imageUrl: product.image),
               ),
               const SizedBox(
                 height: 10,
@@ -80,42 +61,7 @@ class ProductCard extends StatelessWidget {
                       color: kPrimaryColor,
                     ),
                   ),
-                  Consumer(builder: (context, ref, child) {
-                    final isProductFavorite =
-                        ref.watch(isProductFavoriteProvider(product.id));
-                    return InkWell(
-                      onTap: () async {
-                        final userId = ref.read(userIdProvider);
-
-                        if (userId == null) {
-                          return;
-                        }
-
-                        await ref
-                            .read(favoriteProvider.notifier)
-                            .toggle(product);
-                      },
-                      borderRadius: BorderRadius.circular(30),
-                      child: Container(
-                        padding: EdgeInsets.all(getProportionateScreenWidth(8)),
-                        height: getProportionateScreenWidth(28),
-                        width: getProportionateScreenWidth(28),
-                        decoration: BoxDecoration(
-                            color: isProductFavorite
-                                ? kPrimaryColor.withOpacity(.15)
-                                : kSecondaryColor.withOpacity(.1),
-                            shape: BoxShape.circle),
-                        child: SvgPicture.asset(
-                          Assets.assetsIconsHeartIcon2,
-                          colorFilter: isProductFavorite
-                              ? const ColorFilter.mode(
-                                  Color(0xFFFF4848), BlendMode.srcIn)
-                              : const ColorFilter.mode(
-                                  Color(0xFFDBDEE4), BlendMode.srcIn),
-                        ),
-                      ),
-                    );
-                  })
+                  FavoriteButton(product: product)
                 ],
               )
             ],
@@ -125,3 +71,4 @@ class ProductCard extends StatelessWidget {
     );
   }
 }
+

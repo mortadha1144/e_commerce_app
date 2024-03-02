@@ -24,7 +24,8 @@ mixin _$ProductModel {
   String get title => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  String get category => throw _privateConstructorUsedError;
+  NamedObject get category => throw _privateConstructorUsedError;
+  NamedObject get subCategory => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
   RatingModel get rating => throw _privateConstructorUsedError;
 
@@ -45,7 +46,8 @@ abstract class $ProductModelCopyWith<$Res> {
       String title,
       double price,
       String description,
-      String category,
+      NamedObject category,
+      NamedObject subCategory,
       String image,
       RatingModel rating});
 
@@ -70,6 +72,7 @@ class _$ProductModelCopyWithImpl<$Res, $Val extends ProductModel>
     Object? price = null,
     Object? description = null,
     Object? category = null,
+    Object? subCategory = null,
     Object? image = null,
     Object? rating = null,
   }) {
@@ -93,7 +96,11 @@ class _$ProductModelCopyWithImpl<$Res, $Val extends ProductModel>
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as String,
+              as NamedObject,
+      subCategory: null == subCategory
+          ? _value.subCategory
+          : subCategory // ignore: cast_nullable_to_non_nullable
+              as NamedObject,
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -127,7 +134,8 @@ abstract class _$$ProductModelImplCopyWith<$Res>
       String title,
       double price,
       String description,
-      String category,
+      NamedObject category,
+      NamedObject subCategory,
       String image,
       RatingModel rating});
 
@@ -151,6 +159,7 @@ class __$$ProductModelImplCopyWithImpl<$Res>
     Object? price = null,
     Object? description = null,
     Object? category = null,
+    Object? subCategory = null,
     Object? image = null,
     Object? rating = null,
   }) {
@@ -174,7 +183,11 @@ class __$$ProductModelImplCopyWithImpl<$Res>
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as String,
+              as NamedObject,
+      subCategory: null == subCategory
+          ? _value.subCategory
+          : subCategory // ignore: cast_nullable_to_non_nullable
+              as NamedObject,
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -196,6 +209,7 @@ class _$ProductModelImpl implements _ProductModel {
       required this.price,
       required this.description,
       required this.category,
+      required this.subCategory,
       required this.image,
       required this.rating});
 
@@ -211,7 +225,9 @@ class _$ProductModelImpl implements _ProductModel {
   @override
   final String description;
   @override
-  final String category;
+  final NamedObject category;
+  @override
+  final NamedObject subCategory;
   @override
   final String image;
   @override
@@ -219,7 +235,7 @@ class _$ProductModelImpl implements _ProductModel {
 
   @override
   String toString() {
-    return 'ProductModel(id: $id, title: $title, price: $price, description: $description, category: $category, image: $image, rating: $rating)';
+    return 'ProductModel(id: $id, title: $title, price: $price, description: $description, category: $category, subCategory: $subCategory, image: $image, rating: $rating)';
   }
 
   @override
@@ -234,14 +250,16 @@ class _$ProductModelImpl implements _ProductModel {
                 other.description == description) &&
             (identical(other.category, category) ||
                 other.category == category) &&
+            (identical(other.subCategory, subCategory) ||
+                other.subCategory == subCategory) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.rating, rating) || other.rating == rating));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, title, price, description, category, image, rating);
+  int get hashCode => Object.hash(runtimeType, id, title, price, description,
+      category, subCategory, image, rating);
 
   @JsonKey(ignore: true)
   @override
@@ -263,7 +281,8 @@ abstract class _ProductModel implements ProductModel {
       required final String title,
       required final double price,
       required final String description,
-      required final String category,
+      required final NamedObject category,
+      required final NamedObject subCategory,
       required final String image,
       required final RatingModel rating}) = _$ProductModelImpl;
 
@@ -279,7 +298,9 @@ abstract class _ProductModel implements ProductModel {
   @override
   String get description;
   @override
-  String get category;
+  NamedObject get category;
+  @override
+  NamedObject get subCategory;
   @override
   String get image;
   @override

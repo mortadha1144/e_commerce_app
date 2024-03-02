@@ -15,10 +15,13 @@ class FavoriteView extends ConsumerWidget {
         const Text('FavoriteView'),
         TextButton(
             onPressed: () async {
-              // final ref = FirebaseFirestore.instance
+              // add isSpecialOffer = false to all products
+              // final collection = FirebaseFirestore.instance
               //     .collection(FirebaseCollectionName.products);
-              // for (var product in products) {
-              //   await ref.add(product.toJson());
+              // final query = await collection.get();
+              // for (final doc in query.docs) {
+              //   await doc.reference
+              //       .update({FirebaseFieldName.isSpecialOffer: false});
               // }
             },
             child: const Text('Add Test Products')),

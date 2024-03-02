@@ -21,9 +21,9 @@ SpecialOfferModel _$SpecialOfferModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$SpecialOfferModel {
   int get id => throw _privateConstructorUsedError;
-  String get category => throw _privateConstructorUsedError;
-  @JsonKey(name: FirebaseFieldName.numOfBrands)
-  int get numOfBrands => throw _privateConstructorUsedError;
+  NamedObject? get category => throw _privateConstructorUsedError;
+  NamedObject? get subCategory => throw _privateConstructorUsedError;
+  int get nofBrands => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -39,8 +39,9 @@ abstract class $SpecialOfferModelCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String category,
-      @JsonKey(name: FirebaseFieldName.numOfBrands) int numOfBrands,
+      NamedObject? category,
+      NamedObject? subCategory,
+      int nofBrands,
       String image});
 }
 
@@ -58,8 +59,9 @@ class _$SpecialOfferModelCopyWithImpl<$Res, $Val extends SpecialOfferModel>
   @override
   $Res call({
     Object? id = null,
-    Object? category = null,
-    Object? numOfBrands = null,
+    Object? category = freezed,
+    Object? subCategory = freezed,
+    Object? nofBrands = null,
     Object? image = null,
   }) {
     return _then(_value.copyWith(
@@ -67,13 +69,17 @@ class _$SpecialOfferModelCopyWithImpl<$Res, $Val extends SpecialOfferModel>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      category: null == category
+      category: freezed == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as String,
-      numOfBrands: null == numOfBrands
-          ? _value.numOfBrands
-          : numOfBrands // ignore: cast_nullable_to_non_nullable
+              as NamedObject?,
+      subCategory: freezed == subCategory
+          ? _value.subCategory
+          : subCategory // ignore: cast_nullable_to_non_nullable
+              as NamedObject?,
+      nofBrands: null == nofBrands
+          ? _value.nofBrands
+          : nofBrands // ignore: cast_nullable_to_non_nullable
               as int,
       image: null == image
           ? _value.image
@@ -93,8 +99,9 @@ abstract class _$$SpecialOfferModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {int id,
-      String category,
-      @JsonKey(name: FirebaseFieldName.numOfBrands) int numOfBrands,
+      NamedObject? category,
+      NamedObject? subCategory,
+      int nofBrands,
       String image});
 }
 
@@ -110,8 +117,9 @@ class __$$SpecialOfferModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? category = null,
-    Object? numOfBrands = null,
+    Object? category = freezed,
+    Object? subCategory = freezed,
+    Object? nofBrands = null,
     Object? image = null,
   }) {
     return _then(_$SpecialOfferModelImpl(
@@ -119,13 +127,17 @@ class __$$SpecialOfferModelImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      category: null == category
+      category: freezed == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as String,
-      numOfBrands: null == numOfBrands
-          ? _value.numOfBrands
-          : numOfBrands // ignore: cast_nullable_to_non_nullable
+              as NamedObject?,
+      subCategory: freezed == subCategory
+          ? _value.subCategory
+          : subCategory // ignore: cast_nullable_to_non_nullable
+              as NamedObject?,
+      nofBrands: null == nofBrands
+          ? _value.nofBrands
+          : nofBrands // ignore: cast_nullable_to_non_nullable
               as int,
       image: null == image
           ? _value.image
@@ -141,7 +153,8 @@ class _$SpecialOfferModelImpl implements _SpecialOfferModel {
   const _$SpecialOfferModelImpl(
       {required this.id,
       required this.category,
-      @JsonKey(name: FirebaseFieldName.numOfBrands) required this.numOfBrands,
+      required this.subCategory,
+      required this.nofBrands,
       required this.image});
 
   factory _$SpecialOfferModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -150,16 +163,17 @@ class _$SpecialOfferModelImpl implements _SpecialOfferModel {
   @override
   final int id;
   @override
-  final String category;
+  final NamedObject? category;
   @override
-  @JsonKey(name: FirebaseFieldName.numOfBrands)
-  final int numOfBrands;
+  final NamedObject? subCategory;
+  @override
+  final int nofBrands;
   @override
   final String image;
 
   @override
   String toString() {
-    return 'SpecialOfferModel(id: $id, category: $category, numOfBrands: $numOfBrands, image: $image)';
+    return 'SpecialOfferModel(id: $id, category: $category, subCategory: $subCategory, nofBrands: $nofBrands, image: $image)';
   }
 
   @override
@@ -170,15 +184,17 @@ class _$SpecialOfferModelImpl implements _SpecialOfferModel {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.category, category) ||
                 other.category == category) &&
-            (identical(other.numOfBrands, numOfBrands) ||
-                other.numOfBrands == numOfBrands) &&
+            (identical(other.subCategory, subCategory) ||
+                other.subCategory == subCategory) &&
+            (identical(other.nofBrands, nofBrands) ||
+                other.nofBrands == nofBrands) &&
             (identical(other.image, image) || other.image == image));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, category, numOfBrands, image);
+      Object.hash(runtimeType, id, category, subCategory, nofBrands, image);
 
   @JsonKey(ignore: true)
   @override
@@ -191,9 +207,9 @@ class _$SpecialOfferModelImpl implements _SpecialOfferModel {
 abstract class _SpecialOfferModel implements SpecialOfferModel {
   const factory _SpecialOfferModel(
       {required final int id,
-      required final String category,
-      @JsonKey(name: FirebaseFieldName.numOfBrands)
-      required final int numOfBrands,
+      required final NamedObject? category,
+      required final NamedObject? subCategory,
+      required final int nofBrands,
       required final String image}) = _$SpecialOfferModelImpl;
 
   factory _SpecialOfferModel.fromJson(Map<String, dynamic> json) =
@@ -202,10 +218,11 @@ abstract class _SpecialOfferModel implements SpecialOfferModel {
   @override
   int get id;
   @override
-  String get category;
+  NamedObject? get category;
   @override
-  @JsonKey(name: FirebaseFieldName.numOfBrands)
-  int get numOfBrands;
+  NamedObject? get subCategory;
+  @override
+  int get nofBrands;
   @override
   String get image;
   @override

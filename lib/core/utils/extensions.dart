@@ -1,6 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_commerce_app/core/utils/constants/firebase_field_name.dart';
 import 'package:e_commerce_app/core/utils/network/network_exceptions.dart';
+import 'package:e_commerce_app/core/utils/type_defs.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 /// convert json to list of objects
 extension FromJson on List<dynamic> {
@@ -60,5 +64,25 @@ extension Capitalize on String {
       return this;
     }
     return "${this[0].toUpperCase()}${substring(1)}";
+  }
+}
+
+extension FirestoreFieldPath on String {
+  String fieldPath(String key) {
+    return '$this.$key';
+  }
+
+  // return the field path for id
+  String get fieldPathId => fieldPath(FirebaseFieldName.id);
+}
+
+extension QueryMapExtension<T extends JsonConverter> on QueryMap {
+  Query<T> withCustomConverter({
+    required T type,
+  }) {
+    return withConverter(
+      fromFirestore: (snapshot, _) => type.fromJson(snapshot.data()!),
+      toFirestore: (value, options) => value.toJson(value),
+    );
   }
 }

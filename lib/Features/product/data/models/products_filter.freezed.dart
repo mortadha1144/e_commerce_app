@@ -16,7 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ProductsFilter {
-  String? get category => throw _privateConstructorUsedError;
+  NamedObject? get category => throw _privateConstructorUsedError;
+  NamedObject? get subCategory => throw _privateConstructorUsedError;
   Sort? get sort => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +31,7 @@ abstract class $ProductsFilterCopyWith<$Res> {
           ProductsFilter value, $Res Function(ProductsFilter) then) =
       _$ProductsFilterCopyWithImpl<$Res, ProductsFilter>;
   @useResult
-  $Res call({String? category, Sort? sort});
+  $Res call({NamedObject? category, NamedObject? subCategory, Sort? sort});
 }
 
 /// @nodoc
@@ -47,13 +48,18 @@ class _$ProductsFilterCopyWithImpl<$Res, $Val extends ProductsFilter>
   @override
   $Res call({
     Object? category = freezed,
+    Object? subCategory = freezed,
     Object? sort = freezed,
   }) {
     return _then(_value.copyWith(
       category: freezed == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as NamedObject?,
+      subCategory: freezed == subCategory
+          ? _value.subCategory
+          : subCategory // ignore: cast_nullable_to_non_nullable
+              as NamedObject?,
       sort: freezed == sort
           ? _value.sort
           : sort // ignore: cast_nullable_to_non_nullable
@@ -70,7 +76,7 @@ abstract class _$$ProductsFilterImplCopyWith<$Res>
       __$$ProductsFilterImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? category, Sort? sort});
+  $Res call({NamedObject? category, NamedObject? subCategory, Sort? sort});
 }
 
 /// @nodoc
@@ -85,13 +91,18 @@ class __$$ProductsFilterImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? category = freezed,
+    Object? subCategory = freezed,
     Object? sort = freezed,
   }) {
     return _then(_$ProductsFilterImpl(
       category: freezed == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as NamedObject?,
+      subCategory: freezed == subCategory
+          ? _value.subCategory
+          : subCategory // ignore: cast_nullable_to_non_nullable
+              as NamedObject?,
       sort: freezed == sort
           ? _value.sort
           : sort // ignore: cast_nullable_to_non_nullable
@@ -103,16 +114,18 @@ class __$$ProductsFilterImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ProductsFilterImpl implements _ProductsFilter {
-  const _$ProductsFilterImpl({this.category, this.sort});
+  const _$ProductsFilterImpl({this.category, this.subCategory, this.sort});
 
   @override
-  final String? category;
+  final NamedObject? category;
+  @override
+  final NamedObject? subCategory;
   @override
   final Sort? sort;
 
   @override
   String toString() {
-    return 'ProductsFilter(category: $category, sort: $sort)';
+    return 'ProductsFilter(category: $category, subCategory: $subCategory, sort: $sort)';
   }
 
   @override
@@ -122,11 +135,13 @@ class _$ProductsFilterImpl implements _ProductsFilter {
             other is _$ProductsFilterImpl &&
             (identical(other.category, category) ||
                 other.category == category) &&
+            (identical(other.subCategory, subCategory) ||
+                other.subCategory == subCategory) &&
             (identical(other.sort, sort) || other.sort == sort));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, category, sort);
+  int get hashCode => Object.hash(runtimeType, category, subCategory, sort);
 
   @JsonKey(ignore: true)
   @override
@@ -137,11 +152,15 @@ class _$ProductsFilterImpl implements _ProductsFilter {
 }
 
 abstract class _ProductsFilter implements ProductsFilter {
-  const factory _ProductsFilter({final String? category, final Sort? sort}) =
-      _$ProductsFilterImpl;
+  const factory _ProductsFilter(
+      {final NamedObject? category,
+      final NamedObject? subCategory,
+      final Sort? sort}) = _$ProductsFilterImpl;
 
   @override
-  String? get category;
+  NamedObject? get category;
+  @override
+  NamedObject? get subCategory;
   @override
   Sort? get sort;
   @override

@@ -1,10 +1,12 @@
 import 'package:e_commerce_app/Features/home/data/models/category_model.dart';
 import 'package:e_commerce_app/constants.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
+import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/utils/models/named_object.dart';
 import '../../../../size_config.dart';
 
 class Categories extends StatelessWidget {
@@ -21,20 +23,27 @@ class Categories extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ...List.generate(
-              categories.length,
+              4,
               (index) {
                 final category = categories[index];
+                final namedCategory = NamedObject(
+                  name: category.name,
+                  id: category.id,
+                );
                 return CategoryCard(
                   icon: category.image,
                   text: category.name,
-                  onPress: () {
-                    if (category.name == 'more') return;
-                    context.push(
-                      '/${RoutesDocument.allProductsView}/${category.name}',
-                    );
-                  },
+                  onPress: () => context.push(
+                    '/${RoutesDocument.paginatedProductsGridView}',
+                    extra: namedCategory,
+                  ),
                 );
               },
+            ),
+            CategoryCard(
+              image: Assets.assetsIconsDiscover,
+              text: 'more',
+              onPress: () {},
             ),
           ],
         ));
@@ -44,12 +53,15 @@ class Categories extends StatelessWidget {
 class CategoryCard extends StatelessWidget {
   const CategoryCard({
     super.key,
-    required this.icon,
+    this.icon,
+    this.image,
     required this.text,
     required this.onPress,
   });
 
-  final String icon, text;
+  final String text;
+  final String? icon;
+  final String? image;
   final VoidCallback onPress;
 
   @override
@@ -68,13 +80,21 @@ class CategoryCard extends StatelessWidget {
                   color: const Color(0xFFFFECDF),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: SvgPicture.network(
-                  icon,
-                  colorFilter: const ColorFilter.mode(
-                    kPrimaryColor,
-                    BlendMode.srcIn,
-                  ),
-                ),
+                child: icon != null
+                    ? SvgPicture.network(
+                        icon!,
+                        colorFilter: const ColorFilter.mode(
+                          kPrimaryColor,
+                          BlendMode.srcIn,
+                        ),
+                      )
+                    : SvgPicture.asset(
+                        image!,
+                        colorFilter: const ColorFilter.mode(
+                          kPrimaryColor,
+                          BlendMode.srcIn,
+                        ),
+                      ),
               ),
             ),
             const SizedBox(height: 15),

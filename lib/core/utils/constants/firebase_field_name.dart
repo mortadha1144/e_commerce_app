@@ -14,6 +14,8 @@ class FirebaseFieldName {
   static const product = 'product';
   static const productId = 'productId';
   static const category = 'category';
+  static const subCategory = 'subCategory';
+  static const isSpecialOffer = 'isSpecialOffer';
   static const description = 'description';
   static const id = 'id';
   static const image = 'image';

@@ -17,6 +17,7 @@ import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
 import 'package:e_commerce_app/Features/product/views/paginated_products_grid_view.dart';
 import 'package:e_commerce_app/Features/product/views/product_details_view.dart';
 import 'package:e_commerce_app/Features/profile/presentation/views/profile_view.dart';
+import 'package:e_commerce_app/core/utils/models/named_object.dart';
 import 'package:e_commerce_app/core/utils/providers/preference_helper_provider.dart';
 import 'package:e_commerce_app/core/utils/providers/settings_provider.dart';
 import 'package:flutter/material.dart';
@@ -90,19 +91,13 @@ final routerProvider = Provider.autoDispose((ref) {
                 builder: (context, state) => const CartView(),
               ),
               GoRoute(
-                path: '${RoutesDocument.allProductsView}/:category',
+                path: RoutesDocument.paginatedProductsGridView,
                 parentNavigatorKey: _rootNavigatorKey,
                 builder: (context, state) {
+
                   return PaginatedProductsGridView(
-                    category: state.pathParameters['category'],
+                    category: state.extra as NamedObject?,
                   );
-                },
-              ),
-              GoRoute(
-                path: RoutesDocument.allProductsView,
-                parentNavigatorKey: _rootNavigatorKey,
-                builder: (context, state) {
-                  return const PaginatedProductsGridView();
                 },
               ),
             ],
@@ -170,7 +165,7 @@ class RoutesDocument {
   static const otpView = '/otpView';
   static const onBoardingView = '/onBoardingView';
   static const productDetailsView = 'productDetailsView';
-  static const allProductsView = 'allProductsView';
+  static const paginatedProductsGridView = 'paginatedProductsGridView';
   static const cartView = 'cartView';
   static const profileView = '/profileView';
   static const chooseLanguage = '/chooseLanguage';

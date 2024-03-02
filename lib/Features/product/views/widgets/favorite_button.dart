@@ -3,7 +3,6 @@ import 'package:e_commerce_app/Features/favorite/providers/is_product_favorite_p
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
 import 'package:e_commerce_app/Features/favorite/providers/favorite_provider.dart';
 import 'package:e_commerce_app/core/utils/constants/assets.dart';
-import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -31,15 +30,14 @@ class FavoriteButton extends ConsumerWidget {
         await ref.read(favoriteProvider.notifier).toggle(product);
       },
       child: Container(
-        padding: EdgeInsets.all(getProportionateScreenWidth(15)),
-        width: getProportionateScreenWidth(64),
+        padding: const EdgeInsets.all(8),
+        width: 30,
         decoration: BoxDecoration(
           color: isProductFavorite
               ? const Color(0xFFFFE6E6)
               : const Color(0xFFF5F6F9),
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(20),
-            bottomLeft: Radius.circular(20),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(20),
           ),
         ),
         child: SvgPicture.asset(

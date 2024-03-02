@@ -54,10 +54,6 @@ flutter_assets:
   output_path: lib/core/utils/constants/
   filename: assets.dart
 
-flutter_gen:
-  output: lib/gen/ 
-  line_length: 80
-
   # Optional
   integrations:
     flutter_svg: true

@@ -20,7 +20,7 @@ class PopularProducts extends StatelessWidget {
         SectionTitle(
           text: 'Popular Product',
           onPress: () {
-            context.push('/${RoutesDocument.allProductsView}');
+            context.push('/${RoutesDocument.paginatedProductsGridView}');
           },
         ),
         const SizedBox(height: 10),
