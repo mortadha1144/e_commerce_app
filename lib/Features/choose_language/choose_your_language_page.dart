@@ -6,7 +6,6 @@ import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/utils/providers/settings_provider.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_app/core/utils/widgets/flex_padded.dart';
-import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -54,7 +53,6 @@ class _ChooseYourLanguagePageState
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     final settings = ref.watch(settingsProvider);
     return Scaffold(
       body: SafeArea(

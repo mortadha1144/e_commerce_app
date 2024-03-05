@@ -57,9 +57,9 @@ class CustomBottomNavBar extends StatelessWidget {
                 //
               ),
               BottomNavigationBarItem(
-                label: 'Home',
+                label: 'Cart',
                 icon: SvgPicture.asset(
-                  Assets.assetsIconsHeartIcon,
+                  Assets.assetsIconsCartIcon,
                   colorFilter: ColorFilter.mode(
                       selectedIndex == 1
                           ? kPrimaryColor
@@ -69,9 +69,9 @@ class CustomBottomNavBar extends StatelessWidget {
                 //
               ),
               BottomNavigationBarItem(
-                label: 'Home',
+                label: 'Favorite',
                 icon: SvgPicture.asset(
-                  Assets.assetsIconsChatbubbleIcon,
+                  Assets.assetsIconsHeartIcon,
                   colorFilter: ColorFilter.mode(
                       selectedIndex == 2
                           ? kPrimaryColor

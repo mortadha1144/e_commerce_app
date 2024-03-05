@@ -9,10 +9,9 @@ import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/utils/functions/custom_snack_bar.dart';
 import 'package:e_commerce_app/core/utils/snackbar.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
-import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../../home/views/widgets/custom_prodect_details_appbar.dart';
+import '../../../home/views/widgets/custom_product_details_app_bar.dart';
 import 'product_details_color_dots.dart';
 import 'product_details_description.dart';
 import 'product_details_images.dart';
@@ -25,7 +24,8 @@ class ProductDetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         CustomAppBar(rating: product.rating.rate),
         ProductDetailsImages(product: product),
@@ -45,11 +45,11 @@ class ProductDetailsViewBody extends StatelessWidget {
                     TopRoundedCorner(
                         color: Colors.white,
                         child: Padding(
-                          padding: EdgeInsets.only(
-                            left: SizeConfig.screenWidth * .15,
-                            right: SizeConfig.screenWidth * .15,
-                            top: getProportionateScreenWidth(15),
-                            bottom: getProportionateScreenWidth(40),
+                          padding: const EdgeInsets.only(
+                            left: 15,
+                            right: 15,
+                            top: 15,
+                            bottom: 40,
                           ),
                           child: Consumer(
                             builder: (context, ref, child) {

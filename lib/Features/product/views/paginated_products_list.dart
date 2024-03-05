@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/Features/home/views/widgets/custom_search_field.dart';
 import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
+import 'package:e_commerce_app/Features/product/data/models/products_filter.dart';
 import 'package:e_commerce_app/Features/product/providers/special_offers_query_provider.dart';
 import 'package:e_commerce_app/Features/product/views/widgets/product_list_tile.dart';
 import 'package:e_commerce_app/Features/product/views/widgets/sort_popup_menu.dart';
@@ -9,7 +10,6 @@ import 'package:firebase_ui_firestore/firebase_ui_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../data/models/products_filter.dart';
 
 class PaginatedProductsList extends StatefulHookConsumerWidget {
   final ProductsFilter filter;

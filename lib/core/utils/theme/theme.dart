@@ -5,11 +5,10 @@ import '../../../constants.dart';
 
 ThemeData theme() {
   return ThemeData(
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: Colors.grey[50],
     fontFamily: 'Muli',
     appBarTheme: appBarTheme(),
     textTheme: textTheme(),
-   
     inputDecorationTheme: inputDecorationTheme(),
     visualDensity: VisualDensity.adaptivePlatformDensity,
     popupMenuTheme: const PopupMenuThemeData(

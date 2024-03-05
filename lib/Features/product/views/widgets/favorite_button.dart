@@ -9,11 +9,15 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class FavoriteButton extends ConsumerWidget {
   const FavoriteButton({
-    required this.product,
     super.key,
+    required this.product,
+    this.borderRadius,
+    this.width = 30,
   });
 
   final ProductModel product;
+  final BorderRadiusGeometry? borderRadius;
+  final double width;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -31,14 +35,15 @@ class FavoriteButton extends ConsumerWidget {
       },
       child: Container(
         padding: const EdgeInsets.all(8),
-        width: 30,
+        width: width,
         decoration: BoxDecoration(
           color: isProductFavorite
               ? const Color(0xFFFFE6E6)
               : const Color(0xFFF5F6F9),
-          borderRadius: const BorderRadius.all(
-            Radius.circular(20),
-          ),
+          borderRadius: borderRadius ??
+              const BorderRadius.all(
+                Radius.circular(20),
+              ),
         ),
         child: SvgPicture.asset(
           Assets.assetsIconsHeartIcon2,

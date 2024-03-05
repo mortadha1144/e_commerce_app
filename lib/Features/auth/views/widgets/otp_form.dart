@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/widgets/custom_button.dart';
-import '../../../../../size_config.dart';
-
 class OtpForm extends StatefulWidget {
   const OtpForm({super.key});
 
@@ -47,7 +45,7 @@ class _OtpFormState extends State<OtpForm> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                width: getProportionateScreenWidth(60),
+                width: 60,
                 child: TextFormField(
                   autofocus: true,
                   obscureText: true,
@@ -62,7 +60,7 @@ class _OtpFormState extends State<OtpForm> {
                 ),
               ),
               SizedBox(
-                width: getProportionateScreenWidth(60),
+                width: 60,
                 child: TextFormField(
                   focusNode: pin2FocusNode,
                   obscureText: true,
@@ -76,7 +74,7 @@ class _OtpFormState extends State<OtpForm> {
                 ),
               ),
               SizedBox(
-                width: getProportionateScreenWidth(60),
+                width: 60,
                 child: TextFormField(
                   focusNode: pin3FocusNode,
                   obscureText: true,
@@ -90,7 +88,7 @@ class _OtpFormState extends State<OtpForm> {
                 ),
               ),
               SizedBox(
-                width: getProportionateScreenWidth(60),
+                width: 60,
                 child: TextFormField(
                   focusNode: pin4FocusNode,
                   obscureText: true,
@@ -105,7 +103,7 @@ class _OtpFormState extends State<OtpForm> {
               ),
             ],
           ),
-          SizedBox(height: SizeConfig.screenHeight * .15),
+          const SizedBox(height: 15),
           CustomButton(
             text: 'Continue',
             onPressed: () {},

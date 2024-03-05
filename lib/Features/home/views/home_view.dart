@@ -20,6 +20,7 @@ class HomeView extends ConsumerWidget {
     final homeState = ref.watch(homeProvider);
 
     return Scaffold(
+      // backgroundColor: Colors.grey[100]!.withOpacity(.5),
       body: RefreshIndicator(
         onRefresh: () => ref.refresh(homeProvider.future),
         child: SafeArea(
@@ -36,7 +37,6 @@ class HomeView extends ConsumerWidget {
                     SpecialOffers(specialOffers: homeData.specialOffers),
                     const Gap(10),
                     PopularProducts(products: homeData.popularProducts),
-                    const Gap(30),
                   ],
                 ),
               );

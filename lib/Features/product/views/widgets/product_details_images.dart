@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import '../../../../constants.dart';
-import '../../../../size_config.dart';
 import '../../data/models/product_model.dart';
 
 class ProductDetailsImages extends StatefulWidget {
@@ -24,13 +22,13 @@ class _ProductDetailsImagesState extends State<ProductDetailsImages> {
     return Column(
       children: [
         SizedBox(
-          width: getProportionateScreenWidth(220),
+          width: 220,
           child: AspectRatio(
             aspectRatio: 1,
             child: Image.network(images[0]),
           ),
         ),
-        SizedBox(height: getProportionateScreenWidth(20)),
+        const SizedBox(height: 20),
         const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -51,10 +49,10 @@ class _ProductDetailsImagesState extends State<ProductDetailsImages> {
         });
       },
       child: Container(
-        margin: EdgeInsets.only(right: getProportionateScreenWidth(15)),
-        padding: EdgeInsets.all(getProportionateScreenWidth(8)),
-        height: getProportionateScreenWidth(48),
-        width: getProportionateScreenWidth(48),
+        margin: const EdgeInsets.only(right: 15),
+        padding: const EdgeInsets.all(8),
+        height: 48,
+        width: 48,
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),

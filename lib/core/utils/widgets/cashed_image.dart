@@ -1,4 +1,3 @@
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -14,28 +13,13 @@ class CashedImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 1,
-            blurRadius: 7,
-            offset: const Offset(0, 3), // changes position of shadow
-          ),
-        ],
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
-        child: CachedNetworkImage(
-          fit: BoxFit.cover,
-          imageUrl: imageUrl,
-          placeholder: (context, url) =>
-          const CustomLoadingIndicator(),
-          errorWidget: (context, url, error) =>
-          const Icon(Icons.error),
-        ),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: CachedNetworkImage(
+        fit: BoxFit.cover,
+        imageUrl: imageUrl,
+        placeholder: (context, url) => const CustomLoadingIndicator(),
+        errorWidget: (context, url, error) => const Icon(Icons.error),
       ),
     );
   }

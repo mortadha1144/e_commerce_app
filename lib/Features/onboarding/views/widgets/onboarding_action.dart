@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/widgets/custom_button.dart';
-import '../../../../size_config.dart';
 import 'custom_animated_container.dart';
 
 class OnBoardingAction extends StatelessWidget {
@@ -19,8 +18,8 @@ class OnBoardingAction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: getProportionateScreenWidth(20),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20,
       ),
       child: Column(
         children: [

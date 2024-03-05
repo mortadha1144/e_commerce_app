@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/utils/widgets/rounded_icon_button.dart';
-import '../../../../size_config.dart';
 
 class CustomAppBar extends StatelessWidget  {
   const CustomAppBar({
@@ -19,7 +18,7 @@ class CustomAppBar extends StatelessWidget  {
     return SafeArea(
       child: Padding(
         padding:
-            EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+            const EdgeInsets.symmetric(horizontal: 20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

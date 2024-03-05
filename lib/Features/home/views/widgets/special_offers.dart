@@ -4,7 +4,6 @@ import 'package:e_commerce_app/Features/product/data/models/products_filter.dart
 import 'package:e_commerce_app/Features/product/views/paginated_products_list.dart';
 import 'package:e_commerce_app/core/utils/navigation.dart';
 import 'package:flutter/material.dart';
-import '../../../../size_config.dart';
 import 'section_title.dart';
 
 class SpecialOffers extends StatelessWidget {
@@ -74,10 +73,10 @@ class SpecialOfferCard extends StatelessWidget {
     return GestureDetector(
       onTap: onPress,
       child: Padding(
-        padding: EdgeInsets.only(left: getProportionateScreenWidth(20)),
+        padding: const EdgeInsets.only(left: 20),
         child: SizedBox(
-          width: getProportionateScreenWidth(242),
-          height: getProportionateScreenWidth(100),
+          width: 242,
+          height: 100,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: Stack(
@@ -99,9 +98,9 @@ class SpecialOfferCard extends StatelessWidget {
                   )),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: getProportionateScreenWidth(15),
-                    vertical: getProportionateScreenWidth(10),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                    vertical: 10,
                   ),
                   child: Text.rich(
                     TextSpan(
@@ -109,8 +108,8 @@ class SpecialOfferCard extends StatelessWidget {
                       children: [
                         TextSpan(
                           text: '$title\n',
-                          style: TextStyle(
-                            fontSize: getProportionateScreenWidth(18),
+                          style: const TextStyle(
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

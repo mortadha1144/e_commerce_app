@@ -6,8 +6,7 @@ import 'package:e_commerce_app/Features/auth/views/login_page.dart';
 import 'package:e_commerce_app/Features/auth/views/login_success_view.dart';
 import 'package:e_commerce_app/Features/auth/views/otp_view.dart';
 import 'package:e_commerce_app/Features/auth/views/sign_up_page.dart';
-import 'package:e_commerce_app/Features/cart/presentation/views/cart_view.dart';
-import 'package:e_commerce_app/Features/chat/presentation/views/chat_view.dart';
+import 'package:e_commerce_app/Features/cart/views/cart_view.dart';
 import 'package:e_commerce_app/Features/choose_language/choose_your_language_page.dart';
 import 'package:e_commerce_app/Features/favorite/views/favorite_view.dart';
 import 'package:e_commerce_app/Features/home/views/bottom_navigation.dart';
@@ -86,15 +85,9 @@ final routerProvider = Provider.autoDispose((ref) {
                     ProductDetailsView(product: state.extra as ProductModel),
               ),
               GoRoute(
-                path: RoutesDocument.cartView,
-                parentNavigatorKey: _rootNavigatorKey,
-                builder: (context, state) => const CartView(),
-              ),
-              GoRoute(
                 path: RoutesDocument.paginatedProductsGridView,
                 parentNavigatorKey: _rootNavigatorKey,
                 builder: (context, state) {
-
                   return PaginatedProductsGridView(
                     category: state.extra as NamedObject?,
                   );
@@ -103,15 +96,15 @@ final routerProvider = Provider.autoDispose((ref) {
             ],
           ),
           GoRoute(
-            path: RoutesDocument.favoriteView,
+            path: RoutesDocument.cartView,
             parentNavigatorKey: _shellNavigatorKey,
-            builder: (context, state) => const FavoriteView(),
+            builder: (context, state) => const CartView(),
             redirect: redirect,
           ),
           GoRoute(
-            path: RoutesDocument.chatView,
+            path: RoutesDocument.favoriteView,
             parentNavigatorKey: _shellNavigatorKey,
-            builder: (context, state) => const ChatView(),
+            builder: (context, state) => const FavoriteView(),
             redirect: redirect,
           ),
           GoRoute(
@@ -166,9 +159,8 @@ class RoutesDocument {
   static const onBoardingView = '/onBoardingView';
   static const productDetailsView = 'productDetailsView';
   static const paginatedProductsGridView = 'paginatedProductsGridView';
-  static const cartView = 'cartView';
+  static const cartView = '/cartView';
   static const profileView = '/profileView';
   static const chooseLanguage = '/chooseLanguage';
   static const favoriteView = '/favoriteView';
-  static const chatView = '/chatView';
 }

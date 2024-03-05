@@ -7,7 +7,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/utils/models/named_object.dart';
-import '../../../../size_config.dart';
 
 class Categories extends StatelessWidget {
   const Categories({super.key, required this.categories});
@@ -69,13 +68,13 @@ class CategoryCard extends StatelessWidget {
     return GestureDetector(
       onTap: onPress,
       child: SizedBox(
-        width: getProportionateScreenWidth(55),
+        width: 55,
         child: Column(
           children: [
             AspectRatio(
               aspectRatio: 1,
               child: Container(
-                padding: EdgeInsets.all(getProportionateScreenWidth(15)),
+                padding: const EdgeInsets.all(15),
                 decoration: BoxDecoration(
                   color: const Color(0xFFFFECDF),
                   borderRadius: BorderRadius.circular(10),
