@@ -33,23 +33,6 @@ sealed class AsyncState<T> with _$AsyncState<T> {
   bool get isLoading => this is AsyncStateLoading<T>;
 }
 
-// mixin AsyncStateAutoDisposeNotifier<T> on AutoDisposeNotifier<AsyncState<T>> {
-//   AsyncStateIdle<T> idle() => AsyncStateIdle<T>();
-
-//   Future<AsyncState<T>> handle(Future<T> Function() callback) async {
-//     state = const AsyncState.loading();
-//     return state = await AsyncState.guard(callback);
-//   }
-// }
-
-// mixin AsyncStateNotifier<T> on Notifier<AsyncState<T>> {
-//   AsyncStateIdle<T> idle() => AsyncStateIdle<T>();
-
-//   Future<AsyncState<T>> handle(Future<T> Function() callback) async {
-//     state = const AsyncState.loading();
-//     return state = await AsyncState.guard(callback);
-//   }
-// }
 mixin AsyncStateMixin<T> {
   AsyncState<T> get state;
   set state(AsyncState<T> value);
