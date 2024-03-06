@@ -38,8 +38,20 @@ class CartNotifier extends AutoDisposeNotifier<List<CartItemModel>>
   Map<String, dynamic> toJson(List<CartItemModel> value) =>
       value.toJson(key, (x) => x.toJson());
 
-  Future<void> add(CartItemModel cartModel) =>
-      update((state) => [...state, cartModel]);
+  Future<void> add(CartItemModel cartModel) {
+    final isProductInCart =
+        state.any((x) => x.product.id == cartModel.product.id);
+    if (isProductInCart) {
+      final currentQuantity = state
+          .firstWhere((x) => x.product.id == cartModel.product.id)
+          .quantity;
+      return updateQuantity(
+        cartModel.product.id,
+        currentQuantity + cartModel.quantity,
+      );
+    }
+    return update((state) => [...state, cartModel]);
+  }
 
   Future<void> remove(int productId) =>
       update((state) => state.where((x) => x.product.id != productId).toList());
