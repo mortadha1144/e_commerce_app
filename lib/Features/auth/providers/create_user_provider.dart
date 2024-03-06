@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:e_commerce_app/Features/auth/data/models/sign_up_model.dart';
-import 'package:e_commerce_app/Features/auth/data/repos/auth_repo.dart';
-import 'package:e_commerce_app/core/utils/riverpod/riverpod_extensions.dart';
+import 'package:e_commerce_app/features/auth/data/models/sign_up_model.dart';
+import 'package:e_commerce_app/features/auth/data/repos/auth_repo.dart';
+import 'package:e_commerce_app/core/data/riverpod/riverpod_extensions.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final createUserProvider =

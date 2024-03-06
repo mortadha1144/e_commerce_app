@@ -1,5 +1,5 @@
-import 'package:e_commerce_app/Features/home/providers/home_provider.dart';
-import 'package:e_commerce_app/core/utils/riverpod/riverpod_extensions.dart';
+import 'package:e_commerce_app/features/home/providers/home_provider.dart';
+import 'package:e_commerce_app/core/data/riverpod/riverpod_extensions.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';

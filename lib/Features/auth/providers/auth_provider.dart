@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:e_commerce_app/Features/auth/data/models/login_request.dart';
-import 'package:e_commerce_app/Features/auth/data/models/user_model.dart';
-import 'package:e_commerce_app/Features/auth/data/repos/auth_repo.dart';
-import 'package:e_commerce_app/Features/auth/providers/user_provider.dart';
-import 'package:e_commerce_app/core/utils/network/async_state.dart';
-import 'package:e_commerce_app/core/utils/riverpod/riverpod_extensions.dart';
+import 'package:e_commerce_app/features/auth/data/models/login_request.dart';
+import 'package:e_commerce_app/features/auth/data/models/user_model.dart';
+import 'package:e_commerce_app/features/auth/data/repos/auth_repo.dart';
+import 'package:e_commerce_app/features/auth/providers/user_provider.dart';
+import 'package:e_commerce_app/core/data/network/async_state.dart';
+import 'package:e_commerce_app/core/data/riverpod/riverpod_extensions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

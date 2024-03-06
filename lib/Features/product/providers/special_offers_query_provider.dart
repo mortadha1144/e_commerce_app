@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
-import 'package:e_commerce_app/Features/product/data/models/products_filter.dart';
-import 'package:e_commerce_app/Features/product/data/repos/product_repo.dart';
+import 'package:e_commerce_app/features/product/data/models/product_model.dart';
+import 'package:e_commerce_app/features/product/data/models/products_filter.dart';
+import 'package:e_commerce_app/features/product/data/repos/product_repo.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final specialOffersQueryProvider =

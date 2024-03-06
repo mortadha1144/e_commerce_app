@@ -1,9 +1,9 @@
-import 'package:e_commerce_app/Features/auth/providers/user_id_provider.dart';
-import 'package:e_commerce_app/Features/cart/data/models/cart_item_model.dart';
-import 'package:e_commerce_app/Features/cart/providers/cart_provider.dart';
-import 'package:e_commerce_app/Features/cart/providers/is_product_in_cart_provider.dart';
-import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
-import 'package:e_commerce_app/Features/product/providers/quantity_provider.dart';
+import 'package:e_commerce_app/features/auth/providers/user_id_provider.dart';
+import 'package:e_commerce_app/features/cart/data/models/cart_item_model.dart';
+import 'package:e_commerce_app/features/cart/providers/cart_provider.dart';
+import 'package:e_commerce_app/features/cart/providers/is_product_in_cart_provider.dart';
+import 'package:e_commerce_app/features/product/data/models/product_model.dart';
+import 'package:e_commerce_app/features/product/providers/quantity_provider.dart';
 import 'package:e_commerce_app/core/utils/constants/strings.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/utils/functions/custom_snack_bar.dart';

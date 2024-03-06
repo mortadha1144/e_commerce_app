@@ -1,7 +1,7 @@
+import 'package:e_commerce_app/core/utils/constants/constants.dart';
 import 'package:e_commerce_app/core/utils/widgets/counter_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../../../constants.dart';
 import '../../providers/quantity_provider.dart';
 
 class ProductDetailsColorDots extends ConsumerWidget {

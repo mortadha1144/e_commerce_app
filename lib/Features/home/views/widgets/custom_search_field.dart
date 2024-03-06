@@ -1,7 +1,5 @@
+import 'package:e_commerce_app/core/utils/constants/constants.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../constants.dart';
-
 class CustomSearchField extends StatelessWidget {
   final TextEditingController controller;
   final ValueChanged<String> onChanged;

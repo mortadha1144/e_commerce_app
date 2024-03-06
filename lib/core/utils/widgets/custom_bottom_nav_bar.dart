@@ -1,11 +1,10 @@
-import 'package:e_commerce_app/Features/cart/providers/cart_provider.dart';
-import 'package:e_commerce_app/Features/favorite/providers/favorite_provider.dart';
+import 'package:e_commerce_app/core/utils/constants/constants.dart';
+import 'package:e_commerce_app/features/cart/providers/cart_provider.dart';
+import 'package:e_commerce_app/features/favorite/providers/favorite_provider.dart';
 import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-import '../../../constants.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({

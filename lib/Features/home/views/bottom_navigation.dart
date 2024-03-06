@@ -1,6 +1,6 @@
-import 'package:e_commerce_app/Features/cart/views/cart_view.dart';
-import 'package:e_commerce_app/Features/favorite/views/favorite_view.dart';
-import 'package:e_commerce_app/Features/profile/presentation/views/profile_view.dart';
+import 'package:e_commerce_app/features/cart/views/cart_view.dart';
+import 'package:e_commerce_app/features/favorite/views/favorite_view.dart';
+import 'package:e_commerce_app/features/profile/presentation/views/profile_view.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';

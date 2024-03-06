@@ -3,7 +3,7 @@ import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:e_commerce_app/core/utils/constants/sizes.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
-import 'package:e_commerce_app/core/utils/providers/settings_provider.dart';
+import 'package:e_commerce_app/core/data/providers/settings_provider.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_app/core/utils/widgets/flex_padded.dart';
 import 'package:flutter/material.dart';

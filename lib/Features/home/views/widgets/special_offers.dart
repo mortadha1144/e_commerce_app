@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:e_commerce_app/Features/home/data/models/special_offer_model.dart';
-import 'package:e_commerce_app/Features/product/data/models/products_filter.dart';
-import 'package:e_commerce_app/Features/product/views/paginated_products_list.dart';
+import 'package:e_commerce_app/features/home/data/models/special_offer_model.dart';
+import 'package:e_commerce_app/features/product/data/models/products_filter.dart';
+import 'package:e_commerce_app/features/product/views/paginated_products_list.dart';
 import 'package:e_commerce_app/core/utils/navigation.dart';
 import 'package:flutter/material.dart';
 import 'section_title.dart';

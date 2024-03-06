@@ -1,6 +1,6 @@
-import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
-import 'package:e_commerce_app/Features/home/data/models/rating_model.dart';
-import 'package:e_commerce_app/core/utils/models/named_object.dart';
+import 'package:e_commerce_app/features/product/data/models/product_model.dart';
+import 'package:e_commerce_app/features/home/data/models/rating_model.dart';
+import 'package:e_commerce_app/core/data/models/named_object.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'cart_item_model.freezed.dart';

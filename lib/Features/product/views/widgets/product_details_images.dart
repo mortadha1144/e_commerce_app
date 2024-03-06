@@ -1,6 +1,6 @@
+import 'package:e_commerce_app/core/utils/constants/constants.dart';
+import 'package:e_commerce_app/features/product/data/models/product_model.dart';
 import 'package:flutter/material.dart';
-import '../../../../constants.dart';
-import '../../data/models/product_model.dart';
 
 class ProductDetailsImages extends StatefulWidget {
   const ProductDetailsImages({

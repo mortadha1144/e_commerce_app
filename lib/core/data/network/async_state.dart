@@ -1,7 +1,7 @@
 
 import 'dart:developer';
 
-import 'package:e_commerce_app/core/utils/network/network_exceptions.dart';
+import 'package:e_commerce_app/core/data/network/network_exceptions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

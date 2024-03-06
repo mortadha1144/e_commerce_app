@@ -1,7 +1,7 @@
-import 'package:e_commerce_app/Features/cart/data/models/cart_item_model.dart';
-import 'package:e_commerce_app/Features/cart/providers/cart_provider.dart';
-import 'package:e_commerce_app/Features/cart/views/widgets/cart_item_card.dart';
-import 'package:e_commerce_app/constants.dart';
+import 'package:e_commerce_app/core/utils/constants/constants.dart';
+import 'package:e_commerce_app/features/cart/data/models/cart_item_model.dart';
+import 'package:e_commerce_app/features/cart/providers/cart_provider.dart';
+import 'package:e_commerce_app/features/cart/views/widgets/cart_item_card.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_dismissible.dart';
 import 'package:flutter/material.dart';

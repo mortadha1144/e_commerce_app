@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/Features/profile/presentation/views/widgets/profile_view_body.dart';
+import 'package:e_commerce_app/features/profile/presentation/views/widgets/profile_view_body.dart';
 import 'package:flutter/material.dart';
 
 class ProfileView extends StatelessWidget {

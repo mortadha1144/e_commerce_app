@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/core/utils/network/network_exceptions.dart';
+import 'package:e_commerce_app/core/data/network/network_exceptions.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 typedef AsyncValueCallback<T> = Future<AsyncValue<T>>;

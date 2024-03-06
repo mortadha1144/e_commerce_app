@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce_app/core/utils/constants/firebase_field_name.dart';
-import 'package:e_commerce_app/core/utils/network/network_exceptions.dart';
+import 'package:e_commerce_app/core/data/network/network_exceptions.dart';
 import 'package:e_commerce_app/core/utils/type_defs.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';

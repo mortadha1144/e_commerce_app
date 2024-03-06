@@ -1,5 +1,5 @@
 import 'package:e_commerce_app/core/utils/app_router.dart';
-import 'package:e_commerce_app/core/utils/providers/preference_helper_provider.dart';
+import 'package:e_commerce_app/core/data/providers/preference_helper_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';

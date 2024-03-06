@@ -1,7 +1,6 @@
+import 'package:e_commerce_app/core/utils/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import '../../../../constants.dart';
 
 class IconBtnWithCounter extends StatelessWidget {
   const IconBtnWithCounter({

@@ -1,12 +1,10 @@
-import 'dart:math';
-
-import 'package:e_commerce_app/Features/cart/providers/cart_provider.dart';
+import 'package:e_commerce_app/core/utils/constants/constants.dart';
+import 'package:e_commerce_app/features/cart/providers/cart_provider.dart';
 import 'package:e_commerce_app/core/utils/widgets/cashed_image.dart';
 import 'package:e_commerce_app/core/utils/widgets/counter_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../../constants.dart';
 import '../../data/models/cart_item_model.dart';
 
 class CartItemCard extends StatelessWidget {

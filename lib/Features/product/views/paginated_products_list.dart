@@ -1,9 +1,9 @@
-import 'package:e_commerce_app/Features/home/views/widgets/custom_search_field.dart';
-import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
-import 'package:e_commerce_app/Features/product/data/models/products_filter.dart';
-import 'package:e_commerce_app/Features/product/providers/special_offers_query_provider.dart';
-import 'package:e_commerce_app/Features/product/views/widgets/product_list_tile.dart';
-import 'package:e_commerce_app/Features/product/views/widgets/sort_popup_menu.dart';
+import 'package:e_commerce_app/features/home/views/widgets/custom_search_field.dart';
+import 'package:e_commerce_app/features/product/data/models/product_model.dart';
+import 'package:e_commerce_app/features/product/data/models/products_filter.dart';
+import 'package:e_commerce_app/features/product/providers/special_offers_query_provider.dart';
+import 'package:e_commerce_app/features/product/views/widgets/product_list_tile.dart';
+import 'package:e_commerce_app/features/product/views/widgets/sort_popup_menu.dart';
 import 'package:e_commerce_app/core/utils/enums/sort.dart';
 import 'package:e_commerce_app/core/utils/search_base.dart';
 import 'package:firebase_ui_firestore/firebase_ui_firestore.dart';

@@ -1,7 +1,7 @@
-import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
+import 'package:e_commerce_app/features/product/data/models/product_model.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
-import 'package:e_commerce_app/core/utils/providers/object_preference_provider.dart';
-import 'package:e_commerce_app/core/utils/shared_preference/preference_helper.dart';
+import 'package:e_commerce_app/core/data/providers/object_preference_provider.dart';
+import 'package:e_commerce_app/core/data/shared_preference/preference_helper.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final favoriteProvider =

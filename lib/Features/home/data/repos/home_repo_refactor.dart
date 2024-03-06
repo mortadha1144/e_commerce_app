@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_commerce_app/Features/home/data/models/category_model.dart';
-import 'package:e_commerce_app/Features/home/data/models/special_offer_model.dart';
-import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
+import 'package:e_commerce_app/features/home/data/models/category_model.dart';
+import 'package:e_commerce_app/features/home/data/models/special_offer_model.dart';
+import 'package:e_commerce_app/features/product/data/models/product_model.dart';
 import 'package:e_commerce_app/core/utils/constants/firebase_collection_name.dart';
 import 'package:e_commerce_app/core/utils/constants/firebase_field_name.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

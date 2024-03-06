@@ -1,5 +1,5 @@
+import 'package:e_commerce_app/core/utils/constants/constants.dart';
 import 'package:flutter/material.dart';
-import '../../../constants.dart';
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,

@@ -1,6 +1,6 @@
-import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
-import 'package:e_commerce_app/Features/product/views/widgets/favorite_button.dart';
-import 'package:e_commerce_app/constants.dart';
+import 'package:e_commerce_app/core/utils/constants/constants.dart';
+import 'package:e_commerce_app/features/product/data/models/product_model.dart';
+import 'package:e_commerce_app/features/product/views/widgets/favorite_button.dart';
 import 'package:e_commerce_app/core/utils/widgets/cashed_image.dart';
 import 'package:flutter/material.dart';
 

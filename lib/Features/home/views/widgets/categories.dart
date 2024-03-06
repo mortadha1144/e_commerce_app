@@ -1,12 +1,12 @@
-import 'package:e_commerce_app/Features/home/data/models/category_model.dart';
-import 'package:e_commerce_app/constants.dart';
+import 'package:e_commerce_app/core/utils/constants/constants.dart';
+import 'package:e_commerce_app/features/home/data/models/category_model.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/utils/models/named_object.dart';
+import '../../../../core/data/models/named_object.dart';
 
 class Categories extends StatelessWidget {
   const Categories({super.key, required this.categories});

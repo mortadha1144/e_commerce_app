@@ -1,5 +1,5 @@
 
-import 'package:e_commerce_app/Features/auth/providers/user_provider.dart';
+import 'package:e_commerce_app/features/auth/providers/user_provider.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:flutter/material.dart';

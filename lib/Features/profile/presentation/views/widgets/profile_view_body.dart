@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/Features/profile/presentation/views/widgets/logout_dialog.dart';
+import 'package:e_commerce_app/features/profile/presentation/views/widgets/logout_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

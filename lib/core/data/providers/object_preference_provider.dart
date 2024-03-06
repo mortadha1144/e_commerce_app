@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:e_commerce_app/core/utils/shared_preference/preference_helper.dart';
+import 'package:e_commerce_app/core/data/shared_preference/preference_helper.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'provider.dart';

@@ -1,5 +1,5 @@
-import 'package:e_commerce_app/Features/product/data/models/products_filter.dart';
-import 'package:e_commerce_app/Features/product/data/repos/product_repo.dart';
+import 'package:e_commerce_app/features/product/data/models/products_filter.dart';
+import 'package:e_commerce_app/features/product/data/repos/product_repo.dart';
 import 'package:e_commerce_app/core/utils/type_defs.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

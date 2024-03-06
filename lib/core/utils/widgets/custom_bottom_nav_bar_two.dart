@@ -1,9 +1,9 @@
 import 'package:e_commerce_app/core/utils/app_router.dart';
+import 'package:e_commerce_app/core/utils/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../constants.dart';
 import '../enums/enums.dart';
 
 class CustomBottomNavBarTwo extends StatelessWidget {
