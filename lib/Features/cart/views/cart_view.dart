@@ -1,9 +1,13 @@
 import 'package:e_commerce_app/core/utils/constants/constants.dart';
+import 'package:e_commerce_app/core/utils/snackbar.dart';
 import 'package:e_commerce_app/features/cart/data/models/cart_item_model.dart';
+import 'package:e_commerce_app/features/cart/data/models/product_order.dart';
 import 'package:e_commerce_app/features/cart/providers/cart_provider.dart';
+import 'package:e_commerce_app/features/cart/providers/submit_order_provider.dart';
 import 'package:e_commerce_app/features/cart/views/widgets/cart_item_card.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_dismissible.dart';
+import 'package:e_commerce_app/features/cart/views/widgets/submit_order_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -145,10 +149,37 @@ class CheckOurCart extends StatelessWidget {
               }),
               SizedBox(
                 width: 190,
-                child: CustomButton(
-                  text: 'Check Out',
-                  onPressed: () {},
-                ),
+                child: Consumer(builder: (context, ref, _) {
+                  return CustomButton(
+                    text: 'Check Out',
+                    isLoading: ref.watch(submitOrderProvider).isLoading,
+                    onPressed: () async {
+                      final submitDialog = await showDialog<bool>(
+                        context: context,
+                        builder: (context) => const SubmitOrderDialog(),
+                      );
+                      if (submitDialog != null && submitDialog) {
+                        final items = ref
+                            .watch(cartProvider)
+                            .map(
+                              (item) => ProductOrder(
+                                productId: item.product.id,
+                                qty: item.quantity,
+                              ),
+                            )
+                            .toList();
+                        final submitOrder = await ref
+                            .read(submitOrderProvider.notifier)
+                            .run(items);
+
+                        submitOrder.whenOrNull(
+                            data: (_) => context.showSuccessSnackBar(
+                                'Order submitted successfully'),
+                            error: (e) => context.showErrorMessage(e));
+                      }
+                    },
+                  );
+                }),
               )
             ],
           )

@@ -10,3 +10,5 @@ class TimestampSerializer implements JsonConverter<DateTime, dynamic> {
   @override
   Timestamp toJson(DateTime date) => Timestamp.fromDate(date);
 }
+
+FieldValue fieldValueToJson(FieldValue fieldValue) => fieldValue;

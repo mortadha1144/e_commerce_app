@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:e_commerce_app/features/profile/presentation/views/widgets/logout_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,7 +21,7 @@ class ProfileViewBody extends ConsumerWidget {
         const SizedBox(height: 20),
         ProfileMenu(
           text: 'My Account',
-          icon: 'assets/icons/User Icon.svg',
+          icon: Assets.assetsIconsUserIcon,
           onPress: () {},
         ),
         ProfileMenu(
@@ -35,12 +36,12 @@ class ProfileViewBody extends ConsumerWidget {
         ),
         ProfileMenu(
           text: 'Help Center',
-          icon: 'assets/icons/Question mark.svg',
+          icon: Assets.assetsIconsQuestionMark,
           onPress: () {},
         ),
         ProfileMenu(
           text: 'Log Out',
-          icon: 'assets/icons/Log out.svg',
+          icon: Assets.assetsSvgLogout,
           onPress: () {
             showDialog(
               context: context,
@@ -56,4 +57,3 @@ class ProfileViewBody extends ConsumerWidget {
     );
   }
 }
-

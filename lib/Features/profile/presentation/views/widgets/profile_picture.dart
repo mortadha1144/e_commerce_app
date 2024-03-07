@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -31,7 +32,7 @@ class ProfilePicture extends StatelessWidget {
                     foregroundColor: Colors.white,
                     backgroundColor: const Color(0xFFF5F6F9)),
                 onPressed: () {},
-                child: SvgPicture.asset('assets/icons/Camera Icon.svg'),
+                child: SvgPicture.asset(Assets.assetsIconsCameraIcon),
               ),
             ),
           )

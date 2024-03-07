@@ -2,6 +2,7 @@
 
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_commerce_app/core/data/services/convertor/timestamp_serializer.dart';
 import 'package:e_commerce_app/core/utils/constants/firebase_field_name.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -25,7 +26,6 @@ class UserCreate with _$UserCreate {
   }) = _UserCreate;
 }
 
-FieldValue fieldValueToJson(FieldValue fieldValue) => fieldValue;
 
 @freezed
 class UserData with _$UserData {

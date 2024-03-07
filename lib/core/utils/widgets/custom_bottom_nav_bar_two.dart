@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/core/utils/app_router.dart';
+import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:e_commerce_app/core/utils/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -74,7 +75,7 @@ class CustomBottomNavBarTwo extends StatelessWidget {
                 context.push(RoutesDocument.profileView);
               },
               icon: SvgPicture.asset(
-                'assets/icons/User Icon.svg',
+                Assets.assetsIconsUserIcon,
                 colorFilter: ColorFilter.mode(
                     selectedMenu == MenuState.profile
                         ? kPrimaryColor
@@ -88,6 +89,3 @@ class CustomBottomNavBarTwo extends StatelessWidget {
     );
   }
 }
-
-
-
