@@ -34,25 +34,32 @@ class _CartViewState extends ConsumerState<CartView> {
       child: Column(
         children: [
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListView.builder(
-                itemCount: items.length,
-                itemBuilder: (context, index) {
-                  final item = items[index];
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: 8),
-                    child: CustomDismissible(
-                      key: Key(item.product.id.toString()),
-                      child: CartItemCard(card: item),
-                      onDismissed: (_) => ref
-                          .read(cartProvider.notifier)
-                          .remove(item.product.id),
+            child: items.isEmpty
+                ? Center(
+                    child: Text(
+                      'No items in your cart yet!',
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
-                  );
-                },
-              ),
-            ),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ListView.builder(
+                      itemCount: items.length,
+                      itemBuilder: (context, index) {
+                        final item = items[index];
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 8),
+                          child: CustomDismissible(
+                            key: Key(item.product.id.toString()),
+                            child: CartItemCard(card: item),
+                            onDismissed: (_) => ref
+                                .read(cartProvider.notifier)
+                                .remove(item.product.id),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
           ),
           const CheckOurCart(),
         ],
@@ -154,13 +161,17 @@ class CheckOurCart extends StatelessWidget {
                     text: 'Check Out',
                     isLoading: ref.watch(submitOrderProvider).isLoading,
                     onPressed: () async {
+                      final cartItems = ref.watch(cartProvider);
+                      if (cartItems.isEmpty) {
+                        context.showSnackBar('No items in your cart yet!');
+                        return;
+                      }
                       final submitDialog = await showDialog<bool>(
                         context: context,
                         builder: (context) => const SubmitOrderDialog(),
                       );
                       if (submitDialog != null && submitDialog) {
-                        final items = ref
-                            .watch(cartProvider)
+                        final items = cartItems
                             .map(
                               (item) => ProductOrder(
                                 productId: item.product.id,
