@@ -1,10 +1,11 @@
 import 'package:e_commerce_app/core/utils/constants/constants.dart';
+import 'package:e_commerce_app/core/utils/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 ThemeData theme() {
   return ThemeData(
-    scaffoldBackgroundColor: Colors.grey[50],
+    scaffoldBackgroundColor: AppColors.background,
     fontFamily: 'Muli',
     appBarTheme: appBarTheme(),
     textTheme: textTheme(),

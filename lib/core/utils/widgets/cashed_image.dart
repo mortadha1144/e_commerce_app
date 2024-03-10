@@ -6,20 +6,26 @@ import 'custom_loading_indicator.dart';
 class CashedImage extends StatelessWidget {
   const CashedImage({
     super.key,
-    required this.imageUrl,
+    this.imageUrl,
+    this.borderRadius,
+    this.placeholder,
   });
 
-  final String imageUrl;
+  final String? imageUrl;
+  final BorderRadius? borderRadius;
+  final String? placeholder;
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: borderRadius ?? BorderRadius.circular(10),
       child: CachedNetworkImage(
         fit: BoxFit.cover,
-        imageUrl: imageUrl,
+        imageUrl: imageUrl ?? '',
         placeholder: (context, url) => const CustomLoadingIndicator(),
-        errorWidget: (context, url, error) => const Icon(Icons.error),
+        errorWidget: (context, url, error) => placeholder != null
+            ? Image.asset(placeholder!)
+            : const Icon(Icons.error),
       ),
     );
   }

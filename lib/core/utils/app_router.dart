@@ -15,7 +15,7 @@ import 'package:e_commerce_app/features/onboarding/views/onboarding_view.dart';
 import 'package:e_commerce_app/features/product/data/models/product_model.dart';
 import 'package:e_commerce_app/features/product/views/paginated_products_grid_view.dart';
 import 'package:e_commerce_app/features/product/views/product_details_view.dart';
-import 'package:e_commerce_app/features/profile/presentation/views/profile_view.dart';
+import 'package:e_commerce_app/features/profile/views/profile_view.dart';
 import 'package:e_commerce_app/core/data/models/named_object.dart';
 import 'package:e_commerce_app/core/data/providers/preference_helper_provider.dart';
 import 'package:e_commerce_app/core/data/providers/settings_provider.dart';

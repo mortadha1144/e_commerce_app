@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/utils/constants/assets.dart';
-import 'package:e_commerce_app/features/profile/presentation/views/widgets/logout_dialog.dart';
+import 'package:e_commerce_app/core/utils/theme/colors.dart';
+import 'package:e_commerce_app/features/profile/views/widgets/logout_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -15,6 +16,7 @@ class ProfileViewBody extends ConsumerWidget {
       children: [
         AppBar(
           automaticallyImplyLeading: false,
+          backgroundColor: AppColors.background,
           title: const Text('Profile'),
         ),
         const ProfilePicture(),
