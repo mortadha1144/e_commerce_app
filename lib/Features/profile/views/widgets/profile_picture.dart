@@ -24,6 +24,7 @@ class ProfilePicture extends HookConsumerWidget {
     final userImage = ref.watch(userProvider)?.image;
     final isLoading = ref.watch(uploadImageProvider).isLoading ||
         ref.watch(updateUserProvider).isLoading;
+    final profileImageFile = useState<XFile?>(null);
     return SizedBox(
       height: 115,
       width: 115,
@@ -33,11 +34,17 @@ class ProfilePicture extends HookConsumerWidget {
         children: [
           isLoading
               ? const CustomLoadingIndicator()
-              : CashedImage(
-                  imageUrl: userImage,
-                  placeholder: Assets.assetsImagesUserPlaceholder,
-                  borderRadius: BorderRadius.circular(100),
-                ),
+              : profileImageFile.value != null
+                  ? CircleAvatar(
+                      backgroundImage:
+                          FileImage(File(profileImageFile.value!.path)),
+                      radius: 100,
+                    )
+                  : CashedImage(
+                      imageUrl: userImage,
+                      placeholder: Assets.assetsImagesUserPlaceholder,
+                      borderRadius: BorderRadius.circular(100),
+                    ),
           Positioned(
             bottom: 0,
             right: -12,
@@ -69,6 +76,7 @@ class ProfilePicture extends HookConsumerWidget {
                             .run(user);
                         updatedUser.whenOrNull(
                           data: (user) {
+                            profileImageFile.value = image;
                             context.showSuccessSnackBar(
                                 'Profile picture updated successfully');
                           },
