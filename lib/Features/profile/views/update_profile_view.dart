@@ -1,13 +1,12 @@
 import 'dart:io';
 
-import 'package:e_commerce_app/Features/auth/views/widgets/custom_suffix_icon.dart';
-import 'package:e_commerce_app/Features/profile/providers/update_user_provider.dart';
-import 'package:e_commerce_app/Features/profile/providers/upload_profile_image_provider.dart';
-import 'package:e_commerce_app/Features/profile/views/widgets/profile_picture.dart';
+import 'package:e_commerce_app/features/auth/views/widgets/custom_suffix_icon.dart';
+import 'package:e_commerce_app/features/profile/providers/update_user_provider.dart';
+import 'package:e_commerce_app/features/profile/providers/upload_profile_image_provider.dart';
+import 'package:e_commerce_app/features/profile/views/widgets/profile_picture.dart';
 import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/utils/hook/form_key.dart';
-import 'package:e_commerce_app/core/utils/logger.dart';
 import 'package:e_commerce_app/core/utils/snackbar.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_text_form_field.dart';
