@@ -1,8 +1,8 @@
-import 'package:e_commerce_app/Features/auth/providers/reset_password_provider.dart';
-import 'package:e_commerce_app/Features/auth/views/widgets/no_account_text.dart';
+import 'package:e_commerce_app/features/auth/providers/reset_password_provider.dart';
+import 'package:e_commerce_app/features/auth/views/widgets/no_account_text.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/utils/hook/form_key.dart';
-import 'package:e_commerce_app/core/utils/riverpod/riverpod_extensions.dart';
+import 'package:e_commerce_app/core/data/riverpod/riverpod_extensions.dart';
 import 'package:e_commerce_app/core/utils/snackbar.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_app/core/utils/widgets/email_form_field.dart';

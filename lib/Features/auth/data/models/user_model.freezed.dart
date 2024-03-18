@@ -271,6 +271,220 @@ abstract class _UserCreate implements UserCreate {
       throw _privateConstructorUsedError;
 }
 
+/// @nodoc
+mixin _$UserEdit {
+  String? get email => throw _privateConstructorUsedError;
+  String? get displayName => throw _privateConstructorUsedError;
+  String? get phoneNumber => throw _privateConstructorUsedError;
+  String? get address => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $UserEditCopyWith<UserEdit> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UserEditCopyWith<$Res> {
+  factory $UserEditCopyWith(UserEdit value, $Res Function(UserEdit) then) =
+      _$UserEditCopyWithImpl<$Res, UserEdit>;
+  @useResult
+  $Res call(
+      {String? email,
+      String? displayName,
+      String? phoneNumber,
+      String? address,
+      String? image});
+}
+
+/// @nodoc
+class _$UserEditCopyWithImpl<$Res, $Val extends UserEdit>
+    implements $UserEditCopyWith<$Res> {
+  _$UserEditCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = freezed,
+    Object? displayName = freezed,
+    Object? phoneNumber = freezed,
+    Object? address = freezed,
+    Object? image = freezed,
+  }) {
+    return _then(_value.copyWith(
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      displayName: freezed == displayName
+          ? _value.displayName
+          : displayName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      phoneNumber: freezed == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      address: freezed == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$UserEditImplCopyWith<$Res>
+    implements $UserEditCopyWith<$Res> {
+  factory _$$UserEditImplCopyWith(
+          _$UserEditImpl value, $Res Function(_$UserEditImpl) then) =
+      __$$UserEditImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String? email,
+      String? displayName,
+      String? phoneNumber,
+      String? address,
+      String? image});
+}
+
+/// @nodoc
+class __$$UserEditImplCopyWithImpl<$Res>
+    extends _$UserEditCopyWithImpl<$Res, _$UserEditImpl>
+    implements _$$UserEditImplCopyWith<$Res> {
+  __$$UserEditImplCopyWithImpl(
+      _$UserEditImpl _value, $Res Function(_$UserEditImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = freezed,
+    Object? displayName = freezed,
+    Object? phoneNumber = freezed,
+    Object? address = freezed,
+    Object? image = freezed,
+  }) {
+    return _then(_$UserEditImpl(
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      displayName: freezed == displayName
+          ? _value.displayName
+          : displayName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      phoneNumber: freezed == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      address: freezed == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(
+    includeIfNull: false, createToJson: true, createFactory: false)
+class _$UserEditImpl implements _UserEdit {
+  _$UserEditImpl(
+      {this.email,
+      this.displayName,
+      this.phoneNumber,
+      this.address,
+      this.image});
+
+  @override
+  final String? email;
+  @override
+  final String? displayName;
+  @override
+  final String? phoneNumber;
+  @override
+  final String? address;
+  @override
+  final String? image;
+
+  @override
+  String toString() {
+    return 'UserEdit(email: $email, displayName: $displayName, phoneNumber: $phoneNumber, address: $address, image: $image)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UserEditImpl &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.displayName, displayName) ||
+                other.displayName == displayName) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.image, image) || other.image == image));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, email, displayName, phoneNumber, address, image);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UserEditImplCopyWith<_$UserEditImpl> get copyWith =>
+      __$$UserEditImplCopyWithImpl<_$UserEditImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$UserEditImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _UserEdit implements UserEdit {
+  factory _UserEdit(
+      {final String? email,
+      final String? displayName,
+      final String? phoneNumber,
+      final String? address,
+      final String? image}) = _$UserEditImpl;
+
+  @override
+  String? get email;
+  @override
+  String? get displayName;
+  @override
+  String? get phoneNumber;
+  @override
+  String? get address;
+  @override
+  String? get image;
+  @override
+  @JsonKey(ignore: true)
+  _$$UserEditImplCopyWith<_$UserEditImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 UserData _$UserDataFromJson(Map<String, dynamic> json) {
   return _UserData.fromJson(json);
 }
@@ -284,7 +498,7 @@ mixin _$UserData {
   String? get address => throw _privateConstructorUsedError;
   @TimeStampJsonConverter()
   DateTime get createdAt => throw _privateConstructorUsedError;
-  String? get avatar => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -304,7 +518,7 @@ abstract class $UserDataCopyWith<$Res> {
       String? phoneNumber,
       String? address,
       @TimeStampJsonConverter() DateTime createdAt,
-      String? avatar});
+      String? image});
 }
 
 /// @nodoc
@@ -326,7 +540,7 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
     Object? phoneNumber = freezed,
     Object? address = freezed,
     Object? createdAt = null,
-    Object? avatar = freezed,
+    Object? image = freezed,
   }) {
     return _then(_value.copyWith(
       uid: null == uid
@@ -353,9 +567,9 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      avatar: freezed == avatar
-          ? _value.avatar
-          : avatar // ignore: cast_nullable_to_non_nullable
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -376,7 +590,7 @@ abstract class _$$UserDataImplCopyWith<$Res>
       String? phoneNumber,
       String? address,
       @TimeStampJsonConverter() DateTime createdAt,
-      String? avatar});
+      String? image});
 }
 
 /// @nodoc
@@ -396,7 +610,7 @@ class __$$UserDataImplCopyWithImpl<$Res>
     Object? phoneNumber = freezed,
     Object? address = freezed,
     Object? createdAt = null,
-    Object? avatar = freezed,
+    Object? image = freezed,
   }) {
     return _then(_$UserDataImpl(
       uid: null == uid
@@ -423,9 +637,9 @@ class __$$UserDataImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      avatar: freezed == avatar
-          ? _value.avatar
-          : avatar // ignore: cast_nullable_to_non_nullable
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -441,7 +655,7 @@ class _$UserDataImpl extends _UserData {
       required this.phoneNumber,
       required this.address,
       @TimeStampJsonConverter() required this.createdAt,
-      required this.avatar})
+      required this.image})
       : super._();
 
   factory _$UserDataImpl.fromJson(Map<String, dynamic> json) =>
@@ -461,11 +675,11 @@ class _$UserDataImpl extends _UserData {
   @TimeStampJsonConverter()
   final DateTime createdAt;
   @override
-  final String? avatar;
+  final String? image;
 
   @override
   String toString() {
-    return 'UserData(uid: $uid, email: $email, displayName: $displayName, phoneNumber: $phoneNumber, address: $address, createdAt: $createdAt, avatar: $avatar)';
+    return 'UserData(uid: $uid, email: $email, displayName: $displayName, phoneNumber: $phoneNumber, address: $address, createdAt: $createdAt, image: $image)';
   }
 
   @override
@@ -482,13 +696,13 @@ class _$UserDataImpl extends _UserData {
             (identical(other.address, address) || other.address == address) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
-            (identical(other.avatar, avatar) || other.avatar == avatar));
+            (identical(other.image, image) || other.image == image));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, uid, email, displayName,
-      phoneNumber, address, createdAt, avatar);
+      phoneNumber, address, createdAt, image);
 
   @JsonKey(ignore: true)
   @override
@@ -512,7 +726,7 @@ abstract class _UserData extends UserData {
       required final String? phoneNumber,
       required final String? address,
       @TimeStampJsonConverter() required final DateTime createdAt,
-      required final String? avatar}) = _$UserDataImpl;
+      required final String? image}) = _$UserDataImpl;
   _UserData._() : super._();
 
   factory _UserData.fromJson(Map<String, dynamic> json) =
@@ -532,7 +746,7 @@ abstract class _UserData extends UserData {
   @TimeStampJsonConverter()
   DateTime get createdAt;
   @override
-  String? get avatar;
+  String? get image;
   @override
   @JsonKey(ignore: true)
   _$$UserDataImplCopyWith<_$UserDataImpl> get copyWith =>

@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/Features/auth/views/widgets/password_form_field.dart';
+import 'package:e_commerce_app/features/auth/views/widgets/password_form_field.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/validator/extension.dart';
 import 'package:flutter/widgets.dart';

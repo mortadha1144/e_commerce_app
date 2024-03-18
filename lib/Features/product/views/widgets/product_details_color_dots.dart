@@ -1,9 +1,7 @@
+import 'package:e_commerce_app/core/utils/constants/constants.dart';
+import 'package:e_commerce_app/core/utils/widgets/counter_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-import '../../../../constants.dart';
-import '../../../../core/utils/widgets/rounded_icon_button.dart';
-import '../../../../size_config.dart';
 import '../../providers/quantity_provider.dart';
 
 class ProductDetailsColorDots extends ConsumerWidget {
@@ -13,11 +11,12 @@ class ProductDetailsColorDots extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final quantity = ref.watch(quantityProvider);
+
     int selectedColor = 3;
 
     return Padding(
-      padding:
-          EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         children: [
           ...List.generate(
@@ -28,7 +27,13 @@ class ProductDetailsColorDots extends ConsumerWidget {
             ),
           ),
           const Spacer(),
-          const CounterWidget(),
+          CounterWidget(
+            quantity: quantity,
+            onIncrement: () => ref.read(quantityProvider.notifier).state++,
+            onDecrement: quantity > 1
+                ? () => ref.read(quantityProvider.notifier).state--
+                : null,
+          ),
         ],
       ),
     );
@@ -50,8 +55,8 @@ class ColorDot extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(right: 2),
       padding: const EdgeInsets.all(8),
-      height: getProportionateScreenWidth(40),
-      width: getProportionateScreenWidth(40),
+      height: 40,
+      width: 40,
       decoration: BoxDecoration(
           // color: Color(0xFFF6625E),
           shape: BoxShape.circle,
@@ -63,36 +68,6 @@ class ColorDot extends StatelessWidget {
           shape: BoxShape.circle,
         ),
       ),
-    );
-  }
-}
-
-class CounterWidget extends ConsumerWidget {
-  const CounterWidget({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Row(
-      children: [
-        RoundedIconButton(
-          iconData: Icons.remove,
-          onPressed: () => ref.read(quantityProvider.notifier).state--,
-        ),
-        SizedBox(width: getProportionateScreenWidth(15)),
-        Text(
-          ref.watch(quantityProvider).toString(),
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
-        ),
-        SizedBox(width: getProportionateScreenWidth(15)),
-        RoundedIconButton(
-          iconData: Icons.add,
-          onPressed: () => ref.read(quantityProvider.notifier).state++,
-        ),
-      ],
     );
   }
 }

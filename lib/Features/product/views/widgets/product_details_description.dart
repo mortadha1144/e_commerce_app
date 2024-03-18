@@ -1,8 +1,7 @@
-import 'package:e_commerce_app/Features/product/views/widgets/favorite_button.dart';
+import 'package:e_commerce_app/core/utils/constants/constants.dart';
+import 'package:e_commerce_app/features/product/data/models/product_model.dart';
+import 'package:e_commerce_app/features/product/views/widgets/favorite_button.dart';
 import 'package:flutter/material.dart';
-import '../../../../constants.dart';
-import '../../../../size_config.dart';
-import '../../data/models/product_model.dart';
 
 class ProductDetailsDescription extends StatelessWidget {
   const ProductDetailsDescription({
@@ -20,8 +19,7 @@ class ProductDetailsDescription extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Text(
             product.title,
             maxLines: 1,
@@ -33,12 +31,17 @@ class ProductDetailsDescription extends StatelessWidget {
           alignment: Alignment.centerRight,
           child: FavoriteButton(
             product: product,
+            width: 50,
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(30),
+              bottomLeft: Radius.circular(30),
+            ),
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(
-            left: getProportionateScreenWidth(20),
-            right: getProportionateScreenWidth(64),
+          padding: const EdgeInsets.only(
+            left: 20,
+            right: 64,
           ),
           child: Text(
             product.description,
@@ -47,8 +50,8 @@ class ProductDetailsDescription extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: getProportionateScreenWidth(20),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20,
             vertical: 10,
           ),
           child: GestureDetector(
@@ -76,5 +79,3 @@ class ProductDetailsDescription extends StatelessWidget {
     );
   }
 }
-
-

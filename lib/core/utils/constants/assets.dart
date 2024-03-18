@@ -125,9 +125,9 @@ class Assets {
   /// assets/icons/HeartIcon_2.svg
   static const String assetsIconsHeartIcon2 = "assets/icons/HeartIcon_2.svg";
 
-  /// Assets for assetsIconsLocationPoint
-  /// assets/icons/LocationPoint.svg
-  static const String assetsIconsLocationPoint = "assets/icons/LocationPoint.svg";
+  /// Assets for assetsIconsLocationpoint
+  /// assets/icons/Locationpoint.svg
+  static const String assetsIconsLocationpoint = "assets/icons/Locationpoint.svg";
 
   /// Assets for assetsIconsLock
   /// assets/icons/Lock.svg
@@ -265,14 +265,6 @@ class Assets {
   /// assets/images/product1image.png
   static const String assetsImagesProduct1image = "assets/images/product1image.png";
 
-  /// Assets for assetsImagesProfileImage
-  /// assets/images/ProfileImage.png
-  static const String assetsImagesProfileImage = "assets/images/ProfileImage.png";
-
-  /// Assets for assetsImagesProfileTest
-  /// assets/images/profile_test.jpg
-  static const String assetsImagesProfileTest = "assets/images/profile_test.jpg";
-
   /// Assets for assetsImagesPs4ConsoleBlue1
   /// assets/images/ps4_console_blue_1.png
   static const String assetsImagesPs4ConsoleBlue1 = "assets/images/ps4_console_blue_1.png";
@@ -328,6 +320,10 @@ class Assets {
   /// Assets for assetsImagesTshirt
   /// assets/images/tshirt.png
   static const String assetsImagesTshirt = "assets/images/tshirt.png";
+
+  /// Assets for assetsImagesUserPlaceholder
+  /// assets/images/user_placeholder.webp
+  static const String assetsImagesUserPlaceholder = "assets/images/user_placeholder.webp";
 
   /// Assets for assetsImagesVisa
   /// assets/images/visa.png

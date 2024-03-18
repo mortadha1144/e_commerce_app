@@ -1,20 +1,23 @@
-import 'package:e_commerce_app/Features/auth/providers/user_id_provider.dart';
-import 'package:e_commerce_app/Features/favorite/providers/is_product_favorite_provider.dart';
-import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
-import 'package:e_commerce_app/Features/favorite/providers/favorite_provider.dart';
+import 'package:e_commerce_app/features/auth/providers/user_id_provider.dart';
+import 'package:e_commerce_app/features/favorite/providers/is_product_favorite_provider.dart';
+import 'package:e_commerce_app/features/product/data/models/product_model.dart';
+import 'package:e_commerce_app/features/favorite/providers/favorite_provider.dart';
 import 'package:e_commerce_app/core/utils/constants/assets.dart';
-import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class FavoriteButton extends ConsumerWidget {
   const FavoriteButton({
-    required this.product,
     super.key,
+    required this.product,
+    this.borderRadius,
+    this.width = 30,
   });
 
   final ProductModel product;
+  final BorderRadiusGeometry? borderRadius;
+  final double width;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -31,16 +34,16 @@ class FavoriteButton extends ConsumerWidget {
         await ref.read(favoriteProvider.notifier).toggle(product);
       },
       child: Container(
-        padding: EdgeInsets.all(getProportionateScreenWidth(15)),
-        width: getProportionateScreenWidth(64),
+        padding: const EdgeInsets.all(8),
+        width: width,
         decoration: BoxDecoration(
           color: isProductFavorite
               ? const Color(0xFFFFE6E6)
               : const Color(0xFFF5F6F9),
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(20),
-            bottomLeft: Radius.circular(20),
-          ),
+          borderRadius: borderRadius ??
+              const BorderRadius.all(
+                Radius.circular(20),
+              ),
         ),
         child: SvgPicture.asset(
           Assets.assetsIconsHeartIcon2,

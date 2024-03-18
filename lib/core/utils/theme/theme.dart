@@ -1,15 +1,14 @@
+import 'package:e_commerce_app/core/utils/constants/constants.dart';
+import 'package:e_commerce_app/core/utils/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../../constants.dart';
-
 ThemeData theme() {
   return ThemeData(
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: AppColors.background,
     fontFamily: 'Muli',
     appBarTheme: appBarTheme(),
     textTheme: textTheme(),
-   
     inputDecorationTheme: inputDecorationTheme(),
     visualDensity: VisualDensity.adaptivePlatformDensity,
     popupMenuTheme: const PopupMenuThemeData(

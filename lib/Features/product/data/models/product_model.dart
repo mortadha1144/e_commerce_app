@@ -1,6 +1,7 @@
 
 
-import 'package:e_commerce_app/Features/home/data/models/rating_model.dart';
+import 'package:e_commerce_app/features/home/data/models/rating_model.dart';
+import 'package:e_commerce_app/core/data/models/named_object.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'product_model.g.dart';
@@ -13,7 +14,8 @@ class ProductModel with _$ProductModel {
     required String title,
     required double price,
     required String description,
-    required String category,
+    required NamedObject category,
+    required NamedObject subCategory,
     required String image,
     required RatingModel rating,
   }) = _ProductModel;

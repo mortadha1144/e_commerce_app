@@ -1,18 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:e_commerce_app/Features/auth/providers/user_id_provider.dart';
-import 'package:e_commerce_app/Features/favorite/providers/favorite_provider.dart';
-import 'package:e_commerce_app/Features/favorite/providers/is_product_favorite_provider.dart';
-import 'package:e_commerce_app/Features/product/data/models/product_model.dart';
+import 'package:e_commerce_app/core/utils/constants/constants.dart';
+import 'package:e_commerce_app/features/product/data/models/product_model.dart';
+import 'package:e_commerce_app/features/product/views/widgets/favorite_button.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
-import 'package:e_commerce_app/core/utils/constants/assets.dart';
-import 'package:e_commerce_app/core/utils/widgets/custom_loading_indicator.dart';
+import 'package:e_commerce_app/core/utils/widgets/cashed_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-import '../../../constants.dart';
-import '../../../size_config.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
@@ -31,94 +23,55 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(5),
-      child: GestureDetector(
-        onTap: onPress ??
-            () => context.push(
-                  '/${RoutesDocument.productDetailsView}',
-                  extra: product,
-                ),
-        child: SizedBox(
-          width: getProportionateScreenWidth(width),
-          // height: getProportionateScreenWidth(220),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AspectRatio(
-                aspectRatio: aspectRatio,
-                child: Container(
-                  padding: EdgeInsets.all(getProportionateScreenWidth(20)),
-                  decoration: BoxDecoration(
-                    color: kSecondaryColor.withOpacity(.1),
-                    borderRadius: BorderRadius.circular(15),
+      child: Card(
+        color: Colors.white,
+        surfaceTintColor: Colors.white,
+        child: GestureDetector(
+          onTap: onPress ??
+              () => context.push(
+                    '/${RoutesDocument.productDetailsView}',
+                    extra: product,
                   ),
-                  child: CachedNetworkImage(
-                    imageUrl: product.image!,
-                    placeholder: (context, url) =>
-                        const CustomLoadingIndicator(),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                product.title,
-                style: const TextStyle(color: Colors.black),
-                maxLines: 2,
-              ),
-              //const Spacer(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: SizedBox(
+            width: width,
+            height: 220,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    '\$${product.price}',
-                    style: TextStyle(
-                      fontSize: getProportionateScreenWidth(18),
-                      fontWeight: FontWeight.w600,
-                      color: kPrimaryColor,
+                  AspectRatio(
+                    aspectRatio: aspectRatio,
+                    child: CashedImage(imageUrl: product.image),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Expanded(
+                    child: Text(
+                      product.title,
+                      style: const TextStyle(color: Colors.black),
+                      maxLines: 2,
                     ),
                   ),
-                  Consumer(builder: (context, ref, child) {
-                    final isProductFavorite =
-                        ref.watch(isProductFavoriteProvider(product.id));
-                    return InkWell(
-                      onTap: () async {
-                        final userId = ref.read(userIdProvider);
-
-                        if (userId == null) {
-                          return;
-                        }
-
-                        await ref
-                            .read(favoriteProvider.notifier)
-                            .toggle(product);
-                      },
-                      borderRadius: BorderRadius.circular(30),
-                      child: Container(
-                        padding: EdgeInsets.all(getProportionateScreenWidth(8)),
-                        height: getProportionateScreenWidth(28),
-                        width: getProportionateScreenWidth(28),
-                        decoration: BoxDecoration(
-                            color: isProductFavorite
-                                ? kPrimaryColor.withOpacity(.15)
-                                : kSecondaryColor.withOpacity(.1),
-                            shape: BoxShape.circle),
-                        child: SvgPicture.asset(
-                          Assets.assetsIconsHeartIcon2,
-                          colorFilter: isProductFavorite
-                              ? const ColorFilter.mode(
-                                  Color(0xFFFF4848), BlendMode.srcIn)
-                              : const ColorFilter.mode(
-                                  Color(0xFFDBDEE4), BlendMode.srcIn),
+                  //const Spacer(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        '\$${product.price}',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: kPrimaryColor,
                         ),
                       ),
-                    );
-                  })
+                      FavoriteButton(product: product)
+                    ],
+                  )
                 ],
-              )
-            ],
+              ),
+            ),
           ),
         ),
       ),

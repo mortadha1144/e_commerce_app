@@ -1,7 +1,6 @@
+import 'package:e_commerce_app/core/utils/constants/constants.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../constants.dart';
-import '../../../../size_config.dart';
 
 class OnBoardingPageViewItem extends StatelessWidget {
   const OnBoardingPageViewItem({
@@ -17,10 +16,10 @@ class OnBoardingPageViewItem extends StatelessWidget {
     return Column(
       children: [
         const Spacer(),
-        Text(
+        const Text(
           'MISWAGY',
           style: TextStyle(
-            fontSize: getProportionateScreenWidth(36),
+            fontSize: 36,
             color: kPrimaryColor,
             fontWeight: FontWeight.bold,
           ),
@@ -34,8 +33,8 @@ class OnBoardingPageViewItem extends StatelessWidget {
         ),
         Image.asset(
           image,
-          height: getProportionateScreenHeight(265),
-          width: getProportionateScreenWidth(235),
+          height: 265,
+          width: 235,
         )
       ],
     );

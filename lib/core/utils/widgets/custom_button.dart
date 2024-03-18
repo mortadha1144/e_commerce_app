@@ -1,8 +1,5 @@
+import 'package:e_commerce_app/core/utils/constants/constants.dart';
 import 'package:flutter/material.dart';
-
-import '../../../constants.dart';
-import '../../../size_config.dart';
-
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
@@ -16,7 +13,7 @@ class CustomButton extends StatelessWidget {
   });
 
   final String text;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final bool isLoading;
   final Color? backgroundColor;
   final Size? size;
@@ -27,7 +24,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: size?.width ?? double.infinity,
-      height: size?.height ?? getProportionateScreenHeight(56),
+      height: size?.height ?? 56,
       child: TextButton(
         style: ButtonStyle(
           backgroundColor: MaterialStatePropertyAll(
@@ -51,7 +48,7 @@ class CustomButton extends StatelessWidget {
             : Text(
                 text,
                 style: TextStyle(
-                  fontSize: fontSize ?? getProportionateScreenWidth(18),
+                  fontSize: fontSize ?? 18,
                   color: backgroundColor == null ? Colors.white : Colors.black,
                 ),
               ),

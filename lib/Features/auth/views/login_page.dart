@@ -1,19 +1,18 @@
-import 'package:e_commerce_app/Features/auth/data/models/login_request.dart';
-import 'package:e_commerce_app/Features/auth/providers/auth_provider.dart';
-import 'package:e_commerce_app/Features/auth/views/widgets/password_form_field.dart';
-import 'package:e_commerce_app/Features/auth/views/widgets/custom_social_card.dart';
-import 'package:e_commerce_app/Features/auth/views/widgets/no_account_text.dart';
-import 'package:e_commerce_app/constants.dart';
+import 'package:e_commerce_app/core/utils/constants/constants.dart';
+import 'package:e_commerce_app/features/auth/data/models/login_request.dart';
+import 'package:e_commerce_app/features/auth/providers/auth_provider.dart';
+import 'package:e_commerce_app/features/auth/views/widgets/password_form_field.dart';
+import 'package:e_commerce_app/features/auth/views/widgets/custom_social_card.dart';
+import 'package:e_commerce_app/features/auth/views/widgets/no_account_text.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/utils/hook/form_key.dart';
-import 'package:e_commerce_app/core/utils/riverpod/riverpod_extensions.dart';
+import 'package:e_commerce_app/core/data/riverpod/riverpod_extensions.dart';
 import 'package:e_commerce_app/core/utils/snackbar.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_app/core/utils/widgets/email_form_field.dart';
 import 'package:e_commerce_app/core/utils/widgets/form_body.dart';
-import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -24,7 +23,6 @@ class LoginPage extends HookConsumerWidget {
   const LoginPage({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    SizeConfig().init(context);
     final formKey = useFormKey();
 
     final emailController = useTextEditingController();
@@ -47,8 +45,8 @@ class LoginPage extends HookConsumerWidget {
         child: FormBody(
           formKey: formKey,
           children: [
-            SizedBox.square(
-              dimension: SizeConfig.screenHeight * .04,
+            const SizedBox.square(
+              dimension: 36,
             ),
             Text(
               context.l10n.welcomeBack,
@@ -61,16 +59,16 @@ class LoginPage extends HookConsumerWidget {
               context.l10n.signInWithEmailAndPassword,
               textAlign: TextAlign.center,
             ),
-            SizedBox.square(
-              dimension: SizeConfig.screenHeight * .08,
+            const SizedBox.square(
+              dimension: 70,
             ),
             EmailFormField(emailController: emailController),
-            SizedBox.square(
-              dimension: SizeConfig.screenHeight * .04,
+            const SizedBox.square(
+              dimension: 36,
             ),
             PasswordFormField(controller: passwordController, optional: false),
-            SizedBox.square(
-              dimension: getProportionateScreenHeight(10),
+            const SizedBox.square(
+              dimension: 10,
             ),
             Row(
               children: [
@@ -91,8 +89,8 @@ class LoginPage extends HookConsumerWidget {
                 ),
               ],
             ),
-            SizedBox.square(
-              dimension: SizeConfig.screenHeight * .04,
+            const SizedBox.square(
+              dimension: 36,
             ),
             CustomButton(
               text: context.l10n.continueText,
@@ -117,8 +115,8 @@ class LoginPage extends HookConsumerWidget {
                 );
               },
             ),
-            SizedBox(
-              height: SizeConfig.screenHeight * .08,
+            const SizedBox(
+              height: 70,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -148,8 +146,8 @@ class LoginPage extends HookConsumerWidget {
                 ),
               ],
             ),
-            SizedBox(
-              height: getProportionateScreenHeight(20),
+            const SizedBox(
+              height: 20,
             ),
             const NoAccountText()
           ],

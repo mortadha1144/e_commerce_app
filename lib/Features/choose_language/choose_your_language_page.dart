@@ -1,12 +1,11 @@
 
 import 'package:e_commerce_app/core/utils/app_router.dart';
+import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:e_commerce_app/core/utils/constants/sizes.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
-import 'package:e_commerce_app/core/utils/providers/settings_provider.dart';
+import 'package:e_commerce_app/core/data/providers/settings_provider.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_app/core/utils/widgets/flex_padded.dart';
-import 'package:e_commerce_app/gen/assets.gen.dart';
-import 'package:e_commerce_app/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -54,7 +53,6 @@ class _ChooseYourLanguagePageState
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     final settings = ref.watch(settingsProvider);
     return Scaffold(
       body: SafeArea(
@@ -68,7 +66,7 @@ class _ChooseYourLanguagePageState
               children: [
                 Center(
                     child: Image.asset(
-                  Assets.images.splash1.path,
+                  Assets.assetsImagesSplash1,
                   height: 200,
                   width: 200,
                 )),
@@ -82,9 +80,9 @@ class _ChooseYourLanguagePageState
                   ),
                 ),
                 LanguageButton(
-                  language: LanguageModel(
+                  language: const LanguageModel(
                     name: "English",
-                    path: Assets.images.english.path,
+                    path: Assets.assetsImagesEnglish,
                   ),
                   onTap: () {
                     ref.read(settingsProvider.notifier).setLocale(
@@ -96,9 +94,9 @@ class _ChooseYourLanguagePageState
                       : null,
                 ),
                 LanguageButton(
-                  language: LanguageModel(
+                  language: const LanguageModel(
                     name: "العربية",
-                    path: Assets.images.arabic.path,
+                    path: Assets.assetsImagesArabic,
                   ),
                   onTap: () {
                     ref.read(settingsProvider.notifier).setLocale(

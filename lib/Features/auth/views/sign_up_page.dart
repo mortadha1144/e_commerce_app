@@ -1,13 +1,13 @@
-import 'package:e_commerce_app/Features/auth/data/models/sign_up_model.dart';
-import 'package:e_commerce_app/Features/auth/providers/create_user_provider.dart';
-import 'package:e_commerce_app/Features/auth/views/widgets/custom_social_card.dart';
-import 'package:e_commerce_app/Features/auth/views/widgets/custom_suffix_icon.dart';
-import 'package:e_commerce_app/Features/auth/views/widgets/password_with_confirm_form_fields.dart';
+import 'package:e_commerce_app/features/auth/data/models/sign_up_model.dart';
+import 'package:e_commerce_app/features/auth/providers/create_user_provider.dart';
+import 'package:e_commerce_app/features/auth/views/widgets/custom_social_card.dart';
+import 'package:e_commerce_app/features/auth/views/widgets/custom_suffix_icon.dart';
+import 'package:e_commerce_app/features/auth/views/widgets/password_with_confirm_form_fields.dart';
 import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:e_commerce_app/core/utils/constants/sizes.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/utils/hook/form_key.dart';
-import 'package:e_commerce_app/core/utils/riverpod/riverpod_extensions.dart';
+import 'package:e_commerce_app/core/data/riverpod/riverpod_extensions.dart';
 import 'package:e_commerce_app/core/utils/snackbar.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_text_form_field.dart';
@@ -25,7 +25,7 @@ class SignUpPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final formOneKey =useFormKey();
+    final formOneKey = useFormKey();
     final formTwoKey = useFormKey();
     final pageController = usePageController();
     final emailController = useTextEditingController();
@@ -77,22 +77,6 @@ class SignUpPage extends HookConsumerWidget {
                     duration: Time.small,
                     curve: Curves.easeIn,
                   );
-
-                  // final request = CreateUserRequest(
-                  //   email: emailController.text,
-                  //   password: passwordController.text,
-                  // );
-
-                  // final createUser = await ref
-                  //     .read(createUserProvider.notifier)
-                  //     .run(request: request);
-
-                  // createUser.whenDataOrError(
-                  //   data: (_) => context
-                  //       .pushReplacement(RoutesDocument.completeProfileView),
-                  //   error: (error, _) => context
-                  //       .showErrorSnackBar(context.getErrorMessage(error)),
-                  // );
                 },
               ),
               const Gap(30),
@@ -162,7 +146,7 @@ class SignUpPage extends HookConsumerWidget {
                 labelText: context.l10n.address,
                 hintText: context.l10n.addressHint,
                 suffixIcon: const CustomSuffixIcon(
-                    svgIcon: Assets.assetsIconsLocationPoint),
+                    svgIcon: Assets.assetsIconsLocationpoint),
                 validator: context.validator().minLength(5).build(),
               ),
               const Gap(40),

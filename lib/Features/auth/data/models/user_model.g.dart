@@ -17,6 +17,23 @@ Map<String, dynamic> _$$UserCreateImplToJson(_$UserCreateImpl instance) =>
       'image': instance.image,
     };
 
+Map<String, dynamic> _$$UserEditImplToJson(_$UserEditImpl instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('email', instance.email);
+  writeNotNull('displayName', instance.displayName);
+  writeNotNull('phoneNumber', instance.phoneNumber);
+  writeNotNull('address', instance.address);
+  writeNotNull('image', instance.image);
+  return val;
+}
+
 _$UserDataImpl _$$UserDataImplFromJson(Map<String, dynamic> json) =>
     _$UserDataImpl(
       uid: json['uid'] as String,
@@ -26,7 +43,7 @@ _$UserDataImpl _$$UserDataImplFromJson(Map<String, dynamic> json) =>
       address: json['address'] as String?,
       createdAt: const TimeStampJsonConverter()
           .fromJson(json['createdAt'] as Timestamp),
-      avatar: json['avatar'] as String?,
+      image: json['image'] as String?,
     );
 
 Map<String, dynamic> _$$UserDataImplToJson(_$UserDataImpl instance) =>
@@ -37,5 +54,5 @@ Map<String, dynamic> _$$UserDataImplToJson(_$UserDataImpl instance) =>
       'phoneNumber': instance.phoneNumber,
       'address': instance.address,
       'createdAt': const TimeStampJsonConverter().toJson(instance.createdAt),
-      'avatar': instance.avatar,
+      'image': instance.image,
     };

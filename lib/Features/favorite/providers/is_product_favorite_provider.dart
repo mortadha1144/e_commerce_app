@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/Features/favorite/providers/favorite_provider.dart';
+import 'package:e_commerce_app/features/favorite/providers/favorite_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final isProductFavoriteProvider =
