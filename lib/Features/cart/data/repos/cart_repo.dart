@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce_app/core/utils/constants/firebase_collection_name.dart';
 import 'package:e_commerce_app/features/auth/providers/user_provider.dart';
-import 'package:e_commerce_app/features/cart/data/models/cart_item_model.dart';
 import 'package:e_commerce_app/features/cart/data/models/order_model.dart';
 import 'package:e_commerce_app/features/cart/data/models/product_order.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

@@ -125,9 +125,9 @@ class Assets {
   /// assets/icons/HeartIcon_2.svg
   static const String assetsIconsHeartIcon2 = "assets/icons/HeartIcon_2.svg";
 
-  /// Assets for assetsIconsLocationPoint
-  /// assets/icons/LocationPoint.svg
-  static const String assetsIconsLocationPoint = "assets/icons/LocationPoint.svg";
+  /// Assets for assetsIconsLocationpoint
+  /// assets/icons/Locationpoint.svg
+  static const String assetsIconsLocationpoint = "assets/icons/Locationpoint.svg";
 
   /// Assets for assetsIconsLock
   /// assets/icons/Lock.svg

@@ -25,7 +25,7 @@ class SignUpPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final formOneKey =useFormKey();
+    final formOneKey = useFormKey();
     final formTwoKey = useFormKey();
     final pageController = usePageController();
     final emailController = useTextEditingController();
@@ -77,22 +77,6 @@ class SignUpPage extends HookConsumerWidget {
                     duration: Time.small,
                     curve: Curves.easeIn,
                   );
-
-                  // final request = CreateUserRequest(
-                  //   email: emailController.text,
-                  //   password: passwordController.text,
-                  // );
-
-                  // final createUser = await ref
-                  //     .read(createUserProvider.notifier)
-                  //     .run(request: request);
-
-                  // createUser.whenDataOrError(
-                  //   data: (_) => context
-                  //       .pushReplacement(RoutesDocument.completeProfileView),
-                  //   error: (error, _) => context
-                  //       .showErrorSnackBar(context.getErrorMessage(error)),
-                  // );
                 },
               ),
               const Gap(30),
@@ -162,7 +146,7 @@ class SignUpPage extends HookConsumerWidget {
                 labelText: context.l10n.address,
                 hintText: context.l10n.addressHint,
                 suffixIcon: const CustomSuffixIcon(
-                    svgIcon: Assets.assetsIconsLocationPoint),
+                    svgIcon: Assets.assetsIconsLocationpoint),
                 validator: context.validator().minLength(5).build(),
               ),
               const Gap(40),

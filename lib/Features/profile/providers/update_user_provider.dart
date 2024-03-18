@@ -17,9 +17,7 @@ class UpdateUserNotifier extends AutoDisposeNotifier<AsyncState<UserData>>
   AsyncStateCallback<UserData> run(UserEdit user) => handle(
         () async {
           final newUser = await ref.read(profileRepoProvider).editUser(user);
-          await ref.read(userProvider.notifier).update(
-                (state) => newUser,
-              );
+          await ref.read(userProvider.notifier).updateValue(newUser);
           return newUser;
         },
       );

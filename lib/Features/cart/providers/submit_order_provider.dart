@@ -1,5 +1,4 @@
 import 'package:e_commerce_app/core/data/network/async_state.dart';
-import 'package:e_commerce_app/features/cart/data/models/cart_item_model.dart';
 import 'package:e_commerce_app/features/cart/data/models/product_order.dart';
 import 'package:e_commerce_app/features/cart/data/repos/cart_repo.dart';
 import 'package:e_commerce_app/features/cart/providers/cart_provider.dart';

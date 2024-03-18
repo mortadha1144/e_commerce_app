@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce_app/core/data/services/convertor/timestamp_serializer.dart';
-import 'package:e_commerce_app/features/cart/data/models/cart_item_model.dart';
 import 'package:e_commerce_app/features/cart/data/models/product_order.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

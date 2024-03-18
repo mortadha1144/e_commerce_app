@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:e_commerce_app/core/data/providers/upload_image_provider.dart';
+import 'package:e_commerce_app/Features/profile/providers/upload_profile_image_provider.dart';
 import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:e_commerce_app/core/utils/snackbar.dart';
 import 'package:e_commerce_app/core/utils/widgets/cashed_image.dart';
@@ -14,17 +14,21 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
-class ProfilePicture extends HookConsumerWidget {
+class ProfilePicture extends StatelessWidget {
   const ProfilePicture({
     super.key,
+    this.imageUrl,
+    this.imageFilePath,
+    required this.onImageSelected,
+    this.isLoading = false,
   });
+  final String? imageUrl;
+  final String? imageFilePath;
+  final ValueChanged<XFile> onImageSelected;
+  final bool isLoading;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final userImage = ref.watch(userProvider)?.image;
-    final isLoading = ref.watch(uploadImageProvider).isLoading ||
-        ref.watch(updateUserProvider).isLoading;
-    final profileImageFile = useState<XFile?>(null);
+  Widget build(BuildContext context) {
     return SizedBox(
       height: 115,
       width: 115,
@@ -34,20 +38,20 @@ class ProfilePicture extends HookConsumerWidget {
         children: [
           isLoading
               ? const CustomLoadingIndicator()
-              : profileImageFile.value != null
-                  ? CircleAvatar(
-                      backgroundImage:
-                          FileImage(File(profileImageFile.value!.path)),
-                      radius: 100,
-                    )
-                  : CashedImage(
-                      imageUrl: userImage,
-                      placeholder: Assets.assetsImagesUserPlaceholder,
-                      borderRadius: BorderRadius.circular(100),
-                    ),
+              :
+          imageFilePath != null
+              ? CircleAvatar(
+                  backgroundImage: FileImage(File(imageFilePath!)),
+                  radius: 100,
+                )
+              : CashedImage(
+                  imageUrl: imageUrl,
+                  placeholder: Assets.assetsImagesUserPlaceholder,
+                  borderRadius: BorderRadius.circular(100),
+                ),
           Positioned(
             bottom: 0,
-            right: -12,
+            right: 0,
             child: SizedBox(
               height: 46,
               width: 46,
@@ -63,33 +67,32 @@ class ProfilePicture extends HookConsumerWidget {
                     imageQuality: 50,
                   );
 
-                  if (image != null) {
-                    final uploadImage =
-                        await ref.read(uploadImageProvider.notifier).run(
-                              File(image.path),
-                            );
-                    uploadImage.whenOrNull(
-                      data: (uploadedImage) async {
-                        final user = UserEdit(image: uploadedImage);
-                        final updatedUser = await ref
-                            .read(updateUserProvider.notifier)
-                            .run(user);
-                        updatedUser.whenOrNull(
-                          data: (user) {
-                            profileImageFile.value = image;
-                            context.showSuccessSnackBar(
-                                'Profile picture updated successfully');
-                          },
-                          error: (error) {
-                            context.showErrorMessage(error);
-                          },
-                        );
-                      },
-                      error: (error) {
-                        context.showErrorMessage(error);
-                      },
-                    );
-                  }
+                  if (image != null) onImageSelected(image);
+                  // final uploadImage =
+                  //     await ref.read(uploadImageProvider.notifier).run(
+                  //           File(image.path),
+                  //         );
+                  // uploadImage.whenOrNull(
+                  //   data: (uploadedImage) async {
+                  //     final user = UserEdit(image: uploadedImage);
+                  //     final updatedUser = await ref
+                  //         .read(updateUserProvider.notifier)
+                  //         .run(user);
+                  //     updatedUser.whenOrNull(
+                  //       data: (user) {
+                  //         profileImageFile.value = image;
+                  //         context.showSuccessSnackBar(
+                  //             'Profile picture updated successfully');
+                  //       },
+                  //       error: (error) {
+                  //         context.showErrorMessage(error);
+                  //       },
+                  //     );
+                  //   },
+                  //   error: (error) {
+                  //     context.showErrorMessage(error);
+                  //   },
+                  // );
                 },
                 child: SvgPicture.asset(Assets.assetsIconsCameraIcon),
               ),
