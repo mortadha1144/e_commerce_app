@@ -1,6 +1,6 @@
+import 'package:e_commerce_app/l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:form_validator/form_validator.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppFormValidatorLocale extends FormValidatorLocale {
   final BuildContext context;

@@ -1,0 +1,2 @@
+/Users/mortadhanaser/Desktop/development/apps/e_commerce_app/android/app/.cxx/Debug/t3a2w6o6/x86/CMakeFiles/edit_cache.dir
+/Users/mortadhanaser/Desktop/development/apps/e_commerce_app/android/app/.cxx/Debug/t3a2w6o6/x86/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/Users/mortadhanaser/fvm/versions/3.29.2/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/mortadhanaser/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/mortadhanaser/Desktop/development/apps/e_commerce_app/android/app/.cxx/Debug/t3a2w6o6/armeabi-v7a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/mortadhanaser/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/mortadhanaser/Desktop/development/apps/e_commerce_app/android/app/.cxx/Debug/t3a2w6o6/armeabi-v7a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}
