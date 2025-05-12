@@ -1,6 +1,6 @@
 // This is super important - otherwise, we would throw away the whole widget tree when the provider is updated.
 import 'dart:async';
-import 'package:e_commerce_app/Features/profile/views/update_profile_view.dart';
+import 'package:e_commerce_app/features/profile/views/update_profile_view.dart';
 import 'package:e_commerce_app/features/auth/providers/is_logged_in_provider.dart';
 import 'package:e_commerce_app/features/auth/views/forgot_password_page.dart';
 import 'package:e_commerce_app/features/auth/views/login_page.dart';
