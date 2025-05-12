@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,84 +10,69 @@ part of 'products_filter.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ProductsFilter {
-  NamedObject? get category => throw _privateConstructorUsedError;
-  NamedObject? get subCategory => throw _privateConstructorUsedError;
-  Sort? get sort => throw _privateConstructorUsedError;
+  NamedObject? get category;
+  NamedObject? get subCategory;
+  Sort? get sort;
 
-  @JsonKey(ignore: true)
-  $ProductsFilterCopyWith<ProductsFilter> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ProductsFilterCopyWith<$Res> {
-  factory $ProductsFilterCopyWith(
-          ProductsFilter value, $Res Function(ProductsFilter) then) =
-      _$ProductsFilterCopyWithImpl<$Res, ProductsFilter>;
-  @useResult
-  $Res call({NamedObject? category, NamedObject? subCategory, Sort? sort});
-}
-
-/// @nodoc
-class _$ProductsFilterCopyWithImpl<$Res, $Val extends ProductsFilter>
-    implements $ProductsFilterCopyWith<$Res> {
-  _$ProductsFilterCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of ProductsFilter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $ProductsFilterCopyWith<ProductsFilter> get copyWith =>
+      _$ProductsFilterCopyWithImpl<ProductsFilter>(
+          this as ProductsFilter, _$identity);
+
+  /// Serializes this ProductsFilter to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? category = freezed,
-    Object? subCategory = freezed,
-    Object? sort = freezed,
-  }) {
-    return _then(_value.copyWith(
-      category: freezed == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as NamedObject?,
-      subCategory: freezed == subCategory
-          ? _value.subCategory
-          : subCategory // ignore: cast_nullable_to_non_nullable
-              as NamedObject?,
-      sort: freezed == sort
-          ? _value.sort
-          : sort // ignore: cast_nullable_to_non_nullable
-              as Sort?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ProductsFilter &&
+            (identical(other.category, category) ||
+                other.category == category) &&
+            (identical(other.subCategory, subCategory) ||
+                other.subCategory == subCategory) &&
+            (identical(other.sort, sort) || other.sort == sort));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, category, subCategory, sort);
+
+  @override
+  String toString() {
+    return 'ProductsFilter(category: $category, subCategory: $subCategory, sort: $sort)';
   }
 }
 
 /// @nodoc
-abstract class _$$ProductsFilterImplCopyWith<$Res>
-    implements $ProductsFilterCopyWith<$Res> {
-  factory _$$ProductsFilterImplCopyWith(_$ProductsFilterImpl value,
-          $Res Function(_$ProductsFilterImpl) then) =
-      __$$ProductsFilterImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $ProductsFilterCopyWith<$Res> {
+  factory $ProductsFilterCopyWith(
+          ProductsFilter value, $Res Function(ProductsFilter) _then) =
+      _$ProductsFilterCopyWithImpl;
   @useResult
   $Res call({NamedObject? category, NamedObject? subCategory, Sort? sort});
+
+  $SortCopyWith<$Res>? get sort;
 }
 
 /// @nodoc
-class __$$ProductsFilterImplCopyWithImpl<$Res>
-    extends _$ProductsFilterCopyWithImpl<$Res, _$ProductsFilterImpl>
-    implements _$$ProductsFilterImplCopyWith<$Res> {
-  __$$ProductsFilterImplCopyWithImpl(
-      _$ProductsFilterImpl _value, $Res Function(_$ProductsFilterImpl) _then)
-      : super(_value, _then);
+class _$ProductsFilterCopyWithImpl<$Res>
+    implements $ProductsFilterCopyWith<$Res> {
+  _$ProductsFilterCopyWithImpl(this._self, this._then);
 
+  final ProductsFilter _self;
+  final $Res Function(ProductsFilter) _then;
+
+  /// Create a copy of ProductsFilter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -94,27 +80,43 @@ class __$$ProductsFilterImplCopyWithImpl<$Res>
     Object? subCategory = freezed,
     Object? sort = freezed,
   }) {
-    return _then(_$ProductsFilterImpl(
+    return _then(_self.copyWith(
       category: freezed == category
-          ? _value.category
+          ? _self.category
           : category // ignore: cast_nullable_to_non_nullable
               as NamedObject?,
       subCategory: freezed == subCategory
-          ? _value.subCategory
+          ? _self.subCategory
           : subCategory // ignore: cast_nullable_to_non_nullable
               as NamedObject?,
       sort: freezed == sort
-          ? _value.sort
+          ? _self.sort
           : sort // ignore: cast_nullable_to_non_nullable
               as Sort?,
     ));
   }
+
+  /// Create a copy of ProductsFilter
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $SortCopyWith<$Res>? get sort {
+    if (_self.sort == null) {
+      return null;
+    }
+
+    return $SortCopyWith<$Res>(_self.sort!, (value) {
+      return _then(_self.copyWith(sort: value));
+    });
+  }
 }
 
 /// @nodoc
-
-class _$ProductsFilterImpl implements _ProductsFilter {
-  const _$ProductsFilterImpl({this.category, this.subCategory, this.sort});
+@JsonSerializable()
+class _ProductsFilter implements ProductsFilter {
+  const _ProductsFilter({this.category, this.subCategory, this.sort});
+  factory _ProductsFilter.fromJson(Map<String, dynamic> json) =>
+      _$ProductsFilterFromJson(json);
 
   @override
   final NamedObject? category;
@@ -123,16 +125,26 @@ class _$ProductsFilterImpl implements _ProductsFilter {
   @override
   final Sort? sort;
 
+  /// Create a copy of ProductsFilter
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'ProductsFilter(category: $category, subCategory: $subCategory, sort: $sort)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ProductsFilterCopyWith<_ProductsFilter> get copyWith =>
+      __$ProductsFilterCopyWithImpl<_ProductsFilter>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ProductsFilterToJson(
+      this,
+    );
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ProductsFilterImpl &&
+            other is _ProductsFilter &&
             (identical(other.category, category) ||
                 other.category == category) &&
             (identical(other.subCategory, subCategory) ||
@@ -140,31 +152,76 @@ class _$ProductsFilterImpl implements _ProductsFilter {
             (identical(other.sort, sort) || other.sort == sort));
   }
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, category, subCategory, sort);
 
-  @JsonKey(ignore: true)
+  @override
+  String toString() {
+    return 'ProductsFilter(category: $category, subCategory: $subCategory, sort: $sort)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$ProductsFilterCopyWith<$Res>
+    implements $ProductsFilterCopyWith<$Res> {
+  factory _$ProductsFilterCopyWith(
+          _ProductsFilter value, $Res Function(_ProductsFilter) _then) =
+      __$ProductsFilterCopyWithImpl;
+  @override
+  @useResult
+  $Res call({NamedObject? category, NamedObject? subCategory, Sort? sort});
+
+  @override
+  $SortCopyWith<$Res>? get sort;
+}
+
+/// @nodoc
+class __$ProductsFilterCopyWithImpl<$Res>
+    implements _$ProductsFilterCopyWith<$Res> {
+  __$ProductsFilterCopyWithImpl(this._self, this._then);
+
+  final _ProductsFilter _self;
+  final $Res Function(_ProductsFilter) _then;
+
+  /// Create a copy of ProductsFilter
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  _$$ProductsFilterImplCopyWith<_$ProductsFilterImpl> get copyWith =>
-      __$$ProductsFilterImplCopyWithImpl<_$ProductsFilterImpl>(
-          this, _$identity);
+  $Res call({
+    Object? category = freezed,
+    Object? subCategory = freezed,
+    Object? sort = freezed,
+  }) {
+    return _then(_ProductsFilter(
+      category: freezed == category
+          ? _self.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as NamedObject?,
+      subCategory: freezed == subCategory
+          ? _self.subCategory
+          : subCategory // ignore: cast_nullable_to_non_nullable
+              as NamedObject?,
+      sort: freezed == sort
+          ? _self.sort
+          : sort // ignore: cast_nullable_to_non_nullable
+              as Sort?,
+    ));
+  }
+
+  /// Create a copy of ProductsFilter
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $SortCopyWith<$Res>? get sort {
+    if (_self.sort == null) {
+      return null;
+    }
+
+    return $SortCopyWith<$Res>(_self.sort!, (value) {
+      return _then(_self.copyWith(sort: value));
+    });
+  }
 }
 
-abstract class _ProductsFilter implements ProductsFilter {
-  const factory _ProductsFilter(
-      {final NamedObject? category,
-      final NamedObject? subCategory,
-      final Sort? sort}) = _$ProductsFilterImpl;
-
-  @override
-  NamedObject? get category;
-  @override
-  NamedObject? get subCategory;
-  @override
-  Sort? get sort;
-  @override
-  @JsonKey(ignore: true)
-  _$$ProductsFilterImplCopyWith<_$ProductsFilterImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

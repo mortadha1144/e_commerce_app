@@ -1,30 +1,28 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'special_offer_model.dart';
+part of 'products_filter.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_SpecialOfferModel _$SpecialOfferModelFromJson(Map<String, dynamic> json) =>
-    _SpecialOfferModel(
-      id: (json['id'] as num).toInt(),
+_ProductsFilter _$ProductsFilterFromJson(Map<String, dynamic> json) =>
+    _ProductsFilter(
       category: json['category'] == null
           ? null
           : NamedObject.fromJson(json['category'] as Map<String, dynamic>),
       subCategory: json['sub_category'] == null
           ? null
           : NamedObject.fromJson(json['sub_category'] as Map<String, dynamic>),
-      nofBrands: (json['nof_brands'] as num).toInt(),
-      image: json['image'] as String,
+      sort: json['sort'] == null
+          ? null
+          : Sort.fromJson(json['sort'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$SpecialOfferModelToJson(_SpecialOfferModel instance) =>
+Map<String, dynamic> _$ProductsFilterToJson(_ProductsFilter instance) =>
     <String, dynamic>{
-      'id': instance.id,
       if (instance.category?.toJson() case final value?) 'category': value,
       if (instance.subCategory?.toJson() case final value?)
         'sub_category': value,
-      'nof_brands': instance.nofBrands,
-      'image': instance.image,
+      if (instance.sort?.toJson() case final value?) 'sort': value,
     };

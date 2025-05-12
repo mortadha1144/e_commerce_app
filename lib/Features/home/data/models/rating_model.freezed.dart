@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,96 +10,74 @@ part of 'rating_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-RatingModel _$RatingModelFromJson(Map<String, dynamic> json) {
-  return _RatingModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$RatingModel {
-  double get rate => throw _privateConstructorUsedError;
-  int get count => throw _privateConstructorUsedError;
+  double get rate;
+  int get count;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $RatingModelCopyWith<RatingModel> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $RatingModelCopyWith<$Res> {
-  factory $RatingModelCopyWith(
-          RatingModel value, $Res Function(RatingModel) then) =
-      _$RatingModelCopyWithImpl<$Res, RatingModel>;
-  @useResult
-  $Res call({double rate, int count});
-}
-
-/// @nodoc
-class _$RatingModelCopyWithImpl<$Res, $Val extends RatingModel>
-    implements $RatingModelCopyWith<$Res> {
-  _$RatingModelCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of RatingModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $RatingModelCopyWith<RatingModel> get copyWith =>
+      _$RatingModelCopyWithImpl<RatingModel>(this as RatingModel, _$identity);
+
+  /// Serializes this RatingModel to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? rate = null,
-    Object? count = null,
-  }) {
-    return _then(_value.copyWith(
-      rate: null == rate
-          ? _value.rate
-          : rate // ignore: cast_nullable_to_non_nullable
-              as double,
-      count: null == count
-          ? _value.count
-          : count // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is RatingModel &&
+            (identical(other.rate, rate) || other.rate == rate) &&
+            (identical(other.count, count) || other.count == count));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, rate, count);
+
+  @override
+  String toString() {
+    return 'RatingModel(rate: $rate, count: $count)';
   }
 }
 
 /// @nodoc
-abstract class _$$RatingModelImplCopyWith<$Res>
-    implements $RatingModelCopyWith<$Res> {
-  factory _$$RatingModelImplCopyWith(
-          _$RatingModelImpl value, $Res Function(_$RatingModelImpl) then) =
-      __$$RatingModelImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $RatingModelCopyWith<$Res> {
+  factory $RatingModelCopyWith(
+          RatingModel value, $Res Function(RatingModel) _then) =
+      _$RatingModelCopyWithImpl;
   @useResult
   $Res call({double rate, int count});
 }
 
 /// @nodoc
-class __$$RatingModelImplCopyWithImpl<$Res>
-    extends _$RatingModelCopyWithImpl<$Res, _$RatingModelImpl>
-    implements _$$RatingModelImplCopyWith<$Res> {
-  __$$RatingModelImplCopyWithImpl(
-      _$RatingModelImpl _value, $Res Function(_$RatingModelImpl) _then)
-      : super(_value, _then);
+class _$RatingModelCopyWithImpl<$Res> implements $RatingModelCopyWith<$Res> {
+  _$RatingModelCopyWithImpl(this._self, this._then);
 
+  final RatingModel _self;
+  final $Res Function(RatingModel) _then;
+
+  /// Create a copy of RatingModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? rate = null,
     Object? count = null,
   }) {
-    return _then(_$RatingModelImpl(
+    return _then(_self.copyWith(
       rate: null == rate
-          ? _value.rate
+          ? _self.rate
           : rate // ignore: cast_nullable_to_non_nullable
               as double,
       count: null == count
-          ? _value.count
+          ? _self.count
           : count // ignore: cast_nullable_to_non_nullable
               as int,
     ));
@@ -107,63 +86,87 @@ class __$$RatingModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$RatingModelImpl implements _RatingModel {
-  const _$RatingModelImpl({required this.rate, required this.count});
-
-  factory _$RatingModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$RatingModelImplFromJson(json);
+class _RatingModel implements RatingModel {
+  const _RatingModel({required this.rate, required this.count});
+  factory _RatingModel.fromJson(Map<String, dynamic> json) =>
+      _$RatingModelFromJson(json);
 
   @override
   final double rate;
   @override
   final int count;
 
+  /// Create a copy of RatingModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'RatingModel(rate: $rate, count: $count)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$RatingModelCopyWith<_RatingModel> get copyWith =>
+      __$RatingModelCopyWithImpl<_RatingModel>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$RatingModelToJson(
+      this,
+    );
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RatingModelImpl &&
+            other is _RatingModel &&
             (identical(other.rate, rate) || other.rate == rate) &&
             (identical(other.count, count) || other.count == count));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, rate, count);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$RatingModelImplCopyWith<_$RatingModelImpl> get copyWith =>
-      __$$RatingModelImplCopyWithImpl<_$RatingModelImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$RatingModelImplToJson(
-      this,
-    );
+  String toString() {
+    return 'RatingModel(rate: $rate, count: $count)';
   }
 }
 
-abstract class _RatingModel implements RatingModel {
-  const factory _RatingModel(
-      {required final double rate,
-      required final int count}) = _$RatingModelImpl;
-
-  factory _RatingModel.fromJson(Map<String, dynamic> json) =
-      _$RatingModelImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$RatingModelCopyWith<$Res>
+    implements $RatingModelCopyWith<$Res> {
+  factory _$RatingModelCopyWith(
+          _RatingModel value, $Res Function(_RatingModel) _then) =
+      __$RatingModelCopyWithImpl;
   @override
-  double get rate;
-  @override
-  int get count;
-  @override
-  @JsonKey(ignore: true)
-  _$$RatingModelImplCopyWith<_$RatingModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @useResult
+  $Res call({double rate, int count});
 }
+
+/// @nodoc
+class __$RatingModelCopyWithImpl<$Res> implements _$RatingModelCopyWith<$Res> {
+  __$RatingModelCopyWithImpl(this._self, this._then);
+
+  final _RatingModel _self;
+  final $Res Function(_RatingModel) _then;
+
+  /// Create a copy of RatingModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? rate = null,
+    Object? count = null,
+  }) {
+    return _then(_RatingModel(
+      rate: null == rate
+          ? _self.rate
+          : rate // ignore: cast_nullable_to_non_nullable
+              as double,
+      count: null == count
+          ? _self.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+// dart format on

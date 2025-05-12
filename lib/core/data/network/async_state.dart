@@ -9,7 +9,10 @@ part 'async_state.freezed.dart';
 
 typedef AsyncStateCallback<T> = Future<AsyncState<T>>;
 
-@freezed
+@Freezed(
+  fromJson: false,
+  toJson: false,
+)
 sealed class AsyncState<T> with _$AsyncState<T> {
   const AsyncState._();
   const factory AsyncState.data(T data) = AsyncStateData<T>;

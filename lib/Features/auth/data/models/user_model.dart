@@ -8,41 +8,45 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'user_model.freezed.dart';
 part 'user_model.g.dart';
 
-@Freezed(
-  fromJson: false,
-  toJson: true,
-)
-class UserCreate with _$UserCreate {
-  factory UserCreate({
+@freezed
+abstract class UserCreate with _$UserCreate {
+  @JsonSerializable(
+    converters: [FieldValueSerializer()],
+  )
+  const factory UserCreate({
     required String uid,
     required String email,
     required String displayName,
     required String? phoneNumber,
     required String? address,
-    @JsonKey(toJson: fieldValueToJson) required FieldValue createdAt,
+    required FieldValue createdAt,
     required String? image,
   }) = _UserCreate;
+
+  factory UserCreate.fromJson(Map<String, dynamic> json) =>
+      _$UserCreateFromJson(json);
 }
 
-@Freezed(
-  fromJson: false,
-  toJson: true,
-)
-class UserEdit with _$UserEdit {
-  @JsonSerializable(includeIfNull: false, createToJson: true,createFactory: false)
-  factory UserEdit({
+@freezed
+abstract class UserEdit with _$UserEdit {
+  const factory UserEdit({
     String? email,
     String? displayName,
     String? phoneNumber,
     String? address,
     String? image,
   }) = _UserEdit;
+
+  factory UserEdit.fromJson(Map<String, dynamic> json) =>
+      _$UserEditFromJson(json);
 }
 
 @freezed
-class UserData with _$UserData {
+abstract class UserData with _$UserData {
   const UserData._();
-
+  @JsonSerializable(
+    converters: [TimeStampJsonConverter()],
+  )
   factory UserData({
     required String uid,
     required String email,

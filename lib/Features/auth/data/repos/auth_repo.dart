@@ -153,7 +153,7 @@ class AuthRepo {
     required LoginRequest request,
   }) async {
     final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: request.email,
+      email: request.phoneNumber,
       password: request.password,
     );
 

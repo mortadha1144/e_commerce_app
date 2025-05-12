@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,90 +10,58 @@ part of 'sign_up_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$SignUpModel {
-  String get email => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
-  String get displayName => throw _privateConstructorUsedError;
-  String get phoneNumber => throw _privateConstructorUsedError;
-  String get address => throw _privateConstructorUsedError;
+  String get email;
+  String get password;
+  String get displayName;
+  String get phoneNumber;
+  String get address;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $SignUpModelCopyWith<SignUpModel> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SignUpModelCopyWith<$Res> {
-  factory $SignUpModelCopyWith(
-          SignUpModel value, $Res Function(SignUpModel) then) =
-      _$SignUpModelCopyWithImpl<$Res, SignUpModel>;
-  @useResult
-  $Res call(
-      {String email,
-      String password,
-      String displayName,
-      String phoneNumber,
-      String address});
-}
-
-/// @nodoc
-class _$SignUpModelCopyWithImpl<$Res, $Val extends SignUpModel>
-    implements $SignUpModelCopyWith<$Res> {
-  _$SignUpModelCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of SignUpModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $SignUpModelCopyWith<SignUpModel> get copyWith =>
+      _$SignUpModelCopyWithImpl<SignUpModel>(this as SignUpModel, _$identity);
+
+  /// Serializes this SignUpModel to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? email = null,
-    Object? password = null,
-    Object? displayName = null,
-    Object? phoneNumber = null,
-    Object? address = null,
-  }) {
-    return _then(_value.copyWith(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-      displayName: null == displayName
-          ? _value.displayName
-          : displayName // ignore: cast_nullable_to_non_nullable
-              as String,
-      phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is SignUpModel &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.displayName, displayName) ||
+                other.displayName == displayName) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.address, address) || other.address == address));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, email, password, displayName, phoneNumber, address);
+
+  @override
+  String toString() {
+    return 'SignUpModel(email: $email, password: $password, displayName: $displayName, phoneNumber: $phoneNumber, address: $address)';
   }
 }
 
 /// @nodoc
-abstract class _$$SignUpModelImplCopyWith<$Res>
-    implements $SignUpModelCopyWith<$Res> {
-  factory _$$SignUpModelImplCopyWith(
-          _$SignUpModelImpl value, $Res Function(_$SignUpModelImpl) then) =
-      __$$SignUpModelImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $SignUpModelCopyWith<$Res> {
+  factory $SignUpModelCopyWith(
+          SignUpModel value, $Res Function(SignUpModel) _then) =
+      _$SignUpModelCopyWithImpl;
   @useResult
   $Res call(
       {String email,
@@ -103,13 +72,14 @@ abstract class _$$SignUpModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$SignUpModelImplCopyWithImpl<$Res>
-    extends _$SignUpModelCopyWithImpl<$Res, _$SignUpModelImpl>
-    implements _$$SignUpModelImplCopyWith<$Res> {
-  __$$SignUpModelImplCopyWithImpl(
-      _$SignUpModelImpl _value, $Res Function(_$SignUpModelImpl) _then)
-      : super(_value, _then);
+class _$SignUpModelCopyWithImpl<$Res> implements $SignUpModelCopyWith<$Res> {
+  _$SignUpModelCopyWithImpl(this._self, this._then);
 
+  final SignUpModel _self;
+  final $Res Function(SignUpModel) _then;
+
+  /// Create a copy of SignUpModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -119,25 +89,25 @@ class __$$SignUpModelImplCopyWithImpl<$Res>
     Object? phoneNumber = null,
     Object? address = null,
   }) {
-    return _then(_$SignUpModelImpl(
+    return _then(_self.copyWith(
       email: null == email
-          ? _value.email
+          ? _self.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
-          ? _value.password
+          ? _self.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
       displayName: null == displayName
-          ? _value.displayName
+          ? _self.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
               as String,
       phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
+          ? _self.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
       address: null == address
-          ? _value.address
+          ? _self.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -145,14 +115,16 @@ class __$$SignUpModelImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable(createFactory: false)
-class _$SignUpModelImpl implements _SignUpModel {
-  _$SignUpModelImpl(
+@JsonSerializable()
+class _SignUpModel implements SignUpModel {
+  const _SignUpModel(
       {required this.email,
       required this.password,
       required this.displayName,
       required this.phoneNumber,
       required this.address});
+  factory _SignUpModel.fromJson(Map<String, dynamic> json) =>
+      _$SignUpModelFromJson(json);
 
   @override
   final String email;
@@ -165,16 +137,26 @@ class _$SignUpModelImpl implements _SignUpModel {
   @override
   final String address;
 
+  /// Create a copy of SignUpModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'SignUpModel(email: $email, password: $password, displayName: $displayName, phoneNumber: $phoneNumber, address: $address)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$SignUpModelCopyWith<_SignUpModel> get copyWith =>
+      __$SignUpModelCopyWithImpl<_SignUpModel>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$SignUpModelToJson(
+      this,
+    );
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SignUpModelImpl &&
+            other is _SignUpModel &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
@@ -185,45 +167,74 @@ class _$SignUpModelImpl implements _SignUpModel {
             (identical(other.address, address) || other.address == address));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, email, password, displayName, phoneNumber, address);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$SignUpModelImplCopyWith<_$SignUpModelImpl> get copyWith =>
-      __$$SignUpModelImplCopyWithImpl<_$SignUpModelImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SignUpModelImplToJson(
-      this,
-    );
+  String toString() {
+    return 'SignUpModel(email: $email, password: $password, displayName: $displayName, phoneNumber: $phoneNumber, address: $address)';
   }
 }
 
-abstract class _SignUpModel implements SignUpModel {
-  factory _SignUpModel(
-      {required final String email,
-      required final String password,
-      required final String displayName,
-      required final String phoneNumber,
-      required final String address}) = _$SignUpModelImpl;
-
+/// @nodoc
+abstract mixin class _$SignUpModelCopyWith<$Res>
+    implements $SignUpModelCopyWith<$Res> {
+  factory _$SignUpModelCopyWith(
+          _SignUpModel value, $Res Function(_SignUpModel) _then) =
+      __$SignUpModelCopyWithImpl;
   @override
-  String get email;
-  @override
-  String get password;
-  @override
-  String get displayName;
-  @override
-  String get phoneNumber;
-  @override
-  String get address;
-  @override
-  @JsonKey(ignore: true)
-  _$$SignUpModelImplCopyWith<_$SignUpModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @useResult
+  $Res call(
+      {String email,
+      String password,
+      String displayName,
+      String phoneNumber,
+      String address});
 }
+
+/// @nodoc
+class __$SignUpModelCopyWithImpl<$Res> implements _$SignUpModelCopyWith<$Res> {
+  __$SignUpModelCopyWithImpl(this._self, this._then);
+
+  final _SignUpModel _self;
+  final $Res Function(_SignUpModel) _then;
+
+  /// Create a copy of SignUpModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? email = null,
+    Object? password = null,
+    Object? displayName = null,
+    Object? phoneNumber = null,
+    Object? address = null,
+  }) {
+    return _then(_SignUpModel(
+      email: null == email
+          ? _self.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _self.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      displayName: null == displayName
+          ? _self.displayName
+          : displayName // ignore: cast_nullable_to_non_nullable
+              as String,
+      phoneNumber: null == phoneNumber
+          ? _self.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      address: null == address
+          ? _self.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+// dart format on

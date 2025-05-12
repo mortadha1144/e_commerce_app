@@ -6,8 +6,14 @@ part of 'product_order.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Map<String, dynamic> _$$ProductOrderImplToJson(_$ProductOrderImpl instance) =>
+_ProductOrder _$ProductOrderFromJson(Map<String, dynamic> json) =>
+    _ProductOrder(
+      productId: (json['product_id'] as num).toInt(),
+      qty: (json['qty'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$ProductOrderToJson(_ProductOrder instance) =>
     <String, dynamic>{
-      'productId': instance.productId,
+      'product_id': instance.productId,
       'qty': instance.qty,
     };

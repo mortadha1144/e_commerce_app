@@ -6,17 +6,16 @@ part of 'settings_provider.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AppSettingsImpl _$$AppSettingsImplFromJson(Map<String, dynamic> json) =>
-    _$AppSettingsImpl(
-      themeMode: $enumDecodeNullable(_$ThemeModeEnumMap, json['themeMode']) ??
+_AppSettings _$AppSettingsFromJson(Map<String, dynamic> json) => _AppSettings(
+      themeMode: $enumDecodeNullable(_$ThemeModeEnumMap, json['theme_mode']) ??
           ThemeMode.system,
-      localeCode: json['localeCode'] as String? ?? null,
+      localeCode: json['locale_code'] as String? ?? null,
     );
 
-Map<String, dynamic> _$$AppSettingsImplToJson(_$AppSettingsImpl instance) =>
+Map<String, dynamic> _$AppSettingsToJson(_AppSettings instance) =>
     <String, dynamic>{
-      'themeMode': _$ThemeModeEnumMap[instance.themeMode]!,
-      'localeCode': instance.localeCode,
+      'theme_mode': _$ThemeModeEnumMap[instance.themeMode]!,
+      if (instance.localeCode case final value?) 'locale_code': value,
     };
 
 const _$ThemeModeEnumMap = {

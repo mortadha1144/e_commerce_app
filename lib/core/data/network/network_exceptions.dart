@@ -1,4 +1,3 @@
-
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
@@ -7,10 +6,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'network_exceptions.freezed.dart';
 
-const String errorNotValidGoogleToken = "NOT_VALID_GOOGLE_TOKEN";
-const String errorUnverifiedAccountToken = "ERROR_UNVERIFIED_ACCOUNT";
-const String tokenError = "TOKEN_ERROR";
-const String updateError = "update";
+const String errorNotValidGoogleToken = 'NOT_VALID_GOOGLE_TOKEN';
+const String errorUnverifiedAccountToken = 'ERROR_UNVERIFIED_ACCOUNT';
+const String tokenError = 'TOKEN_ERROR';
+const String updateError = 'update';
 
 enum Update { force }
 
@@ -21,7 +20,7 @@ enum Update { force }
 //     ResultState<T>.error(const NetworkExceptions.unverifiedAccount());
 
 @freezed
-class NetworkExceptions with _$NetworkExceptions {
+abstract class NetworkExceptions with _$NetworkExceptions {
   const factory NetworkExceptions.emailAlreadyInUse() = EmailAlreadyInUse;
   const factory NetworkExceptions.wrongPassword() = WrongPassword;
   const factory NetworkExceptions.invalidEmail() = InvalidEmail;
@@ -103,31 +102,31 @@ class NetworkExceptions with _$NetworkExceptions {
         // } else
         if (error is FirebaseAuthException) {
           switch (error.code) {
-            case "email-already-in-use":
+            case 'email-already-in-use':
               networkExceptions = const NetworkExceptions.emailAlreadyInUse();
               break;
-            case "wrong-password":
+            case 'wrong-password':
               networkExceptions = const NetworkExceptions.wrongPassword();
               break;
-            case "invalid-email":
+            case 'invalid-email':
               networkExceptions = const NetworkExceptions.invalidEmail();
               break;
-            case "operation-not-allowed":
+            case 'operation-not-allowed':
               networkExceptions = const NetworkExceptions.operationNotAllowed();
               break;
-            case "weak-password":
+            case 'weak-password':
               networkExceptions = const NetworkExceptions.weakPassword();
               break;
-            case "user-disabled":
+            case 'user-disabled':
               networkExceptions = const NetworkExceptions.userDisabled();
               break;
-            case "user-not-found":
+            case 'user-not-found':
               networkExceptions = const NetworkExceptions.userNotFound();
               break;
-            case "auth/invalid-email":
+            case 'auth/invalid-email':
               networkExceptions = const NetworkExceptions.authInvalidEmail();
               break;
-            case "auth/user-not-found":
+            case 'auth/user-not-found':
               networkExceptions = const NetworkExceptions.authUserNotFound();
               break;
             default:
@@ -160,93 +159,20 @@ extension NetworkErrorHandler on NetworkExceptions {
   }
 
   String getErrorMessage(NetworkErrorLocalizations translation) {
-    var errorMessage = "";
-    when(
-      emailAlreadyInUse: () {
-        errorMessage = translation.emailAlreadyInUse;
-      },
-      wrongPassword: () {
-        errorMessage = translation.wrongPassword;
-      },
-      unexpectedError: () {
-        errorMessage = translation.httpUnexpectedError;
-      },
-      invalidEmail: () {
-        errorMessage = translation.invalidEmail;
-      },
-      operationNotAllowed: () {
-        errorMessage = translation.operationNotAllowed;
-      },
-      weakPassword: () {
-        errorMessage = translation.weakPassword;
-      },
-      userDisabled: () {
-        errorMessage = translation.userDisabled;
-      },
-      userNotFound: () {
-        errorMessage = translation.userNotFound;
-      },
-      authInvalidEmail: () {
-        errorMessage = translation.authInvalidEmail;
-      },
-      authUserNotFound: () {
-        errorMessage = translation.authUserNotFound;
-      },
-      
-    );
-    // when(
-    //   requestCancelled: () {
-    //     errorMessage = translation.httpRequestCancel;
-    //   },
-    //   httpError: (Response response) {
-    //     try {
-    //       switch (response.statusCode) {
-    //         case 413:
-    //           errorMessage = translation.httpError413;
-    //           break;
-    //         default:
-    //           errorMessage = Detail.fromJson(response.data).details;
-    //       }
-    //     } catch (e) {
-    //       errorMessage = translation.unexpectedErrorOccurred;
-    //     }
-    //   },
-    //   unexpectedError: () {
-    //     errorMessage = translation.httpUnexpectedError;
-    //   },
-    //   requestTimeout: () {
-    //     errorMessage = translation.httpTimeout;
-    //   },
-    //   noInternetConnection: () {
-    //     errorMessage = translation.httpNoInternetConnection;
-    //   },
-    //   sendTimeout: () {
-    //     errorMessage = translation.httpSendTimeout;
-    //   },
-    //   unableToProcess: () {
-    //     if (kDebugMode) {
-    //       errorMessage = "Unable to process the data backend error";
-    //     } else {
-    //       errorMessage = translation.httpUnexpectedErrorWithReport;
-    //     }
-    //   },
-    //   formatException: () {
-    //     errorMessage = translation.httpUnexpectedErrorWithReport;
-    //   },
-    //   wrongUserType: () {
-    //     errorMessage = translation.httpUnexpectedErrorWithReport;
-    //   },
-    //   unverifiedAccount: () {
-    //     errorMessage = translation.unverifiedAccountError;
-    //   },
-    //   tokenExpiredError: (type) {
-    //     // Note: the 'type" is currently for logging purposes only
-    //     errorMessage = translation.tokenExpiredError;
-    //   },
-    //   shouldUpdate: (Update type) {
-    //     errorMessage = translation.pleaseUpdateApp;
-    //   },
-    // );
+    final errorMessage = switch (this) {
+      EmailAlreadyInUse() => translation.emailAlreadyInUse,
+      WrongPassword() => translation.wrongPassword,
+      UnexpectedError() => translation.httpUnexpectedError,
+      InvalidEmail() => translation.invalidEmail,
+      OperationNotAllowed() => translation.operationNotAllowed,
+      WeakPassword() => translation.weakPassword,
+      UserDisabled() => translation.userDisabled,
+      UserNotFound() => translation.userNotFound,
+      AuthInvalidEmail() => translation.authInvalidEmail,
+      AuthUserNotFound() => translation.authUserNotFound,
+      NetworkExceptions() => translation.httpUnexpectedError,
+    };
+
     return errorMessage;
   }
 }
@@ -276,16 +202,15 @@ abstract class NetworkErrorLocalizations {
 }
 
 class NetworkErrorLocalizationsImpl implements NetworkErrorLocalizations {
-  final BuildContext context;
-
   const NetworkErrorLocalizationsImpl(this.context);
+  final BuildContext context;
 
   @override
   String get emailAlreadyInUse => context.l10n.emailAlreadyInUse;
 
   @override
   String get wrongPassword => context.l10n.wrongPassword;
-  
+
   @override
   String get httpUnexpectedError => context.l10n.http_unexpected_error;
 
@@ -309,7 +234,7 @@ class NetworkErrorLocalizationsImpl implements NetworkErrorLocalizations {
 
   @override
   String get authUserNotFound => context.l10n.authUserNotFound;
-  
+
   // @override
   // String get httpError413 => context.l10n.http_error_413;
 

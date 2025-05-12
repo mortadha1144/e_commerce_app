@@ -4,8 +4,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'category_model.g.dart';
 part 'category_model.freezed.dart';
 
-@Freezed(fromJson: true, toJson: false)
-class CategoryModel with _$CategoryModel {
+@freezed
+abstract class CategoryModel with _$CategoryModel {
+  @JsonSerializable(explicitToJson: true)
   const factory CategoryModel({
     required int id,
     required String name,

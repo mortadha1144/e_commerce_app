@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,92 +10,76 @@ part of 'product_order.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ProductOrder {
-  int get productId => throw _privateConstructorUsedError;
-  int get qty => throw _privateConstructorUsedError;
+  int get productId;
+  int get qty;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $ProductOrderCopyWith<ProductOrder> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ProductOrderCopyWith<$Res> {
-  factory $ProductOrderCopyWith(
-          ProductOrder value, $Res Function(ProductOrder) then) =
-      _$ProductOrderCopyWithImpl<$Res, ProductOrder>;
-  @useResult
-  $Res call({int productId, int qty});
-}
-
-/// @nodoc
-class _$ProductOrderCopyWithImpl<$Res, $Val extends ProductOrder>
-    implements $ProductOrderCopyWith<$Res> {
-  _$ProductOrderCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of ProductOrder
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $ProductOrderCopyWith<ProductOrder> get copyWith =>
+      _$ProductOrderCopyWithImpl<ProductOrder>(
+          this as ProductOrder, _$identity);
+
+  /// Serializes this ProductOrder to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? productId = null,
-    Object? qty = null,
-  }) {
-    return _then(_value.copyWith(
-      productId: null == productId
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
-              as int,
-      qty: null == qty
-          ? _value.qty
-          : qty // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ProductOrder &&
+            (identical(other.productId, productId) ||
+                other.productId == productId) &&
+            (identical(other.qty, qty) || other.qty == qty));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, productId, qty);
+
+  @override
+  String toString() {
+    return 'ProductOrder(productId: $productId, qty: $qty)';
   }
 }
 
 /// @nodoc
-abstract class _$$ProductOrderImplCopyWith<$Res>
-    implements $ProductOrderCopyWith<$Res> {
-  factory _$$ProductOrderImplCopyWith(
-          _$ProductOrderImpl value, $Res Function(_$ProductOrderImpl) then) =
-      __$$ProductOrderImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $ProductOrderCopyWith<$Res> {
+  factory $ProductOrderCopyWith(
+          ProductOrder value, $Res Function(ProductOrder) _then) =
+      _$ProductOrderCopyWithImpl;
   @useResult
   $Res call({int productId, int qty});
 }
 
 /// @nodoc
-class __$$ProductOrderImplCopyWithImpl<$Res>
-    extends _$ProductOrderCopyWithImpl<$Res, _$ProductOrderImpl>
-    implements _$$ProductOrderImplCopyWith<$Res> {
-  __$$ProductOrderImplCopyWithImpl(
-      _$ProductOrderImpl _value, $Res Function(_$ProductOrderImpl) _then)
-      : super(_value, _then);
+class _$ProductOrderCopyWithImpl<$Res> implements $ProductOrderCopyWith<$Res> {
+  _$ProductOrderCopyWithImpl(this._self, this._then);
 
+  final ProductOrder _self;
+  final $Res Function(ProductOrder) _then;
+
+  /// Create a copy of ProductOrder
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? productId = null,
     Object? qty = null,
   }) {
-    return _then(_$ProductOrderImpl(
+    return _then(_self.copyWith(
       productId: null == productId
-          ? _value.productId
+          ? _self.productId
           : productId // ignore: cast_nullable_to_non_nullable
               as int,
       qty: null == qty
-          ? _value.qty
+          ? _self.qty
           : qty // ignore: cast_nullable_to_non_nullable
               as int,
     ));
@@ -102,61 +87,90 @@ class __$$ProductOrderImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(
-    explicitToJson: true, createToJson: true, createFactory: false)
-class _$ProductOrderImpl implements _ProductOrder {
-  const _$ProductOrderImpl({required this.productId, required this.qty});
+@JsonSerializable()
+class _ProductOrder implements ProductOrder {
+  const _ProductOrder({required this.productId, required this.qty});
+  factory _ProductOrder.fromJson(Map<String, dynamic> json) =>
+      _$ProductOrderFromJson(json);
 
   @override
   final int productId;
   @override
   final int qty;
 
+  /// Create a copy of ProductOrder
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'ProductOrder(productId: $productId, qty: $qty)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ProductOrderCopyWith<_ProductOrder> get copyWith =>
+      __$ProductOrderCopyWithImpl<_ProductOrder>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ProductOrderToJson(
+      this,
+    );
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ProductOrderImpl &&
+            other is _ProductOrder &&
             (identical(other.productId, productId) ||
                 other.productId == productId) &&
             (identical(other.qty, qty) || other.qty == qty));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, productId, qty);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ProductOrderImplCopyWith<_$ProductOrderImpl> get copyWith =>
-      __$$ProductOrderImplCopyWithImpl<_$ProductOrderImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ProductOrderImplToJson(
-      this,
-    );
+  String toString() {
+    return 'ProductOrder(productId: $productId, qty: $qty)';
   }
 }
 
-abstract class _ProductOrder implements ProductOrder {
-  const factory _ProductOrder(
-      {required final int productId,
-      required final int qty}) = _$ProductOrderImpl;
-
+/// @nodoc
+abstract mixin class _$ProductOrderCopyWith<$Res>
+    implements $ProductOrderCopyWith<$Res> {
+  factory _$ProductOrderCopyWith(
+          _ProductOrder value, $Res Function(_ProductOrder) _then) =
+      __$ProductOrderCopyWithImpl;
   @override
-  int get productId;
-  @override
-  int get qty;
-  @override
-  @JsonKey(ignore: true)
-  _$$ProductOrderImplCopyWith<_$ProductOrderImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @useResult
+  $Res call({int productId, int qty});
 }
+
+/// @nodoc
+class __$ProductOrderCopyWithImpl<$Res>
+    implements _$ProductOrderCopyWith<$Res> {
+  __$ProductOrderCopyWithImpl(this._self, this._then);
+
+  final _ProductOrder _self;
+  final $Res Function(_ProductOrder) _then;
+
+  /// Create a copy of ProductOrder
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? productId = null,
+    Object? qty = null,
+  }) {
+    return _then(_ProductOrder(
+      productId: null == productId
+          ? _self.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as int,
+      qty: null == qty
+          ? _self.qty
+          : qty // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+// dart format on

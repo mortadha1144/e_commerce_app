@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:e_commerce_app/core/data/network/async_state.dart';
 import 'package:e_commerce_app/features/auth/views/widgets/custom_suffix_icon.dart';
 import 'package:e_commerce_app/features/profile/providers/update_user_provider.dart';
 import 'package:e_commerce_app/features/profile/providers/upload_profile_image_provider.dart';
@@ -61,13 +62,18 @@ class UpdateProfileView extends HookConsumerWidget {
               final uploadImage = await ref
                   .read(uploadProfileImageProvider.notifier)
                   .run(File(file.path));
-              uploadImage.whenOrNull(
-                data: (data) {
+
+              switch (uploadImage) {
+                case AsyncStateData<String>(:final data):
                   profileImageFile.value = file;
                   userEdit.value = userEdit.value.copyWith(image: data);
-                },
-                error: (error) => context.showErrorMessage(error),
-              );
+                  break;
+                case AsyncStateError<String>(:final error):
+                  context.showErrorMessage(error);
+                  break;
+                default:
+                  break;
+              }
             },
           ),
           const Gap(20),
@@ -116,14 +122,18 @@ class UpdateProfileView extends HookConsumerWidget {
                               ),
                             );
 
-                    updateUser.whenOrNull(
-                      data: (data) {
+                    switch (updateUser) {
+                      case AsyncStateData<void>():
                         context.showSuccessSnackBar(
                             'Profile updated successfully');
                         context.pop(true);
-                      },
-                      error: (error) => context.showErrorMessage(error),
-                    );
+                        break;
+                      case AsyncStateError<void>(:final error):
+                        context.showErrorMessage(error);
+                        break;
+                      default:
+                        break;
+                    }
                   },
           ),
         ],

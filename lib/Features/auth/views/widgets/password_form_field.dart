@@ -9,7 +9,7 @@ class PasswordFormField extends HookWidget {
   const PasswordFormField({
     super.key,
     required this.controller,
-    required this.optional,
+    this.optional = false,
     this.validation,
   });
 

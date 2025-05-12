@@ -45,102 +45,102 @@ class AppLocalizationsAr extends AppLocalizations {
   String get next => 'التالي';
 
   @override
-  String validationMaxLength(Object n) {
-    return 'max length is $n';
+  String validationMaxLength(num n) {
+    return 'الحد الأقصى هو $n';
   }
 
   @override
-  String validationMinLength(Object n) {
-    return 'min length is $n';
+  String validationMinLength(num n) {
+    return 'الحد الأدنى هو $n';
   }
 
   @override
-  String get validationRequired => 'this field is required';
+  String get validationRequired => 'هذا الحقل مطلوب';
 
   @override
-  String get validationUrl => 'invalid url';
+  String get validationUrl => 'رابط غير صالح';
 
   @override
-  String get invalidPhoneNumber => 'invalid phone number';
+  String get invalidPhoneNumber => 'رقم هاتف غير صالح';
 
   @override
-  String get password => 'Password';
+  String get password => 'كلمة المرور';
 
   @override
-  String get welcomeBack => 'Welcome Back';
+  String get welcomeBack => 'مرحباً بعودتك';
 
   @override
-  String get signInWithEmailAndPassword => 'Sign in with your email and password  \nor continue with social media';
+  String get signInWithEmailAndPassword => 'قم بتسجيل الدخول باستخدام البريد الإلكتروني وكلمة المرور\nأو المتابعة باستخدام وسائل التواصل الاجتماعي';
 
   @override
-  String get email => 'Email';
+  String get email => 'البريد الإلكتروني';
 
   @override
-  String get emailHint => 'Enter your email';
+  String get emailHint => 'أدخل بريدك الإلكتروني';
 
   @override
-  String get passwordHint => 'Enter your password';
+  String get passwordHint => 'أدخل كلمة المرور';
 
   @override
-  String get rememberMe => 'Remember me';
+  String get rememberMe => 'تذكرني';
 
   @override
-  String get forgotPasswordQ => 'Forgot password?';
+  String get forgotPasswordQ => 'نسيت كلمة المرور؟';
 
   @override
-  String get forgotPassword => 'Forgot password';
+  String get forgotPassword => 'نسيت كلمة المرور';
 
   @override
-  String get login => 'Login';
+  String get login => 'تسجيل الدخول';
 
   @override
-  String get continueText => 'Continue';
+  String get continueText => 'متابعة';
 
   @override
-  String get pleaseEnterYourEmailToResetPassword => 'Please enter your email and we will send \nyou a link to return to your account';
+  String get pleaseEnterYourEmailToResetPassword => 'الرجاء إدخال بريدك الإلكتروني وسنرسل لك\nرابطًا للعودة إلى حسابك';
 
   @override
-  String get signUp => 'Sign Up';
+  String get signUp => 'إنشاء حساب';
 
   @override
-  String get registerAccount => 'Register Account';
+  String get registerAccount => 'تسجيل حساب';
 
   @override
-  String get completeProfile => 'Complete Profile';
+  String get completeProfile => 'استكمال الملف الشخصي';
 
   @override
-  String get completeYourDetails => 'Complete your details or continue \nwith social media';
+  String get completeYourDetails => 'أكمل بياناتك أو تابع\nباستخدام وسائل التواصل الاجتماعي';
 
   @override
-  String get byContinuingYourConfirm => 'By continuing your confirm that you agree \nwith our Term and Condition';
+  String get byContinuingYourConfirm => 'بالمتابعة أنت توافق على\nالشروط والأحكام الخاصة بنا';
 
   @override
-  String get passwordDoesNotMatch => 'Password does not match';
+  String get passwordDoesNotMatch => 'كلمة المرور غير متطابقة';
 
   @override
-  String get displayName => 'Display Name';
+  String get displayName => 'الاسم المعروض';
 
   @override
-  String get displayNameHint => 'Enter your name';
+  String get displayNameHint => 'أدخل اسمك';
 
   @override
-  String get phoneNumber => 'Phone Number';
+  String get phoneNumber => 'رقم الهاتف';
 
   @override
-  String get phoneNumberHint => 'Enter your phone number';
+  String get phoneNumberHint => 'أدخل رقم هاتفك';
 
   @override
-  String get address => 'Address';
+  String get address => 'العنوان';
 
   @override
-  String get addressHint => 'Enter your address';
+  String get addressHint => 'أدخل عنوانك';
 
   @override
-  String get back => 'Back';
+  String get back => 'رجوع';
 
   @override
-  String get accountCreatedSuccessfully => 'Account created successfully';
+  String get accountCreatedSuccessfully => 'تم إنشاء الحساب بنجاح';
 
   @override
-  String get productAddedToCart => 'Product Added to cart successfully';
+  String get productAddedToCart => 'تمت إضافة المنتج إلى سلة التسوق بنجاح';
 }

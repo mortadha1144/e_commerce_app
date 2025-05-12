@@ -1,0 +1,21 @@
+global_options:
+  freezed:
+    runs_before:
+      - json_serializable
+
+targets:
+  $default:
+    builders:
+      json_serializable:
+        options:
+          create_factory: true
+          create_to_json: true
+          explicit_to_json: true
+          include_if_null: false
+          field_rename: snake
+      freezed:
+        options:
+          union_key: type
+          to_json: true
+          copy_with: true
+          from_json: true

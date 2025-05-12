@@ -6,13 +6,12 @@ part of 'rating_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$RatingModelImpl _$$RatingModelImplFromJson(Map<String, dynamic> json) =>
-    _$RatingModelImpl(
+_RatingModel _$RatingModelFromJson(Map<String, dynamic> json) => _RatingModel(
       rate: (json['rate'] as num).toDouble(),
-      count: json['count'] as int,
+      count: (json['count'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$RatingModelImplToJson(_$RatingModelImpl instance) =>
+Map<String, dynamic> _$RatingModelToJson(_RatingModel instance) =>
     <String, dynamic>{
       'rate': instance.rate,
       'count': instance.count,

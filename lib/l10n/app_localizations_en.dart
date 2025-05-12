@@ -45,12 +45,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get next => 'Next';
 
   @override
-  String validationMaxLength(Object n) {
+  String validationMaxLength(num n) {
     return 'max length is $n';
   }
 
   @override
-  String validationMinLength(Object n) {
+  String validationMinLength(num n) {
     return 'min length is $n';
   }
 

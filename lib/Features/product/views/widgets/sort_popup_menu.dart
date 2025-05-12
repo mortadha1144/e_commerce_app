@@ -2,17 +2,18 @@ import 'package:e_commerce_app/core/utils/enums/sort.dart';
 import 'package:flutter/material.dart';
 
 class SortPopupMenu extends StatelessWidget {
-  final Map<Sort, String> sorts;
-  final Sort? selectedSort;
-  final ValueChanged<Sort?> onSelected;
-  const SortPopupMenu({
+  SortPopupMenu({
     super.key,
     required this.sorts,
     required this.selectedSort,
     required this.onSelected,
   });
+  
+  final Map<Sort, String> sorts;
+  final Sort? selectedSort;
+  final ValueChanged<Sort?> onSelected;
 
-  final clearSort = const Sort.clear();
+  final clearSort = Sort.clear();
 
   @override
   Widget build(BuildContext context) {

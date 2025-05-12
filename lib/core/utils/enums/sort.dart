@@ -1,14 +1,17 @@
-class Sort {
-  final String value;
-  final bool descending;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  const Sort({
-    required this.value,
-    required this.descending,
-  });
+part 'sort.freezed.dart';
+part 'sort.g.dart';
 
-  // sort clear
-  const Sort.clear()
-      : value = 'clear',
-        descending = false;
+@freezed
+abstract class Sort with _$Sort {
+  const factory Sort({
+    required String value,
+    required bool descending,
+  }) = _Sort;
+  const Sort._();
+
+  factory Sort.clear() => Sort(value: 'clear', descending: false);
+
+  factory Sort.fromJson(Map<String, dynamic> json) => _$SortFromJson(json);
 }

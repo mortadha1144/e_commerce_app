@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,37 +10,65 @@ part of 'product_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-ProductModel _$ProductModelFromJson(Map<String, dynamic> json) {
-  return _ProductModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$ProductModel {
-  int get id => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
-  double get price => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
-  NamedObject get category => throw _privateConstructorUsedError;
-  NamedObject get subCategory => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
-  RatingModel get rating => throw _privateConstructorUsedError;
+  int get id;
+  String get title;
+  double get price;
+  String get description;
+  NamedObject get category;
+  NamedObject get subCategory;
+  String get image;
+  RatingModel get rating;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $ProductModelCopyWith<ProductModel> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$ProductModelCopyWithImpl<ProductModel>(
+          this as ProductModel, _$identity);
+
+  /// Serializes this ProductModel to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ProductModel &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
+            (identical(other.subCategory, subCategory) ||
+                other.subCategory == subCategory) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.rating, rating) || other.rating == rating));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, title, price, description,
+      category, subCategory, image, rating);
+
+  @override
+  String toString() {
+    return 'ProductModel(id: $id, title: $title, price: $price, description: $description, category: $category, subCategory: $subCategory, image: $image, rating: $rating)';
+  }
 }
 
 /// @nodoc
-abstract class $ProductModelCopyWith<$Res> {
+abstract mixin class $ProductModelCopyWith<$Res> {
   factory $ProductModelCopyWith(
-          ProductModel value, $Res Function(ProductModel) then) =
-      _$ProductModelCopyWithImpl<$Res, ProductModel>;
+          ProductModel value, $Res Function(ProductModel) _then) =
+      _$ProductModelCopyWithImpl;
   @useResult
   $Res call(
       {int id,
@@ -55,15 +84,14 @@ abstract class $ProductModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ProductModelCopyWithImpl<$Res, $Val extends ProductModel>
-    implements $ProductModelCopyWith<$Res> {
-  _$ProductModelCopyWithImpl(this._value, this._then);
+class _$ProductModelCopyWithImpl<$Res> implements $ProductModelCopyWith<$Res> {
+  _$ProductModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ProductModel _self;
+  final $Res Function(ProductModel) _then;
 
+  /// Create a copy of ProductModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -76,134 +104,57 @@ class _$ProductModelCopyWithImpl<$Res, $Val extends ProductModel>
     Object? image = null,
     Object? rating = null,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       id: null == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
       title: null == title
-          ? _value.title
+          ? _self.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
       price: null == price
-          ? _value.price
+          ? _self.price
           : price // ignore: cast_nullable_to_non_nullable
               as double,
       description: null == description
-          ? _value.description
+          ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
       category: null == category
-          ? _value.category
+          ? _self.category
           : category // ignore: cast_nullable_to_non_nullable
               as NamedObject,
       subCategory: null == subCategory
-          ? _value.subCategory
+          ? _self.subCategory
           : subCategory // ignore: cast_nullable_to_non_nullable
               as NamedObject,
       image: null == image
-          ? _value.image
+          ? _self.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
       rating: null == rating
-          ? _value.rating
+          ? _self.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as RatingModel,
-    ) as $Val);
+    ));
   }
 
+  /// Create a copy of ProductModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $RatingModelCopyWith<$Res> get rating {
-    return $RatingModelCopyWith<$Res>(_value.rating, (value) {
-      return _then(_value.copyWith(rating: value) as $Val);
+    return $RatingModelCopyWith<$Res>(_self.rating, (value) {
+      return _then(_self.copyWith(rating: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$$ProductModelImplCopyWith<$Res>
-    implements $ProductModelCopyWith<$Res> {
-  factory _$$ProductModelImplCopyWith(
-          _$ProductModelImpl value, $Res Function(_$ProductModelImpl) then) =
-      __$$ProductModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {int id,
-      String title,
-      double price,
-      String description,
-      NamedObject category,
-      NamedObject subCategory,
-      String image,
-      RatingModel rating});
-
-  @override
-  $RatingModelCopyWith<$Res> get rating;
-}
-
-/// @nodoc
-class __$$ProductModelImplCopyWithImpl<$Res>
-    extends _$ProductModelCopyWithImpl<$Res, _$ProductModelImpl>
-    implements _$$ProductModelImplCopyWith<$Res> {
-  __$$ProductModelImplCopyWithImpl(
-      _$ProductModelImpl _value, $Res Function(_$ProductModelImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? title = null,
-    Object? price = null,
-    Object? description = null,
-    Object? category = null,
-    Object? subCategory = null,
-    Object? image = null,
-    Object? rating = null,
-  }) {
-    return _then(_$ProductModelImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as NamedObject,
-      subCategory: null == subCategory
-          ? _value.subCategory
-          : subCategory // ignore: cast_nullable_to_non_nullable
-              as NamedObject,
-      image: null == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      rating: null == rating
-          ? _value.rating
-          : rating // ignore: cast_nullable_to_non_nullable
-              as RatingModel,
-    ));
-  }
-}
-
-/// @nodoc
 @JsonSerializable()
-class _$ProductModelImpl implements _ProductModel {
-  const _$ProductModelImpl(
+class _ProductModel implements ProductModel {
+  const _ProductModel(
       {required this.id,
       required this.title,
       required this.price,
@@ -212,9 +163,8 @@ class _$ProductModelImpl implements _ProductModel {
       required this.subCategory,
       required this.image,
       required this.rating});
-
-  factory _$ProductModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ProductModelImplFromJson(json);
+  factory _ProductModel.fromJson(Map<String, dynamic> json) =>
+      _$ProductModelFromJson(json);
 
   @override
   final int id;
@@ -233,16 +183,26 @@ class _$ProductModelImpl implements _ProductModel {
   @override
   final RatingModel rating;
 
+  /// Create a copy of ProductModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'ProductModel(id: $id, title: $title, price: $price, description: $description, category: $category, subCategory: $subCategory, image: $image, rating: $rating)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ProductModelCopyWith<_ProductModel> get copyWith =>
+      __$ProductModelCopyWithImpl<_ProductModel>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ProductModelToJson(
+      this,
+    );
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ProductModelImpl &&
+            other is _ProductModel &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.price, price) || other.price == price) &&
@@ -256,57 +216,106 @@ class _$ProductModelImpl implements _ProductModel {
             (identical(other.rating, rating) || other.rating == rating));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, title, price, description,
       category, subCategory, image, rating);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ProductModelImplCopyWith<_$ProductModelImpl> get copyWith =>
-      __$$ProductModelImplCopyWithImpl<_$ProductModelImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ProductModelImplToJson(
-      this,
-    );
+  String toString() {
+    return 'ProductModel(id: $id, title: $title, price: $price, description: $description, category: $category, subCategory: $subCategory, image: $image, rating: $rating)';
   }
 }
 
-abstract class _ProductModel implements ProductModel {
-  const factory _ProductModel(
-      {required final int id,
-      required final String title,
-      required final double price,
-      required final String description,
-      required final NamedObject category,
-      required final NamedObject subCategory,
-      required final String image,
-      required final RatingModel rating}) = _$ProductModelImpl;
+/// @nodoc
+abstract mixin class _$ProductModelCopyWith<$Res>
+    implements $ProductModelCopyWith<$Res> {
+  factory _$ProductModelCopyWith(
+          _ProductModel value, $Res Function(_ProductModel) _then) =
+      __$ProductModelCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {int id,
+      String title,
+      double price,
+      String description,
+      NamedObject category,
+      NamedObject subCategory,
+      String image,
+      RatingModel rating});
 
-  factory _ProductModel.fromJson(Map<String, dynamic> json) =
-      _$ProductModelImpl.fromJson;
-
   @override
-  int get id;
-  @override
-  String get title;
-  @override
-  double get price;
-  @override
-  String get description;
-  @override
-  NamedObject get category;
-  @override
-  NamedObject get subCategory;
-  @override
-  String get image;
-  @override
-  RatingModel get rating;
-  @override
-  @JsonKey(ignore: true)
-  _$$ProductModelImplCopyWith<_$ProductModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  $RatingModelCopyWith<$Res> get rating;
 }
+
+/// @nodoc
+class __$ProductModelCopyWithImpl<$Res>
+    implements _$ProductModelCopyWith<$Res> {
+  __$ProductModelCopyWithImpl(this._self, this._then);
+
+  final _ProductModel _self;
+  final $Res Function(_ProductModel) _then;
+
+  /// Create a copy of ProductModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? title = null,
+    Object? price = null,
+    Object? description = null,
+    Object? category = null,
+    Object? subCategory = null,
+    Object? image = null,
+    Object? rating = null,
+  }) {
+    return _then(_ProductModel(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      title: null == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      price: null == price
+          ? _self.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double,
+      description: null == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      category: null == category
+          ? _self.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as NamedObject,
+      subCategory: null == subCategory
+          ? _self.subCategory
+          : subCategory // ignore: cast_nullable_to_non_nullable
+              as NamedObject,
+      image: null == image
+          ? _self.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      rating: null == rating
+          ? _self.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as RatingModel,
+    ));
+  }
+
+  /// Create a copy of ProductModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $RatingModelCopyWith<$Res> get rating {
+    return $RatingModelCopyWith<$Res>(_self.rating, (value) {
+      return _then(_self.copyWith(rating: value));
+    });
+  }
+}
+
+// dart format on

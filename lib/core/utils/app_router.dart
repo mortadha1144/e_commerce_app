@@ -33,7 +33,7 @@ GoRouter? _previousRouter;
 
 final routerProvider = Provider.autoDispose((ref) {
   final bool loggedIn = ref.watch(isLoggedInProvider);
-  final local = ref.watch(settingsProvider).locale;
+  // final local = ref.watch(settingsProvider).locale;
   final bool isOnBoardingShown =
       ref.read(preferenceHelperProvider).isOnboardingShown;
 
@@ -41,9 +41,9 @@ final routerProvider = Provider.autoDispose((ref) {
     // if` the user is not logged in, they need to login
     final bool loggingIn = state.matchedLocation == RoutesDocument.login;
 
-    if (local == null) {
-      return RoutesDocument.chooseLanguage;
-    }
+    // if (local == null) {
+    //   return RoutesDocument.chooseLanguage;
+    // }
 
     if (!isOnBoardingShown) {
       return RoutesDocument.onBoardingView;
@@ -122,10 +122,10 @@ final routerProvider = Provider.autoDispose((ref) {
               ]),
         ],
       ),
-      GoRoute(
-        path: RoutesDocument.chooseLanguage,
-        builder: (context, state) => const ChooseYourLanguagePage(),
-      ),
+      // GoRoute(
+      //   path: RoutesDocument.chooseLanguage,
+      //   builder: (context, state) => const ChooseYourLanguagePage(),
+      // ),
       GoRoute(
         path: RoutesDocument.signUp,
         builder: (context, state) => const SignUpPage(),
@@ -169,6 +169,6 @@ class RoutesDocument {
   static const cartView = '/cartView';
   static const profileView = '/profileView';
   static const updateProfileView = 'updateProfileView';
-  static const chooseLanguage = '/chooseLanguage';
+  // static const chooseLanguage = '/chooseLanguage';
   static const favoriteView = '/favoriteView';
 }

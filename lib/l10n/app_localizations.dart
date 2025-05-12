@@ -97,266 +97,266 @@ abstract class AppLocalizations {
 
   /// No description provided for @emailAlreadyInUse.
   ///
-  /// In en, this message translates to:
-  /// **'The email address is already in use by another account.'**
+  /// In ar, this message translates to:
+  /// **'الايميل مستخدم بالفعل'**
   String get emailAlreadyInUse;
 
   /// No description provided for @http_unexpected_error.
   ///
-  /// In en, this message translates to:
-  /// **'Unexpected error occurred'**
+  /// In ar, this message translates to:
+  /// **'حدث خطأ غير متوقع'**
   String get http_unexpected_error;
 
   /// No description provided for @wrongPassword.
   ///
-  /// In en, this message translates to:
-  /// **'Wrong password provided for that user.'**
+  /// In ar, this message translates to:
+  /// **'كلمة المرور خاطئة'**
   String get wrongPassword;
 
   /// No description provided for @invalidEmail.
   ///
-  /// In en, this message translates to:
-  /// **'The email provided is invalid.'**
+  /// In ar, this message translates to:
+  /// **'الايميل غير صحيح'**
   String get invalidEmail;
 
   /// No description provided for @operationNotAllowed.
   ///
-  /// In en, this message translates to:
-  /// **'This account isn\'t enabled.'**
+  /// In ar, this message translates to:
+  /// **'هذا الحساب غير فعال'**
   String get operationNotAllowed;
 
   /// No description provided for @weakPassword.
   ///
-  /// In en, this message translates to:
-  /// **'The password provided is too weak.'**
+  /// In ar, this message translates to:
+  /// **'كلمة المرور ضعيفة'**
   String get weakPassword;
 
   /// No description provided for @userDisabled.
   ///
-  /// In en, this message translates to:
-  /// **'This user has been disabled.'**
+  /// In ar, this message translates to:
+  /// **'هذا الحساب غير فعال'**
   String get userDisabled;
 
   /// No description provided for @userNotFound.
   ///
-  /// In en, this message translates to:
-  /// **'No user found for that email.'**
+  /// In ar, this message translates to:
+  /// **'الحساب غير موجود'**
   String get userNotFound;
 
   /// No description provided for @authInvalidEmail.
   ///
-  /// In en, this message translates to:
-  /// **'The email provided is invalid.'**
+  /// In ar, this message translates to:
+  /// **'الايميل غير صحيح'**
   String get authInvalidEmail;
 
   /// No description provided for @authUserNotFound.
   ///
-  /// In en, this message translates to:
-  /// **'No user found for that email.'**
+  /// In ar, this message translates to:
+  /// **'الحساب غير موجود'**
   String get authUserNotFound;
 
   /// No description provided for @chooseYourLanguage.
   ///
-  /// In en, this message translates to:
-  /// **'Choose your language'**
+  /// In ar, this message translates to:
+  /// **'اختر لغتك'**
   String get chooseYourLanguage;
 
   /// No description provided for @next.
   ///
-  /// In en, this message translates to:
-  /// **'Next'**
+  /// In ar, this message translates to:
+  /// **'التالي'**
   String get next;
 
   /// No description provided for @validationMaxLength.
   ///
-  /// In en, this message translates to:
-  /// **'max length is {n}'**
-  String validationMaxLength(Object n);
+  /// In ar, this message translates to:
+  /// **'الحد الأقصى هو {n}'**
+  String validationMaxLength(num n);
 
   /// No description provided for @validationMinLength.
   ///
-  /// In en, this message translates to:
-  /// **'min length is {n}'**
-  String validationMinLength(Object n);
+  /// In ar, this message translates to:
+  /// **'الحد الأدنى هو {n}'**
+  String validationMinLength(num n);
 
   /// No description provided for @validationRequired.
   ///
-  /// In en, this message translates to:
-  /// **'this field is required'**
+  /// In ar, this message translates to:
+  /// **'هذا الحقل مطلوب'**
   String get validationRequired;
 
   /// No description provided for @validationUrl.
   ///
-  /// In en, this message translates to:
-  /// **'invalid url'**
+  /// In ar, this message translates to:
+  /// **'رابط غير صالح'**
   String get validationUrl;
 
   /// No description provided for @invalidPhoneNumber.
   ///
-  /// In en, this message translates to:
-  /// **'invalid phone number'**
+  /// In ar, this message translates to:
+  /// **'رقم هاتف غير صالح'**
   String get invalidPhoneNumber;
 
   /// No description provided for @password.
   ///
-  /// In en, this message translates to:
-  /// **'Password'**
+  /// In ar, this message translates to:
+  /// **'كلمة المرور'**
   String get password;
 
   /// No description provided for @welcomeBack.
   ///
-  /// In en, this message translates to:
-  /// **'Welcome Back'**
+  /// In ar, this message translates to:
+  /// **'مرحباً بعودتك'**
   String get welcomeBack;
 
   /// No description provided for @signInWithEmailAndPassword.
   ///
-  /// In en, this message translates to:
-  /// **'Sign in with your email and password  \nor continue with social media'**
+  /// In ar, this message translates to:
+  /// **'قم بتسجيل الدخول باستخدام البريد الإلكتروني وكلمة المرور\nأو المتابعة باستخدام وسائل التواصل الاجتماعي'**
   String get signInWithEmailAndPassword;
 
   /// No description provided for @email.
   ///
-  /// In en, this message translates to:
-  /// **'Email'**
+  /// In ar, this message translates to:
+  /// **'البريد الإلكتروني'**
   String get email;
 
   /// No description provided for @emailHint.
   ///
-  /// In en, this message translates to:
-  /// **'Enter your email'**
+  /// In ar, this message translates to:
+  /// **'أدخل بريدك الإلكتروني'**
   String get emailHint;
 
   /// No description provided for @passwordHint.
   ///
-  /// In en, this message translates to:
-  /// **'Enter your password'**
+  /// In ar, this message translates to:
+  /// **'أدخل كلمة المرور'**
   String get passwordHint;
 
   /// No description provided for @rememberMe.
   ///
-  /// In en, this message translates to:
-  /// **'Remember me'**
+  /// In ar, this message translates to:
+  /// **'تذكرني'**
   String get rememberMe;
 
   /// No description provided for @forgotPasswordQ.
   ///
-  /// In en, this message translates to:
-  /// **'Forgot password?'**
+  /// In ar, this message translates to:
+  /// **'نسيت كلمة المرور؟'**
   String get forgotPasswordQ;
 
   /// No description provided for @forgotPassword.
   ///
-  /// In en, this message translates to:
-  /// **'Forgot password'**
+  /// In ar, this message translates to:
+  /// **'نسيت كلمة المرور'**
   String get forgotPassword;
 
   /// No description provided for @login.
   ///
-  /// In en, this message translates to:
-  /// **'Login'**
+  /// In ar, this message translates to:
+  /// **'تسجيل الدخول'**
   String get login;
 
   /// No description provided for @continueText.
   ///
-  /// In en, this message translates to:
-  /// **'Continue'**
+  /// In ar, this message translates to:
+  /// **'متابعة'**
   String get continueText;
 
   /// No description provided for @pleaseEnterYourEmailToResetPassword.
   ///
-  /// In en, this message translates to:
-  /// **'Please enter your email and we will send \nyou a link to return to your account'**
+  /// In ar, this message translates to:
+  /// **'الرجاء إدخال بريدك الإلكتروني وسنرسل لك\nرابطًا للعودة إلى حسابك'**
   String get pleaseEnterYourEmailToResetPassword;
 
   /// No description provided for @signUp.
   ///
-  /// In en, this message translates to:
-  /// **'Sign Up'**
+  /// In ar, this message translates to:
+  /// **'إنشاء حساب'**
   String get signUp;
 
   /// No description provided for @registerAccount.
   ///
-  /// In en, this message translates to:
-  /// **'Register Account'**
+  /// In ar, this message translates to:
+  /// **'تسجيل حساب'**
   String get registerAccount;
 
   /// No description provided for @completeProfile.
   ///
-  /// In en, this message translates to:
-  /// **'Complete Profile'**
+  /// In ar, this message translates to:
+  /// **'استكمال الملف الشخصي'**
   String get completeProfile;
 
   /// No description provided for @completeYourDetails.
   ///
-  /// In en, this message translates to:
-  /// **'Complete your details or continue \nwith social media'**
+  /// In ar, this message translates to:
+  /// **'أكمل بياناتك أو تابع\nباستخدام وسائل التواصل الاجتماعي'**
   String get completeYourDetails;
 
   /// No description provided for @byContinuingYourConfirm.
   ///
-  /// In en, this message translates to:
-  /// **'By continuing your confirm that you agree \nwith our Term and Condition'**
+  /// In ar, this message translates to:
+  /// **'بالمتابعة أنت توافق على\nالشروط والأحكام الخاصة بنا'**
   String get byContinuingYourConfirm;
 
   /// No description provided for @passwordDoesNotMatch.
   ///
-  /// In en, this message translates to:
-  /// **'Password does not match'**
+  /// In ar, this message translates to:
+  /// **'كلمة المرور غير متطابقة'**
   String get passwordDoesNotMatch;
 
   /// No description provided for @displayName.
   ///
-  /// In en, this message translates to:
-  /// **'Display Name'**
+  /// In ar, this message translates to:
+  /// **'الاسم المعروض'**
   String get displayName;
 
   /// No description provided for @displayNameHint.
   ///
-  /// In en, this message translates to:
-  /// **'Enter your name'**
+  /// In ar, this message translates to:
+  /// **'أدخل اسمك'**
   String get displayNameHint;
 
   /// No description provided for @phoneNumber.
   ///
-  /// In en, this message translates to:
-  /// **'Phone Number'**
+  /// In ar, this message translates to:
+  /// **'رقم الهاتف'**
   String get phoneNumber;
 
   /// No description provided for @phoneNumberHint.
   ///
-  /// In en, this message translates to:
-  /// **'Enter your phone number'**
+  /// In ar, this message translates to:
+  /// **'أدخل رقم هاتفك'**
   String get phoneNumberHint;
 
   /// No description provided for @address.
   ///
-  /// In en, this message translates to:
-  /// **'Address'**
+  /// In ar, this message translates to:
+  /// **'العنوان'**
   String get address;
 
   /// No description provided for @addressHint.
   ///
-  /// In en, this message translates to:
-  /// **'Enter your address'**
+  /// In ar, this message translates to:
+  /// **'أدخل عنوانك'**
   String get addressHint;
 
   /// No description provided for @back.
   ///
-  /// In en, this message translates to:
-  /// **'Back'**
+  /// In ar, this message translates to:
+  /// **'رجوع'**
   String get back;
 
   /// No description provided for @accountCreatedSuccessfully.
   ///
-  /// In en, this message translates to:
-  /// **'Account created successfully'**
+  /// In ar, this message translates to:
+  /// **'تم إنشاء الحساب بنجاح'**
   String get accountCreatedSuccessfully;
 
   /// No description provided for @productAddedToCart.
   ///
-  /// In en, this message translates to:
-  /// **'Product Added to cart successfully'**
+  /// In ar, this message translates to:
+  /// **'تمت إضافة المنتج إلى سلة التسوق بنجاح'**
   String get productAddedToCart;
 }
 

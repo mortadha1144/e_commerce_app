@@ -10,5 +10,51 @@
     "authInvalidEmail": "الايميل غير صحيح",
     "authUserNotFound": "الحساب غير موجود",
     "chooseYourLanguage": "اختر لغتك",
-    "next": "التالي"
+    "next": "التالي",
+    "validationMaxLength": "الحد الأقصى هو {n}",
+    "@validationMaxLength": {
+        "placeholders": {
+            "n": {
+                "type": "num"
+            }
+        }
+    },
+    "validationMinLength": "الحد الأدنى هو {n}",
+    "@validationMinLength": {
+        "placeholders": {
+            "n": {
+                "type": "num"
+            }
+        }
+    },
+    "validationRequired": "هذا الحقل مطلوب",
+    "validationUrl": "رابط غير صالح",
+    "invalidPhoneNumber": "رقم هاتف غير صالح",
+    "password": "كلمة المرور",
+    "welcomeBack": "مرحباً بعودتك",
+    "signInWithEmailAndPassword": "قم بتسجيل الدخول باستخدام البريد الإلكتروني وكلمة المرور\nأو المتابعة باستخدام وسائل التواصل الاجتماعي",
+    "email": "البريد الإلكتروني",
+    "emailHint": "أدخل بريدك الإلكتروني",
+    "passwordHint": "أدخل كلمة المرور",
+    "rememberMe": "تذكرني",
+    "forgotPasswordQ": "نسيت كلمة المرور؟",
+    "forgotPassword": "نسيت كلمة المرور",
+    "login": "تسجيل الدخول",
+    "continueText": "متابعة",
+    "pleaseEnterYourEmailToResetPassword": "الرجاء إدخال بريدك الإلكتروني وسنرسل لك\nرابطًا للعودة إلى حسابك",
+    "signUp": "إنشاء حساب",
+    "registerAccount": "تسجيل حساب",
+    "completeProfile": "استكمال الملف الشخصي",
+    "completeYourDetails": "أكمل بياناتك أو تابع\nباستخدام وسائل التواصل الاجتماعي",
+    "byContinuingYourConfirm": "بالمتابعة أنت توافق على\nالشروط والأحكام الخاصة بنا",
+    "passwordDoesNotMatch": "كلمة المرور غير متطابقة",
+    "displayName": "الاسم المعروض",
+    "displayNameHint": "أدخل اسمك",
+    "phoneNumber": "رقم الهاتف",
+    "phoneNumberHint": "أدخل رقم هاتفك",
+    "address": "العنوان",
+    "addressHint": "أدخل عنوانك",
+    "back": "رجوع",
+    "accountCreatedSuccessfully": "تم إنشاء الحساب بنجاح",
+    "productAddedToCart": "تمت إضافة المنتج إلى سلة التسوق بنجاح"
 }

@@ -12,17 +12,7 @@
     "chooseYourLanguage": "Choose your language",
     "next": "Next",
     "validationMaxLength": "max length is {n}",
-    "@validationMaxLength": {
-        "placeholders": {
-            "n": {}
-        }
-    },
     "validationMinLength": "min length is {n}",
-    "@validationMinLength": {
-        "placeholders": {
-            "n": {}
-        }
-    },
     "validationRequired": "this field is required",
     "validationUrl": "invalid url",
     "invalidPhoneNumber": "invalid phone number",

@@ -8,7 +8,7 @@ part 'settings_provider.freezed.dart';
 part 'settings_provider.g.dart';
 
 @freezed
-class AppSettings with _$AppSettings {
+abstract class AppSettings with _$AppSettings {
   const AppSettings._();
 
   const factory AppSettings({
@@ -16,10 +16,10 @@ class AppSettings with _$AppSettings {
     @Default(null) String? localeCode,
   }) = _AppSettings;
 
-  Locale? get locale => localeCode == null ? null : Locale(localeCode!);
-
   factory AppSettings.fromJson(Map<String, dynamic> json) =>
       _$AppSettingsFromJson(json);
+
+  Locale? get locale => localeCode == null ? null : Locale(localeCode!);
 }
 
 final settingsProvider =
@@ -27,8 +27,8 @@ final settingsProvider =
   SettingsNotifier.new,
 );
 
-
-class SettingsNotifier extends AutoDisposeNotifier<AppSettings> with ObjectPreferenceProvider {
+class SettingsNotifier extends AutoDisposeNotifier<AppSettings>
+    with ObjectPreferenceProvider {
   @override
   @protected
   String get key => PrefKeys.settings;
@@ -48,10 +48,9 @@ class SettingsNotifier extends AutoDisposeNotifier<AppSettings> with ObjectPrefe
 
   Future<void> setLocale(Locale? locale) =>
       update((state) => state.copyWith(localeCode: locale?.languageCode));
-  
 
   Future<void> toggleLocale() => update((state) => state.copyWith(
-      localeCode: state.locale?.languageCode == "en" ? "ar" : "en"));
+      localeCode: state.locale?.languageCode == 'en' ? 'ar' : 'en'));
 }
 
 // final settings = Provider<Settings>((_) => throw UnimplementedError());

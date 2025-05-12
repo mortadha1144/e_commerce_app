@@ -5,8 +5,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'special_offer_model.g.dart';
 part 'special_offer_model.freezed.dart';
 
-@Freezed(fromJson: true, toJson: false)
-class SpecialOfferModel with _$SpecialOfferModel {
+@freezed
+abstract class SpecialOfferModel with _$SpecialOfferModel {
   const factory SpecialOfferModel({
     required int id,
     required NamedObject? category,

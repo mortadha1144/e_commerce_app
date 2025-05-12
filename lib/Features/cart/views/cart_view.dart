@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/data/network/async_state.dart';
 import 'package:e_commerce_app/core/utils/constants/constants.dart';
 import 'package:e_commerce_app/core/utils/snackbar.dart';
 import 'package:e_commerce_app/features/cart/data/models/cart_item_model.dart';
@@ -183,10 +184,17 @@ class CheckOurCart extends StatelessWidget {
                             .read(submitOrderProvider.notifier)
                             .run(items);
 
-                        submitOrder.whenOrNull(
-                            data: (_) => context.showSuccessSnackBar(
-                                'Order submitted successfully'),
-                            error: (e) => context.showErrorMessage(e));
+                        switch (submitOrder) {
+                          case AsyncStateData<void>():
+                            context.showSuccessSnackBar(
+                                'Order submitted successfully');
+                            break;
+                          case AsyncStateError<void>(:final error):
+                            context.showErrorMessage(error);
+                            break;
+                          default:
+                            break;
+                        }
                       }
                     },
                   );

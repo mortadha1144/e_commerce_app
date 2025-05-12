@@ -5,7 +5,7 @@ part 'cart_item_model.freezed.dart';
 part 'cart_item_model.g.dart';
 
 @freezed
-class CartItemModel with _$CartItemModel {
+abstract class CartItemModel with _$CartItemModel {
   const factory CartItemModel({
     required ProductModel product,
     required int quantity,

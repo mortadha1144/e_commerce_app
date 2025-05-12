@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,93 +10,59 @@ part of 'special_offer_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-SpecialOfferModel _$SpecialOfferModelFromJson(Map<String, dynamic> json) {
-  return _SpecialOfferModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$SpecialOfferModel {
-  int get id => throw _privateConstructorUsedError;
-  NamedObject? get category => throw _privateConstructorUsedError;
-  NamedObject? get subCategory => throw _privateConstructorUsedError;
-  int get nofBrands => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
+  int get id;
+  NamedObject? get category;
+  NamedObject? get subCategory;
+  int get nofBrands;
+  String get image;
 
-  @JsonKey(ignore: true)
-  $SpecialOfferModelCopyWith<SpecialOfferModel> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SpecialOfferModelCopyWith<$Res> {
-  factory $SpecialOfferModelCopyWith(
-          SpecialOfferModel value, $Res Function(SpecialOfferModel) then) =
-      _$SpecialOfferModelCopyWithImpl<$Res, SpecialOfferModel>;
-  @useResult
-  $Res call(
-      {int id,
-      NamedObject? category,
-      NamedObject? subCategory,
-      int nofBrands,
-      String image});
-}
-
-/// @nodoc
-class _$SpecialOfferModelCopyWithImpl<$Res, $Val extends SpecialOfferModel>
-    implements $SpecialOfferModelCopyWith<$Res> {
-  _$SpecialOfferModelCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of SpecialOfferModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $SpecialOfferModelCopyWith<SpecialOfferModel> get copyWith =>
+      _$SpecialOfferModelCopyWithImpl<SpecialOfferModel>(
+          this as SpecialOfferModel, _$identity);
+
+  /// Serializes this SpecialOfferModel to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? id = null,
-    Object? category = freezed,
-    Object? subCategory = freezed,
-    Object? nofBrands = null,
-    Object? image = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      category: freezed == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as NamedObject?,
-      subCategory: freezed == subCategory
-          ? _value.subCategory
-          : subCategory // ignore: cast_nullable_to_non_nullable
-              as NamedObject?,
-      nofBrands: null == nofBrands
-          ? _value.nofBrands
-          : nofBrands // ignore: cast_nullable_to_non_nullable
-              as int,
-      image: null == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is SpecialOfferModel &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
+            (identical(other.subCategory, subCategory) ||
+                other.subCategory == subCategory) &&
+            (identical(other.nofBrands, nofBrands) ||
+                other.nofBrands == nofBrands) &&
+            (identical(other.image, image) || other.image == image));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, id, category, subCategory, nofBrands, image);
+
+  @override
+  String toString() {
+    return 'SpecialOfferModel(id: $id, category: $category, subCategory: $subCategory, nofBrands: $nofBrands, image: $image)';
   }
 }
 
 /// @nodoc
-abstract class _$$SpecialOfferModelImplCopyWith<$Res>
-    implements $SpecialOfferModelCopyWith<$Res> {
-  factory _$$SpecialOfferModelImplCopyWith(_$SpecialOfferModelImpl value,
-          $Res Function(_$SpecialOfferModelImpl) then) =
-      __$$SpecialOfferModelImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $SpecialOfferModelCopyWith<$Res> {
+  factory $SpecialOfferModelCopyWith(
+          SpecialOfferModel value, $Res Function(SpecialOfferModel) _then) =
+      _$SpecialOfferModelCopyWithImpl;
   @useResult
   $Res call(
       {int id,
@@ -106,13 +73,15 @@ abstract class _$$SpecialOfferModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$SpecialOfferModelImplCopyWithImpl<$Res>
-    extends _$SpecialOfferModelCopyWithImpl<$Res, _$SpecialOfferModelImpl>
-    implements _$$SpecialOfferModelImplCopyWith<$Res> {
-  __$$SpecialOfferModelImplCopyWithImpl(_$SpecialOfferModelImpl _value,
-      $Res Function(_$SpecialOfferModelImpl) _then)
-      : super(_value, _then);
+class _$SpecialOfferModelCopyWithImpl<$Res>
+    implements $SpecialOfferModelCopyWith<$Res> {
+  _$SpecialOfferModelCopyWithImpl(this._self, this._then);
 
+  final SpecialOfferModel _self;
+  final $Res Function(SpecialOfferModel) _then;
+
+  /// Create a copy of SpecialOfferModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -122,25 +91,25 @@ class __$$SpecialOfferModelImplCopyWithImpl<$Res>
     Object? nofBrands = null,
     Object? image = null,
   }) {
-    return _then(_$SpecialOfferModelImpl(
+    return _then(_self.copyWith(
       id: null == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
       category: freezed == category
-          ? _value.category
+          ? _self.category
           : category // ignore: cast_nullable_to_non_nullable
               as NamedObject?,
       subCategory: freezed == subCategory
-          ? _value.subCategory
+          ? _self.subCategory
           : subCategory // ignore: cast_nullable_to_non_nullable
               as NamedObject?,
       nofBrands: null == nofBrands
-          ? _value.nofBrands
+          ? _self.nofBrands
           : nofBrands // ignore: cast_nullable_to_non_nullable
               as int,
       image: null == image
-          ? _value.image
+          ? _self.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -148,17 +117,16 @@ class __$$SpecialOfferModelImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable(createToJson: false)
-class _$SpecialOfferModelImpl implements _SpecialOfferModel {
-  const _$SpecialOfferModelImpl(
+@JsonSerializable()
+class _SpecialOfferModel implements SpecialOfferModel {
+  const _SpecialOfferModel(
       {required this.id,
       required this.category,
       required this.subCategory,
       required this.nofBrands,
       required this.image});
-
-  factory _$SpecialOfferModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SpecialOfferModelImplFromJson(json);
+  factory _SpecialOfferModel.fromJson(Map<String, dynamic> json) =>
+      _$SpecialOfferModelFromJson(json);
 
   @override
   final int id;
@@ -171,16 +139,26 @@ class _$SpecialOfferModelImpl implements _SpecialOfferModel {
   @override
   final String image;
 
+  /// Create a copy of SpecialOfferModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'SpecialOfferModel(id: $id, category: $category, subCategory: $subCategory, nofBrands: $nofBrands, image: $image)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$SpecialOfferModelCopyWith<_SpecialOfferModel> get copyWith =>
+      __$SpecialOfferModelCopyWithImpl<_SpecialOfferModel>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$SpecialOfferModelToJson(
+      this,
+    );
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SpecialOfferModelImpl &&
+            other is _SpecialOfferModel &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.category, category) ||
                 other.category == category) &&
@@ -191,42 +169,75 @@ class _$SpecialOfferModelImpl implements _SpecialOfferModel {
             (identical(other.image, image) || other.image == image));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, category, subCategory, nofBrands, image);
 
-  @JsonKey(ignore: true)
+  @override
+  String toString() {
+    return 'SpecialOfferModel(id: $id, category: $category, subCategory: $subCategory, nofBrands: $nofBrands, image: $image)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$SpecialOfferModelCopyWith<$Res>
+    implements $SpecialOfferModelCopyWith<$Res> {
+  factory _$SpecialOfferModelCopyWith(
+          _SpecialOfferModel value, $Res Function(_SpecialOfferModel) _then) =
+      __$SpecialOfferModelCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {int id,
+      NamedObject? category,
+      NamedObject? subCategory,
+      int nofBrands,
+      String image});
+}
+
+/// @nodoc
+class __$SpecialOfferModelCopyWithImpl<$Res>
+    implements _$SpecialOfferModelCopyWith<$Res> {
+  __$SpecialOfferModelCopyWithImpl(this._self, this._then);
+
+  final _SpecialOfferModel _self;
+  final $Res Function(_SpecialOfferModel) _then;
+
+  /// Create a copy of SpecialOfferModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  _$$SpecialOfferModelImplCopyWith<_$SpecialOfferModelImpl> get copyWith =>
-      __$$SpecialOfferModelImplCopyWithImpl<_$SpecialOfferModelImpl>(
-          this, _$identity);
+  $Res call({
+    Object? id = null,
+    Object? category = freezed,
+    Object? subCategory = freezed,
+    Object? nofBrands = null,
+    Object? image = null,
+  }) {
+    return _then(_SpecialOfferModel(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      category: freezed == category
+          ? _self.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as NamedObject?,
+      subCategory: freezed == subCategory
+          ? _self.subCategory
+          : subCategory // ignore: cast_nullable_to_non_nullable
+              as NamedObject?,
+      nofBrands: null == nofBrands
+          ? _self.nofBrands
+          : nofBrands // ignore: cast_nullable_to_non_nullable
+              as int,
+      image: null == image
+          ? _self.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
-abstract class _SpecialOfferModel implements SpecialOfferModel {
-  const factory _SpecialOfferModel(
-      {required final int id,
-      required final NamedObject? category,
-      required final NamedObject? subCategory,
-      required final int nofBrands,
-      required final String image}) = _$SpecialOfferModelImpl;
-
-  factory _SpecialOfferModel.fromJson(Map<String, dynamic> json) =
-      _$SpecialOfferModelImpl.fromJson;
-
-  @override
-  int get id;
-  @override
-  NamedObject? get category;
-  @override
-  NamedObject? get subCategory;
-  @override
-  int get nofBrands;
-  @override
-  String get image;
-  @override
-  @JsonKey(ignore: true)
-  _$$SpecialOfferModelImplCopyWith<_$SpecialOfferModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on
