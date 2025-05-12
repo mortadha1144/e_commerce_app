@@ -1,4 +1,4 @@
-// import 'package:e_commerce_app/Features/home/data/models/rating_model.dart';
+// import 'package:e_commerce_app/features/home/data/models/rating_model.dart';
 import 'package:e_commerce_app/core/data/models/named_object.dart';
 // import 'package:e_commerce_app/features/home/data/models/rating_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

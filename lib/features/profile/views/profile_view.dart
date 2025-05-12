@@ -1,6 +1,6 @@
-import 'package:e_commerce_app/Features/auth/providers/user_provider.dart';
-import 'package:e_commerce_app/Features/profile/views/widgets/logout_dialog.dart';
-import 'package:e_commerce_app/Features/profile/views/widgets/profile_menu.dart';
+import 'package:e_commerce_app/features/auth/providers/user_provider.dart';
+import 'package:e_commerce_app/features/profile/views/widgets/logout_dialog.dart';
+import 'package:e_commerce_app/features/profile/views/widgets/profile_menu.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:e_commerce_app/core/utils/theme/colors.dart';

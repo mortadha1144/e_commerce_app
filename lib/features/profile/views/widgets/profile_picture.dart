@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:e_commerce_app/Features/profile/providers/upload_profile_image_provider.dart';
+import 'package:e_commerce_app/features/profile/providers/upload_profile_image_provider.dart';
 import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:e_commerce_app/core/utils/snackbar.dart';
 import 'package:e_commerce_app/core/utils/widgets/cashed_image.dart';
@@ -38,17 +38,16 @@ class ProfilePicture extends StatelessWidget {
         children: [
           isLoading
               ? const CustomLoadingIndicator()
-              :
-          imageFilePath != null
-              ? CircleAvatar(
-                  backgroundImage: FileImage(File(imageFilePath!)),
-                  radius: 100,
-                )
-              : CashedImage(
-                  imageUrl: imageUrl,
-                  placeholder: Assets.assetsImagesUserPlaceholder,
-                  borderRadius: BorderRadius.circular(100),
-                ),
+              : imageFilePath != null
+                  ? CircleAvatar(
+                      backgroundImage: FileImage(File(imageFilePath!)),
+                      radius: 100,
+                    )
+                  : CashedImage(
+                      imageUrl: imageUrl,
+                      placeholder: Assets.assetsImagesUserPlaceholder,
+                      borderRadius: BorderRadius.circular(100),
+                    ),
           Positioned(
             bottom: 0,
             right: 0,
