@@ -1189,6 +1189,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.6.1"
+  riverpod_cache:
+    dependency: "direct main"
+    description:
+      name: riverpod_cache
+      sha256: d4759079786fe825a298767b4721b1d5c9c679f0a6164db87bcf6bb56f5fda0c
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.5"
   riverpod_generator:
     dependency: "direct dev"
     description:

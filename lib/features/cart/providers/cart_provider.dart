@@ -1,7 +1,9 @@
+import 'package:e_commerce_app/core/data/shared_preferences/preferences.dart';
 import 'package:e_commerce_app/features/cart/data/models/cart_item_model.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/data/providers/object_preference_provider.dart';
-import 'package:e_commerce_app/core/data/shared_preference/preference_helper.dart';
+import 'package:e_commerce_app/core/data/shared_preferences/preference_helper.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final totalPricesProvider = Provider.autoDispose((ref) {
@@ -25,7 +27,8 @@ final cartProvider =
 class CartNotifier extends AutoDisposeNotifier<List<CartItemModel>>
     with ObjectPreferenceProvider {
   @override
-  String get key => PrefKeys.cart;
+  @protected
+  String get key => Preferences.cart;
 
   @override
   List<CartItemModel> build() => firstBuild([]);

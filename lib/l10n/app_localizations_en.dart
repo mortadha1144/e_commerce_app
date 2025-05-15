@@ -143,4 +143,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get productAddedToCart => 'Product Added to cart successfully';
+
+  @override
+  String get confirmLogoutLabel => 'Confirm Logout';
+
+  @override
+  String get areYouSureLogout => 'Are you sure you want to logout?';
+
+  @override
+  String get cancelLabel => 'Cancel';
+
+  @override
+  String get logoutLabel => 'Logout';
 }

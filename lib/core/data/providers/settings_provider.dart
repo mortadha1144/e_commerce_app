@@ -1,4 +1,5 @@
-import 'package:e_commerce_app/core/data/shared_preference/preference_helper.dart';
+import 'package:e_commerce_app/core/data/shared_preferences/preference_helper.dart';
+import 'package:e_commerce_app/core/data/shared_preferences/preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -31,7 +32,7 @@ class SettingsNotifier extends AutoDisposeNotifier<AppSettings>
     with ObjectPreferenceProvider {
   @override
   @protected
-  String get key => PrefKeys.settings;
+  String get key => Preferences.settings;
 
   @override
   AppSettings fromJson(Map<String, dynamic> map) => AppSettings.fromJson(map);

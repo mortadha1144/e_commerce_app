@@ -1,4 +1,3 @@
-// This is super important - otherwise, we would throw away the whole widget tree when the provider is updated.
 import 'package:e_commerce_app/features/auth/views/authentication_provider.dart';
 import 'package:e_commerce_app/features/profile/views/update_profile_view.dart';
 import 'package:e_commerce_app/features/auth/views/forgot_password_page.dart';
@@ -30,6 +29,8 @@ final GlobalKey<NavigatorState> _shellNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'shell');
 // We need to have access to the previous location of the router. Otherwise, we would start from '/' on rebuild.
 GoRouter? _previousRouter;
+
+// TODO: replace with auto_route
 
 @Riverpod(keepAlive: true)
 GoRouter appRouter(Ref ref) {

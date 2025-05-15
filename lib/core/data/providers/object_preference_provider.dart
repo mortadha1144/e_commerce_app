@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:e_commerce_app/core/data/shared_preference/preference_helper.dart';
+import 'package:e_commerce_app/core/data/shared_preferences/preferences.dart';
+import 'package:e_commerce_app/core/data/shared_preferences/shared_preferences_provider.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'provider.dart';
 
 mixin ObjectPreferenceProvider<State> on AutoDisposeNotifier<State> {
   @protected
@@ -31,7 +31,7 @@ mixin ObjectPreferenceProvider<State> on AutoDisposeNotifier<State> {
 
       return state = value;
     } catch (e, stackTrace) {
-      log("Preference: $key", error: e, stackTrace: stackTrace);
+      log('Preference: $key', error: e, stackTrace: stackTrace);
       return state;
     }
   }
@@ -44,7 +44,7 @@ mixin ObjectPreferenceProvider<State> on AutoDisposeNotifier<State> {
       final Map<String, dynamic> map = jsonDecode(raw);
       return fromJson(map);
     } catch (e, stackTrace) {
-      log("Preference: $key", error: e, stackTrace: stackTrace);
+      log('Preference: $key', error: e, stackTrace: stackTrace);
       return fallback;
     }
   }
@@ -82,7 +82,7 @@ mixin NullableObjectPreferenceProvider<State> on AutoDisposeNotifier<State?> {
 
       return state = value;
     } catch (e, stackTrace) {
-      log("Preference: $key", error: e, stackTrace: stackTrace);
+      log('Preference: $key', error: e, stackTrace: stackTrace);
       return state;
     }
   }
@@ -96,14 +96,14 @@ mixin NullableObjectPreferenceProvider<State> on AutoDisposeNotifier<State?> {
       final Map<String, dynamic> map = jsonDecode(raw);
       return fromJson(map);
     } catch (e, stackTrace) {
-      log("Preference: $key", error: e, stackTrace: stackTrace);
+      log('Preference: $key', error: e, stackTrace: stackTrace);
       return null;
     }
   }
 
   Future<void> clear() async {
     await ref.sharedPreferences.remove(key);
-    await ref.sharedPreferences.remove(PrefKeys.user);
+    await ref.sharedPreferences.remove(Preferences.user);
     state = null;
   }
 }

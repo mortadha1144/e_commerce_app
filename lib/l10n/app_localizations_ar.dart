@@ -143,4 +143,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get productAddedToCart => 'تمت إضافة المنتج إلى سلة التسوق بنجاح';
+
+  @override
+  String get confirmLogoutLabel => 'تأكيد تسجيل الخروج';
+
+  @override
+  String get areYouSureLogout => 'هل أنت متأكد أنك تريد تسجيل الخروج؟';
+
+  @override
+  String get cancelLabel => 'إلغاء';
+
+  @override
+  String get logoutLabel => 'تسجيل الخروج';
 }

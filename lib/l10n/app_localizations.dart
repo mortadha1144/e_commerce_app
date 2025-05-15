@@ -66,8 +66,8 @@ abstract class AppLocalizations {
 
   final String localeName;
 
-  static AppLocalizations? of(BuildContext context) {
-    return Localizations.of<AppLocalizations>(context, AppLocalizations);
+  static AppLocalizations of(BuildContext context) {
+    return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
   }
 
   static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
@@ -358,6 +358,30 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'تمت إضافة المنتج إلى سلة التسوق بنجاح'**
   String get productAddedToCart;
+
+  /// No description provided for @confirmLogoutLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'تأكيد تسجيل الخروج'**
+  String get confirmLogoutLabel;
+
+  /// No description provided for @areYouSureLogout.
+  ///
+  /// In ar, this message translates to:
+  /// **'هل أنت متأكد أنك تريد تسجيل الخروج؟'**
+  String get areYouSureLogout;
+
+  /// No description provided for @cancelLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'إلغاء'**
+  String get cancelLabel;
+
+  /// No description provided for @logoutLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'تسجيل الخروج'**
+  String get logoutLabel;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

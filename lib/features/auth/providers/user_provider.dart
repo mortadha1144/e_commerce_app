@@ -1,6 +1,6 @@
+import 'package:e_commerce_app/core/data/shared_preferences/preferences.dart';
 import 'package:e_commerce_app/features/auth/data/models/user_model.dart';
 import 'package:e_commerce_app/core/data/providers/object_preference_provider.dart';
-import 'package:e_commerce_app/core/data/shared_preference/preference_helper.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -12,7 +12,7 @@ class UserNotifier extends AutoDisposeNotifier<UserData?>
     with NullableObjectPreferenceProvider {
   @override
   @protected
-  String get key => PrefKeys.user;
+  String get key => Preferences.user;
 
   @override
   UserData? build() => firstBuild();

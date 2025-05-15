@@ -1,5 +1,5 @@
 import 'package:e_commerce_app/app.dart';
-import 'package:e_commerce_app/core/data/providers/provider.dart';
+import 'package:e_commerce_app/core/data/shared_preferences/shared_preferences_provider.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,6 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // TODO: use a better way to initialize the shared preferences
   final preferences = await SharedPreferences.getInstance();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

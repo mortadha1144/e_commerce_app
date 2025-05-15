@@ -1,7 +1,8 @@
+import 'package:e_commerce_app/core/data/shared_preferences/preferences.dart';
 import 'package:e_commerce_app/features/product/data/models/product_model.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/data/providers/object_preference_provider.dart';
-import 'package:e_commerce_app/core/data/shared_preference/preference_helper.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final favoriteProvider =
@@ -12,7 +13,8 @@ final favoriteProvider =
 class FavoriteNotifier extends AutoDisposeNotifier<List<ProductModel>>
     with ObjectPreferenceProvider {
   @override
-  String get key => PrefKeys.favorite;
+  @protected
+  String get key => Preferences.favorite;
 
   @override
   List<ProductModel> build() => firstBuild([]);
@@ -22,12 +24,14 @@ class FavoriteNotifier extends AutoDisposeNotifier<List<ProductModel>>
       (map[key] as List).itemsFromJson(ProductModel.fromJson);
 
   @override
-  Map<String, dynamic> toJson(List<ProductModel> value) => value.toJson(key, (x) => x.toJson());
+  Map<String, dynamic> toJson(List<ProductModel> value) =>
+      value.toJson(key, (x) => x.toJson());
 
   Future<void> add(ProductModel product) =>
       update((state) => [...state, product]);
 
-  Future<void> remove(int productId) => update((state) => state.where((product) => product.id != productId).toList());
+  Future<void> remove(int productId) => update(
+      (state) => state.where((product) => product.id != productId).toList());
 
   Future<void> clear() => update((state) => []);
 

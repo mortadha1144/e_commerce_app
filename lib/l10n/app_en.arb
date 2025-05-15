@@ -1,4 +1,5 @@
 {
+    "@@locale": "en",
     "emailAlreadyInUse": "The email address is already in use by another account.",
     "http_unexpected_error": "Unexpected error occurred",
     "wrongPassword": "Wrong password provided for that user.",
@@ -31,7 +32,7 @@
     "signUp": "Sign Up",
     "registerAccount": "Register Account",
     "completeProfile": "Complete Profile",
-    "completeYourDetails":"Complete your details or continue \nwith social media",
+    "completeYourDetails": "Complete your details or continue \nwith social media",
     "byContinuingYourConfirm": "By continuing your confirm that you agree \nwith our Term and Condition",
     "passwordDoesNotMatch": "Password does not match",
     "displayName": "Display Name",
@@ -42,5 +43,9 @@
     "addressHint": "Enter your address",
     "back": "Back",
     "accountCreatedSuccessfully": "Account created successfully",
-    "productAddedToCart": "Product Added to cart successfully"
+    "productAddedToCart": "Product Added to cart successfully",
+    "confirmLogoutLabel": "Confirm Logout",
+    "areYouSureLogout": "Are you sure you want to logout?",
+    "cancelLabel": "Cancel",
+    "logoutLabel": "Logout"
 }

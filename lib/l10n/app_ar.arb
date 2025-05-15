@@ -1,4 +1,5 @@
 {
+    "@@locale": "ar",
     "emailAlreadyInUse": "الايميل مستخدم بالفعل",
     "http_unexpected_error": "حدث خطأ غير متوقع",
     "wrongPassword": "كلمة المرور خاطئة",
@@ -56,5 +57,9 @@
     "addressHint": "أدخل عنوانك",
     "back": "رجوع",
     "accountCreatedSuccessfully": "تم إنشاء الحساب بنجاح",
-    "productAddedToCart": "تمت إضافة المنتج إلى سلة التسوق بنجاح"
+    "productAddedToCart": "تمت إضافة المنتج إلى سلة التسوق بنجاح",
+    "confirmLogoutLabel": "تأكيد تسجيل الخروج",
+    "areYouSureLogout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+    "cancelLabel": "إلغاء",
+    "logoutLabel": "تسجيل الخروج"
 }
