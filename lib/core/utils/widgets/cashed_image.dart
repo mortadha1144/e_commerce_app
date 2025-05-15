@@ -13,7 +13,7 @@ class CashedImage extends StatelessWidget {
 
   final String? imageUrl;
   final BorderRadius? borderRadius;
-  final String? placeholder;
+  final Widget? placeholder;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +23,8 @@ class CashedImage extends StatelessWidget {
         fit: BoxFit.cover,
         imageUrl: imageUrl ?? '',
         placeholder: (context, url) => const CustomLoadingIndicator(),
-        errorWidget: (context, url, error) => placeholder != null
-            ? Image.asset(placeholder!)
-            : const Icon(Icons.error),
+        errorWidget: (context, url, error) =>
+            placeholder ?? const Icon(Icons.error),
       ),
     );
   }

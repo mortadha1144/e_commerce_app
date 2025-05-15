@@ -12,40 +12,9 @@ part of 'network_exceptions.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
-NetworkExceptions _$NetworkExceptionsFromJson(Map<String, dynamic> json) {
-  switch (json['type']) {
-    case 'emailAlreadyInUse':
-      return EmailAlreadyInUse.fromJson(json);
-    case 'wrongPassword':
-      return WrongPassword.fromJson(json);
-    case 'invalidEmail':
-      return InvalidEmail.fromJson(json);
-    case 'operationNotAllowed':
-      return OperationNotAllowed.fromJson(json);
-    case 'weakPassword':
-      return WeakPassword.fromJson(json);
-    case 'userDisabled':
-      return UserDisabled.fromJson(json);
-    case 'userNotFound':
-      return UserNotFound.fromJson(json);
-    case 'authInvalidEmail':
-      return AuthInvalidEmail.fromJson(json);
-    case 'authUserNotFound':
-      return AuthUserNotFound.fromJson(json);
-    case 'unexpectedError':
-      return UnexpectedError.fromJson(json);
-
-    default:
-      throw CheckedFromJsonException(json, 'type', 'NetworkExceptions',
-          'Invalid union type "${json['type']}"!');
-  }
-}
 
 /// @nodoc
 mixin _$NetworkExceptions implements DiagnosticableTreeMixin {
-  /// Serializes this NetworkExceptions to a JSON map.
-  Map<String, dynamic> toJson();
-
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     properties..add(DiagnosticsProperty('type', 'NetworkExceptions'));
@@ -57,7 +26,6 @@ mixin _$NetworkExceptions implements DiagnosticableTreeMixin {
         (other.runtimeType == runtimeType && other is NetworkExceptions);
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -74,24 +42,11 @@ class $NetworkExceptionsCopyWith<$Res> {
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class EmailAlreadyInUse
     with DiagnosticableTreeMixin
     implements NetworkExceptions {
-  const EmailAlreadyInUse({final String? $type})
-      : $type = $type ?? 'emailAlreadyInUse';
-  factory EmailAlreadyInUse.fromJson(Map<String, dynamic> json) =>
-      _$EmailAlreadyInUseFromJson(json);
-
-  @JsonKey(name: 'type')
-  final String $type;
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$EmailAlreadyInUseToJson(
-      this,
-    );
-  }
+  const EmailAlreadyInUse();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -105,7 +60,6 @@ class EmailAlreadyInUse
         (other.runtimeType == runtimeType && other is EmailAlreadyInUse);
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -132,21 +86,9 @@ class _$EmailAlreadyInUseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class WrongPassword with DiagnosticableTreeMixin implements NetworkExceptions {
-  const WrongPassword({final String? $type}) : $type = $type ?? 'wrongPassword';
-  factory WrongPassword.fromJson(Map<String, dynamic> json) =>
-      _$WrongPasswordFromJson(json);
-
-  @JsonKey(name: 'type')
-  final String $type;
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$WrongPasswordToJson(
-      this,
-    );
-  }
+  const WrongPassword();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -160,7 +102,6 @@ class WrongPassword with DiagnosticableTreeMixin implements NetworkExceptions {
         (other.runtimeType == runtimeType && other is WrongPassword);
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -185,21 +126,9 @@ class _$WrongPasswordCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class InvalidEmail with DiagnosticableTreeMixin implements NetworkExceptions {
-  const InvalidEmail({final String? $type}) : $type = $type ?? 'invalidEmail';
-  factory InvalidEmail.fromJson(Map<String, dynamic> json) =>
-      _$InvalidEmailFromJson(json);
-
-  @JsonKey(name: 'type')
-  final String $type;
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$InvalidEmailToJson(
-      this,
-    );
-  }
+  const InvalidEmail();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -213,7 +142,6 @@ class InvalidEmail with DiagnosticableTreeMixin implements NetworkExceptions {
         (other.runtimeType == runtimeType && other is InvalidEmail);
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -237,24 +165,11 @@ class _$InvalidEmailCopyWithImpl<$Res> implements $InvalidEmailCopyWith<$Res> {
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class OperationNotAllowed
     with DiagnosticableTreeMixin
     implements NetworkExceptions {
-  const OperationNotAllowed({final String? $type})
-      : $type = $type ?? 'operationNotAllowed';
-  factory OperationNotAllowed.fromJson(Map<String, dynamic> json) =>
-      _$OperationNotAllowedFromJson(json);
-
-  @JsonKey(name: 'type')
-  final String $type;
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$OperationNotAllowedToJson(
-      this,
-    );
-  }
+  const OperationNotAllowed();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -269,7 +184,6 @@ class OperationNotAllowed
         (other.runtimeType == runtimeType && other is OperationNotAllowed);
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -296,21 +210,9 @@ class _$OperationNotAllowedCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class WeakPassword with DiagnosticableTreeMixin implements NetworkExceptions {
-  const WeakPassword({final String? $type}) : $type = $type ?? 'weakPassword';
-  factory WeakPassword.fromJson(Map<String, dynamic> json) =>
-      _$WeakPasswordFromJson(json);
-
-  @JsonKey(name: 'type')
-  final String $type;
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$WeakPasswordToJson(
-      this,
-    );
-  }
+  const WeakPassword();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -324,7 +226,6 @@ class WeakPassword with DiagnosticableTreeMixin implements NetworkExceptions {
         (other.runtimeType == runtimeType && other is WeakPassword);
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -348,21 +249,9 @@ class _$WeakPasswordCopyWithImpl<$Res> implements $WeakPasswordCopyWith<$Res> {
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class UserDisabled with DiagnosticableTreeMixin implements NetworkExceptions {
-  const UserDisabled({final String? $type}) : $type = $type ?? 'userDisabled';
-  factory UserDisabled.fromJson(Map<String, dynamic> json) =>
-      _$UserDisabledFromJson(json);
-
-  @JsonKey(name: 'type')
-  final String $type;
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$UserDisabledToJson(
-      this,
-    );
-  }
+  const UserDisabled();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -376,7 +265,6 @@ class UserDisabled with DiagnosticableTreeMixin implements NetworkExceptions {
         (other.runtimeType == runtimeType && other is UserDisabled);
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -400,21 +288,9 @@ class _$UserDisabledCopyWithImpl<$Res> implements $UserDisabledCopyWith<$Res> {
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class UserNotFound with DiagnosticableTreeMixin implements NetworkExceptions {
-  const UserNotFound({final String? $type}) : $type = $type ?? 'userNotFound';
-  factory UserNotFound.fromJson(Map<String, dynamic> json) =>
-      _$UserNotFoundFromJson(json);
-
-  @JsonKey(name: 'type')
-  final String $type;
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$UserNotFoundToJson(
-      this,
-    );
-  }
+  const UserNotFound();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -428,7 +304,6 @@ class UserNotFound with DiagnosticableTreeMixin implements NetworkExceptions {
         (other.runtimeType == runtimeType && other is UserNotFound);
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -452,24 +327,11 @@ class _$UserNotFoundCopyWithImpl<$Res> implements $UserNotFoundCopyWith<$Res> {
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class AuthInvalidEmail
     with DiagnosticableTreeMixin
     implements NetworkExceptions {
-  const AuthInvalidEmail({final String? $type})
-      : $type = $type ?? 'authInvalidEmail';
-  factory AuthInvalidEmail.fromJson(Map<String, dynamic> json) =>
-      _$AuthInvalidEmailFromJson(json);
-
-  @JsonKey(name: 'type')
-  final String $type;
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$AuthInvalidEmailToJson(
-      this,
-    );
-  }
+  const AuthInvalidEmail();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -483,7 +345,6 @@ class AuthInvalidEmail
         (other.runtimeType == runtimeType && other is AuthInvalidEmail);
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -510,24 +371,11 @@ class _$AuthInvalidEmailCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class AuthUserNotFound
     with DiagnosticableTreeMixin
     implements NetworkExceptions {
-  const AuthUserNotFound({final String? $type})
-      : $type = $type ?? 'authUserNotFound';
-  factory AuthUserNotFound.fromJson(Map<String, dynamic> json) =>
-      _$AuthUserNotFoundFromJson(json);
-
-  @JsonKey(name: 'type')
-  final String $type;
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$AuthUserNotFoundToJson(
-      this,
-    );
-  }
+  const AuthUserNotFound();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -541,7 +389,6 @@ class AuthUserNotFound
         (other.runtimeType == runtimeType && other is AuthUserNotFound);
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -568,24 +415,11 @@ class _$AuthUserNotFoundCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class UnexpectedError
     with DiagnosticableTreeMixin
     implements NetworkExceptions {
-  const UnexpectedError({final String? $type})
-      : $type = $type ?? 'unexpectedError';
-  factory UnexpectedError.fromJson(Map<String, dynamic> json) =>
-      _$UnexpectedErrorFromJson(json);
-
-  @JsonKey(name: 'type')
-  final String $type;
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$UnexpectedErrorToJson(
-      this,
-    );
-  }
+  const UnexpectedError();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -599,7 +433,6 @@ class UnexpectedError
         (other.runtimeType == runtimeType && other is UnexpectedError);
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 

@@ -1,22 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_commerce_app/features/auth/data/constants/constants.dart';
-import 'package:e_commerce_app/features/auth/data/models/login_request.dart';
-import 'package:e_commerce_app/features/auth/data/models/sign_up_model.dart';
-import 'package:e_commerce_app/features/auth/data/models/user_model.dart';
+import 'package:e_commerce_app/core/data/api/authentication/login_request.dart';
 import 'package:e_commerce_app/core/utils/constants/firebase_collection_name.dart';
 import 'package:e_commerce_app/core/utils/constants/firebase_field_name.dart';
 import 'package:e_commerce_app/core/utils/enums/enums.dart';
 import 'package:e_commerce_app/core/utils/type_defs.dart';
+import 'package:e_commerce_app/features/auth/data/constants/constants.dart';
+import 'package:e_commerce_app/features/auth/data/models/sign_up_model.dart';
+import 'package:e_commerce_app/features/auth/data/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final authRepoProvider = Provider<AuthRepo>((ref) {
-  return AuthRepo();
-});
-
-class AuthRepo {
+class FirebaseAuthenticationClient {
   UserId? get userId => FirebaseAuth.instance.currentUser?.uid;
   bool get isAlreadyLoggedIn => userId != null;
   String get displayName =>
@@ -175,4 +170,5 @@ class AuthRepo {
       email: email,
     );
   }
+  
 }

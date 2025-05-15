@@ -6,6 +6,7 @@ import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:e_commerce_app/core/utils/theme/colors.dart';
 import 'package:e_commerce_app/core/utils/widgets/cashed_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -28,7 +29,11 @@ class ProfileView extends HookConsumerWidget {
           width: 115,
           child: CashedImage(
             imageUrl: user?.image,
-            placeholder: Assets.assetsIconsUserIcon,
+            placeholder: SvgPicture.asset(
+              Assets.assetsIconsUserIcon,
+              width: 75,
+              height: 75,
+            ),
             borderRadius: BorderRadius.circular(100),
           ),
         ),
@@ -51,12 +56,12 @@ class ProfileView extends HookConsumerWidget {
         ),
         ProfileMenu(
           text: 'Settings',
-          icon: 'assets/icons/Settings.svg',
+          icon: Assets.assetsIconsSettings,
           onPress: () {},
         ),
         ProfileMenu(
           text: 'Help Center',
-          icon: Assets.assetsIconsQuestionMark,
+          icon: Assets.assetsIconsQuestionmark,
           onPress: () {},
         ),
         ProfileMenu(

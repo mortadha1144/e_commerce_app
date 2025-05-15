@@ -12,7 +12,7 @@ class MyApp extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(settingsProvider);
-    final router = ref.watch(routerProvider);
+    final router = ref.read(appRouterProvider);
     return MaterialApp.router(
       routerConfig: router,
       debugShowCheckedModeBanner: false,

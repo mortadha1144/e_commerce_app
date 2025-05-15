@@ -19,7 +19,7 @@ enum Update { force }
 // ResultState<T> unverifiedAccountError<T>() =>
 //     ResultState<T>.error(const NetworkExceptions.unverifiedAccount());
 
-@freezed
+@Freezed(fromJson: false, toJson: false)
 abstract class NetworkExceptions with _$NetworkExceptions {
   const factory NetworkExceptions.emailAlreadyInUse() = EmailAlreadyInUse;
   const factory NetworkExceptions.wrongPassword() = WrongPassword;

@@ -1,14 +1,12 @@
 // This is super important - otherwise, we would throw away the whole widget tree when the provider is updated.
-import 'dart:async';
+import 'package:e_commerce_app/features/auth/views/authentication_provider.dart';
 import 'package:e_commerce_app/features/profile/views/update_profile_view.dart';
-import 'package:e_commerce_app/features/auth/providers/is_logged_in_provider.dart';
 import 'package:e_commerce_app/features/auth/views/forgot_password_page.dart';
 import 'package:e_commerce_app/features/auth/views/login_page.dart';
 import 'package:e_commerce_app/features/auth/views/login_success_view.dart';
 import 'package:e_commerce_app/features/auth/views/otp_view.dart';
 import 'package:e_commerce_app/features/auth/views/sign_up_page.dart';
 import 'package:e_commerce_app/features/cart/views/cart_view.dart';
-import 'package:e_commerce_app/features/choose_language/choose_your_language_page.dart';
 import 'package:e_commerce_app/features/favorite/views/favorite_view.dart';
 import 'package:e_commerce_app/features/home/views/bottom_navigation.dart';
 import 'package:e_commerce_app/features/home/views/home_view.dart';
@@ -19,10 +17,12 @@ import 'package:e_commerce_app/features/product/views/product_details_view.dart'
 import 'package:e_commerce_app/features/profile/views/profile_view.dart';
 import 'package:e_commerce_app/core/data/models/named_object.dart';
 import 'package:e_commerce_app/core/data/providers/preference_helper_provider.dart';
-import 'package:e_commerce_app/core/data/providers/settings_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'app_router.g.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'root');
@@ -31,13 +31,14 @@ final GlobalKey<NavigatorState> _shellNavigatorKey =
 // We need to have access to the previous location of the router. Otherwise, we would start from '/' on rebuild.
 GoRouter? _previousRouter;
 
-final routerProvider = Provider.autoDispose((ref) {
-  final bool loggedIn = ref.watch(isLoggedInProvider);
-  // final local = ref.watch(settingsProvider).locale;
+@Riverpod(keepAlive: true)
+GoRouter appRouter(Ref ref) {
   final bool isOnBoardingShown =
       ref.read(preferenceHelperProvider).isOnboardingShown;
 
   FutureOr<String?> redirect(BuildContext context, GoRouterState state) {
+    final authenticationState = ref.read(authenticationProvider);
+    final isLoggedIn = authenticationState.token != null;
     // if` the user is not logged in, they need to login
     final bool loggingIn = state.matchedLocation == RoutesDocument.login;
 
@@ -49,7 +50,7 @@ final routerProvider = Provider.autoDispose((ref) {
       return RoutesDocument.onBoardingView;
     }
 
-    if (!loggedIn) {
+    if (!isLoggedIn) {
       return loggingIn ? null : RoutesDocument.login;
     }
 
@@ -152,7 +153,7 @@ final routerProvider = Provider.autoDispose((ref) {
       ),
     ],
   );
-});
+}
 
 class RoutesDocument {
   static const homeView = '/';

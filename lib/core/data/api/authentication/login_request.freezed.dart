@@ -15,7 +15,9 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$LoginRequest {
+  @JsonKey(name: LoginRequest.phoneNumberKey)
   String get phoneNumber;
+  @JsonKey(name: LoginRequest.passwordKey)
   String get password;
 
   /// Create a copy of LoginRequest
@@ -56,7 +58,9 @@ abstract mixin class $LoginRequestCopyWith<$Res> {
           LoginRequest value, $Res Function(LoginRequest) _then) =
       _$LoginRequestCopyWithImpl;
   @useResult
-  $Res call({String phoneNumber, String password});
+  $Res call(
+      {@JsonKey(name: LoginRequest.phoneNumberKey) String phoneNumber,
+      @JsonKey(name: LoginRequest.passwordKey) String password});
 }
 
 /// @nodoc
@@ -89,14 +93,19 @@ class _$LoginRequestCopyWithImpl<$Res> implements $LoginRequestCopyWith<$Res> {
 
 /// @nodoc
 @JsonSerializable()
-class _LoginRequest implements LoginRequest {
-  const _LoginRequest({required this.phoneNumber, required this.password});
+class _LoginRequest extends LoginRequest {
+  const _LoginRequest(
+      {@JsonKey(name: LoginRequest.phoneNumberKey) required this.phoneNumber,
+      @JsonKey(name: LoginRequest.passwordKey) required this.password})
+      : super._();
   factory _LoginRequest.fromJson(Map<String, dynamic> json) =>
       _$LoginRequestFromJson(json);
 
   @override
+  @JsonKey(name: LoginRequest.phoneNumberKey)
   final String phoneNumber;
   @override
+  @JsonKey(name: LoginRequest.passwordKey)
   final String password;
 
   /// Create a copy of LoginRequest
@@ -143,7 +152,9 @@ abstract mixin class _$LoginRequestCopyWith<$Res>
       __$LoginRequestCopyWithImpl;
   @override
   @useResult
-  $Res call({String phoneNumber, String password});
+  $Res call(
+      {@JsonKey(name: LoginRequest.phoneNumberKey) String phoneNumber,
+      @JsonKey(name: LoginRequest.passwordKey) String password});
 }
 
 /// @nodoc

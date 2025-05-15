@@ -45,7 +45,7 @@ class ProfilePicture extends StatelessWidget {
                     )
                   : CashedImage(
                       imageUrl: imageUrl,
-                      placeholder: Assets.assetsImagesUserPlaceholder,
+                      placeholder: SvgPicture.asset(Assets.assetsIconsUserIcon),
                       borderRadius: BorderRadius.circular(100),
                     ),
           Positioned(

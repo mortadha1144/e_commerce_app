@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:e_commerce_app/features/auth/data/repos/auth_repo.dart';
+import 'package:e_commerce_app/features/auth/data/repositories/authentication_repository.dart';
 import 'package:e_commerce_app/core/data/riverpod/riverpod_extensions.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -20,8 +20,8 @@ class ResetPasswordNotifier extends AutoDisposeAsyncNotifier<void> {
   }) async {
     state = const AsyncValue.loading();
     return state = await AsyncValue.guard(
-      () => ref.read(authRepoProvider).resetPassword(
-            email: email,
+      () => ref.read(authenticationRepositoryProvider).resetPassword(
+            email,
           ),
     );
   }

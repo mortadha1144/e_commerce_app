@@ -1,9 +1,11 @@
+import 'package:e_commerce_app/core/data/api/authentication/login_response.dart';
+import 'package:e_commerce_app/core/data/api/dio_provider.dart';
 import 'package:e_commerce_app/core/data/network/async_state.dart';
+import 'package:e_commerce_app/core/data/network/network_exceptions.dart';
 import 'package:e_commerce_app/core/utils/constants/constants.dart';
 import 'package:e_commerce_app/core/utils/widgets/fields/phone_number_field.dart';
-import 'package:e_commerce_app/features/auth/data/models/login_request.dart';
 import 'package:e_commerce_app/features/auth/data/models/user_model.dart';
-import 'package:e_commerce_app/features/auth/providers/auth_provider.dart';
+import 'package:e_commerce_app/features/auth/views/authentication_provider.dart';
 import 'package:e_commerce_app/features/auth/views/widgets/password_form_field.dart';
 import 'package:e_commerce_app/features/auth/views/widgets/custom_social_card.dart';
 import 'package:e_commerce_app/features/auth/views/widgets/no_account_text.dart';
@@ -21,6 +23,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_hook_mutation/riverpod_hook_mutation.dart';
 
 class LoginPage extends HookConsumerWidget {
   const LoginPage({super.key});
@@ -29,12 +32,12 @@ class LoginPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final formKey = useFormKey();
 
-    final phoneNumberController = useTextEditingController();
-    final passwordController = useTextEditingController();
+    final phoneNumberController = useTextEditingController(text: '07700146085');
+    final passwordController = useTextEditingController(text: '12345678');
 
     final remember = useState(false);
 
-    final loginState = ref.watch(loginWithEmailAndPasswordProvider);
+    final mutation = useMutation<LoginResponse>();
 
     return Scaffold(
       appBar: AppBar(
@@ -94,33 +97,24 @@ class LoginPage extends HookConsumerWidget {
           ),
           CustomButton(
             text: context.l10n.continueText,
-            isLoading: loginState.isLoading,
+            isLoading: mutation.isLoading,
             onPressed: () async {
               if (!formKey.currentState!.validate()) return;
 
-              final request = LoginRequest(
-                phoneNumber: phoneNumberController.text,
-                password: passwordController.text,
+              final notifier = ref.read(authenticationProvider.notifier);
+
+              await mutation.mutate(
+                () => notifier.login(
+                  phoneNumber: phoneNumberController.text,
+                  password: passwordController.text,
+                ),
+                context: context,
+                data: (data) => context.replace(RoutesDocument.homeView),
+                // TODO: refactor error handling
+                error: (error, _) => context.showErrorSnackBar(
+                  'Something went wrong',
+                ),
               );
-
-              final login = await ref
-                  .read(loginWithEmailAndPasswordProvider.notifier)
-                  .login(
-                    request: request,
-                  );
-
-              switch (login) {
-                case AsyncStateData<UserData>():
-                  context.push(RoutesDocument.loginSuccessView);
-                  break;
-                case AsyncStateError<UserData>(:final error):
-                  context.showErrorMessage(error);
-                  break;
-                case AsyncStateIdle<UserData>():
-                  break;
-                case AsyncStateLoading<UserData>():
-                  break;
-              }
             },
           ),
           const SizedBox(
@@ -132,14 +126,14 @@ class LoginPage extends HookConsumerWidget {
               CustomSocialCard(
                 icon: Assets.assetsIconsGoogleIcon,
                 onPressed: () async {
-                  final login =
-                      await ref.read(loginWithGoogleProvider.notifier).login();
-                  login.whenDataOrError(
-                    data: (_) => context.push(RoutesDocument.loginSuccessView),
-                    error: (error, _) => context.showErrorSnackBar(
-                      context.getErrorMessage(error),
-                    ),
-                  );
+                  // final login =
+                  //     await ref.read(loginWithGoogleProvider.notifier).login();
+                  // login.whenDataOrError(
+                  //   data: (_) => context.push(RoutesDocument.loginSuccessView),
+                  //   error: (error, _) => context.showErrorSnackBar(
+                  //     context.getErrorMessage(error),
+                  //   ),
+                  // );
                 },
               ),
               CustomSocialCard(

@@ -1,0 +1,66 @@
+{
+  "Freezed Class": {
+    "prefix": "frf",
+    "body": [
+      "import 'package:freezed_annotation/freezed_annotation.dart';",
+      "",
+      "part '${TM_FILENAME_BASE}.freezed.dart';",
+      "part '${TM_FILENAME_BASE}.g.dart';",
+      "",
+      "@freezed",
+      "abstract class ${1:ClassName} with _$${1:ClassName} {",
+      " const factory ${1:ClassName}({",
+      "    $0",
+      "  }) = _${1:ClassName};",
+      "",
+      "  factory ${1:ClassName}.fromJson(Map<String, dynamic> json) =>",
+      "      _$${1:ClassName}FromJson(json);",
+      "}"
+    ],
+    "description": "Creates a new Freezed class with fromJson factory"
+  },
+  "Freezed Union": {
+    "prefix": "frf-u",
+    "body": [
+      "import 'package:freezed_annotation/freezed_annotation.dart';",
+      "",
+      "part '${TM_FILENAME_BASE}.freezed.dart';",
+      "part '${TM_FILENAME_BASE}.g.dart';",
+      "",
+      "@freezed",
+      "class ${1:ClassName} with _$${1:ClassName} {",
+      "  const factory ${1:ClassName}.${2:first}($0) = _${2:First};",
+      "  const factory ${1:ClassName}.${3:second}() = _${3:Second};",
+      "",
+      "  factory ${1:ClassName}.fromJson(Map<String, dynamic> json) =>",
+      "      _$${1:ClassName}FromJson(json);",
+      "}"
+    ],
+    "description": "Creates a new Freezed union class with fromJson factory"
+  },
+  "Retrofit API Client": {
+    "prefix": "retrofit",
+    "body": [
+      "import 'package:dio/dio.dart';",
+      "import 'package:retrofit/retrofit.dart';",
+      "import 'package:riverpod_annotation/riverpod_annotation.dart';",
+      "",
+      "part '${TM_FILENAME_BASE}.g.dart';",
+      "",
+      "@riverpod",
+      "${1:ClassName} ${2:providerName}(Ref ref) {",
+      "  final dio = ref.read(dioProvider);",
+      "  return ${1:ClassName}(dio);",
+      "}",
+      "",
+      "@RestApi()",
+      "abstract class ${1:ClassName} {",
+      "  factory ${1:ClassName}(Dio dio, {String? baseUrl}) = _${1:ClassName};",
+      "",
+      "  @GET('${3:endpoint}')",
+      "  Future<HttpResponse<${4:ResponseType}>> ${5:methodName}();",
+      "}"
+    ],
+    "description": "Creates a Retrofit REST API client class with Riverpod provider"
+  }
+}
