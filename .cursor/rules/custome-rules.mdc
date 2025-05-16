@@ -1,0 +1,6 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+use commands exists in rps.yaml file in the project root directory for run flutter terminal commands

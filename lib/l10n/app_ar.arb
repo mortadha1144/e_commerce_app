@@ -63,5 +63,8 @@
     "cancelLabel": "إلغاء",
     "logoutLabel": "تسجيل الخروج",
     "defaultErrorMessage": "يرجى المحاولة في وقت اخر",
-    "noInternetErrorMessage": "لا يوجد اتصال بالانترنت"
+    "noInternetErrorMessage": "لا يوجد اتصال بالانترنت",
+    "noAccountLabel": "ليس لديك حساب؟",
+    "fullNameLabel": "الاسم الكامل",
+    "fullNameHint": "أدخل اسمك الكامل"
 }

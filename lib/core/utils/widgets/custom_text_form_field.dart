@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/utils/widgets/required_field_label.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -9,6 +10,7 @@ class CustomTextFormField extends StatelessWidget {
     this.hintText,
     this.suffixIcon,
     this.validator,
+    this.optional = true,
   });
 
   final TextEditingController controller;
@@ -17,6 +19,7 @@ class CustomTextFormField extends StatelessWidget {
   final String? hintText;
   final Widget? suffixIcon;
   final String? Function(String?)? validator;
+  final bool optional;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +27,12 @@ class CustomTextFormField extends StatelessWidget {
       keyboardType: keyboardType,
       controller: controller,
       decoration: InputDecoration(
-        labelText: labelText,
+        label: labelText != null
+            ? RequiredFieldLabel(
+                label: labelText!,
+                optional: optional,
+              )
+            : null,
         hintText: hintText,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: suffixIcon,

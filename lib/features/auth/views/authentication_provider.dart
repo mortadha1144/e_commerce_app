@@ -1,5 +1,7 @@
 import 'package:e_commerce_app/core/data/api/authentication/login_request.dart';
 import 'package:e_commerce_app/core/data/api/authentication/login_response.dart';
+import 'package:e_commerce_app/core/data/api/authentication/register_request_body.dart';
+import 'package:e_commerce_app/core/data/api/authentication/register_response.dart';
 import 'package:e_commerce_app/core/data/shared_preferences/preferences.dart';
 import 'package:e_commerce_app/core/data/shared_preferences/shared_preferences_provider.dart';
 import 'package:e_commerce_app/features/auth/data/repositories/authentication_repository.dart';
@@ -56,6 +58,13 @@ class Authentication extends _$Authentication
       ),
     );
     await updateState(state.copyWith(token: response.token));
+    return response;
+  }
+
+  Future<RegisterResponse> register({
+    required RegisterRequestBody request,
+  }) async {
+    final response = await _repository.register(request);
     return response;
   }
 

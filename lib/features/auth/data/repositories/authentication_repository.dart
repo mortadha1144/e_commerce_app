@@ -1,6 +1,8 @@
 import 'package:e_commerce_app/core/data/api/authentication/authentication_client.dart';
 import 'package:e_commerce_app/core/data/api/authentication/login_request.dart';
 import 'package:e_commerce_app/core/data/api/authentication/login_response.dart';
+import 'package:e_commerce_app/core/data/api/authentication/register_request_body.dart';
+import 'package:e_commerce_app/core/data/api/authentication/register_response.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -21,8 +23,9 @@ class AuthenticationRepository {
     return response.data.payload;
   }
 
-  Future<void> register() async {
-    throw UnimplementedError();
+  Future<RegisterResponse> register(RegisterRequestBody request) async {
+    final response = await _client.register(request);
+    return response.data.payload;
   }
 
   Future<void> resetPassword(String email) async {

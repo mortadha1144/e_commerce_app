@@ -146,7 +146,7 @@ GoRouter appRouter(Ref ref) {
       ),
       GoRoute(
         path: RoutesDocument.otpView,
-        builder: (context, state) => const OtpView(),
+        builder: (context, state) => OtpView(phoneNumber: state.extra as String),
       ),
       GoRoute(
         path: RoutesDocument.onBoardingView,

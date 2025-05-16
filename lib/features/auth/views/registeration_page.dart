@@ -1,6 +1,13 @@
+import 'package:e_commerce_app/core/data/api/authentication/register_request_body.dart';
+import 'package:e_commerce_app/core/data/api/authentication/register_response.dart';
+import 'package:e_commerce_app/core/data/api/error/api_error_message.dart';
+import 'package:e_commerce_app/core/utils/app_router.dart';
+import 'package:e_commerce_app/core/utils/extensions/string_extensions.dart';
+import 'package:e_commerce_app/core/utils/snackbar.dart';
+import 'package:e_commerce_app/core/utils/widgets/email_form_field.dart';
 import 'package:e_commerce_app/core/utils/widgets/fields/phone_number_field.dart';
-import 'package:e_commerce_app/features/auth/data/models/sign_up_model.dart';
 import 'package:e_commerce_app/features/auth/providers/create_user_provider.dart';
+import 'package:e_commerce_app/features/auth/views/authentication_provider.dart';
 import 'package:e_commerce_app/features/auth/views/widgets/custom_social_card.dart';
 import 'package:e_commerce_app/features/auth/views/widgets/custom_suffix_icon.dart';
 import 'package:e_commerce_app/features/auth/views/widgets/password_with_confirm_form_fields.dart';
@@ -8,8 +15,6 @@ import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:e_commerce_app/core/utils/constants/sizes.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/utils/hook/form_key.dart';
-import 'package:e_commerce_app/core/data/riverpod/riverpod_extensions.dart';
-import 'package:e_commerce_app/core/utils/snackbar.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_text_form_field.dart';
 import 'package:e_commerce_app/core/utils/widgets/form_body.dart';
@@ -19,19 +24,21 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_hook_mutation/riverpod_hook_mutation.dart';
 
 class RegistrationPage extends HookConsumerWidget {
   const RegistrationPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final mutation = useMutation<RegisterResponse>();
     final formOneKey = useFormKey();
     final formTwoKey = useFormKey();
     final pageController = usePageController();
     final phoneNumberController = useTextEditingController();
     final passwordController = useTextEditingController();
     final confirmPasswordController = useTextEditingController();
-    final displayNameController = useTextEditingController();
+    final fullNameController = useTextEditingController();
     final emailController = useTextEditingController();
     final addressController = useTextEditingController();
 
@@ -121,23 +128,18 @@ class RegistrationPage extends HookConsumerWidget {
               ),
               const Gap(50),
               CustomTextFormField(
-                controller: displayNameController,
+                controller: fullNameController,
                 keyboardType: TextInputType.name,
-                labelText: context.l10n.displayName,
-                hintText: context.l10n.displayNameHint,
+                labelText: context.l10n.fullNameLabel,
+                hintText: context.l10n.fullNameHint,
+                optional: false,
                 suffixIcon:
                     const CustomSuffixIcon(svgIcon: Assets.assetsIconsUser),
                 validator: context.validator().required().build(),
               ),
               const Gap(30),
-              CustomTextFormField(
-                controller: phoneNumberController,
-                keyboardType: TextInputType.phone,
-                labelText: context.l10n.phoneNumber,
-                hintText: context.l10n.phoneNumberHint,
-                suffixIcon:
-                    const CustomSuffixIcon(svgIcon: Assets.assetsIconsPhone),
-                validator: context.validator().phone().required().build(),
+              EmailFormField(
+                emailController: emailController,
               ),
               const Gap(30),
               // address
@@ -148,7 +150,11 @@ class RegistrationPage extends HookConsumerWidget {
                 suffixIcon: const CustomSuffixIcon(
                   svgIcon: Assets.assetsIconsLocationPoint,
                 ),
-                validator: context.validator().minLength(5).build(),
+                validator: context
+                    .validator(optional: true)
+                    .minLength(5)
+                    .maxLength(100)
+                    .build(),
               ),
               const Gap(40),
               Row(
@@ -171,33 +177,42 @@ class RegistrationPage extends HookConsumerWidget {
                     flex: 3,
                     child: CustomButton(
                       text: context.l10n.continueText,
-                      isLoading: ref.watch(createUserProvider).isLoading,
-                      onPressed: () async {
-                        if (!formTwoKey.currentState!.validate()) return;
+                      isLoading: mutation.isLoading,
+                      onPressed: mutation.isLoading
+                          ? null
+                          : () async {
+                              if (!formTwoKey.currentState!.validate()) return;
 
-                        final body = SignUpModel(
-                          email: emailController.text,
-                          password: passwordController.text,
-                          displayName: displayNameController.text,
-                          phoneNumber: phoneNumberController.text,
-                          address: addressController.text,
-                        );
+                              final request = RegisterRequestBody(
+                                phoneNumber: phoneNumberController.text,
+                                password: passwordController.text,
+                                fullName: fullNameController.text,
+                                email: emailController.text.toNullableString,
+                                address:
+                                    addressController.text.toNullableString,
+                              );
 
-                        final createUser =
-                            await ref.read(createUserProvider.notifier).run(
-                                  body: body,
-                                );
+                              final notifier =
+                                  ref.read(authenticationProvider.notifier);
 
-                        createUser.whenDataOrError(
-                          data: (_) {
-                            context.showSuccessSnackBar(
-                                context.l10n.accountCreatedSuccessfully);
-                            context.pop();
-                          },
-                          error: (error, _) => context.showErrorSnackBar(
-                              context.getErrorMessage(error)),
-                        );
-                      },
+                              mutation.mutate(
+                                () => notifier.register(request: request),
+                                context: context,
+                                data: (data) {
+                                  context.showSuccessSnackBar(data.code);
+                                  context.pushReplacement(
+                                    RoutesDocument.otpView,
+                                    extra: phoneNumberController.text,
+                                  );
+                                },
+                                error: (error, _) {
+                                  showApiErrorMessage(
+                                    context: context,
+                                    error: error,
+                                  );
+                                },
+                              );
+                            },
                     ),
                   ),
                 ],

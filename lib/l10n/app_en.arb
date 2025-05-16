@@ -49,5 +49,8 @@
     "cancelLabel": "Cancel",
     "logoutLabel": "Logout",
     "defaultErrorMessage": "Please try again later",
-    "noInternetErrorMessage": "No internet connection"
+    "noInternetErrorMessage": "No internet connection",
+    "noAccountLabel": "Don't have an account?",
+    "fullNameLabel": "Full Name",
+    "fullNameHint": "Enter your full name"
 }

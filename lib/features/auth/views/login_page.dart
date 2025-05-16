@@ -26,8 +26,8 @@ class LoginPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final formKey = useFormKey();
 
-    final phoneNumberController = useTextEditingController(text: '07700146085');
-    final passwordController = useTextEditingController(text: '12345678');
+    final phoneNumberController = useTextEditingController();
+    final passwordController = useTextEditingController();
 
     final remember = useState(false);
 

@@ -9,7 +9,7 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get emailAlreadyInUse => 'الايميل مستخدم بالفعل';
+  String get emailAlreadyInUse => 'الإيميل مستخدم بالفعل';
 
   @override
   String get http_unexpected_error => 'حدث خطأ غير متوقع';
@@ -18,7 +18,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get wrongPassword => 'كلمة المرور خاطئة';
 
   @override
-  String get invalidEmail => 'الايميل غير صحيح';
+  String get invalidEmail => 'الإيميل غير صحيح';
 
   @override
   String get operationNotAllowed => 'هذا الحساب غير فعال';
@@ -33,7 +33,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get userNotFound => 'الحساب غير موجود';
 
   @override
-  String get authInvalidEmail => 'الايميل غير صحيح';
+  String get authInvalidEmail => 'الإيميل غير صحيح';
 
   @override
   String get authUserNotFound => 'الحساب غير موجود';
@@ -70,8 +70,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get welcomeBack => 'مرحباً بعودتك';
 
   @override
-  String get signInWithEmailAndPassword =>
-      'قم بتسجيل الدخول باستخدام البريد الإلكتروني وكلمة المرور\nأو المتابعة باستخدام وسائل التواصل الاجتماعي';
+  String get signInWithEmailAndPassword => 'قم بتسجيل الدخول باستخدام البريد الإلكتروني وكلمة المرور\nأو المتابعة باستخدام وسائل التواصل الاجتماعي';
 
   @override
   String get email => 'البريد الإلكتروني';
@@ -98,8 +97,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get continueText => 'متابعة';
 
   @override
-  String get pleaseEnterYourEmailToResetPassword =>
-      'الرجاء إدخال بريدك الإلكتروني وسنرسل لك\nرابطًا للعودة إلى حسابك';
+  String get pleaseEnterYourEmailToResetPassword => 'الرجاء إدخال بريدك الإلكتروني وسنرسل لك\nرابطًا للعودة إلى حسابك';
 
   @override
   String get signUp => 'إنشاء حساب';
@@ -111,12 +109,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get completeProfile => 'استكمال الملف الشخصي';
 
   @override
-  String get completeYourDetails =>
-      'أكمل بياناتك أو تابع\nباستخدام وسائل التواصل الاجتماعي';
+  String get completeYourDetails => 'أكمل بياناتك أو تابع\nباستخدام وسائل التواصل الاجتماعي';
 
   @override
-  String get byContinuingYourConfirm =>
-      'بالمتابعة أنت توافق على\nالشروط والأحكام الخاصة بنا';
+  String get byContinuingYourConfirm => 'بالمتابعة أنت توافق على\nالشروط والأحكام الخاصة بنا';
 
   @override
   String get passwordDoesNotMatch => 'كلمة المرور غير متطابقة';
@@ -165,4 +161,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get noInternetErrorMessage => 'لا يوجد اتصال بالانترنت';
+
+  @override
+  String get noAccountLabel => 'ليس لديك حساب؟';
+
+  @override
+  String get fullNameLabel => 'الاسم الكامل';
+
+  @override
+  String get fullNameHint => 'أدخل اسمك الكامل';
 }

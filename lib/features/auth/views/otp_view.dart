@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'widgets/otp_view_body.dart';
 
 class OtpView extends StatelessWidget {
-  const OtpView({super.key});
+  const OtpView({super.key, required this.phoneNumber});
+
+  final String phoneNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +13,7 @@ class OtpView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('OTP Verification'),
       ),
-      body: const OtpViewBody(),
+      body: OtpViewBody(phoneNumber: phoneNumber),
     );
   }
 }

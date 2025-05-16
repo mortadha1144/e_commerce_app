@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce_app/core/data/api/authentication/login_request.dart';
+import 'package:e_commerce_app/core/data/api/authentication/register_request_body.dart';
 import 'package:e_commerce_app/core/utils/constants/firebase_collection_name.dart';
 import 'package:e_commerce_app/core/utils/constants/firebase_field_name.dart';
 import 'package:e_commerce_app/core/utils/enums/enums.dart';
 import 'package:e_commerce_app/core/utils/type_defs.dart';
 import 'package:e_commerce_app/features/auth/data/constants/constants.dart';
-import 'package:e_commerce_app/features/auth/data/models/sign_up_model.dart';
 import 'package:e_commerce_app/features/auth/data/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -29,11 +29,11 @@ class FirebaseAuthenticationClient {
   }
 
   Future<void> signUp({
-    required SignUpModel body,
+    required RegisterRequestBody body,
   }) async {
     final credential =
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: body.email,
+      email: body.email ?? '',
       password: body.password,
     );
 
@@ -47,8 +47,8 @@ class FirebaseAuthenticationClient {
       if (!result.exists) {
         final user = UserCreate(
           uid: uid,
-          email: body.email,
-          displayName: body.displayName,
+          email: body.email ?? '',
+          displayName: body.fullName,
           phoneNumber: body.phoneNumber,
           address: body.address,
           createdAt: FieldValue.serverTimestamp(),

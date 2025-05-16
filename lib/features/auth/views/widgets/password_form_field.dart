@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/utils/theme/icons.dart';
+import 'package:e_commerce_app/core/utils/widgets/required_field_label.dart';
 import 'package:e_commerce_app/validator/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -28,7 +29,10 @@ class PasswordFormField extends HookWidget {
       keyboardType: TextInputType.text,
       validator: validation ?? context.validator(optional: optional).build(),
       decoration: InputDecoration(
-        labelText: l10n.password,
+        label: RequiredFieldLabel(
+          label: l10n.password,
+          optional: optional,
+        ),
         hintText: l10n.passwordHint,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         prefixIcon: const Icon(AppIcons.password),

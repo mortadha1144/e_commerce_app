@@ -9,8 +9,7 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get emailAlreadyInUse =>
-      'The email address is already in use by another account.';
+  String get emailAlreadyInUse => 'The email address is already in use by another account.';
 
   @override
   String get http_unexpected_error => 'Unexpected error occurred';
@@ -71,8 +70,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get welcomeBack => 'Welcome Back';
 
   @override
-  String get signInWithEmailAndPassword =>
-      'Sign in with your email and password  \nor continue with social media';
+  String get signInWithEmailAndPassword => 'Sign in with your email and password  \nor continue with social media';
 
   @override
   String get email => 'Email';
@@ -99,8 +97,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get continueText => 'Continue';
 
   @override
-  String get pleaseEnterYourEmailToResetPassword =>
-      'Please enter your email and we will send \nyou a link to return to your account';
+  String get pleaseEnterYourEmailToResetPassword => 'Please enter your email and we will send \nyou a link to return to your account';
 
   @override
   String get signUp => 'Sign Up';
@@ -112,12 +109,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get completeProfile => 'Complete Profile';
 
   @override
-  String get completeYourDetails =>
-      'Complete your details or continue \nwith social media';
+  String get completeYourDetails => 'Complete your details or continue \nwith social media';
 
   @override
-  String get byContinuingYourConfirm =>
-      'By continuing your confirm that you agree \nwith our Term and Condition';
+  String get byContinuingYourConfirm => 'By continuing your confirm that you agree \nwith our Term and Condition';
 
   @override
   String get passwordDoesNotMatch => 'Password does not match';
@@ -166,4 +161,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noInternetErrorMessage => 'No internet connection';
+
+  @override
+  String get noAccountLabel => 'Don\'t have an account?';
+
+  @override
+  String get fullNameLabel => 'Full Name';
+
+  @override
+  String get fullNameHint => 'Enter your full name';
 }

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'otp_form.dart';
 
 class OtpViewBody extends StatelessWidget {
-  const OtpViewBody({super.key});
+  const OtpViewBody({super.key, required this.phoneNumber});
+
+  final String phoneNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,9 @@ class OtpViewBody extends StatelessWidget {
                 'OTP Verification',
                 style: headingStyle,
               ),
-              const Text('We sent your code to +1 898 860 ***'),
+              Text(
+                'We sent your code to ${formatPhoneNumber(phoneNumber)}',
+              ),
               buildTimer(),
               const SizedBox(height: 140),
               const OtpForm(),
@@ -56,5 +60,9 @@ class OtpViewBody extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  String formatPhoneNumber(String phoneNumber) {
+    return phoneNumber.substring(0, phoneNumber.length - 4) + '****';
   }
 }
