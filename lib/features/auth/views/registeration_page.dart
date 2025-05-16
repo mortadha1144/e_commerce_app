@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/core/data/api/authentication/register_request_body.dart';
 import 'package:e_commerce_app/core/data/api/authentication/register_response.dart';
 import 'package:e_commerce_app/core/data/api/error/api_error_message.dart';
+import 'package:e_commerce_app/core/developer/developer_provider.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/extensions/string_extensions.dart';
 import 'package:e_commerce_app/core/utils/snackbar.dart';
@@ -41,6 +42,18 @@ class RegistrationPage extends HookConsumerWidget {
     final fullNameController = useTextEditingController();
     final emailController = useTextEditingController();
     final addressController = useTextEditingController();
+
+    useDeveloperTool(
+      ref: ref,
+      onLongPressed: () {
+        phoneNumberController.text = '07700146084';
+        passwordController.text = '12345678';
+        confirmPasswordController.text = '12345678';
+        fullNameController.text = 'Ahmed Mohamed';
+        emailController.text = 'ahmed@gmail.com';
+        addressController.text = '123 Main St, Anytown, USA';
+      },
+    );
 
     return Scaffold(
       appBar: AppBar(

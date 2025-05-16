@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/core/data/providers/settings_provider.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/theme/theme.dart';
+import 'package:e_commerce_app/core/developer/developer_tool.dart';
 import 'package:e_commerce_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -20,6 +21,10 @@ class MyApp extends HookConsumerWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: settings.locale,
+      builder: (context, child) => FloatingDeveloperToolBuilder(
+        child: child!,
+        show: true,
+      ),
     );
   }
 }
