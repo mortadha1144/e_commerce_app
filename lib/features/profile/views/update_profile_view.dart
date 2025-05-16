@@ -102,7 +102,8 @@ class UpdateProfileView extends HookConsumerWidget {
             labelText: context.l10n.address,
             hintText: context.l10n.addressHint,
             suffixIcon: const CustomSuffixIcon(
-                svgIcon: Assets.assetsIconsLocationpoint),
+              svgIcon: Assets.assetsIconsLocationPoint,
+            ),
             validator: context.validator().minLength(5).build(),
           ),
           const Gap(40),

@@ -3,13 +3,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class TimeDeBouncer {
+  TimeDeBouncer({required this.milliseconds});
+
   /// use for search operation and task that make many request
   ///
   /// cancel the next timer and start another one to preform operation
   final int milliseconds;
   Timer? _timer;
-
-  TimeDeBouncer({required this.milliseconds});
 
   run(VoidCallback action) {
     if (null != _timer) {

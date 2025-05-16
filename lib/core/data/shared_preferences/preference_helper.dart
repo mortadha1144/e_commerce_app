@@ -18,5 +18,3 @@ class PreferenceHelper {
     await _sharedPreference.clear();
   }
 }
-
-

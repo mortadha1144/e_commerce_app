@@ -9,9 +9,8 @@ import 'package:uuid/uuid.dart';
 final cartRepoProvider = Provider.autoDispose<CartRepo>((ref) => CartRepo(ref));
 
 class CartRepo {
-  final Ref _ref;
-
   CartRepo(this._ref);
+  final Ref _ref;
 
   Future<void> submitOrder({
     required List<ProductOrder> items,

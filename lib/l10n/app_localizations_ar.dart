@@ -70,7 +70,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get welcomeBack => 'مرحباً بعودتك';
 
   @override
-  String get signInWithEmailAndPassword => 'قم بتسجيل الدخول باستخدام البريد الإلكتروني وكلمة المرور\nأو المتابعة باستخدام وسائل التواصل الاجتماعي';
+  String get signInWithEmailAndPassword =>
+      'قم بتسجيل الدخول باستخدام البريد الإلكتروني وكلمة المرور\nأو المتابعة باستخدام وسائل التواصل الاجتماعي';
 
   @override
   String get email => 'البريد الإلكتروني';
@@ -97,7 +98,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get continueText => 'متابعة';
 
   @override
-  String get pleaseEnterYourEmailToResetPassword => 'الرجاء إدخال بريدك الإلكتروني وسنرسل لك\nرابطًا للعودة إلى حسابك';
+  String get pleaseEnterYourEmailToResetPassword =>
+      'الرجاء إدخال بريدك الإلكتروني وسنرسل لك\nرابطًا للعودة إلى حسابك';
 
   @override
   String get signUp => 'إنشاء حساب';
@@ -109,10 +111,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get completeProfile => 'استكمال الملف الشخصي';
 
   @override
-  String get completeYourDetails => 'أكمل بياناتك أو تابع\nباستخدام وسائل التواصل الاجتماعي';
+  String get completeYourDetails =>
+      'أكمل بياناتك أو تابع\nباستخدام وسائل التواصل الاجتماعي';
 
   @override
-  String get byContinuingYourConfirm => 'بالمتابعة أنت توافق على\nالشروط والأحكام الخاصة بنا';
+  String get byContinuingYourConfirm =>
+      'بالمتابعة أنت توافق على\nالشروط والأحكام الخاصة بنا';
 
   @override
   String get passwordDoesNotMatch => 'كلمة المرور غير متطابقة';
@@ -155,4 +159,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get logoutLabel => 'تسجيل الخروج';
+
+  @override
+  String get defaultErrorMessage => 'يرجى المحاولة في وقت اخر';
+
+  @override
+  String get noInternetErrorMessage => 'لا يوجد اتصال بالانترنت';
 }

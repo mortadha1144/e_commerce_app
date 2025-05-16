@@ -30,7 +30,7 @@ class CustomBottomNavBarTwo extends StatelessWidget {
           BoxShadow(
               offset: const Offset(0, -15),
               blurRadius: 20,
-              color: const Color(0xFFDADADA).withOpacity(.15))
+              color: const Color(0xFFDADADA).withValues(alpha: .15))
         ],
       ),
       child: SafeArea(

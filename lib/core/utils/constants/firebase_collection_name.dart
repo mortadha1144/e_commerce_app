@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 
 @immutable
 class FirebaseCollectionName {
+  const FirebaseCollectionName._();
   static const thumbnails = 'thumbnails';
   static const categories = 'categories';
   static const home = 'home';
@@ -12,5 +13,4 @@ class FirebaseCollectionName {
   static const favorites = 'favorites';
   static const products = 'products';
   static const orders = 'orders';
-  const FirebaseCollectionName._();
 }

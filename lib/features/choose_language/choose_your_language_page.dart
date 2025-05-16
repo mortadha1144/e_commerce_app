@@ -1,4 +1,3 @@
-
 import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:e_commerce_app/core/utils/constants/sizes.dart';
@@ -81,30 +80,30 @@ class _ChooseYourLanguagePageState
                 ),
                 LanguageButton(
                   language: const LanguageModel(
-                    name: "English",
+                    name: 'English',
                     path: Assets.assetsImagesEnglish,
                   ),
                   onTap: () {
                     ref.read(settingsProvider.notifier).setLocale(
-                          const Locale("en"),
+                          const Locale('en'),
                         );
                   },
-                  tileColor: settings.locale == const Locale("en")
-                      ? context.colorScheme.n7.withOpacity(.2)
+                  tileColor: settings.locale == const Locale('en')
+                      ? context.colorScheme.n7.withValues(alpha: .2)
                       : null,
                 ),
                 LanguageButton(
                   language: const LanguageModel(
-                    name: "العربية",
+                    name: 'العربية',
                     path: Assets.assetsImagesArabic,
                   ),
                   onTap: () {
                     ref.read(settingsProvider.notifier).setLocale(
-                          const Locale("ar"),
+                          const Locale('ar'),
                         );
                   },
-                  tileColor: settings.locale == const Locale("ar")
-                      ? context.colorScheme.n7.withOpacity(.2)
+                  tileColor: settings.locale == const Locale('ar')
+                      ? context.colorScheme.n7.withValues(alpha: .2)
                       : null,
                 ),
                 if (settings.locale != null)
@@ -166,11 +165,10 @@ class LanguageButton extends StatelessWidget {
 }
 
 class LanguageModel {
-  final String name;
-  final String path;
-
   const LanguageModel({
     required this.name,
     required this.path,
   });
+  final String name;
+  final String path;
 }

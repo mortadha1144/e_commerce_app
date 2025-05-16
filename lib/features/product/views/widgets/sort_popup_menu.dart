@@ -8,7 +8,7 @@ class SortPopupMenu extends StatelessWidget {
     required this.selectedSort,
     required this.onSelected,
   });
-  
+
   final Map<Sort, String> sorts;
   final Sort? selectedSort;
   final ValueChanged<Sort?> onSelected;

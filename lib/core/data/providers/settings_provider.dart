@@ -1,4 +1,3 @@
-import 'package:e_commerce_app/core/data/shared_preferences/preference_helper.dart';
 import 'package:e_commerce_app/core/data/shared_preferences/preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

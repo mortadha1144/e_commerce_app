@@ -10,8 +10,7 @@ class OtpViewBody extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: Padding(
-        padding:
-            const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -22,9 +21,9 @@ class OtpViewBody extends StatelessWidget {
               ),
               const Text('We sent your code to +1 898 860 ***'),
               buildTimer(),
-              const SizedBox(height:140),
+              const SizedBox(height: 140),
               const OtpForm(),
-              const SizedBox(height:90),
+              const SizedBox(height: 90),
               GestureDetector(
                 onTap: () {
                   // resend your OTP

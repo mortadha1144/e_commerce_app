@@ -4,7 +4,6 @@ import 'package:e_commerce_app/core/utils/constants/firebase_field_name.dart';
 import 'package:e_commerce_app/core/utils/type_defs.dart';
 import 'package:flutter/foundation.dart' show immutable;
 
-
 @immutable
 class UserInfoPayload extends MapView<String, String> {
   UserInfoPayload({

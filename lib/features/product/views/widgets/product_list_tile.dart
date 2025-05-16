@@ -18,7 +18,6 @@ class ProductListTile extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       height: 130,
       child: Card(
-
         child: Row(
           children: [
             Padding(
@@ -53,7 +52,10 @@ class ProductListTile extends StatelessWidget {
                     children: [
                       Text(
                         '\$${product.price}',
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(color: kPrimaryColor),
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium
+                            ?.copyWith(color: kPrimaryColor),
                       ),
                       FavoriteButton(product: product)
                     ],
@@ -62,7 +64,6 @@ class ProductListTile extends StatelessWidget {
               ),
             ),
           ],
-
         ),
       ),
     );

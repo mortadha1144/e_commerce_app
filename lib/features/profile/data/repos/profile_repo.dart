@@ -12,11 +12,10 @@ import 'package:uuid/uuid.dart';
 final profileRepoProvider = Provider.autoDispose((ref) => ProfileRepo(ref));
 
 class ProfileRepo {
+  ProfileRepo(this._ref);
   final Ref _ref;
   final CollectionReferenceMap _collection =
       FirebaseFirestore.instance.collection(FirebaseCollectionName.users);
-
-  ProfileRepo(this._ref);
 
   Future<UserData> editUser(UserEdit user) async {
     final userId = _ref.read(userIdProvider);

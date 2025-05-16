@@ -1,4 +1,3 @@
-
 import 'package:e_commerce_app/core/data/models/named_object.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

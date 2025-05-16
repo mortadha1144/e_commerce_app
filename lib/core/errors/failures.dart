@@ -2,9 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class Failure {
-  final String errMessage;
-
   Failure(this.errMessage);
+  final String errMessage;
 }
 
 class ServerFailure extends Failure {
@@ -33,11 +32,11 @@ class ServerFailure extends Failure {
         return ServerFailure('No user found for that email.');
 
       default:
-        return ServerFailure('Opps There was an error ,Please try later!');
+        return ServerFailure('Oops There was an error ,Please try later!');
     }
   }
 
-  factory ServerFailure.fromDioExeotion(DioException dioException) {
+  factory ServerFailure.fromDioExertion(DioException dioException) {
     switch (dioException.type) {
       case DioExceptionType.connectionTimeout:
         return ServerFailure('Connection timeout with ApiServer');
@@ -51,13 +50,11 @@ class ServerFailure extends Failure {
         return ServerFailure.fromBadResponse(
             dioException.response!.statusCode!, dioException.response!.data);
       case DioExceptionType.cancel:
-        return ServerFailure('Request to ApiServer was canceld');
+        return ServerFailure('Request to ApiServer was canceled');
       case DioExceptionType.connectionError:
         return ServerFailure('No Internet Connection');
       case DioExceptionType.unknown:
-        return ServerFailure('Unkown Error, Please try again!');
-      default:
-        return ServerFailure('Opps There was an error ,Please try later!');
+        return ServerFailure('Unknown Error, Please try again!');
     }
   }
 
@@ -65,14 +62,13 @@ class ServerFailure extends Failure {
     if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
       return ServerFailure(response['error']['message']);
     } else if (statusCode == 404) {
-      return ServerFailure('Your requist not found, Please try later!');
+      return ServerFailure('Your request not found, Please try later!');
     } else if (statusCode == 500) {
       return ServerFailure('Internet Server error, Please try later!');
     }
-    return ServerFailure('Opps There was an error ,Please try later!');
+    return ServerFailure('Oops There was an error ,Please try later!');
   }
 }
-
 
 // extension GetError on Object {
 //   String get getErrorMessage {
@@ -81,7 +77,7 @@ class ServerFailure extends Failure {
 //       errMessage =
 //           ServerFailure.fromFirebaseAuthException(this as FirebaseAuthException)
 //               .errMessage;
-   
+
 //     } else {
 //       errMessage = ServerFailure(toString()).errMessage;
 //     }

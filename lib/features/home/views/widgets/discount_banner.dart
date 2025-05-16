@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class DiscountBanner extends StatelessWidget {
   const DiscountBanner({
     super.key,
@@ -12,7 +13,7 @@ class DiscountBanner extends StatelessWidget {
         horizontal: 20,
         vertical: 15,
       ),
-      width: double.infinity,  
+      width: double.infinity,
       decoration: BoxDecoration(
         color: const Color(0xFF4A3298),
         borderRadius: BorderRadius.circular(20),

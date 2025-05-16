@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/utils/widgets/fields/phone_number_field.dart';
 import 'package:e_commerce_app/features/auth/data/models/sign_up_model.dart';
 import 'package:e_commerce_app/features/auth/providers/create_user_provider.dart';
 import 'package:e_commerce_app/features/auth/views/widgets/custom_social_card.dart';
@@ -11,7 +12,6 @@ import 'package:e_commerce_app/core/data/riverpod/riverpod_extensions.dart';
 import 'package:e_commerce_app/core/utils/snackbar.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_text_form_field.dart';
-import 'package:e_commerce_app/core/utils/widgets/email_form_field.dart';
 import 'package:e_commerce_app/core/utils/widgets/form_body.dart';
 import 'package:e_commerce_app/validator/extension.dart';
 import 'package:flutter/material.dart';
@@ -20,19 +20,19 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SignUpPage extends HookConsumerWidget {
-  const SignUpPage({super.key});
+class RegistrationPage extends HookConsumerWidget {
+  const RegistrationPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final formOneKey = useFormKey();
     final formTwoKey = useFormKey();
     final pageController = usePageController();
-    final emailController = useTextEditingController();
+    final phoneNumberController = useTextEditingController();
     final passwordController = useTextEditingController();
     final confirmPasswordController = useTextEditingController();
     final displayNameController = useTextEditingController();
-    final phoneNumberController = useTextEditingController();
+    final emailController = useTextEditingController();
     final addressController = useTextEditingController();
 
     return Scaffold(
@@ -60,7 +60,7 @@ class SignUpPage extends HookConsumerWidget {
                 textAlign: TextAlign.center,
               ),
               const Gap(50),
-              EmailFormField(emailController: emailController),
+              PhoneNumberField(phoneNumberController),
               const Gap(30),
               PasswordWithConfirmFormFields(
                 passwordController: passwordController,
@@ -146,7 +146,8 @@ class SignUpPage extends HookConsumerWidget {
                 labelText: context.l10n.address,
                 hintText: context.l10n.addressHint,
                 suffixIcon: const CustomSuffixIcon(
-                    svgIcon: Assets.assetsIconsLocationpoint),
+                  svgIcon: Assets.assetsIconsLocationPoint,
+                ),
                 validator: context.validator().minLength(5).build(),
               ),
               const Gap(40),

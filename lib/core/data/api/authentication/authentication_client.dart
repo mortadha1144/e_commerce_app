@@ -17,7 +17,8 @@ AuthenticationClient authenticationClient(Ref ref) {
 
 @RestApi()
 abstract class AuthenticationClient {
-  factory AuthenticationClient(Dio dio, {String? baseUrl}) = _AuthenticationClient;
+  factory AuthenticationClient(Dio dio, {String? baseUrl}) =
+      _AuthenticationClient;
 
   @POST('/Auth/login')
   Future<HttpResponse<ApiResponse<LoginResponse>>> login(

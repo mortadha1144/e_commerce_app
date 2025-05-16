@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 class CustomSocialCard extends StatelessWidget {
   const CustomSocialCard({
     super.key,
@@ -15,8 +16,7 @@ class CustomSocialCard extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        margin:
-            const EdgeInsets.symmetric(horizontal: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 10),
         padding: const EdgeInsets.all(12),
         height: 40,
         width: 40,

@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/utils/constants/constants.dart';
 import 'package:flutter/material.dart';
+
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
@@ -27,10 +28,10 @@ class CustomButton extends StatelessWidget {
       height: size?.height ?? 56,
       child: TextButton(
         style: ButtonStyle(
-          backgroundColor: MaterialStatePropertyAll(
+          backgroundColor: WidgetStatePropertyAll(
             backgroundColor ?? kPrimaryColor,
           ),
-          shape: MaterialStatePropertyAll(
+          shape: WidgetStatePropertyAll(
             RoundedRectangleBorder(
               side: isOutline
                   ? const BorderSide(color: kTextColor)

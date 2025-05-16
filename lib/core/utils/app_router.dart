@@ -4,7 +4,7 @@ import 'package:e_commerce_app/features/auth/views/forgot_password_page.dart';
 import 'package:e_commerce_app/features/auth/views/login_page.dart';
 import 'package:e_commerce_app/features/auth/views/login_success_view.dart';
 import 'package:e_commerce_app/features/auth/views/otp_view.dart';
-import 'package:e_commerce_app/features/auth/views/sign_up_page.dart';
+import 'package:e_commerce_app/features/auth/views/registeration_page.dart';
 import 'package:e_commerce_app/features/cart/views/cart_view.dart';
 import 'package:e_commerce_app/features/favorite/views/favorite_view.dart';
 import 'package:e_commerce_app/features/home/views/bottom_navigation.dart';
@@ -130,7 +130,7 @@ GoRouter appRouter(Ref ref) {
       // ),
       GoRoute(
         path: RoutesDocument.signUp,
-        builder: (context, state) => const SignUpPage(),
+        builder: (context, state) => const RegistrationPage(),
       ),
       GoRoute(
         path: RoutesDocument.login,

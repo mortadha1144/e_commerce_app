@@ -15,7 +15,7 @@ class LoginSuccessViewBody extends StatelessWidget {
           'assets/images/success.png',
           height: 4,
         ),
-        const SizedBox(height:8),
+        const SizedBox(height: 8),
         const Text(
           'Login Success',
           style: TextStyle(
@@ -28,7 +28,7 @@ class LoginSuccessViewBody extends StatelessWidget {
           flex: 2,
         ),
         SizedBox(
-          width:60,
+          width: 60,
           child: CustomButton(
             text: 'Back To home',
             onPressed: () {

@@ -23,7 +23,7 @@ extension ToJson<T> on List<T> {
 }
 
 extension AppLocalizationsExtension on BuildContext {
-  AppLocalizations get l10n => AppLocalizations.of(this)!;
+  AppLocalizations get l10n => AppLocalizations.of(this);
   String get locale => l10n.localeName;
 }
 
@@ -60,10 +60,10 @@ extension AdditionalColors on ColorScheme {
 
 extension Capitalize on String {
   String capitalize() {
-    if ( isEmpty) {
+    if (isEmpty) {
       return this;
     }
-    return "${this[0].toUpperCase()}${substring(1)}";
+    return '${this[0].toUpperCase()}${substring(1)}';
   }
 }
 

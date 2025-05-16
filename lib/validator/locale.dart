@@ -3,11 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:form_validator/form_validator.dart';
 
 class AppFormValidatorLocale extends FormValidatorLocale {
+  AppFormValidatorLocale(this.context);
   final BuildContext context;
 
-  AppFormValidatorLocale(this.context);
-
-  AppLocalizations get _l10n => AppLocalizations.of(context)!;
+  AppLocalizations get _l10n => AppLocalizations.of(context);
 
   @override
   String email(String v) => _l10n.invalidEmail;
@@ -25,14 +24,14 @@ class AppFormValidatorLocale extends FormValidatorLocale {
   String url(String v) => _l10n.validationUrl;
 
   @override
-  String name() => "all";
+  String name() => 'all';
 
   @override
-  String phoneNumber(String v) => "invalid phone number";
+  String phoneNumber(String v) => 'invalid phone number';
 
   @override
-  String ip(String v) => "invalid ip address";
+  String ip(String v) => 'invalid ip address';
 
   @override
-  String ipv6(String v) => "invalid ipv6 address";
+  String ipv6(String v) => 'invalid ipv6 address';
 }

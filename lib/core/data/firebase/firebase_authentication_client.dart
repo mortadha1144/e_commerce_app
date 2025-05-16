@@ -170,5 +170,4 @@ class FirebaseAuthenticationClient {
       email: email,
     );
   }
-  
 }

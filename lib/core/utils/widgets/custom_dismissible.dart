@@ -1,4 +1,3 @@
-
 import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';

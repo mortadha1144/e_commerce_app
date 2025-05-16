@@ -17,8 +17,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class PaginatedProductsGridView extends StatefulHookConsumerWidget {
-  final NamedObject? category;
   const PaginatedProductsGridView({super.key, this.category});
+  final NamedObject? category;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -31,7 +31,7 @@ class _AllProductsViewState extends ConsumerState<PaginatedProductsGridView> {
     final isSearch = useState<bool>(false);
     final searchController = useTextEditingController();
     final filter =
-        useState<ProductsFilter>(ProductsFilter(category:widget.category));
+        useState<ProductsFilter>(ProductsFilter(category: widget.category));
     final query = ref.watch(allProductQueryProvider(filter.value));
 
     return Scaffold(

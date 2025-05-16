@@ -7,7 +7,7 @@ extension FormStateX on GlobalKey<FormState> {
 
   bool isNotValid() {
     final current = !isValid();
-    if (current) debugPrint("Form is not valid");
+    if (current) debugPrint('Form is not valid');
     return current;
   }
 }

@@ -9,8 +9,8 @@ import '../../../core/utils/widgets/custom_bottom_nav_bar.dart';
 import 'home_view.dart';
 
 class BottomNavigationBarScaffold extends StatefulWidget {
-  final Widget child;
   const BottomNavigationBarScaffold({super.key, required this.child});
+  final Widget child;
 
   @override
   State<BottomNavigationBarScaffold> createState() =>

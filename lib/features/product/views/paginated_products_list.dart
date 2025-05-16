@@ -12,8 +12,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class PaginatedProductsList extends StatefulHookConsumerWidget {
-  final ProductsFilter filter;
   const PaginatedProductsList({super.key, required this.filter});
+  final ProductsFilter filter;
   @override
   ConsumerState createState() => _PaginatedProductsListState();
 }
@@ -50,7 +50,6 @@ class _PaginatedProductsListState extends ConsumerState<PaginatedProductsList> {
   }) {
     final searchDeBouncer = TimeDeBouncer(milliseconds: 500);
     return AppBar(
-
       title: isSearch.value
           ? CustomSearchField(
               controller: searchController,

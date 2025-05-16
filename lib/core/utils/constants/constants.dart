@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 const kPrimaryColor = Color(0xFFFF7643);
 const kPrimaryLightColor = Color(0xFFFFECDF);
 const kPrimaryGradientColor = LinearGradient(
@@ -25,29 +24,28 @@ const productColors = [
 
 const headingStyle = TextStyle(
   color: Colors.black,
-  fontSize:28,
+  fontSize: 28,
   fontWeight: FontWeight.bold,
   height: 1.5,
 );
 
 // Form Error
 final RegExp emailValidatorRegExp =
-    RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
-const String kEmailNullError = "Please Enter your email";
-const String kInvalidEmailError = "Please Enter Valid Email";
-const String kPassNullError = "Please Enter your password";
-const String kShortPassError = "Password is too short";
+    RegExp(r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+');
+const String kEmailNullError = 'Please Enter your email';
+const String kInvalidEmailError = 'Please Enter Valid Email';
+const String kPassNullError = 'Please Enter your password';
+const String kShortPassError = 'Password is too short';
 const String kMatchPassError = "Passwords don't match";
-const String kNameNullError = "Please Enter your name";
-const String kPhoneNumberNullError = "Please Enter your phone number";
-const String kAddressNullError = "Please Enter your address";
-const String kUsersCollection = "users";
-const String kCartCollection = "cart";
-const String kFavoritesCollection = "favorites";
+const String kNameNullError = 'Please Enter your name';
+const String kPhoneNumberNullError = 'Please Enter your phone number';
+const String kAddressNullError = 'Please Enter your address';
+const String kUsersCollection = 'users';
+const String kCartCollection = 'cart';
+const String kFavoritesCollection = 'favorites';
 
 final otpInputDecoration = InputDecoration(
-  contentPadding:
-      const EdgeInsets.symmetric(vertical:15),
+  contentPadding: const EdgeInsets.symmetric(vertical: 15),
   enabledBorder: outLineInputBorder(),
   focusedBorder: outLineInputBorder(),
   border: outLineInputBorder(),

@@ -4,10 +4,6 @@ import 'package:flutter/foundation.dart' show immutable;
 
 @immutable
 class AuthState {
-  final AuthResult? result;
-
-  final UserId? userId;
-
   const AuthState({
     required this.result,
     required this.userId,
@@ -20,6 +16,9 @@ class AuthState {
   const AuthState.aborted()
       : result = null,
         userId = null;
+  final AuthResult? result;
+
+  final UserId? userId;
 
   AuthState copyWithIsLoading(bool isLoading) => AuthState(
         result: result,
@@ -28,8 +27,7 @@ class AuthState {
   @override
   bool operator ==(covariant AuthState other) =>
       identical(this, other) ||
-      (result == other.result &&
-          userId == other.userId);
+      (result == other.result && userId == other.userId);
 
   @override
   int get hashCode => Object.hash(

@@ -38,7 +38,8 @@ class SpecialOffers extends StatelessWidget {
                     image: specialOfferModel.image,
                     numOfBrands: specialOfferModel.nofBrands,
                     onPress: () {
-                      context.pushNativeRoute( PaginatedProductsList(filter: ProductsFilter(
+                      context.pushNativeRoute(PaginatedProductsList(
+                          filter: ProductsFilter(
                         category: specialOfferModel.category,
                         subCategory: specialOfferModel.subCategory,
                       )));
@@ -92,8 +93,8 @@ class SpecialOfferCard extends StatelessWidget {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      const Color(0xFF343434).withOpacity(0.4),
-                      const Color(0xFF343434).withOpacity(0.15),
+                      const Color(0xFF343434).withValues(alpha: .4),
+                      const Color(0xFF343434).withValues(alpha: .15),
                     ],
                   )),
                 ),

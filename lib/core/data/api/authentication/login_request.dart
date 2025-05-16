@@ -6,10 +6,8 @@ part 'login_request.g.dart';
 @freezed
 abstract class LoginRequest with _$LoginRequest {
   const factory LoginRequest({
-    @JsonKey(name: LoginRequest.phoneNumberKey)
-    required String phoneNumber,
-    @JsonKey(name: LoginRequest.passwordKey)
-    required String password,
+    @JsonKey(name: LoginRequest.phoneNumberKey) required String phoneNumber,
+    @JsonKey(name: LoginRequest.passwordKey) required String password,
   }) = _LoginRequest;
 
   factory LoginRequest.fromJson(Map<String, dynamic> json) =>

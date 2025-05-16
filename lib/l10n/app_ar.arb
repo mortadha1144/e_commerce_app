@@ -1,14 +1,14 @@
 {
     "@@locale": "ar",
-    "emailAlreadyInUse": "الايميل مستخدم بالفعل",
+    "emailAlreadyInUse": "الإيميل مستخدم بالفعل",
     "http_unexpected_error": "حدث خطأ غير متوقع",
     "wrongPassword": "كلمة المرور خاطئة",
-    "invalidEmail": "الايميل غير صحيح",
+    "invalidEmail": "الإيميل غير صحيح",
     "operationNotAllowed": "هذا الحساب غير فعال",
     "weakPassword": "كلمة المرور ضعيفة",
     "userDisabled": "هذا الحساب غير فعال",
     "userNotFound": "الحساب غير موجود",
-    "authInvalidEmail": "الايميل غير صحيح",
+    "authInvalidEmail": "الإيميل غير صحيح",
     "authUserNotFound": "الحساب غير موجود",
     "chooseYourLanguage": "اختر لغتك",
     "next": "التالي",
@@ -61,5 +61,7 @@
     "confirmLogoutLabel": "تأكيد تسجيل الخروج",
     "areYouSureLogout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
     "cancelLabel": "إلغاء",
-    "logoutLabel": "تسجيل الخروج"
+    "logoutLabel": "تسجيل الخروج",
+    "defaultErrorMessage": "يرجى المحاولة في وقت اخر",
+    "noInternetErrorMessage": "لا يوجد اتصال بالانترنت"
 }

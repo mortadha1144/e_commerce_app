@@ -26,7 +26,7 @@ class Utils {
       ..showSnackBar(snackBar);
   }
 
-  static showNotificatonSnackBar(String? title) {
+  static showNotificationSnackBar(String? title) {
     if (title == null) return;
     SnackBar snackBar = SnackBar(
       content: Text(title),
@@ -40,40 +40,46 @@ class Utils {
 
 extension SnackBarX on BuildContext {
   void showSnackBar(String text) {
-    ScaffoldMessenger.of(this).showSnackBar(
-      SnackBar(
-        content: Text(text),
-        behavior: SnackBarBehavior.floating,
-        // backgroundColor: theme.colorScheme.error,
-      ),
-    );
+    ScaffoldMessenger.of(this)
+      ..removeCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          content: Text(text),
+          behavior: SnackBarBehavior.floating,
+          // backgroundColor: theme.colorScheme.error,
+        ),
+      );
   }
 
   void showSuccessSnackBar(String text) {
     // final theme = Theme.of(this);
 
-    ScaffoldMessenger.of(this).showSnackBar(
-      SnackBar(
-        content: Text(text),
-        behavior: SnackBarBehavior.floating,
-      ),
-    );
+    ScaffoldMessenger.of(this)
+      ..removeCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          content: Text(text),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
   }
 
   void showErrorSnackBar(String text) {
     final theme = Theme.of(this);
 
-    ScaffoldMessenger.of(this).showSnackBar(
-      SnackBar(
-        content: Text(
-          text,
-          style: TextStyle(
-            color: theme.colorScheme.onError,
+    ScaffoldMessenger.of(this)
+      ..removeCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          content: Text(
+            text,
+            style: TextStyle(
+              color: theme.colorScheme.onError,
+            ),
           ),
+          backgroundColor: theme.colorScheme.error,
         ),
-        backgroundColor: theme.colorScheme.error,
-      ),
-    );
+      );
   }
 
   void showErrorMessage(NetworkExceptions error) {

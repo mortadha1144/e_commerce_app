@@ -47,5 +47,7 @@
     "confirmLogoutLabel": "Confirm Logout",
     "areYouSureLogout": "Are you sure you want to logout?",
     "cancelLabel": "Cancel",
-    "logoutLabel": "Logout"
+    "logoutLabel": "Logout",
+    "defaultErrorMessage": "Please try again later",
+    "noInternetErrorMessage": "No internet connection"
 }

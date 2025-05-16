@@ -1,15 +1,16 @@
 import 'package:e_commerce_app/core/utils/constants/constants.dart';
 import 'package:flutter/material.dart';
+
 class CustomSearchField extends StatelessWidget {
-  final TextEditingController controller;
-  final ValueChanged<String> onChanged;
-  final bool autoFocus;
   const CustomSearchField({
     super.key,
     required this.controller,
     required this.onChanged,
     this.autoFocus = true,
   });
+  final TextEditingController controller;
+  final ValueChanged<String> onChanged;
+  final bool autoFocus;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class CustomSearchField extends StatelessWidget {
       width: double.infinity,
       height: 50,
       decoration: BoxDecoration(
-        color: kSecondaryColor.withOpacity(.1),
+        color: kSecondaryColor.withValues(alpha: .1),
         borderRadius: BorderRadius.circular(15),
       ),
       child: TextField(

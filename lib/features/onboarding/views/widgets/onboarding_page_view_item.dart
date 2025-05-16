@@ -1,7 +1,6 @@
 import 'package:e_commerce_app/core/utils/constants/constants.dart';
 import 'package:flutter/material.dart';
 
-
 class OnBoardingPageViewItem extends StatelessWidget {
   const OnBoardingPageViewItem({
     super.key,

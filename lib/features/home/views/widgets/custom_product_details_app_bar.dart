@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/utils/widgets/rounded_icon_button.dart';
 
-class CustomAppBar extends StatelessWidget  {
+class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
     super.key,
     required this.rating,
@@ -12,13 +12,11 @@ class CustomAppBar extends StatelessWidget  {
 
   final double rating;
 
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding:
-            const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

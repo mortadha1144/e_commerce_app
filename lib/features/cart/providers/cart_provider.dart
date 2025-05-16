@@ -2,7 +2,6 @@ import 'package:e_commerce_app/core/data/shared_preferences/preferences.dart';
 import 'package:e_commerce_app/features/cart/data/models/cart_item_model.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/data/providers/object_preference_provider.dart';
-import 'package:e_commerce_app/core/data/shared_preferences/preference_helper.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

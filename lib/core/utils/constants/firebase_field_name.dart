@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 
 @immutable
 class FirebaseFieldName {
+  const FirebaseFieldName._();
   static const userId = 'uid';
   static const address = 'address';
   static const email = 'email';
@@ -29,5 +30,4 @@ class FirebaseFieldName {
   static const categoryId = 'categoryId';
   static const categoryName = 'categoryName';
   static const numOfBrands = 'num_of_brands';
-  const FirebaseFieldName._();
 }

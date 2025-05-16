@@ -1,10 +1,7 @@
 import 'package:e_commerce_app/core/data/api/authentication/login_response.dart';
-import 'package:e_commerce_app/core/data/api/dio_provider.dart';
-import 'package:e_commerce_app/core/data/network/async_state.dart';
-import 'package:e_commerce_app/core/data/network/network_exceptions.dart';
+import 'package:e_commerce_app/core/data/api/error/api_error_message.dart';
 import 'package:e_commerce_app/core/utils/constants/constants.dart';
 import 'package:e_commerce_app/core/utils/widgets/fields/phone_number_field.dart';
-import 'package:e_commerce_app/features/auth/data/models/user_model.dart';
 import 'package:e_commerce_app/features/auth/views/authentication_provider.dart';
 import 'package:e_commerce_app/features/auth/views/widgets/password_form_field.dart';
 import 'package:e_commerce_app/features/auth/views/widgets/custom_social_card.dart';
@@ -13,10 +10,7 @@ import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/constants/assets.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/utils/hook/form_key.dart';
-import 'package:e_commerce_app/core/data/riverpod/riverpod_extensions.dart';
-import 'package:e_commerce_app/core/utils/snackbar.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
-import 'package:e_commerce_app/core/utils/widgets/email_form_field.dart';
 import 'package:e_commerce_app/core/utils/widgets/form_body.dart';
 import 'package:e_commerce_app/validator/validator.dart';
 import 'package:flutter/material.dart';
@@ -110,9 +104,10 @@ class LoginPage extends HookConsumerWidget {
                 ),
                 context: context,
                 data: (data) => context.replace(RoutesDocument.homeView),
-                // TODO: refactor error handling
-                error: (error, _) => context.showErrorSnackBar(
-                  'Something went wrong',
+                // TODO: handle user not verified error
+                error: (error, _) => showApiErrorMessage(
+                  context: context,
+                  error: error,
                 ),
               );
             },
