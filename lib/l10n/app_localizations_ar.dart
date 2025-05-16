@@ -170,4 +170,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get fullNameHint => 'أدخل اسمك الكامل';
+
+  @override
+  String get otpVerificationLabel => 'رمز التحقق';
 }

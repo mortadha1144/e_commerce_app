@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/otp_view_body.dart';
@@ -9,9 +10,10 @@ class OtpView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('OTP Verification'),
+        title: Text(l10n.otpVerificationLabel),
       ),
       body: OtpViewBody(phoneNumber: phoneNumber),
     );

@@ -170,4 +170,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get fullNameHint => 'Enter your full name';
+
+  @override
+  String get otpVerificationLabel => 'OTP Verification';
 }

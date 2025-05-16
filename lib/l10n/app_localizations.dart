@@ -412,6 +412,12 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'أدخل اسمك الكامل'**
   String get fullNameHint;
+
+  /// No description provided for @otpVerificationLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'رمز التحقق'**
+  String get otpVerificationLabel;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

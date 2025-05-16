@@ -66,5 +66,6 @@
     "noInternetErrorMessage": "لا يوجد اتصال بالانترنت",
     "noAccountLabel": "ليس لديك حساب؟",
     "fullNameLabel": "الاسم الكامل",
-    "fullNameHint": "أدخل اسمك الكامل"
+    "fullNameHint": "أدخل اسمك الكامل",
+    "otpVerificationLabel": "رمز التحقق"
 }
