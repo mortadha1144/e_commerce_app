@@ -19,7 +19,11 @@ class CustomBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.only(
+        bottom: 16,
+      ),
       decoration: BoxDecoration(
+        color: Colors.white,
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(30),
           topRight: Radius.circular(30),
@@ -36,66 +40,64 @@ class CustomBottomNavBar extends StatelessWidget {
           topLeft: Radius.circular(30.0),
           topRight: Radius.circular(30.0),
         ),
-        child: SizedBox(
-          height: 70,
-          child: Consumer(builder: (context, ref, _) {
-            final cartCount = ref.watch(cartProvider).length;
-            final favoriteCount = ref.watch(favoriteProvider).length;
-            return BottomNavigationBar(
-              type: BottomNavigationBarType.fixed,
-              currentIndex: selectedIndex,
-              onTap: onTap,
-              backgroundColor: Colors.white,
-              selectedItemColor: kPrimaryColor,
-              unselectedItemColor: const Color(0xFFB6B6B6),
-              items: [
-                BottomNavigationBarItem(
-                  label: 'Home',
-                  icon: SvgPicture.asset(
-                    Assets.assetsIconsShopIcon,
-                    colorFilter: ColorFilter.mode(
-                        selectedIndex == 0
-                            ? kPrimaryColor
-                            : const Color(0xFFB6B6B6),
-                        BlendMode.srcIn),
-                  ),
-                  //
+        child: Consumer(builder: (context, ref, _) {
+          final cartCount = ref.watch(cartProvider).length;
+          final favoriteCount = ref.watch(favoriteProvider).length;
+          return BottomNavigationBar(
+            elevation: 0,
+            type: BottomNavigationBarType.fixed,
+            currentIndex: selectedIndex,
+            onTap: onTap,
+            backgroundColor: Colors.white,
+            selectedItemColor: kPrimaryColor,
+            unselectedItemColor: const Color(0xFFB6B6B6),
+            items: [
+              BottomNavigationBarItem(
+                label: 'Home',
+                icon: SvgPicture.asset(
+                  Assets.assetsIconsShopIcon,
+                  colorFilter: ColorFilter.mode(
+                      selectedIndex == 0
+                          ? kPrimaryColor
+                          : const Color(0xFFB6B6B6),
+                      BlendMode.srcIn),
                 ),
-                BottomNavigationBarItem(
-                  label: 'Cart',
-                  icon: IconWithCount(
-                    isSelected: selectedIndex == 1,
-                    image: Assets.assetsIconsCartIcon,
-                    count: cartCount,
-                  ),
-                  //
+                //
+              ),
+              BottomNavigationBarItem(
+                label: 'Cart',
+                icon: IconWithCount(
+                  isSelected: selectedIndex == 1,
+                  image: Assets.assetsIconsCartIcon,
+                  count: cartCount,
                 ),
-                BottomNavigationBarItem(
-                  label: 'Favorite',
-                  icon: IconWithCount(
-                    image: Assets.assetsIconsHeartIcon,
-                    isSelected: selectedIndex == 2,
-                    count: favoriteCount,
-                  ),
-                  //
+                //
+              ),
+              BottomNavigationBarItem(
+                label: 'Favorite',
+                icon: IconWithCount(
+                  image: Assets.assetsIconsHeartIcon,
+                  isSelected: selectedIndex == 2,
+                  count: favoriteCount,
                 ),
-                BottomNavigationBarItem(
-                  label: 'Profile',
-                  icon: SvgPicture.asset(
-                    Assets.assetsIconsUserIcon,
-                    colorFilter: ColorFilter.mode(
-                        selectedIndex == 3
-                            ? kPrimaryColor
-                            : const Color(0xFFB6B6B6),
-                        BlendMode.srcIn),
-                  ),
+                //
+              ),
+              BottomNavigationBarItem(
+                label: 'Profile',
+                icon: SvgPicture.asset(
+                  Assets.assetsIconsUserIcon,
+                  colorFilter: ColorFilter.mode(
+                      selectedIndex == 3
+                          ? kPrimaryColor
+                          : const Color(0xFFB6B6B6),
+                      BlendMode.srcIn),
                 ),
-              ],
-              showSelectedLabels: false,
-              showUnselectedLabels: false,
-            );
-          }),
-        ),
+              ),
+            ],
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+          );
+        }),
       ),
     );
   }

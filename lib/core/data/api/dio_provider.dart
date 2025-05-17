@@ -25,13 +25,16 @@ part 'dio_provider.g.dart';
 Dio dio(Ref ref) {
   final dio = Dio();
 
-  dio.options.baseUrl = 'https://10.0.2.2:5001/api';
+  final _host =
+      Platform.isAndroid ? '10.0.2.2' : 'localhost'; // for android emulator
+
+  dio.options.baseUrl = 'https://$_host:5001/api';
 
   // Add certificate bypass for development
   // allow self-signed certificate
   (dio.httpClientAdapter as IOHttpClientAdapter).createHttpClient = () {
     final client = HttpClient();
-    client.badCertificateCallback = (cert, host, port) => host == '10.0.2.2';
+    client.badCertificateCallback = (cert, host, port) => host == _host;
     return client;
   };
 

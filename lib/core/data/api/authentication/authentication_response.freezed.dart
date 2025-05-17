@@ -4,7 +4,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'login_response.dart';
+part of 'authentication_response.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,26 +14,26 @@ part of 'login_response.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$LoginResponse {
-  @JsonKey(name: LoginResponse.tokenKey)
+mixin _$AuthenticationResponse {
+  @JsonKey(name: AuthenticationResponse.tokenKey)
   String get token;
 
-  /// Create a copy of LoginResponse
+  /// Create a copy of AuthenticationResponse
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $LoginResponseCopyWith<LoginResponse> get copyWith =>
-      _$LoginResponseCopyWithImpl<LoginResponse>(
-          this as LoginResponse, _$identity);
+  $AuthenticationResponseCopyWith<AuthenticationResponse> get copyWith =>
+      _$AuthenticationResponseCopyWithImpl<AuthenticationResponse>(
+          this as AuthenticationResponse, _$identity);
 
-  /// Serializes this LoginResponse to a JSON map.
+  /// Serializes this AuthenticationResponse to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is LoginResponse &&
+            other is AuthenticationResponse &&
             (identical(other.token, token) || other.token == token));
   }
 
@@ -43,28 +43,28 @@ mixin _$LoginResponse {
 
   @override
   String toString() {
-    return 'LoginResponse(token: $token)';
+    return 'AuthenticationResponse(token: $token)';
   }
 }
 
 /// @nodoc
-abstract mixin class $LoginResponseCopyWith<$Res> {
-  factory $LoginResponseCopyWith(
-          LoginResponse value, $Res Function(LoginResponse) _then) =
-      _$LoginResponseCopyWithImpl;
+abstract mixin class $AuthenticationResponseCopyWith<$Res> {
+  factory $AuthenticationResponseCopyWith(AuthenticationResponse value,
+          $Res Function(AuthenticationResponse) _then) =
+      _$AuthenticationResponseCopyWithImpl;
   @useResult
-  $Res call({@JsonKey(name: LoginResponse.tokenKey) String token});
+  $Res call({@JsonKey(name: AuthenticationResponse.tokenKey) String token});
 }
 
 /// @nodoc
-class _$LoginResponseCopyWithImpl<$Res>
-    implements $LoginResponseCopyWith<$Res> {
-  _$LoginResponseCopyWithImpl(this._self, this._then);
+class _$AuthenticationResponseCopyWithImpl<$Res>
+    implements $AuthenticationResponseCopyWith<$Res> {
+  _$AuthenticationResponseCopyWithImpl(this._self, this._then);
 
-  final LoginResponse _self;
-  final $Res Function(LoginResponse) _then;
+  final AuthenticationResponse _self;
+  final $Res Function(AuthenticationResponse) _then;
 
-  /// Create a copy of LoginResponse
+  /// Create a copy of AuthenticationResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -82,28 +82,29 @@ class _$LoginResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _LoginResponse extends LoginResponse {
-  const _LoginResponse(
-      {@JsonKey(name: LoginResponse.tokenKey) required this.token})
+class _AuthenticationResponse extends AuthenticationResponse {
+  const _AuthenticationResponse(
+      {@JsonKey(name: AuthenticationResponse.tokenKey) required this.token})
       : super._();
-  factory _LoginResponse.fromJson(Map<String, dynamic> json) =>
-      _$LoginResponseFromJson(json);
+  factory _AuthenticationResponse.fromJson(Map<String, dynamic> json) =>
+      _$AuthenticationResponseFromJson(json);
 
   @override
-  @JsonKey(name: LoginResponse.tokenKey)
+  @JsonKey(name: AuthenticationResponse.tokenKey)
   final String token;
 
-  /// Create a copy of LoginResponse
+  /// Create a copy of AuthenticationResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$LoginResponseCopyWith<_LoginResponse> get copyWith =>
-      __$LoginResponseCopyWithImpl<_LoginResponse>(this, _$identity);
+  _$AuthenticationResponseCopyWith<_AuthenticationResponse> get copyWith =>
+      __$AuthenticationResponseCopyWithImpl<_AuthenticationResponse>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$LoginResponseToJson(
+    return _$AuthenticationResponseToJson(
       this,
     );
   }
@@ -112,7 +113,7 @@ class _LoginResponse extends LoginResponse {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LoginResponse &&
+            other is _AuthenticationResponse &&
             (identical(other.token, token) || other.token == token));
   }
 
@@ -122,37 +123,37 @@ class _LoginResponse extends LoginResponse {
 
   @override
   String toString() {
-    return 'LoginResponse(token: $token)';
+    return 'AuthenticationResponse(token: $token)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$LoginResponseCopyWith<$Res>
-    implements $LoginResponseCopyWith<$Res> {
-  factory _$LoginResponseCopyWith(
-          _LoginResponse value, $Res Function(_LoginResponse) _then) =
-      __$LoginResponseCopyWithImpl;
+abstract mixin class _$AuthenticationResponseCopyWith<$Res>
+    implements $AuthenticationResponseCopyWith<$Res> {
+  factory _$AuthenticationResponseCopyWith(_AuthenticationResponse value,
+          $Res Function(_AuthenticationResponse) _then) =
+      __$AuthenticationResponseCopyWithImpl;
   @override
   @useResult
-  $Res call({@JsonKey(name: LoginResponse.tokenKey) String token});
+  $Res call({@JsonKey(name: AuthenticationResponse.tokenKey) String token});
 }
 
 /// @nodoc
-class __$LoginResponseCopyWithImpl<$Res>
-    implements _$LoginResponseCopyWith<$Res> {
-  __$LoginResponseCopyWithImpl(this._self, this._then);
+class __$AuthenticationResponseCopyWithImpl<$Res>
+    implements _$AuthenticationResponseCopyWith<$Res> {
+  __$AuthenticationResponseCopyWithImpl(this._self, this._then);
 
-  final _LoginResponse _self;
-  final $Res Function(_LoginResponse) _then;
+  final _AuthenticationResponse _self;
+  final $Res Function(_AuthenticationResponse) _then;
 
-  /// Create a copy of LoginResponse
+  /// Create a copy of AuthenticationResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $Res call({
     Object? token = null,
   }) {
-    return _then(_LoginResponse(
+    return _then(_AuthenticationResponse(
       token: null == token
           ? _self.token
           : token // ignore: cast_nullable_to_non_nullable

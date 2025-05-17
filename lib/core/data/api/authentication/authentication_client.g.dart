@@ -18,7 +18,7 @@ class _AuthenticationClient implements AuthenticationClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<ApiResponse<LoginResponse>>> login(
+  Future<HttpResponse<ApiResponse<AuthenticationResponse>>> login(
     LoginRequest request,
   ) async {
     final _extra = <String, dynamic>{};
@@ -26,7 +26,8 @@ class _AuthenticationClient implements AuthenticationClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(request.toJson());
-    final _options = _setStreamType<HttpResponse<ApiResponse<LoginResponse>>>(
+    final _options =
+        _setStreamType<HttpResponse<ApiResponse<AuthenticationResponse>>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -34,14 +35,16 @@ class _AuthenticationClient implements AuthenticationClient {
             queryParameters: queryParameters,
             data: _data,
           )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+          .copyWith(
+            baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
+          ),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late ApiResponse<LoginResponse> _value;
+    late ApiResponse<AuthenticationResponse> _value;
     try {
-      _value = ApiResponse<LoginResponse>.fromJson(
+      _value = ApiResponse<AuthenticationResponse>.fromJson(
         _result.data!,
-        (json) => LoginResponse.fromJson(json as Map<String, dynamic>),
+        (json) => AuthenticationResponse.fromJson(json as Map<String, dynamic>),
       );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
@@ -77,6 +80,43 @@ class _AuthenticationClient implements AuthenticationClient {
       _value = ApiResponse<RegisterResponse>.fromJson(
         _result.data!,
         (json) => RegisterResponse.fromJson(json as Map<String, dynamic>),
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<ApiResponse<AuthenticationResponse>>> verifyPhone(
+    OtpVerifyRequestBody request,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
+    final _options =
+        _setStreamType<HttpResponse<ApiResponse<AuthenticationResponse>>>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/Auth/verify-phone',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(
+            baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
+          ),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ApiResponse<AuthenticationResponse> _value;
+    try {
+      _value = ApiResponse<AuthenticationResponse>.fromJson(
+        _result.data!,
+        (json) => AuthenticationResponse.fromJson(json as Map<String, dynamic>),
       );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);

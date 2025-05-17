@@ -212,6 +212,8 @@ class RegistrationPage extends HookConsumerWidget {
                                 () => notifier.register(request: request),
                                 context: context,
                                 data: (data) {
+                                  // otp verification code is sent to the user phone number in production
+                                  // we show the code to the user in development
                                   context.showSuccessSnackBar(data.code);
                                   context.pushReplacement(
                                     RoutesDocument.otpView,

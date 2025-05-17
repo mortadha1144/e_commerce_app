@@ -173,4 +173,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get otpVerificationLabel => 'OTP Verification';
+
+  @override
+  String validationLengthMessage(num length) {
+    return 'This field must be contain $length characters';
+  }
 }

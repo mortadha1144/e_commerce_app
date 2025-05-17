@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/data/api/authentication/login_request.dart';
-import 'package:e_commerce_app/core/data/api/authentication/login_response.dart';
+import 'package:e_commerce_app/core/data/api/authentication/authentication_response.dart';
+import 'package:e_commerce_app/core/data/api/authentication/otp_verify_request_body.dart';
 import 'package:e_commerce_app/core/data/api/authentication/register_request_body.dart';
 import 'package:e_commerce_app/core/data/api/authentication/register_response.dart';
 import 'package:e_commerce_app/core/data/shared_preferences/preferences.dart';
@@ -47,7 +48,7 @@ class Authentication extends _$Authentication
     return value.toJson();
   }
 
-  Future<LoginResponse> login({
+  Future<AuthenticationResponse> login({
     required String phoneNumber,
     required String password,
   }) async {
@@ -71,5 +72,19 @@ class Authentication extends _$Authentication
   Future<void> logout() async {
     await clear();
     ref.invalidateSelf();
+  }
+
+  Future<AuthenticationResponse> verifyPhone({
+    required String phoneNumber,
+    required String code,
+  }) async {
+    final response = await _repository.verifyPhone(
+      OtpVerifyRequestBody(
+        phoneNumber: phoneNumber,
+        code: code,
+      ),
+    );
+    await updateState(state.copyWith(token: response.token));
+    return response;
   }
 }

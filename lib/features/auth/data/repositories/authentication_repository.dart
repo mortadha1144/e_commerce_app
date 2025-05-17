@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/core/data/api/authentication/authentication_client.dart';
 import 'package:e_commerce_app/core/data/api/authentication/login_request.dart';
-import 'package:e_commerce_app/core/data/api/authentication/login_response.dart';
+import 'package:e_commerce_app/core/data/api/authentication/authentication_response.dart';
+import 'package:e_commerce_app/core/data/api/authentication/otp_verify_request_body.dart';
 import 'package:e_commerce_app/core/data/api/authentication/register_request_body.dart';
 import 'package:e_commerce_app/core/data/api/authentication/register_response.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -18,7 +19,7 @@ class AuthenticationRepository {
   const AuthenticationRepository(this._client);
   final AuthenticationClient _client;
 
-  Future<LoginResponse> login(LoginRequest request) async {
+  Future<AuthenticationResponse> login(LoginRequest request) async {
     final response = await _client.login(request);
     return response.data.payload;
   }
@@ -30,5 +31,12 @@ class AuthenticationRepository {
 
   Future<void> resetPassword(String email) async {
     throw UnimplementedError();
+  }
+
+  Future<AuthenticationResponse> verifyPhone(
+    OtpVerifyRequestBody request,
+  ) async {
+    final response = await _client.verifyPhone(request);
+    return response.data.payload;
   }
 }

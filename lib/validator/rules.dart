@@ -18,4 +18,12 @@ class AppValidationBuilder extends ValidationBuilder {
       _l10n.invalidPhoneNumber,
     );
   }
+
+  ValidationBuilder length(int length, {String? message}) {
+    return add((value) {
+      return value?.length != length
+          ? message ?? _l10n.validationLengthMessage(length)
+          : null;
+    });
+  }
 }

@@ -14,7 +14,7 @@ part of 'developer_provider.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$DeveloperState {
+mixin _$DeveloperState implements DiagnosticableTreeMixin {
   String? get pageName;
   VoidCallback? get onLongPressed;
   Widget? get currentPageTools;
@@ -26,6 +26,15 @@ mixin _$DeveloperState {
   $DeveloperStateCopyWith<DeveloperState> get copyWith =>
       _$DeveloperStateCopyWithImpl<DeveloperState>(
           this as DeveloperState, _$identity);
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    properties
+      ..add(DiagnosticsProperty('type', 'DeveloperState'))
+      ..add(DiagnosticsProperty('pageName', pageName))
+      ..add(DiagnosticsProperty('onLongPressed', onLongPressed))
+      ..add(DiagnosticsProperty('currentPageTools', currentPageTools));
+  }
 
   @override
   bool operator ==(Object other) {
@@ -45,7 +54,7 @@ mixin _$DeveloperState {
       Object.hash(runtimeType, pageName, onLongPressed, currentPageTools);
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'DeveloperState(pageName: $pageName, onLongPressed: $onLongPressed, currentPageTools: $currentPageTools)';
   }
 }
@@ -98,7 +107,7 @@ class _$DeveloperStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _DeveloperState extends DeveloperState {
+class _DeveloperState extends DeveloperState with DiagnosticableTreeMixin {
   const _DeveloperState(
       {this.pageName, this.onLongPressed, this.currentPageTools})
       : super._();
@@ -119,6 +128,15 @@ class _DeveloperState extends DeveloperState {
       __$DeveloperStateCopyWithImpl<_DeveloperState>(this, _$identity);
 
   @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    properties
+      ..add(DiagnosticsProperty('type', 'DeveloperState'))
+      ..add(DiagnosticsProperty('pageName', pageName))
+      ..add(DiagnosticsProperty('onLongPressed', onLongPressed))
+      ..add(DiagnosticsProperty('currentPageTools', currentPageTools));
+  }
+
+  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -136,7 +154,7 @@ class _DeveloperState extends DeveloperState {
       Object.hash(runtimeType, pageName, onLongPressed, currentPageTools);
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'DeveloperState(pageName: $pageName, onLongPressed: $onLongPressed, currentPageTools: $currentPageTools)';
   }
 }

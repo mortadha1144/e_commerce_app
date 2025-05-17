@@ -418,6 +418,12 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'رمز التحقق'**
   String get otpVerificationLabel;
+
+  /// No description provided for @validationLengthMessage.
+  ///
+  /// In ar, this message translates to:
+  /// **'يجب أن يحتوي هذا الحقل على {length} حرفًا'**
+  String validationLengthMessage(num length);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

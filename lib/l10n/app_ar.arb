@@ -67,5 +67,13 @@
     "noAccountLabel": "ليس لديك حساب؟",
     "fullNameLabel": "الاسم الكامل",
     "fullNameHint": "أدخل اسمك الكامل",
-    "otpVerificationLabel": "رمز التحقق"
+    "otpVerificationLabel": "رمز التحقق",
+    "validationLengthMessage": "يجب أن يحتوي هذا الحقل على {length} حرفًا",
+    "@validationLengthMessage": {
+        "placeholders": {
+            "length": {
+                "type": "num"
+            }
+        }
+    }
 }

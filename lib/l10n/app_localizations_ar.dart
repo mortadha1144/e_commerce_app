@@ -173,4 +173,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get otpVerificationLabel => 'رمز التحقق';
+
+  @override
+  String validationLengthMessage(num length) {
+    return 'يجب أن يحتوي هذا الحقل على $length حرفًا';
+  }
 }

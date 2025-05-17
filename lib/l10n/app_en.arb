@@ -53,5 +53,6 @@
     "noAccountLabel": "Don't have an account?",
     "fullNameLabel": "Full Name",
     "fullNameHint": "Enter your full name",
-    "otpVerificationLabel": "OTP Verification"
+    "otpVerificationLabel": "OTP Verification",
+    "validationLengthMessage": "This field must be contain {length} characters"
 }

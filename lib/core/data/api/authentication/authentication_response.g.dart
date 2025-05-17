@@ -1,17 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'login_response.dart';
+part of 'authentication_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) =>
-    _LoginResponse(
+_AuthenticationResponse _$AuthenticationResponseFromJson(
+        Map<String, dynamic> json) =>
+    _AuthenticationResponse(
       token: json['token'] as String,
     );
 
-Map<String, dynamic> _$LoginResponseToJson(_LoginResponse instance) =>
+Map<String, dynamic> _$AuthenticationResponseToJson(
+        _AuthenticationResponse instance) =>
     <String, dynamic>{
       'token': instance.token,
     };

@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:e_commerce_app/core/data/api/authentication/login_request.dart';
-import 'package:e_commerce_app/core/data/api/authentication/login_response.dart';
+import 'package:e_commerce_app/core/data/api/authentication/authentication_response.dart';
+import 'package:e_commerce_app/core/data/api/authentication/otp_verify_request_body.dart';
 import 'package:e_commerce_app/core/data/api/authentication/register_request_body.dart';
 import 'package:e_commerce_app/core/data/api/authentication/register_response.dart';
 import 'package:e_commerce_app/core/data/api/common/api_response.dart';
@@ -23,12 +24,17 @@ abstract class AuthenticationClient {
       _AuthenticationClient;
 
   @POST('/Auth/login')
-  Future<HttpResponse<ApiResponse<LoginResponse>>> login(
+  Future<HttpResponse<ApiResponse<AuthenticationResponse>>> login(
     @Body() LoginRequest request,
   );
 
   @POST('/Auth/register')
   Future<HttpResponse<ApiResponse<RegisterResponse>>> register(
     @Body() RegisterRequestBody request,
+  );
+
+  @POST('/Auth/verify-phone')
+  Future<HttpResponse<ApiResponse<AuthenticationResponse>>> verifyPhone(
+    @Body() OtpVerifyRequestBody request,
   );
 }

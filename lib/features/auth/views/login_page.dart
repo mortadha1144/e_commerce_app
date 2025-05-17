@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/core/data/api/authentication/login_response.dart';
+import 'package:e_commerce_app/core/data/api/authentication/authentication_response.dart';
 import 'package:e_commerce_app/core/data/api/error/api_error_message.dart';
 import 'package:e_commerce_app/core/utils/constants/constants.dart';
 import 'package:e_commerce_app/core/utils/widgets/fields/phone_number_field.dart';
@@ -31,7 +31,7 @@ class LoginPage extends HookConsumerWidget {
 
     final remember = useState(false);
 
-    final mutation = useMutation<LoginResponse>();
+    final mutation = useMutation<AuthenticationResponse>();
 
     return Scaffold(
       appBar: AppBar(

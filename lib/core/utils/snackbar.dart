@@ -78,6 +78,7 @@ extension SnackBarX on BuildContext {
             ),
           ),
           backgroundColor: theme.colorScheme.error,
+          behavior: SnackBarBehavior.floating,
         ),
       );
   }
