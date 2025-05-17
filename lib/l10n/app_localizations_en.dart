@@ -163,7 +163,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noInternetErrorMessage => 'No internet connection';
 
   @override
-  String get noAccountLabel => 'Don\'t have an account?';
+  String get noAccountLabel => 'Don\'t have an account? ';
 
   @override
   String get fullNameLabel => 'Full Name';
@@ -195,4 +195,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get resendOtpCodeLoading => 'Resending OTP Code';
+
+  @override
+  String get chooseLanguage => 'Choose Language';
+
+  @override
+  String get deviceLanguage => 'Device Language';
+
+  @override
+  String get apply => 'Apply';
 }

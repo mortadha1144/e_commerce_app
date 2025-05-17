@@ -398,7 +398,7 @@ abstract class AppLocalizations {
   /// No description provided for @noAccountLabel.
   ///
   /// In ar, this message translates to:
-  /// **'ليس لديك حساب؟'**
+  /// **'ليس لديك حساب؟ '**
   String get noAccountLabel;
 
   /// No description provided for @fullNameLabel.
@@ -454,6 +454,24 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'جاري ارسال الرمز'**
   String get resendOtpCodeLoading;
+
+  /// No description provided for @chooseLanguage.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختر اللغة'**
+  String get chooseLanguage;
+
+  /// No description provided for @deviceLanguage.
+  ///
+  /// In ar, this message translates to:
+  /// **'لغة الجهاز'**
+  String get deviceLanguage;
+
+  /// No description provided for @apply.
+  ///
+  /// In ar, this message translates to:
+  /// **'تطبيق'**
+  String get apply;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

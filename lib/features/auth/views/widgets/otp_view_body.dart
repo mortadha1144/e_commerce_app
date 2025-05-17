@@ -59,7 +59,7 @@ class OtpViewBody extends HookConsumerWidget {
                     l10n.weSentYourCode(formatPhoneNumber(phoneNumber)),
                   ),
                 ),
-                buildTimer(context),
+                // buildTimer(context),
                 const Gap(140),
                 OtpFormField(
                   controller: otp,

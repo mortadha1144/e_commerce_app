@@ -64,7 +64,7 @@
     "logoutLabel": "تسجيل الخروج",
     "defaultErrorMessage": "يرجى المحاولة في وقت اخر",
     "noInternetErrorMessage": "لا يوجد اتصال بالانترنت",
-    "noAccountLabel": "ليس لديك حساب؟",
+    "noAccountLabel": "ليس لديك حساب؟ ",
     "fullNameLabel": "الاسم الكامل",
     "fullNameHint": "أدخل اسمك الكامل",
     "otpVerificationLabel": "رمز التحقق",
@@ -87,5 +87,8 @@
     "codeWillExpireIn": "ستنتهي صلاحية هذا الرمز في",
     "resendOtpCode": "إعادة إرسال رمز التحقق",
     "canResendOtpIn": "يمكنك إعادة إرسال رمز التحقق في ",
-    "resendOtpCodeLoading": "جاري ارسال الرمز"
+    "resendOtpCodeLoading": "جاري ارسال الرمز",
+    "chooseLanguage": "اختر اللغة",
+    "deviceLanguage": "لغة الجهاز",
+    "apply": "تطبيق"
 }

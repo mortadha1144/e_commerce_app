@@ -163,7 +163,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get noInternetErrorMessage => 'لا يوجد اتصال بالانترنت';
 
   @override
-  String get noAccountLabel => 'ليس لديك حساب؟';
+  String get noAccountLabel => 'ليس لديك حساب؟ ';
 
   @override
   String get fullNameLabel => 'الاسم الكامل';
@@ -195,4 +195,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get resendOtpCodeLoading => 'جاري ارسال الرمز';
+
+  @override
+  String get chooseLanguage => 'اختر اللغة';
+
+  @override
+  String get deviceLanguage => 'لغة الجهاز';
+
+  @override
+  String get apply => 'تطبيق';
 }

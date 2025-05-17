@@ -46,12 +46,12 @@ class RegistrationPage extends HookConsumerWidget {
     useDeveloperTool(
       ref: ref,
       onLongPressed: () {
-        phoneNumberController.text = '07700146084';
+        phoneNumberController.text = '07700146085';
         passwordController.text = '12345678';
         confirmPasswordController.text = '12345678';
-        fullNameController.text = 'Ahmed Mohamed';
+        fullNameController.text = 'Ahmed Akl';
         emailController.text = 'ahmed@gmail.com';
-        addressController.text = '123 Main St, Anytown, USA';
+        addressController.text = '123 Main St, Anytown, Egypt';
       },
     );
 
