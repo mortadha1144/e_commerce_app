@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/data/api/authentication/authentication_response.dart';
 import 'package:e_commerce_app/core/data/api/error/api_error_message.dart';
+import 'package:e_commerce_app/core/developer/developer_provider.dart';
 import 'package:e_commerce_app/core/utils/constants/constants.dart';
 import 'package:e_commerce_app/core/utils/widgets/fields/phone_number_field.dart';
 import 'package:e_commerce_app/features/auth/views/authentication_provider.dart';
@@ -26,12 +27,20 @@ class LoginPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final formKey = useFormKey();
 
-    final phoneNumberController = useTextEditingController();
-    final passwordController = useTextEditingController();
+    final phoneNumber = useTextEditingController();
+    final password = useTextEditingController();
 
     final remember = useState(false);
 
     final mutation = useMutation<AuthenticationResponse>();
+
+    useDeveloperTool(
+      ref: ref,
+      onLongPressed: () {
+        phoneNumber.text = '07700146084';
+        password.text = '12345678';
+      },
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -51,18 +60,18 @@ class LoginPage extends HookConsumerWidget {
             ),
           ),
           Text(
-            context.l10n.signInWithEmailAndPassword,
+            context.l10n.signInWithPhoneNumberAndPassword,
             textAlign: TextAlign.center,
           ),
           const SizedBox.square(
             dimension: 70,
           ),
-          PhoneNumberField(phoneNumberController),
+          PhoneNumberField(phoneNumber),
           const SizedBox.square(
             dimension: 36,
           ),
           PasswordFormField(
-            controller: passwordController,
+            controller: password,
             validation: context.validator().minLength(8).maxLength(100).build(),
           ),
           const SizedBox.square(
@@ -99,8 +108,8 @@ class LoginPage extends HookConsumerWidget {
 
               await mutation.mutate(
                 () => notifier.login(
-                  phoneNumber: phoneNumberController.text,
-                  password: passwordController.text,
+                  phoneNumber: phoneNumber.text,
+                  password: password.text,
                 ),
                 context: context,
                 data: (data) => context.replace(RoutesDocument.homeView),

@@ -209,11 +209,11 @@ abstract class AppLocalizations {
   /// **'مرحباً بعودتك'**
   String get welcomeBack;
 
-  /// No description provided for @signInWithEmailAndPassword.
+  /// No description provided for @signInWithPhoneNumberAndPassword.
   ///
   /// In ar, this message translates to:
-  /// **'قم بتسجيل الدخول باستخدام البريد الإلكتروني وكلمة المرور\nأو المتابعة باستخدام وسائل التواصل الاجتماعي'**
-  String get signInWithEmailAndPassword;
+  /// **'قم بتسجيل الدخول باستخدام رقم هاتفك وكلمة المرور\nأو المتابعة باستخدام وسائل التواصل الاجتماعي'**
+  String get signInWithPhoneNumberAndPassword;
 
   /// No description provided for @email.
   ///
@@ -263,11 +263,11 @@ abstract class AppLocalizations {
   /// **'متابعة'**
   String get continueText;
 
-  /// No description provided for @pleaseEnterYourEmailToResetPassword.
+  /// No description provided for @pleaseEnterYourPhoneNumberToResetPassword.
   ///
   /// In ar, this message translates to:
-  /// **'الرجاء إدخال بريدك الإلكتروني وسنرسل لك\nرابطًا للعودة إلى حسابك'**
-  String get pleaseEnterYourEmailToResetPassword;
+  /// **'الرجاء إدخال رقم هاتفك وسنرسل لك\nرمز التحقق'**
+  String get pleaseEnterYourPhoneNumberToResetPassword;
 
   /// No description provided for @signUp.
   ///
@@ -424,6 +424,36 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'يجب أن يحتوي هذا الحقل على {length} حرفًا'**
   String validationLengthMessage(num length);
+
+  /// No description provided for @weSentYourCode.
+  ///
+  /// In ar, this message translates to:
+  /// **'لقد أرسلنا الرمز إلى {phoneNumber}'**
+  String weSentYourCode(String phoneNumber);
+
+  /// No description provided for @codeWillExpireIn.
+  ///
+  /// In ar, this message translates to:
+  /// **'ستنتهي صلاحية هذا الرمز في'**
+  String get codeWillExpireIn;
+
+  /// No description provided for @resendOtpCode.
+  ///
+  /// In ar, this message translates to:
+  /// **'إعادة إرسال رمز التحقق'**
+  String get resendOtpCode;
+
+  /// No description provided for @canResendOtpIn.
+  ///
+  /// In ar, this message translates to:
+  /// **'يمكنك إعادة إرسال رمز التحقق في '**
+  String get canResendOtpIn;
+
+  /// No description provided for @resendOtpCodeLoading.
+  ///
+  /// In ar, this message translates to:
+  /// **'جاري ارسال الرمز'**
+  String get resendOtpCodeLoading;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -1,5 +1,5 @@
 import 'package:e_commerce_app/core/data/api/authentication/register_request_body.dart';
-import 'package:e_commerce_app/core/data/api/authentication/register_response.dart';
+import 'package:e_commerce_app/core/data/api/authentication/otp_response.dart';
 import 'package:e_commerce_app/core/data/api/error/api_error_message.dart';
 import 'package:e_commerce_app/core/developer/developer_provider.dart';
 import 'package:e_commerce_app/core/utils/app_router.dart';
@@ -32,7 +32,7 @@ class RegistrationPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final mutation = useMutation<RegisterResponse>();
+    final mutation = useMutation<OtpResponse>();
     final formOneKey = useFormKey();
     final formTwoKey = useFormKey();
     final pageController = usePageController();

@@ -55,7 +55,7 @@ class _AuthenticationClient implements AuthenticationClient {
   }
 
   @override
-  Future<HttpResponse<ApiResponse<RegisterResponse>>> register(
+  Future<HttpResponse<ApiResponse<OtpResponse>>> register(
     RegisterRequestBody request,
   ) async {
     final _extra = <String, dynamic>{};
@@ -63,8 +63,7 @@ class _AuthenticationClient implements AuthenticationClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(request.toJson());
-    final _options =
-        _setStreamType<HttpResponse<ApiResponse<RegisterResponse>>>(
+    final _options = _setStreamType<HttpResponse<ApiResponse<OtpResponse>>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -75,11 +74,11 @@ class _AuthenticationClient implements AuthenticationClient {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late ApiResponse<RegisterResponse> _value;
+    late ApiResponse<OtpResponse> _value;
     try {
-      _value = ApiResponse<RegisterResponse>.fromJson(
+      _value = ApiResponse<OtpResponse>.fromJson(
         _result.data!,
-        (json) => RegisterResponse.fromJson(json as Map<String, dynamic>),
+        (json) => OtpResponse.fromJson(json as Map<String, dynamic>),
       );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
@@ -117,6 +116,40 @@ class _AuthenticationClient implements AuthenticationClient {
       _value = ApiResponse<AuthenticationResponse>.fromJson(
         _result.data!,
         (json) => AuthenticationResponse.fromJson(json as Map<String, dynamic>),
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<ApiResponse<OtpResponse>>> resendOtp(
+    ResendOtpRequestBody request,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
+    final _options = _setStreamType<HttpResponse<ApiResponse<OtpResponse>>>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/Auth/resend-otp',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ApiResponse<OtpResponse> _value;
+    try {
+      _value = ApiResponse<OtpResponse>.fromJson(
+        _result.data!,
+        (json) => OtpResponse.fromJson(json as Map<String, dynamic>),
       );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);

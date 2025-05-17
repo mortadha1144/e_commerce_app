@@ -3,7 +3,8 @@ import 'package:e_commerce_app/core/data/api/authentication/login_request.dart';
 import 'package:e_commerce_app/core/data/api/authentication/authentication_response.dart';
 import 'package:e_commerce_app/core/data/api/authentication/otp_verify_request_body.dart';
 import 'package:e_commerce_app/core/data/api/authentication/register_request_body.dart';
-import 'package:e_commerce_app/core/data/api/authentication/register_response.dart';
+import 'package:e_commerce_app/core/data/api/authentication/otp_response.dart';
+import 'package:e_commerce_app/core/data/api/authentication/resend_otp_request_body.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -24,7 +25,7 @@ class AuthenticationRepository {
     return response.data.payload;
   }
 
-  Future<RegisterResponse> register(RegisterRequestBody request) async {
+  Future<OtpResponse> register(RegisterRequestBody request) async {
     final response = await _client.register(request);
     return response.data.payload;
   }
@@ -34,9 +35,13 @@ class AuthenticationRepository {
   }
 
   Future<AuthenticationResponse> verifyPhone(
-    OtpVerifyRequestBody request,
-  ) async {
+      OtpVerifyRequestBody request) async {
     final response = await _client.verifyPhone(request);
+    return response.data.payload;
+  }
+
+  Future<OtpResponse> resendOtp(ResendOtpRequestBody request) async {
+    final response = await _client.resendOtp(request);
     return response.data.payload;
   }
 }

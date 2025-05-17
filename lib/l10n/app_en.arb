@@ -19,7 +19,7 @@
     "invalidPhoneNumber": "invalid phone number",
     "password": "Password",
     "welcomeBack": "Welcome Back",
-    "signInWithEmailAndPassword": "Sign in with your email and password  \nor continue with social media",
+    "signInWithPhoneNumberAndPassword": "Sign in with your phone number and password  \nor continue with social media",
     "email": "Email",
     "emailHint": "Enter your email",
     "passwordHint": "Enter your password",
@@ -28,7 +28,7 @@
     "forgotPassword": "Forgot password",
     "login": "Login",
     "continueText": "Continue",
-    "pleaseEnterYourEmailToResetPassword": "Please enter your email and we will send \nyou a link to return to your account",
+    "pleaseEnterYourPhoneNumberToResetPassword": "Please enter your phone number and we will send \nyou a otp code",
     "signUp": "Sign Up",
     "registerAccount": "Register Account",
     "completeProfile": "Complete Profile",
@@ -54,5 +54,10 @@
     "fullNameLabel": "Full Name",
     "fullNameHint": "Enter your full name",
     "otpVerificationLabel": "OTP Verification",
-    "validationLengthMessage": "This field must be contain {length} characters"
+    "validationLengthMessage": "This field must be contain {length} characters",
+    "weSentYourCode": "We sent your code to {phoneNumber}",
+    "codeWillExpireIn": "This code will expired in",
+    "resendOtpCode": "Resend OTP Code",
+    "canResendOtpIn": "You can resend the otp in ",
+    "resendOtpCodeLoading": "Resending OTP Code"
 }

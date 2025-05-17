@@ -70,7 +70,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get welcomeBack => 'Welcome Back';
 
   @override
-  String get signInWithEmailAndPassword => 'Sign in with your email and password  \nor continue with social media';
+  String get signInWithPhoneNumberAndPassword => 'Sign in with your phone number and password  \nor continue with social media';
 
   @override
   String get email => 'Email';
@@ -97,7 +97,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get continueText => 'Continue';
 
   @override
-  String get pleaseEnterYourEmailToResetPassword => 'Please enter your email and we will send \nyou a link to return to your account';
+  String get pleaseEnterYourPhoneNumberToResetPassword => 'Please enter your phone number and we will send \nyou a otp code';
 
   @override
   String get signUp => 'Sign Up';
@@ -178,4 +178,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String validationLengthMessage(num length) {
     return 'This field must be contain $length characters';
   }
+
+  @override
+  String weSentYourCode(String phoneNumber) {
+    return 'We sent your code to $phoneNumber';
+  }
+
+  @override
+  String get codeWillExpireIn => 'This code will expired in';
+
+  @override
+  String get resendOtpCode => 'Resend OTP Code';
+
+  @override
+  String get canResendOtpIn => 'You can resend the otp in ';
+
+  @override
+  String get resendOtpCodeLoading => 'Resending OTP Code';
 }

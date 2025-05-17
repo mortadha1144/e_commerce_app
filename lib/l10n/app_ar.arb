@@ -33,7 +33,7 @@
     "invalidPhoneNumber": "رقم هاتف غير صالح",
     "password": "كلمة المرور",
     "welcomeBack": "مرحباً بعودتك",
-    "signInWithEmailAndPassword": "قم بتسجيل الدخول باستخدام البريد الإلكتروني وكلمة المرور\nأو المتابعة باستخدام وسائل التواصل الاجتماعي",
+    "signInWithPhoneNumberAndPassword": "قم بتسجيل الدخول باستخدام رقم هاتفك وكلمة المرور\nأو المتابعة باستخدام وسائل التواصل الاجتماعي",
     "email": "البريد الإلكتروني",
     "emailHint": "أدخل بريدك الإلكتروني",
     "passwordHint": "أدخل كلمة المرور",
@@ -42,7 +42,7 @@
     "forgotPassword": "نسيت كلمة المرور",
     "login": "تسجيل الدخول",
     "continueText": "متابعة",
-    "pleaseEnterYourEmailToResetPassword": "الرجاء إدخال بريدك الإلكتروني وسنرسل لك\nرابطًا للعودة إلى حسابك",
+    "pleaseEnterYourPhoneNumberToResetPassword": "الرجاء إدخال رقم هاتفك وسنرسل لك\nرمز التحقق",
     "signUp": "إنشاء حساب",
     "registerAccount": "تسجيل حساب",
     "completeProfile": "استكمال الملف الشخصي",
@@ -75,5 +75,17 @@
                 "type": "num"
             }
         }
-    }
+    },
+    "weSentYourCode": "لقد أرسلنا الرمز إلى {phoneNumber}",
+    "@weSentYourCode": {
+        "placeholders": {
+            "phoneNumber": {
+                "type": "String"
+            }
+        }
+    },
+    "codeWillExpireIn": "ستنتهي صلاحية هذا الرمز في",
+    "resendOtpCode": "إعادة إرسال رمز التحقق",
+    "canResendOtpIn": "يمكنك إعادة إرسال رمز التحقق في ",
+    "resendOtpCodeLoading": "جاري ارسال الرمز"
 }

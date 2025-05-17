@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/utils/widgets/fields/phone_number_field.dart';
 import 'package:e_commerce_app/features/auth/providers/reset_password_provider.dart';
 import 'package:e_commerce_app/features/auth/views/widgets/no_account_text.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
@@ -17,7 +18,7 @@ class ForgotPasswordPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final formKey = useFormKey();
-    final emailController = useTextEditingController();
+    final phoneNumber = useTextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: Text(context.l10n.forgotPassword),
@@ -40,13 +41,13 @@ class ForgotPasswordPage extends HookConsumerWidget {
             dimension: 4,
           ),
           Text(
-            context.l10n.pleaseEnterYourEmailToResetPassword,
+            context.l10n.pleaseEnterYourPhoneNumberToResetPassword,
             textAlign: TextAlign.center,
           ),
           const SizedBox.square(
             dimension: 78,
           ),
-          EmailFormField(emailController: emailController),
+          PhoneNumberField(phoneNumber),
           const SizedBox.square(
             dimension: 78,
           ),
@@ -54,17 +55,17 @@ class ForgotPasswordPage extends HookConsumerWidget {
             text: context.l10n.continueText,
             isLoading: ref.watch(resetPasswordProvider).isLoading,
             onPressed: () async {
-              if (!formKey.currentState!.validate()) return;
-              final resetPassword = await ref
-                  .read(resetPasswordProvider.notifier)
-                  .run(email: emailController.text);
+              // if (!formKey.currentState!.validate()) return;
+              // final resetPassword = await ref
+              //     .read(resetPasswordProvider.notifier)
+              //     .run(email: emailController.text);
 
-              resetPassword.whenDataOrError(
-                data: (_) => context.pop(),
-                error: (error, _) => context.showErrorSnackBar(
-                  context.getErrorMessage(error),
-                ),
-              );
+              // resetPassword.whenDataOrError(
+              //   data: (_) => context.pop(),
+              //   error: (error, _) => context.showErrorSnackBar(
+              //     context.getErrorMessage(error),
+              //   ),
+              // );
             },
           ),
           const SizedBox.square(

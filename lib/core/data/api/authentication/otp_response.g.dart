@@ -1,17 +1,16 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'register_response.dart';
+part of 'otp_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_RegisterResponse _$RegisterResponseFromJson(Map<String, dynamic> json) =>
-    _RegisterResponse(
+_OtpResponse _$OtpResponseFromJson(Map<String, dynamic> json) => _OtpResponse(
       code: json['code'] as String,
     );
 
-Map<String, dynamic> _$RegisterResponseToJson(_RegisterResponse instance) =>
+Map<String, dynamic> _$OtpResponseToJson(_OtpResponse instance) =>
     <String, dynamic>{
       'code': instance.code,
     };

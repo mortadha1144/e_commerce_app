@@ -70,7 +70,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get welcomeBack => 'مرحباً بعودتك';
 
   @override
-  String get signInWithEmailAndPassword => 'قم بتسجيل الدخول باستخدام البريد الإلكتروني وكلمة المرور\nأو المتابعة باستخدام وسائل التواصل الاجتماعي';
+  String get signInWithPhoneNumberAndPassword => 'قم بتسجيل الدخول باستخدام رقم هاتفك وكلمة المرور\nأو المتابعة باستخدام وسائل التواصل الاجتماعي';
 
   @override
   String get email => 'البريد الإلكتروني';
@@ -97,7 +97,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get continueText => 'متابعة';
 
   @override
-  String get pleaseEnterYourEmailToResetPassword => 'الرجاء إدخال بريدك الإلكتروني وسنرسل لك\nرابطًا للعودة إلى حسابك';
+  String get pleaseEnterYourPhoneNumberToResetPassword => 'الرجاء إدخال رقم هاتفك وسنرسل لك\nرمز التحقق';
 
   @override
   String get signUp => 'إنشاء حساب';
@@ -178,4 +178,21 @@ class AppLocalizationsAr extends AppLocalizations {
   String validationLengthMessage(num length) {
     return 'يجب أن يحتوي هذا الحقل على $length حرفًا';
   }
+
+  @override
+  String weSentYourCode(String phoneNumber) {
+    return 'لقد أرسلنا الرمز إلى $phoneNumber';
+  }
+
+  @override
+  String get codeWillExpireIn => 'ستنتهي صلاحية هذا الرمز في';
+
+  @override
+  String get resendOtpCode => 'إعادة إرسال رمز التحقق';
+
+  @override
+  String get canResendOtpIn => 'يمكنك إعادة إرسال رمز التحقق في ';
+
+  @override
+  String get resendOtpCodeLoading => 'جاري ارسال الرمز';
 }
