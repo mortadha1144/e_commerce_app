@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/core/utils/constants/constants.dart';
+import 'package:e_commerce_app/core/utils/theme/insets.dart';
 import 'package:e_commerce_app/features/cart/providers/cart_provider.dart';
 import 'package:e_commerce_app/features/favorite/providers/favorite_provider.dart';
 import 'package:e_commerce_app/core/utils/constants/assets.dart';
@@ -20,7 +21,7 @@ class CustomBottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(
-        bottom: 16,
+        bottom: Insets.medium,
       ),
       decoration: BoxDecoration(
         color: Colors.white,
