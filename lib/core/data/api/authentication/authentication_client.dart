@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:e_commerce_app/core/data/api/authentication/forget_password_request_body.dart';
 import 'package:e_commerce_app/core/data/api/authentication/login_request.dart';
 import 'package:e_commerce_app/core/data/api/authentication/authentication_response.dart';
 import 'package:e_commerce_app/core/data/api/authentication/otp_verify_request_body.dart';
@@ -42,5 +43,10 @@ abstract class AuthenticationClient {
   @POST('/Auth/resend-otp')
   Future<HttpResponse<ApiResponse<OtpResponse>>> resendOtp(
     @Body() ResendOtpRequestBody request,
+  );
+
+  @POST('/Auth/forget-password')
+  Future<HttpResponse<ApiResponse<OtpResponse>>> forgetPassword(
+    @Body() ForgetPasswordRequestBody request,
   );
 }

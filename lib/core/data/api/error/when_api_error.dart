@@ -31,6 +31,10 @@ R whenApiError<R>({
     if (noInternetErrors.contains(error.type)) {
       return noInternetError?.call() ?? orElse();
     }
+
+    if (error.response?.statusCode == 500) {
+      return orElse();
+    }
     final data = error.response?.data;
     if (data is Map<String, dynamic>) {
       if (apiError == null) return orElse();

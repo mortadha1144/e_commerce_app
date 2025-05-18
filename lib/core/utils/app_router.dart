@@ -1,6 +1,6 @@
 import 'package:e_commerce_app/features/auth/views/authentication_provider.dart';
 import 'package:e_commerce_app/features/profile/views/update_profile_view.dart';
-import 'package:e_commerce_app/features/auth/views/forgot_password_page.dart';
+import 'package:e_commerce_app/features/auth/views/forget_password/forgot_password_page.dart';
 import 'package:e_commerce_app/features/auth/views/login_page.dart';
 import 'package:e_commerce_app/features/auth/views/login_success_view.dart';
 import 'package:e_commerce_app/features/auth/views/otp_view.dart';

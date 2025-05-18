@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/core/data/api/authentication/authentication_response.dart';
+import 'package:e_commerce_app/core/data/api/authentication/forget_password_request_body.dart';
 import 'package:e_commerce_app/core/data/api/authentication/login_request.dart';
 import 'package:e_commerce_app/core/data/api/authentication/otp_verify_request_body.dart';
 import 'package:e_commerce_app/core/data/api/authentication/register_request_body.dart';
@@ -63,5 +64,12 @@ class AuthenticationRepositoryMock implements AuthenticationRepository {
         code: '1234',
       ),
     );
+  }
+
+  @override
+  Future<OtpResponse> forgetPassword(
+    ForgetPasswordRequestBody request,
+  ) {
+    throw UnimplementedError();
   }
 }
