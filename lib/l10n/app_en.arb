@@ -18,6 +18,8 @@
     "validationUrl": "invalid url",
     "invalidPhoneNumber": "invalid phone number",
     "password": "Password",
+    "confirmPasswordLabel": "Confirm Password",
+    "confirmPasswordMessage": "Enter your password again",
     "welcomeBack": "Welcome Back",
     "signInWithPhoneNumberAndPassword": "Sign in with your phone number and password  \nor continue with social media",
     "email": "Email",
@@ -62,5 +64,14 @@
     "resendOtpCodeLoading": "Resending OTP Code",
     "chooseLanguage": "Choose Language",
     "deviceLanguage": "Device Language",
-    "apply": "Apply"
+    "apply": "Apply",
+    "resetPasswordLabel": "Reset Password",
+    "resetPasswordMessage": "Enter your new password",
+    "newPasswordLabel": "New Password",
+    "newPasswordMessage": "Enter your new password",
+    "confirmNewPasswordLabel": "Confirm Password",
+    "confirmNewPasswordMessage": "Enter your new password again",
+    "confirmLabel": "Confirm",
+    "passwordResetSuccessfulMessage": "Password reset successfully",
+    "verificationSuccessfulMessage": "Verification successful"
 }

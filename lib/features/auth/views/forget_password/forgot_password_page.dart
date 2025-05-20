@@ -1,16 +1,14 @@
 import 'package:e_commerce_app/core/data/api/authentication/otp_response.dart';
 import 'package:e_commerce_app/core/data/api/error/api_error_message.dart';
 import 'package:e_commerce_app/core/developer/developer_provider.dart';
+import 'package:e_commerce_app/core/utils/app_router.dart';
 import 'package:e_commerce_app/core/utils/widgets/fields/phone_number_field.dart';
-import 'package:e_commerce_app/features/auth/providers/reset_password_provider.dart';
-import 'package:e_commerce_app/features/auth/views/forget_password/forget_password_provider.dart';
+import 'package:e_commerce_app/features/auth/views/authentication_provider.dart';
 import 'package:e_commerce_app/features/auth/views/widgets/no_account_text.dart';
 import 'package:e_commerce_app/core/utils/extensions.dart';
 import 'package:e_commerce_app/core/utils/hook/form_key.dart';
-import 'package:e_commerce_app/core/data/riverpod/riverpod_extensions.dart';
 import 'package:e_commerce_app/core/utils/snackbar.dart';
 import 'package:e_commerce_app/core/utils/widgets/custom_button.dart';
-import 'package:e_commerce_app/core/utils/widgets/email_form_field.dart';
 import 'package:e_commerce_app/core/utils/widgets/form_body.dart';
 import 'package:e_commerce_app/validator/form.dart';
 import 'package:flutter/material.dart';
@@ -73,7 +71,7 @@ class ForgotPasswordPage extends HookConsumerWidget {
                 ? null
                 : () async {
                     if (formKey.isNotValid()) return;
-                    final notifier = ref.read(forgetPasswordProvider.notifier);
+                    final notifier = ref.read(authenticationProvider.notifier);
 
                     mutation.mutate(
                       () => notifier.forgetPassword(phoneNumber.text),
@@ -82,7 +80,11 @@ class ForgotPasswordPage extends HookConsumerWidget {
                         context.showSuccessSnackBar(
                           data.code,
                         );
-                        // TODO: navigate to forget password otp verification page
+
+                        context.push(
+                          RoutesDocument.forgotPasswordVerifyOtpView,
+                          extra: phoneNumber.text,
+                        );
                       },
                       error: (error, _) {
                         showApiErrorMessage(

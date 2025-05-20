@@ -1,9 +1,12 @@
+import 'package:e_commerce_app/core/data/api/authentication/forget_password_request_body.dart';
 import 'package:e_commerce_app/core/data/api/authentication/login_request.dart';
 import 'package:e_commerce_app/core/data/api/authentication/authentication_response.dart';
 import 'package:e_commerce_app/core/data/api/authentication/otp_verify_request_body.dart';
+import 'package:e_commerce_app/core/data/api/authentication/password_reset_toke_response.dart';
 import 'package:e_commerce_app/core/data/api/authentication/register_request_body.dart';
 import 'package:e_commerce_app/core/data/api/authentication/otp_response.dart';
 import 'package:e_commerce_app/core/data/api/authentication/resend_otp_request_body.dart';
+import 'package:e_commerce_app/core/data/api/authentication/reset_password_request_body.dart';
 import 'package:e_commerce_app/core/data/shared_preferences/preferences.dart';
 import 'package:e_commerce_app/core/data/shared_preferences/shared_preferences_provider.dart';
 import 'package:e_commerce_app/features/auth/data/repositories/authentication_repository.dart';
@@ -97,6 +100,35 @@ class Authentication extends _$Authentication
         phoneNumber: phoneNumber,
       ),
     );
+    return response;
+  }
+
+  Future<OtpResponse> forgetPassword(
+    String phoneNumber,
+  ) async {
+    final response = await _repository.forgetPassword(
+      ForgetPasswordRequestBody(phoneNumber: phoneNumber),
+    );
+    return response;
+  }
+
+  Future<PasswordResetTokeResponse> forgetPasswordVerifyOtp({
+    required String phoneNumber,
+    required String code,
+  }) async {
+    final response = await _repository.forgetPasswordVerifyOtp(
+      OtpVerifyRequestBody(
+        phoneNumber: phoneNumber,
+        code: code,
+      ),
+    );
+    return response;
+  }
+
+  Future<AuthenticationResponse> resetPassword({
+    required ResetPasswordRequestBody request,
+  }) async {
+    final response = await _repository.resetPassword(request);
     return response;
   }
 }

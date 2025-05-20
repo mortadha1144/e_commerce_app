@@ -12,11 +12,15 @@ class PasswordFormField extends HookWidget {
     required this.controller,
     this.optional = false,
     this.validation,
+    this.label,
+    this.hintText,
   });
 
   final TextEditingController controller;
   final bool optional;
   final StringValidationCallback? validation;
+  final String? label;
+  final String? hintText;
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +34,10 @@ class PasswordFormField extends HookWidget {
       validator: validation ?? context.validator(optional: optional).build(),
       decoration: InputDecoration(
         label: RequiredFieldLabel(
-          label: l10n.password,
+          label: label ?? l10n.password,
           optional: optional,
         ),
-        hintText: l10n.passwordHint,
+        hintText: hintText ?? l10n.passwordHint,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         prefixIcon: const Icon(AppIcons.password),
         suffixIcon: IconButton(

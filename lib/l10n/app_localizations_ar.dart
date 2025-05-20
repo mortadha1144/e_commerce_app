@@ -67,6 +67,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get password => 'كلمة المرور';
 
   @override
+  String get confirmPasswordLabel => 'تأكيد كلمة المرور';
+
+  @override
+  String get confirmPasswordMessage => 'أدخل كلمة المرور مرة أخرى';
+
+  @override
   String get welcomeBack => 'مرحباً بعودتك';
 
   @override
@@ -204,4 +210,31 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get apply => 'تطبيق';
+
+  @override
+  String get resetPasswordLabel => 'إعادة تعيين كلمة المرور';
+
+  @override
+  String get resetPasswordMessage => 'أدخل كلمة المرور الجديدة';
+
+  @override
+  String get newPasswordLabel => 'كلمة المرور الجديدة';
+
+  @override
+  String get newPasswordMessage => 'أدخل كلمة المرور الجديدة';
+
+  @override
+  String get confirmNewPasswordLabel => 'تأكيد كلمة المرور';
+
+  @override
+  String get confirmNewPasswordMessage => 'أدخل كلمة المرور الجديدة مرة أخرى';
+
+  @override
+  String get confirmLabel => 'تأكيد';
+
+  @override
+  String get passwordResetSuccessfulMessage => 'تم إعادة تعيين كلمة المرور بنجاح';
+
+  @override
+  String get verificationSuccessfulMessage => 'تم التحقق بنجاح';
 }

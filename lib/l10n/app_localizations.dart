@@ -203,6 +203,18 @@ abstract class AppLocalizations {
   /// **'كلمة المرور'**
   String get password;
 
+  /// No description provided for @confirmPasswordLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'تأكيد كلمة المرور'**
+  String get confirmPasswordLabel;
+
+  /// No description provided for @confirmPasswordMessage.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل كلمة المرور مرة أخرى'**
+  String get confirmPasswordMessage;
+
   /// No description provided for @welcomeBack.
   ///
   /// In ar, this message translates to:
@@ -472,6 +484,60 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'تطبيق'**
   String get apply;
+
+  /// No description provided for @resetPasswordLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'إعادة تعيين كلمة المرور'**
+  String get resetPasswordLabel;
+
+  /// No description provided for @resetPasswordMessage.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل كلمة المرور الجديدة'**
+  String get resetPasswordMessage;
+
+  /// No description provided for @newPasswordLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'كلمة المرور الجديدة'**
+  String get newPasswordLabel;
+
+  /// No description provided for @newPasswordMessage.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل كلمة المرور الجديدة'**
+  String get newPasswordMessage;
+
+  /// No description provided for @confirmNewPasswordLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'تأكيد كلمة المرور'**
+  String get confirmNewPasswordLabel;
+
+  /// No description provided for @confirmNewPasswordMessage.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل كلمة المرور الجديدة مرة أخرى'**
+  String get confirmNewPasswordMessage;
+
+  /// No description provided for @confirmLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'تأكيد'**
+  String get confirmLabel;
+
+  /// No description provided for @passwordResetSuccessfulMessage.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم إعادة تعيين كلمة المرور بنجاح'**
+  String get passwordResetSuccessfulMessage;
+
+  /// No description provided for @verificationSuccessfulMessage.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم التحقق بنجاح'**
+  String get verificationSuccessfulMessage;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

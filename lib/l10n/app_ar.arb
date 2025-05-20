@@ -32,6 +32,8 @@
     "validationUrl": "رابط غير صالح",
     "invalidPhoneNumber": "رقم هاتف غير صالح",
     "password": "كلمة المرور",
+    "confirmPasswordLabel": "تأكيد كلمة المرور",
+    "confirmPasswordMessage": "أدخل كلمة المرور مرة أخرى",
     "welcomeBack": "مرحباً بعودتك",
     "signInWithPhoneNumberAndPassword": "قم بتسجيل الدخول باستخدام رقم هاتفك وكلمة المرور\nأو المتابعة باستخدام وسائل التواصل الاجتماعي",
     "email": "البريد الإلكتروني",
@@ -90,5 +92,14 @@
     "resendOtpCodeLoading": "جاري ارسال الرمز",
     "chooseLanguage": "اختر اللغة",
     "deviceLanguage": "لغة الجهاز",
-    "apply": "تطبيق"
+    "apply": "تطبيق",
+    "resetPasswordLabel": "إعادة تعيين كلمة المرور",
+    "resetPasswordMessage": "أدخل كلمة المرور الجديدة",
+    "newPasswordLabel": "كلمة المرور الجديدة",
+    "newPasswordMessage": "أدخل كلمة المرور الجديدة",
+    "confirmNewPasswordLabel": "تأكيد كلمة المرور",
+    "confirmNewPasswordMessage": "أدخل كلمة المرور الجديدة مرة أخرى",
+    "confirmLabel": "تأكيد",
+    "passwordResetSuccessfulMessage": "تم إعادة تعيين كلمة المرور بنجاح",
+    "verificationSuccessfulMessage": "تم التحقق بنجاح"
 }

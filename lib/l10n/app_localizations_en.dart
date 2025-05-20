@@ -67,6 +67,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get password => 'Password';
 
   @override
+  String get confirmPasswordLabel => 'Confirm Password';
+
+  @override
+  String get confirmPasswordMessage => 'Enter your password again';
+
+  @override
   String get welcomeBack => 'Welcome Back';
 
   @override
@@ -204,4 +210,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get apply => 'Apply';
+
+  @override
+  String get resetPasswordLabel => 'Reset Password';
+
+  @override
+  String get resetPasswordMessage => 'Enter your new password';
+
+  @override
+  String get newPasswordLabel => 'New Password';
+
+  @override
+  String get newPasswordMessage => 'Enter your new password';
+
+  @override
+  String get confirmNewPasswordLabel => 'Confirm Password';
+
+  @override
+  String get confirmNewPasswordMessage => 'Enter your new password again';
+
+  @override
+  String get confirmLabel => 'Confirm';
+
+  @override
+  String get passwordResetSuccessfulMessage => 'Password reset successfully';
+
+  @override
+  String get verificationSuccessfulMessage => 'Verification successful';
 }

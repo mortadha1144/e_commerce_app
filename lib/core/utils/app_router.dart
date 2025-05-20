@@ -1,9 +1,11 @@
 import 'package:e_commerce_app/features/auth/views/authentication_provider.dart';
+import 'package:e_commerce_app/features/auth/views/forget_password/forget_password_reset_password_page.dart';
+import 'package:e_commerce_app/features/auth/views/forget_password/forgot_password_verify_otp_page.dart';
 import 'package:e_commerce_app/features/profile/views/update_profile_view.dart';
 import 'package:e_commerce_app/features/auth/views/forget_password/forgot_password_page.dart';
 import 'package:e_commerce_app/features/auth/views/login_page.dart';
 import 'package:e_commerce_app/features/auth/views/login_success_view.dart';
-import 'package:e_commerce_app/features/auth/views/otp_view.dart';
+import 'package:e_commerce_app/features/auth/views/verify_otp_page.dart';
 import 'package:e_commerce_app/features/auth/views/registeration_page.dart';
 import 'package:e_commerce_app/features/cart/views/cart_view.dart';
 import 'package:e_commerce_app/features/favorite/views/favorite_view.dart';
@@ -141,12 +143,29 @@ GoRouter appRouter(Ref ref) {
         builder: (context, state) => const ForgotPasswordPage(),
       ),
       GoRoute(
+        path: RoutesDocument.forgotPasswordVerifyOtpView,
+        builder: (context, state) => ForgotPasswordVerifyOtpPage(
+          phoneNumber: state.extra as String,
+        ),
+      ),
+      GoRoute(
+        path: RoutesDocument.forgotPasswordResetPasswordView,
+        builder: (context, state) {
+          final args = state.extra as ResetPasswordPageArgs;
+          return ForgetPasswordResetPasswordPage(
+            phoneNumber: args.phoneNumber,
+            resetToken: args.resetToken,
+          );
+        },
+      ),
+      GoRoute(
         path: RoutesDocument.loginSuccessView,
         builder: (context, state) => const LoginSuccessView(),
       ),
       GoRoute(
         path: RoutesDocument.otpView,
-        builder: (context, state) => OtpView(phoneNumber: state.extra as String),
+        builder: (context, state) =>
+            VerifyOtpPage(phoneNumber: state.extra as String),
       ),
       GoRoute(
         path: RoutesDocument.onBoardingView,
@@ -173,4 +192,7 @@ class RoutesDocument {
   static const updateProfileView = 'updateProfileView';
   // static const chooseLanguage = '/chooseLanguage';
   static const favoriteView = '/favoriteView';
+  static const forgotPasswordVerifyOtpView = '/forgotPasswordVerifyOtpView';
+  static const forgotPasswordResetPasswordView =
+      '/forgotPasswordResetPasswordView';
 }

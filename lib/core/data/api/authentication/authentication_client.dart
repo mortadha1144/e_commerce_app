@@ -3,9 +3,11 @@ import 'package:e_commerce_app/core/data/api/authentication/forget_password_requ
 import 'package:e_commerce_app/core/data/api/authentication/login_request.dart';
 import 'package:e_commerce_app/core/data/api/authentication/authentication_response.dart';
 import 'package:e_commerce_app/core/data/api/authentication/otp_verify_request_body.dart';
+import 'package:e_commerce_app/core/data/api/authentication/password_reset_toke_response.dart';
 import 'package:e_commerce_app/core/data/api/authentication/register_request_body.dart';
 import 'package:e_commerce_app/core/data/api/authentication/otp_response.dart';
 import 'package:e_commerce_app/core/data/api/authentication/resend_otp_request_body.dart';
+import 'package:e_commerce_app/core/data/api/authentication/reset_password_request_body.dart';
 import 'package:e_commerce_app/core/data/api/common/api_response.dart';
 import 'package:e_commerce_app/core/data/api/dio_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -48,5 +50,15 @@ abstract class AuthenticationClient {
   @POST('/Auth/forget-password')
   Future<HttpResponse<ApiResponse<OtpResponse>>> forgetPassword(
     @Body() ForgetPasswordRequestBody request,
+  );
+
+  @POST('/Auth/forget-password-verify-otp')
+  Future<HttpResponse<ApiResponse<PasswordResetTokeResponse>>> forgetPasswordVerifyOtp(
+    @Body() OtpVerifyRequestBody request,
+  );
+
+  @POST('/Auth/reset-password')
+  Future<HttpResponse<ApiResponse<AuthenticationResponse>>> resetPassword(
+    @Body() ResetPasswordRequestBody request,
   );
 }
